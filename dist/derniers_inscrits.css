@@ -1,0 +1,70 @@
+#HeadB {
+  width: 10.16vw;
+  height: 2.1vw;
+}
+
+#HeadT {
+  font-size: 1.042vw;
+  font-weight: bold;
+  text-align: center;
+  max-width: 300px;
+  height: 35px;
+}
+
+.lin {
+  display: inline;
+}
+
+#imgE {
+  width: 100%;
+  height: 190px;
+  margin-top: 0px;
+  border-radius: 5px;
+}
+
+.p20 {
+  font-size: 1.042vw;
+  line-height: 1.1em;
+}
+
+.testmarg {
+  display: inline-block;
+  margin-left: 5.2083333333%;
+  align-content: center;
+}
+
+.mil {
+  margin-left: 5.2083333333%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cercle {
+  width: 0.5vw;
+  height: 0.5vw;
+  border-radius: 20px;
+  background: #618226;
+  color: black;
+}
+
+.al {
+  display: flex;
+  justify-content: center;
+}
+
+.mrg {
+  margin-right: 0.5%;
+}
+
+.insc {
+  width: 80.3125%;
+  margin-left: 10%;
+  justify-content: center;
+  text-align: center;
+}
+
+/*# sourceMappingURL=derniers_inscrits.css.map */

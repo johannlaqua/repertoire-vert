@@ -1,0 +1,93 @@
+{% extends 'base_homepage.html.twig' %}
+{% block stylesheet %}
+
+
+{% endblock %}
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+<div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+    {% include "navbar.html.twig" %}
+    <h3 class="banner-title">Fiche Produit</h3>
+    </br></br></br></br></br></br>
+</div>
+
+{# ******************************* FinNavBar ***************************************** #}
+     {#  <div class="bloc">
+
+        <p class="bloc-title">
+            Late minutis ortum porrigitur dextro mediam adnexa
+        </p>
+
+        <p class="bloc-content">
+            Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops</br>
+            cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem</br>
+            adultae virginis diuturnum absentia pauperis erubesceret patris.
+        </p>
+
+
+    </div>#}
+</br></br></br>
+
+
+    <div id="nav-barre" >
+
+        <div class="company-name" ><h4>Nom de produit: {{ marchandise.name }}</h4></div>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% if n==0 %}
+
+                <a style="color: #000000 " href="{{ url('addProductFavoris',{'slug': product.slug}) }}">Ajouter à mes favoris:<img src="{{ asset('css/img/favori1.png') }}" alt="logo-gaea21"></a>
+
+            {% elseif n==1%}
+                <a  style="color: #000000 " href="{{ url('deleteProductFavoris',{'slug': product.slug}) }}">Supprimer de mes favoris<img src="{{ asset('css/img/favori.png') }}" alt="logo-gaea21"></a>
+
+            {% endif%}
+        {% endif%}
+
+    </div></br></br></br> 
+ 
+    
+    <div class="product col-l-12">
+        {% include './product/sheet.html.twig' with {'marchandise' : marchandise} %}
+        <!--<p>{# marchandise.company #}</p>-->
+    </div>
+
+    </br></br>
+
+               <form action="{{ url('companyShowFromId',{'id':marchandise.company.id}) }}">
+                   <button class="btnmarg-l" style="background-color:#ffbe2b; border-radius:7px; border:none; color:white;     font-size: 1.042vw;
+           width: 12.990vw; height: 46px; "> Fiche Entreprise </button>
+               </form>
+
+
+
+</br></br>
+      
+
+    <div class="grey">
+
+        <div class="bloc1" >
+            <div class="sous-bloc1">C'est quoi le Green coaching</div>
+        </div>
+
+        <div class="bloc2" >
+            <div class="sous-bloc2">A quoi sert le Répertoire Vert ?</div>
+        </div>
+
+        <div class="bloc3" >
+            <div class="sous-bloc3">C’est quoi la consommation ?</div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

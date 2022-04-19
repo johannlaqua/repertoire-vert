@@ -1,0 +1,46 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mon profil entreprise</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='/profile/entreprise'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='/parametres/particulier'" class="showcase__btn-ville">Paramètres</button>
+            <button onclick="location.href='/productsFavParticulier'" class="showcase__btn-entreprise" style="font-size: 16px">Produits/services favoris</button>
+            <button onclick="location.href='/MesEvenementsFavoris'" class="showcase__btn-ville" style="font-size: 16px">Evènements favoris</button>
+
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    {# include 'dialogbox.html.twig' #}
+    <!--<div class="jsdialog"><div class="jsdialog-content">Etes vous sûr(e) de vouloir supprimer ce produit ? <br/><br/> Si  vous cliquez sur Supprimer le produit sera effacé <strong>définitivement</strong><br/><div class="dialog-buttons"><div class="jsdialog-cancel-button" onclick="removeFlash();">Annuler</div><div class="jsdialog-ok-button" onclick="removeFlash();">Supprimer</div></div></div></div>-->
+
+
+    <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+        {% for product in products %}
+            <a href="{{ url('productShow',{'slug':product.slug}) }}" style="max-width:200px; text-decoration:none">
+                <div class="product-card card">
+                    <div class="card-header">
+                        <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                        <span class="card-title">{{ product.name }}</span>
+                    </div>
+                    <div class="card-header">
+
+                        <span class="card-title">{{ product.slug }}</span>
+                        <br>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

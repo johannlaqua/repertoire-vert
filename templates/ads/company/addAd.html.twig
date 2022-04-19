@@ -1,0 +1,22 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+{{ form_start(Form) }}
+    <div class="form-group">
+        {{ form_label(Form.publishdatebegin, 'Date début: ') }}
+        {{ form_widget(Form.publishdatebegin, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(Form.publishdateend, 'Date Fin: ') }}
+        {{ form_widget(Form.publishdateend, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    {{ form_row(Form.location) }}
+
+
+
+    {{ form_row(Form.slogan) }}
+{{ form_end(Form) }}
+
+{% endblock %}

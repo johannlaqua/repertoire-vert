@@ -1,0 +1,369 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}<title>Homepage Entreprise</title>{% endblock %}
+
+
+{% block stylesheets %}
+    {# ******************************* NavBar ***************************************** #}
+    <div id="root">
+    </div>
+    {{ encore_entry_link_tags('app') }}
+
+    
+    {# ******************************* FinNavBar ***************************************** #}
+    <link rel="stylesheet" href="{{ asset('css/homepage.css') }}"/>
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}    
+    {# ******************************* Body ***************************************** #}
+        <div {# class="showcase" #} style="width:100%;background-image: url({{asset('/images/header_entreprise.jpg')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        
+        {% include "navbar.html.twig" with { 'role' : role }  %}
+
+            {# <div class="container-banner-rv"> #}
+                <div class="div-rv-entreprise">
+                    <div class="container-rv-entreprise">
+                        <div class="rv-entreprise1 title-rv1">Bienvenue sur le</div>
+                        <div class="rv-entreprise2 title-rv2">Répertoire Vert</div>
+                        <div class="rv-entreprise-text title-rv-text">
+                            Le répertoire professionnel du développement durable offre
+                            le référencement et l’évaluation <br/>
+                            de tous les produits et services professionnels “verts” proposés
+                            dans une rayon de 130km par rapport à Genève
+                        </div>
+                    </div>
+                </div>
+            {# </div> #}
+
+            {% if app.user %}
+                {% if (app.user.role == "ROLE_COMPANY") %}
+                    <div class="div-btn-role">
+                        <div class="container-btn-role div-choix-jesuis">
+                            <div class="btn-role">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-company{fill:#618226;stroke:#fff;stroke-width:3px;}.b-company-company,.c-company-company{fill:#fff;}.b-company-company{font-size:20px;font-family:DroidSans, Droid Sans;}.d-company-company{stroke:none;}.e-company-company{fill:none;}</style></defs><g class="a-company-company"><rect class="d-company-company" width="232" height="70" rx="10"/><rect class="e-company-company" x="1.5" y="1.5" width="229" height="67" rx="8.5"/></g><text class="b-company-company" transform="translate(101 41)"><tspan x="0" y="0">Entreprise</tspan></text><g transform="translate(24 17)"><path class="c-company-company" d="M23.25,2H6.75A2.753,2.753,0,0,0,4,4.75V28.125A1.375,1.375,0,0,0,5.375,29.5h19.25A1.375,1.375,0,0,0,26,28.125V4.75A2.753,2.753,0,0,0,23.25,2Zm0,24.75H6.75v-22h16.5Z" transform="translate(0 0)"/><path class="c-company-company" d="M8,6h3V8H8Zm5,0h3V8H13ZM8,10h3v2H8Zm5,.031h3V12H13ZM8,14h3v2H8Zm5,0h3v2H13Z" transform="translate(3 3)"/></g></svg>
+                            </div>
+                            <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-indiv{fill:#fff;}.b-company-indiv{font-size:20px;font-family:DroidSans, Droid Sans;}.c-company-indiv{fill:none;}</style></defs><rect class="a-company-indiv" width="232" height="70" rx="10"/><text class="b-company-indiv" transform="translate(101 41)"><tspan x="0" y="0">Individu</tspan></text><g transform="translate(24 18)"><circle class="c-company-indiv" cx="3" cy="3" r="3" transform="translate(11 4)"/><path d="M14,2a6.111,6.111,0,1,0,6.111,6.111A6.118,6.118,0,0,0,14,2Zm0,9.778a3.667,3.667,0,1,1,3.667-3.667A3.671,3.671,0,0,1,14,11.778ZM25,25.222V24a8.567,8.567,0,0,0-8.556-8.556H11.556A8.566,8.566,0,0,0,3,24v1.222H5.444V24a6.118,6.118,0,0,1,6.111-6.111h4.889A6.118,6.118,0,0,1,22.556,24v1.222Z" transform="translate(0 0)"/></g></svg>
+                            </div>
+                            <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-ville{fill:#fff;}.b-company-ville{font-size:20px;font-family:DroidSans, Droid Sans;}</style></defs><rect class="a-company-ville" width="232" height="70" rx="10"/><text class="b-company-ville" transform="translate(83 41)"><tspan x="0" y="0">Ville / Région</tspan></text><g transform="translate(23 17)"><path d="M7,14H9v2H7Z" transform="translate(1 2.963)"/><path d="M22.556,2H12.778a2.445,2.445,0,0,0-2.444,2.444v7.333H5.444A2.447,2.447,0,0,0,3,14.222v11a1.222,1.222,0,0,0,1.222,1.222H23.778A1.222,1.222,0,0,0,25,25.222V4.444A2.445,2.445,0,0,0,22.556,2ZM5.444,24V14.222h7.333V24Zm11-14.667H14V6.889h2.444Zm4.889,9.778H18.889V16.667h2.444Zm0-4.889H18.889V11.778h2.444Zm0-4.889H18.889V6.889h2.444Z" transform="translate(0 0)"/></g></svg>
+                            </div>
+                        </div>
+                    </div>
+                {% elseif app.user.role == "ROLE_USER" %}
+
+                    <div class="div-btn-role">
+                        <div class="container-btn-role div-choix-jesuis">
+                            <div class="btn-role">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-user-company{fill:#fff;}.b-user-company{font-size:20px;font-family:DroidSans, Droid Sans;}</style></defs><rect class="a-user-company" width="232" height="70" rx="10"/><text class="b-user-company" transform="translate(101 41)"><tspan x="0" y="0">Entreprise</tspan></text><g transform="translate(24 17)"><path d="M23.25,2H6.75A2.753,2.753,0,0,0,4,4.75V28.125A1.375,1.375,0,0,0,5.375,29.5h19.25A1.375,1.375,0,0,0,26,28.125V4.75A2.753,2.753,0,0,0,23.25,2Zm0,24.75H6.75v-22h16.5Z" transform="translate(0 0)"/><path d="M8,6h3V8H8Zm5,0h3V8H13ZM8,10h3v2H8Zm5,.031h3V12H13ZM8,14h3v2H8Zm5,0h3v2H13Z" transform="translate(3 3)"/></g></svg>
+                            </div>
+                            <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-user-user{fill:#618226;stroke:#fff;}.b-user-user,.d-user-user{fill:#fff;}.b-user-user{font-size:20px;font-family:DroidSans, Droid Sans;}.c-user-user{fill:none;}.e{stroke:none;}</style></defs><g class="a-user-user"><rect class="e-user-user" width="232" height="70" rx="10"/><rect class="c-user-user" x="0.5" y="0.5" width="231" height="69" rx="9.5"/></g><text class="b-user-user" transform="translate(101 41)"><tspan x="0" y="0">Individu</tspan></text><g transform="translate(37 21.389)"><circle class="c-user-user" cx="3" cy="3" r="3" transform="translate(11 4)"/><path class="d-user-user" d="M14,2a6.111,6.111,0,1,0,6.111,6.111A6.118,6.118,0,0,0,14,2Zm0,9.778a3.667,3.667,0,1,1,3.667-3.667A3.671,3.671,0,0,1,14,11.778ZM25,25.222V24a8.567,8.567,0,0,0-8.556-8.556H11.556A8.566,8.566,0,0,0,3,24v1.222H5.444V24a6.118,6.118,0,0,1,6.111-6.111h4.889A6.118,6.118,0,0,1,22.556,24v1.222Z" transform="translate(0 0)"/></g></svg>
+                            </div>
+                            <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-user-ville{fill:#fff;}.b-user-ville{font-size:20px;font-family:DroidSans, Droid Sans;}.c{fill:#618226;}</style></defs><rect class="a-user-ville" width="232" height="70" rx="10"/><text class="b-user-ville" transform="translate(83 41)"><tspan x="0" y="0">Ville / Région</tspan></text><g transform="translate(23 17)"><path class="c-user-ville" d="M7,14H9v2H7Z" transform="translate(1 2.963)"/><path d="M22.556,2H12.778a2.445,2.445,0,0,0-2.444,2.444v7.333H5.444A2.447,2.447,0,0,0,3,14.222v11a1.222,1.222,0,0,0,1.222,1.222H23.778A1.222,1.222,0,0,0,25,25.222V4.444A2.445,2.445,0,0,0,22.556,2ZM5.444,24V14.222h7.333V24Zm11-14.667H14V6.889h2.444Zm4.889,9.778H18.889V16.667h2.444Zm0-4.889H18.889V11.778h2.444Zm0-4.889H18.889V6.889h2.444Z" transform="translate(0 0)"/></g></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}
+                {% else %}
+                    {% if (role == "COMPANY") %}
+                        <div class="div-btn-role">
+                            <div class="container-btn-role div-choix-jesuis">
+                                <div class="btn-role">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-company{fill:#618226;stroke:#fff;stroke-width:3px;}.b-company-company,.c-company-company{fill:#fff;}.b-company-company{font-size:20px;font-family:DroidSans, Droid Sans;}.d-company-company{stroke:none;}.e-company-company{fill:none;}</style></defs><g class="a-company-company"><rect class="d-company-company" width="232" height="70" rx="10"/><rect class="e-company-company" x="1.5" y="1.5" width="229" height="67" rx="8.5"/></g><text class="b-company-company" transform="translate(101 41)"><tspan x="0" y="0">Entreprise</tspan></text><g transform="translate(24 17)"><path class="c-company-company" d="M23.25,2H6.75A2.753,2.753,0,0,0,4,4.75V28.125A1.375,1.375,0,0,0,5.375,29.5h19.25A1.375,1.375,0,0,0,26,28.125V4.75A2.753,2.753,0,0,0,23.25,2Zm0,24.75H6.75v-22h16.5Z" transform="translate(0 0)"/><path class="c-company-company" d="M8,6h3V8H8Zm5,0h3V8H13ZM8,10h3v2H8Zm5,.031h3V12H13ZM8,14h3v2H8Zm5,0h3v2H13Z" transform="translate(3 3)"/></g></svg>
+                                </div>
+                                <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-indiv{fill:#fff;}.b-company-indiv{font-size:20px;font-family:DroidSans, Droid Sans;}.c-company-indiv{fill:none;}</style></defs><rect class="a-company-indiv" width="232" height="70" rx="10"/><text class="b-company-indiv" transform="translate(101 41)"><tspan x="0" y="0">Individu</tspan></text><g transform="translate(24 18)"><circle class="c-company-indiv" cx="3" cy="3" r="3" transform="translate(11 4)"/><path d="M14,2a6.111,6.111,0,1,0,6.111,6.111A6.118,6.118,0,0,0,14,2Zm0,9.778a3.667,3.667,0,1,1,3.667-3.667A3.671,3.671,0,0,1,14,11.778ZM25,25.222V24a8.567,8.567,0,0,0-8.556-8.556H11.556A8.566,8.566,0,0,0,3,24v1.222H5.444V24a6.118,6.118,0,0,1,6.111-6.111h4.889A6.118,6.118,0,0,1,22.556,24v1.222Z" transform="translate(0 0)"/></g></svg>
+                                </div>
+                                <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-ville{fill:#fff;}.b-company-ville{font-size:20px;font-family:DroidSans, Droid Sans;}</style></defs><rect class="a-company-ville" width="232" height="70" rx="10"/><text class="b-company-ville" transform="translate(83 41)"><tspan x="0" y="0">Ville / Région</tspan></text><g transform="translate(23 17)"><path d="M7,14H9v2H7Z" transform="translate(1 2.963)"/><path d="M22.556,2H12.778a2.445,2.445,0,0,0-2.444,2.444v7.333H5.444A2.447,2.447,0,0,0,3,14.222v11a1.222,1.222,0,0,0,1.222,1.222H23.778A1.222,1.222,0,0,0,25,25.222V4.444A2.445,2.445,0,0,0,22.556,2ZM5.444,24V14.222h7.333V24Zm11-14.667H14V6.889h2.444Zm4.889,9.778H18.889V16.667h2.444Zm0-4.889H18.889V11.778h2.444Zm0-4.889H18.889V6.889h2.444Z" transform="translate(0 0)"/></g></svg>
+                                </div>
+                            </div>
+                        </div>
+                    {% elseif role == "USER" %}
+                        <div class="div-btn-role">
+                            <div class="container-btn-role div-choix-jesuis">
+                                <div class="btn-role">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-user-company{fill:#fff;}.b-user-company{font-size:20px;font-family:DroidSans, Droid Sans;}</style></defs><rect class="a-user-company" width="232" height="70" rx="10"/><text class="b-user-company" transform="translate(101 41)"><tspan x="0" y="0">Entreprise</tspan></text><g transform="translate(24 17)"><path d="M23.25,2H6.75A2.753,2.753,0,0,0,4,4.75V28.125A1.375,1.375,0,0,0,5.375,29.5h19.25A1.375,1.375,0,0,0,26,28.125V4.75A2.753,2.753,0,0,0,23.25,2Zm0,24.75H6.75v-22h16.5Z" transform="translate(0 0)"/><path d="M8,6h3V8H8Zm5,0h3V8H13ZM8,10h3v2H8Zm5,.031h3V12H13ZM8,14h3v2H8Zm5,0h3v2H13Z" transform="translate(3 3)"/></g></svg>
+                                </div>
+                                <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-user-user{fill:#618226;stroke:#fff;}.b-user-user,.d-user-user{fill:#fff;}.b-user-user{font-size:20px;font-family:DroidSans, Droid Sans;}.c-user-user{fill:none;}.e{stroke:none;}</style></defs><g class="a-user-user"><rect class="e-user-user" width="232" height="70" rx="10"/><rect class="c-user-user" x="0.5" y="0.5" width="231" height="69" rx="9.5"/></g><text class="b-user-user" transform="translate(101 41)"><tspan x="0" y="0">Individu</tspan></text><g transform="translate(37 21.389)"><circle class="c-user-user" cx="3" cy="3" r="3" transform="translate(11 4)"/><path class="d-user-user" d="M14,2a6.111,6.111,0,1,0,6.111,6.111A6.118,6.118,0,0,0,14,2Zm0,9.778a3.667,3.667,0,1,1,3.667-3.667A3.671,3.671,0,0,1,14,11.778ZM25,25.222V24a8.567,8.567,0,0,0-8.556-8.556H11.556A8.566,8.566,0,0,0,3,24v1.222H5.444V24a6.118,6.118,0,0,1,6.111-6.111h4.889A6.118,6.118,0,0,1,22.556,24v1.222Z" transform="translate(0 0)"/></g></svg>
+                                </div>
+                                <div class="btn-role" onclick="location.href='{{ path('404') }}'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-user-ville{fill:#fff;}.b-user-ville{font-size:20px;font-family:DroidSans, Droid Sans;}.c{fill:#618226;}</style></defs><rect class="a-user-ville" width="232" height="70" rx="10"/><text class="b-user-ville" transform="translate(83 41)"><tspan x="0" y="0">Ville / Région</tspan></text><g transform="translate(23 17)"><path class="c-user-ville" d="M7,14H9v2H7Z" transform="translate(1 2.963)"/><path d="M22.556,2H12.778a2.445,2.445,0,0,0-2.444,2.444v7.333H5.444A2.447,2.447,0,0,0,3,14.222v11a1.222,1.222,0,0,0,1.222,1.222H23.778A1.222,1.222,0,0,0,25,25.222V4.444A2.445,2.445,0,0,0,22.556,2ZM5.444,24V14.222h7.333V24Zm11-14.667H14V6.889h2.444Zm4.889,9.778H18.889V16.667h2.444Zm0-4.889H18.889V11.778h2.444Zm0-4.889H18.889V6.889h2.444Z" transform="translate(0 0)"/></g></svg>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+            {% endif %}
+        </div>
+        <div class="repertory-description col-l-12">
+            <img class="repertory-image" src="{{ asset('/css/img/image-partie-économie-verte.png') }}">
+
+            <div class="repertory-content">
+
+                <div class="title">
+                    <h1 class="title">Nous créons de la valeur ajoutée et stimulons l'éco-consommation</h1>
+                </div>
+
+                <p class="title-content"> Nous donnons aux consommateurs un outil pour des choix responsables et une solution pour des prix abordables.<br>"Vert" est pour nous synonyme d'éco-conscience, de choix et de comportements durables, efficaces et profitables.<br>Nous permettons aussi aux entreprises d'être plus visibles, plus impliquées, plus efficaces et plus rentables.</p>
+
+                {% if app.user %}
+                    {% if app.user.role == "ROLE_COMPANY" %}
+                        <div class="responsible-production col-l-12">
+
+                            <div class="responsible-title">
+                                <h3 class="l-green">PRODUCTION RESPONSABLE</h3>
+                                <img class="logo-eye" src="{{ asset('/css/img/eye.png') }}" alt="">
+                            </div>
+                            <div class="responsible-content">
+                                <p class="responsible-content-1">Le <span class="l-bold">Répertoire Vert</span> vous fait bénéficier d’une <span class="l-bold">meilleure visibilité</span> et d’une <span class="l-bold">meilleure diffusion</span> sur le marché des <span class="l-bold">produits</span> et <span class="l-bold">services verts</span>, dans le but d'<span class="l-bold">accroître</span> les <span class="l-bold">ventes</span> de vos produits et services verts.</p>
+
+                                <p class="responsible-content-2">Grâce au <span class="l-bold">processus d’audit</span>, vous pourrez non seulement <span class="l-bold">diminuer</span> votre <span class="l-bold">impact environnemental</span>, mais aussi <span class="l-bold">renforcer</span> le <span class="l-bold">capital confiance</span> de votre entreprise auprès des éco-consommateurs.</p>
+                            </div>
+                        </div>
+                    {% elseif  app.user.role == "ROLE_ADMIN" %}
+
+                    {% elseif app.user.role == "ROLE_USER" %}
+                        <div class="responsible-production col-l-12">
+
+                            <div class="responsible-title">
+                                <h3 class="l-green">CONSOMMATION RESPONSABLE</h3>
+                                <img class="logo-eye" src="{{ asset('/css/img/eye.png') }}" alt="">
+                            </div>
+                            <div class="responsible-content">
+                                <p class="responsible-content-1">Le <span class="l-bold">Répertoire</span> permet de concentrer et de référencer toute l’offre de <span class="l-bold">produits</span> et de <span class="l-bold">services verts</span> d’une région,
+                                    permettant ainsi de savoir où et quoi chercher.</p>
+
+                                <p class="responsible-content-2">Grâce au <span class="l-bold">processus d’audit</span>, vous pourrez non seulement <span class="l-bold">diminuer</span> votre <span class="l-bold">impact environnemental</span>, mais aussi <span class="l-bold">renforcer</span> le <span class="l-bold">capital confiance</span> de votre entreprise auprès des éco-consommateurs.</p>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% else %}
+                    {% if role == "COMPANY" %}
+                        <div class="responsible-production col-l-12">
+
+                            <div class="responsible-title">
+                                <h3 class="l-green">PRODUCTION RESPONSABLE</h3>
+                                <img class="logo-eye" src="{{ asset('/css/img/eye.png') }}" alt="">
+                            </div>
+                            <div class="responsible-content">
+                                <p class="responsible-content-1">Le <span class="l-bold">Répertoire Vert</span> vous fait bénéficier d’une <span class="l-bold">meilleure visibilité</span> et d’une <span class="l-bold">meilleure diffusion</span> sur le marché des <span class="l-bold">produits</span> et <span class="l-bold">services verts</span>, dans le but d'<span class="l-bold">accroître</span> les <span class="l-bold">ventes</span> de vos produits et services verts.</p>
+
+                                <p class="responsible-content-2">Grâce au <span class="l-bold">processus d’audit</span>, vous pourrez non seulement <span class="l-bold">diminuer</span> votre <span class="l-bold">impact environnemental</span>, mais aussi <span class="l-bold">renforcer</span> le <span class="l-bold">capital confiance</span> de votre entreprise auprès des éco-consommateurs.</p>
+                            </div>
+                        </div>
+                    {% elseif  role == "ADMIN" %}
+
+                    {% elseif role == "USER" %}
+                        <div class="responsible-production col-l-12">
+
+                            <div class="responsible-title">
+                                <h3 class="l-green">CONSOMMATION RESPONSABLE</h3>
+                                <img class="logo-eye" src="{{ asset('/css/img/eye.png') }}" alt="">
+                            </div>
+                            <div class="responsible-content">
+                                <p class="responsible-content-1">Le <span class="l-bold">Répertoire</span> permet de concentrer et de référencer toute l’offre de <span class="l-bold">produits</span> et de <span class="l-bold">services verts</span> d’une région,
+                                    permettant ainsi de savoir où et quoi chercher.</p>
+
+                                <p class="responsible-content-2">Grâce au <span class="l-bold">processus d’audit</span>, vous pourrez non seulement <span class="l-bold">diminuer</span> votre <span class="l-bold">impact environnemental</span>, mais aussi <span class="l-bold">renforcer</span> le <span class="l-bold">capital confiance</span> de votre entreprise auprès des éco-consommateurs.</p>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="categories">
+            <h3 class="categories-title">Secteurs d'activités</h3>
+            <div class="categories-content">
+                <p>Le Répertoire Vert est divisé en 27 secteurs d'activités, allant de l'alimentation au bâtiment, en passant par les textiles, les médias et bien d'autres encore.</p>
+            </div>
+
+            <div class="m-search-product">
+                <div class="search-functionality col-l-12 col-m-12 col-s-12">
+                    <img class="search-product-green" src="{{ asset('/css/img/Groupe 60.png') }}" onclick="location.href='{{ path('404') }}'" {# onclick="searchProduct();" #}>
+                    <a href="{{ asset('/companiesinmap') }}"><img class="search-product-white" src="{{ asset('/css/icon/conseil vert.png') }}"></a>
+                    <img class="search-company-white" src="{{ asset('/css/icon/rechercher une entreprise.png') }}" onclick="location.href='{{ path('404') }}'" {# onclick="searchProduct();" #}>
+                    <img class="search-company-yellow" src="{{ asset('/css/icon/btn recherche produit@2x.png') }}" onclick="location.href='{{ path('404') }}'" {# onclick="searchProduct();" #}>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-cards">
+            <div class="card_container">
+                {% for category in categories %}
+
+                    <div onclick="location.href='/category/{{ category.slug }}'" class="article_card card_mrgr card_mrgb">
+                        <div class="card_image">
+                            <img src="{{ asset('/css/img/category/'~category.name~'.jpg') }}" alt="#" />
+                        </div>
+                        <div class="card_content">
+                            <span  class="card_category">{{ category.name }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="modelconcept-container">
+            <div >
+                <h2 class="modelconcept-title">Modèle et concept</h2>
+            </div>
+            <div class="modelconcept-content">
+                <p>Le Répertoire Vert est basé sur <span class="l-bold">1 QUESTIONNAIRE QUALITATIF ET QUANTITATIF</span><br> développé avec la participation de chercheurs et d'experts dans les domaines suivants :</p>
+            </div>
+            <div class="modelconcept-list">
+                <div class="list-one">
+                    <div class="list-container">
+                        <img class="logo-1" src="{{ asset('css/icon/Icon metro-organization.svg') }}" alt="logo">
+                        <p class="text">Lean management & organisation</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-2" src="{{ asset('css/icon/Icon awesome-recycle.svg') }}" alt="logo">
+                        <p class="text">Cycle de vie de produit</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-3" src="{{ asset('css/icon/Icon material-high-quality.svg') }}" alt="logo">
+                        <p class="text">Qualité de vie au travail</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-4" src="{{ asset('css/icon/Icon awesome-envira.svg') }}" alt="logo">
+                        <p class="text">Système de gestion environnemental</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-5" src="{{ asset('css/icon/Icon material-directions-transit.svg') }}" alt="logo">
+                        <p class="text">Mobilité & transport</p>
+                    </div>
+
+                </div>
+
+                <div class="list-two">
+                    <div class="list-container">
+                        <img class="logo-6" src="{{ asset('css/icon/Icon awesome-building.svg') }}" alt="logo">
+                        <p>Responsabilité sociale de l'entreprise</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-7" src="{{ asset('css/icon/Icon open-graph.svg') }}" alt="logo">
+                        <p>Etude d'impact</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-8" src="{{ asset('css/icon/Icon simple-graphql.svg') }}" alt="logo">
+                        <p>Gestion de projet</p>
+                    </div>
+                    <div class="list-container">
+                        <img class="logo-9" src="{{ asset('css/icon/Icon metro-money.svg') }}" alt="logo">
+                        <p>Management durable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-evaluationsystem">
+            <div>
+                <h2 class="title-evaluationsystem">Système d'évaluation</h2>
+            </div>
+            <div class="content-evaluationsystem">
+                <p>Il détermine 4 niveaux de référencement basés sur une triple évaluation :</p><br>
+                <div class="content-evaluationsystem-list">
+                    <div class="list-container1">
+                        <li>Niveau 0 : Acteur externe</li>
+                        <li>Niveau 1 : Membre de l'association <span class="l-bold">gaea21</span></li>
+                        <li>Niveau 2 : Membre du réseau <span class="l-bold">gaea21</span></li>
+                        <li>Niveau 3 : Détenteur du label <span class="l-bold">gaea21</span></li><br>
+                    </div>
+                    <div class="list-container2">
+                        <h4>Critères d'évaluation :</h4><br>
+                        <li>Celle de l'association gaea21</li>
+                        <li>Celle des professionnels de la branche d'activité concernée</li>
+                        <li>Celle du public (les consom'acteurs)</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="associatedprogramme">
+
+            <div>
+                <h2 class="associatedprogramme-title">Programmes associés</h2>
+            </div>
+
+            <div class="programmes">
+                <div class="programme">
+
+                    <img class="programme-image-1" src="{{ asset('/css/img/programmes-associes/Composant_6-10.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-2" src="{{ asset('/css/img/programmes-associes/Composant_6-11.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-3" src="{{ asset('/css/img/programmes-associes/Composant_6-12.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-4" src="{{ asset('/css/img/programmes-associes/Composant_6-13.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-5" src="{{ asset('/css/img/programmes-associes/Composant_6-14.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-6" src="{{ asset('/css/img/programmes-associes/Composant_6-15.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-7" src="{{ asset('/css/img/programmes-associes/Composant_6-16.jpg') }}" onclick="SustainableLivingProgram();">
+                    <img class="programme-image-8" src="{{ asset('/css/img/programmes-associes/Composant_6-17.jpg') }}" onclick="SustainableLivingProgram();">
+
+                </div>
+            </div>
+        </div>
+        <div class="logos-qrcode">
+            <img class="qrcode" src="{{ asset('/css/icon/qr-code-appli-repertoire-vert.png') }}">
+            {#<img class="qrcode-2" src="{{ asset('/css/icon/Rectangle 117.svg') }}">#}
+            <img class="app-rv" src="{{ asset('/css/icon/Groupe 94@2x.png') }}">
+        </div>
+        <div class="partners">
+            <h2 class="partners-title">Partenaires principaux</h2>
+            <div class="partner">
+                <div class="partners1">
+
+                    <a href="http://www.gaea21.org">
+                        <img class="partner-image" src="/css/icon/Groupe 33.png">
+                    </a>
+                    {#<img class="partner-image2" src="{{ asset('css/img/logo_eco-mind_cmjn_fr.png') }}">#}
+                </div>
+
+                {#<div class="partners2 ">
+                <!--<div style="margin-left: 240px;">Avec le soutien de:</div>-->
+                <a href="https://www.entraide.ch/fr">
+                    <img class="partner-image3" src="/css/img/partners/loro.svg">
+                </a>
+                <div>
+                    <p> réalisation de la phase 1 du Répertoire Vert a été possible par le soutien <br> de la Loterie Romande. Avec nos remerciements.</p>
+                </div>
+            </div>#}
+
+                <div>
+                    <a href="https://www.entraide.ch/fr">
+                        <img class="partner-image-2" src="/css/icon/Groupe 34.svg">
+                    </a>
+                </div>
+
+            </div>
+            {% include "footer.html.twig" %}
+        </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.js"></script>
+    {#<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="{{ asset('bundles/troopersalertify/toastr/js/toastr.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    {#<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>#}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.js"></script>
+    <script src="{{ asset('js/ui/login.js') }}"></script>
+    <script src="{{ asset('js/redirect.js') }}"></script>
+    <script src="{{ asset('js/homepage-login.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,208 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}<title>Derniers Produits</title>{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/homepage.css') }}"/> {# permet le design de la navbar #}
+    <link rel="stylesheet" href="{{ asset('css/derniers_inscrits.css') }}"/> {# permet le design de la page #}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block body %}
+    <div class="showcase"  style="width: 100%; background-image: url({{asset('images/Dernierproduit.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <div class="div-derniers-inscrits">
+            <div class="container-derniers-inscrits">
+                <div class="derniers-inscrits-title">
+                    Derniers produits
+                </div>
+            </div>
+        </div>
+        <div class="div-btn-choice">
+            <div class="container-btn-choice">
+                <div class="btn-choice" onclick="location.href='/DerniersInscrits/0'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-company{fill:#618226;stroke:#fff;stroke-width:3px;}.b-company-company,.c-company-company{fill:#fff;}.b-company-company{font-size:20px;font-family:DroidSans, Droid Sans;}.d-company-company{stroke:none;}.e-company-company{fill:none;}</style></defs><g class="a-company-company"><rect class="d-company-company" width="232" height="70" rx="10"/><rect class="e-company-company" x="1.5" y="1.5" width="229" height="67" rx="8.5"/></g><text class="b-company-company" transform="translate(101 41)"><tspan x="0" y="0">Entreprise</tspan></text><g transform="translate(24 17)"><path class="c-company-company" d="M23.25,2H6.75A2.753,2.753,0,0,0,4,4.75V28.125A1.375,1.375,0,0,0,5.375,29.5h19.25A1.375,1.375,0,0,0,26,28.125V4.75A2.753,2.753,0,0,0,23.25,2Zm0,24.75H6.75v-22h16.5Z" transform="translate(0 0)"/><path class="c-company-company" d="M8,6h3V8H8Zm5,0h3V8H13ZM8,10h3v2H8Zm5,.031h3V12H13ZM8,14h3v2H8Zm5,0h3v2H13Z" transform="translate(3 3)"/></g></svg>
+                </div>
+                <div class="btn-choice">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="232" height="70" viewBox="0 0 232 70"><defs><style>.a-company-indiv{fill:#fff;}.b-company-indiv{font-size:20px;font-family:DroidSans, Droid Sans;}.c-company-indiv{fill:none;}</style></defs><rect class="a-company-indiv" width="232" height="70" rx="10"/><text class="b-company-indiv" transform="translate(101 41)"><tspan x="0" y="0">Produits</tspan></text><g transform="translate(24 18)"><circle class="c-company-indiv" cx="3" cy="3" r="3" transform="translate(11 4)"/><path d="M14,2a6.111,6.111,0,1,0,6.111,6.111A6.118,6.118,0,0,0,14,2Zm0,9.778a3.667,3.667,0,1,1,3.667-3.667A3.671,3.671,0,0,1,14,11.778ZM25,25.222V24a8.567,8.567,0,0,0-8.556-8.556H11.556A8.566,8.566,0,0,0,3,24v1.222H5.444V24a6.118,6.118,0,0,1,6.111-6.111h4.889A6.118,6.118,0,0,1,22.556,24v1.222Z" transform="translate(0 0)"/></g></svg>
+                </div>
+            </div>
+        </div>
+        <div class="div-bvn-rv">
+                <div class="container-bvn-rv">
+                    Le <span>Répertoire Vert</span> souhaite la bienvenue aux derniers inscrits !
+                </div>
+            </div>
+    </div>
+    <div class="div-green-banner">
+        <div class="container-green-banner">
+            <div class="green-banner-title">
+                Découvrez les dernières entreprises vertes inscrites dans le Répertoire Vert.<br>
+                Une entreprise vous plaît ou vous intrigue ?
+                Alors cliquez sur leur fiche pour en savoir plus sur leurs activités.
+            </div>
+        </div>
+    </div>
+
+<h3 style="text-align:center;font-weight: bold;">Les nouveaux produits</h3>
+    <br>
+
+    {% if productsToday %}
+
+    <div class=""   >
+        <!--style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+
+        <div  class="flex">
+            {% for product in productsToday %}
+
+                            <div class="card"  style="width: 17rem; height: 32rem;margin-right:3.5% ">
+
+                                    <div class="card-header " style="height: 3.5rem;">
+                                        <img class="card-image lin"  id="HeadB" src="{{ asset('css/img/company/'~ product.image|basename) }}">
+
+                                        <div class="card-title lin" id="HeadT">{{ product.name }}</div>
+
+                                    </div>
+
+                                    <img id="imgE" src="{{ asset('css/img/company/'~ product.image|basename) }}" alt="">
+
+
+                                    <div class="card-body" >
+                                        <p class="card-text p20" >{{ product.description }}</p>
+                                        <a style="color: #618226" href="{{ product.company.urlwebsite }}"><p class="card-text p20">{{ product.company.urlwebsite }}</p></a>
+
+                                    </div>
+
+                                    <div class="card-footer" style="text-decoration:none; border:none; background-color:white; ">
+                                        <p style="text-align:center;">Inscrit le {{product.creation|date('d-m-Y')}}</p>
+                                        <a onclick="location.href='{{ url('companyShow',{'slug':product.company.slug}) }}'">
+                                            <img   style="width: 100%;" class="repertory-image" src="{{ asset('css/img/homepage/Groupe37.svg') }}" alt="">
+                                        </a>
+
+
+                                    </div>
+
+                                </div>
+                        {% endfor %}
+        </div>
+    </div>
+    {% else %}
+        <h3 style="text-align:center;">Pas de nouveaux produits aujourd'hui</h3>
+    {% endif %}
+    </br></br>
+
+<br><br>
+    <div class="insc"> Vous aussi vous souhaitez faire partie du Répertoire Vert ? </br>
+        Inscrivez-vous gratuitement via <a href="/inscription-entreprise" style="color:#618226">le formulaire</a> de référencement.
+    </div>
+    <br><br><br> 
+    <h3 style="text-align:center;font-weight: bold;">Depuis une semaine </h3>
+    <br>
+    {% if productsWeek %}
+        <div class=""   >
+            <!--style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            <div  class="flex">
+                {% for product in productsWeek %}
+                    <div class="card"  style="width: 17rem; height: 32rem;margin-right:3.5% ">
+                        <div class="card-header " style="height: 3.5rem;">
+                            <img class="card-image lin"  id="HeadB" src="{{ asset('css/img/company/'~ product.image|basename) }}">
+                            <div class="card-title lin" id="HeadT">{{ product.name }}</div>
+                        </div>
+                        <img id="imgE" src="{{ asset('css/img/company/'~ product.image|basename) }}" alt="">
+                        <div class="card-body" >
+                            <p class="card-text p20" >{{ product.description }}</p>
+                            <a style="color: #618226" href="{{ product.company.urlwebsite }}"><p class="card-text p20">{{ product.company.urlwebsite }}</p></a>
+                        </div>
+                        <div class="card-footer" style="text-decoration:none; border:none; background-color:white; ">
+                            <p style="text-align:center;">Inscrit le {{product.creationdate|date('d-m-Y')}}</p>
+                            <a onclick="location.href='{{ url('companyShow',{'slug':product.company.slug}) }}'">
+                                <img   style="width: 100%;" class="repertory-image" src="{{ asset('css/img/homepage/Groupe37.svg') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <h3 style="text-align:center;">Pas de nouveaux produits cette semaine</h3>
+    {% endif %}
+    </br></br>
+    <br><br>
+    <div class="insc"> Vous aussi vous souhaitez faire partie du Répertoire Vert ? </br>
+        Inscrivez-vous gratuitement via <a href="/inscription-entreprise" style="color:#618226">le formulaire</a> de référencement.
+    </div>
+    <br><br><br>
+
+<h3 style="text-align:center;font-weight: bold;">Depuis {{months}} mois </h3>
+    <br>
+    {% if productsSince %}
+        <div class=""   >
+            <!--style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            <div  class="flex">
+                {% for product in productsSince %}
+                    <div class="card"  style="width: 17rem; height: 32rem;margin-right:3.5% ">
+                        <div class="card-header " style="height: 3.5rem;">
+                            <img class="card-image lin"  id="HeadB" src="{{ asset('css/img/company/'~ product.image|basename) }}">
+                            <div class="card-title lin" id="HeadT">{{ product.name }}</div>
+                        </div>
+                        <img id="imgE" src="{{ asset('css/img/company/'~ product.image|basename) }}" alt="">
+                        <div class="card-body" >
+                            <p class="card-text p20" >{{ product.description }}</p>
+                            <a style="color: #618226" href="{{ product.company.urlwebsite }}"><p class="card-text p20">{{ product.company.urlwebsite }}</p></a>
+                        </div>
+                        <div class="card-footer" style="text-decoration:none; border:none; background-color:white; ">
+                            <p style="text-align:center;">Inscrit le {{product.creationdate|date('d-m-Y')}}</p>
+                            <a onclick="location.href='{{ url('companyShow',{'slug':product.company.slug}) }}'">
+                                <img style="width: 100%;" class="repertory-image" src="{{ asset('css/img/homepage/Groupe37.svg') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <h3 style="text-align:center;">Pas de nouveaux depuis {{months}} mois</h3>
+    {% endif %}
+    </br></br>
+    <br><br>
+    <div class="insc"> Vous aussi vous souhaitez faire partie du Répertoire Vert ? </br>
+        Inscrivez-vous gratuitement via <a href="/inscription-entreprise" style="color:#618226">le formulaire</a> de référencement.
+    </div>
+    <br><br><br>
+
+    <div class="showcase"  style="width:100%; height: 100%;">
+        <div style=" padding-bottom: 2%;" class="showcase__btn">
+            <button style="width: 300px;margin: auto; background-color: #000000;color: #f0f0f0" onclick="location.href='/DerniersProduits/1'" class="showcase__btn-ville">Depuis un mois</button>
+            <button style="width: 300px;margin: auto; background-color: #000000;color: #f0f0f0" onclick="location.href='/DerniersProduits/3'" class="showcase__btn-entreprise">Depuis trois mois</button>
+            <button style="width: 300px;margin: auto; background-color: #000000;color: #f0f0f0" onclick="location.href='/DerniersProduits/6'" class="showcase__btn-ville">Depuis six mois</button>
+
+        </div>
+        Il faudra mettre implémenter le système/javascript des boutons ici
+        </div>
+
+    <br><br><br>
+    <h3 style="text-align:center;font-weight: bold;">Consultez aussi</h3>
+    <br>
+    <div class="div-cards">
+        <div class="card_container">
+            {% for category in categories %}
+                <div onclick="location.href='/category/{{ category.slug }}'" class="article_card
+                    {% if loop.index % 3 != 0 %} card_mrgr{% endif %}
+                    {% if loop.index < 25 != 0 %} card_mrgb{% endif %} "
+                >
+                    <div class="card_image">
+                        <img src="{{ asset('/css/img/category/'~category.name~'.jpg') }}" alt="#" />
+                    </div>
+                    <div class="card_content">
+                        <span  class="card_category">{{ category.name }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% include "footer.html.twig" %}
+    {% block javascripts %}
+        <script src="{{ asset('js/slider.js') }}"></script>
+        <script src="{{ asset('js/slider-deux.js') }}"></script>
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+{% endblock %}

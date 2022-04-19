@@ -1,0 +1,23 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+{% block body %}
+{{ dump(category) }}
+    <div class="page-title-banner">
+        <img class="banner-background" src="{{ asset('/css/img/category/'~ category.image|basename) }}" alt="">
+    </div>
+    <div class="green-banner col-l-12">
+        <h3>{{ category.name }}</h3>
+        <p style="color:white;"> Le secteur {{ category.name }} est composé de {{ subCategoriesCount }} sous-catégories</p>
+    </div>
+    <div class="m-subcategory col-l-offset-2 col-l-8">
+    {% for subcategory in subcategories %}
+        <a href="{{ url('subcategoryShowProductsServices',{'id':subcategory.id}) }}">
+            <article class="subcategory-element">
+                <img class="element-image" src="{{ asset('css/img/category/subcategory/'~ subcategory.image|basename) }}" alt="">
+                <h4 class="element-title"> {{ subcategory.name }}</h4>
+            </article>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}

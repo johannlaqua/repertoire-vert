@@ -1,0 +1,89 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Console d'administration</h3>
+        <br><br><br>
+        <div class="showcase__btn">
+            <button onclick="location.href='{{ url('userAdminManage') }}'" class="showcase__btn-ville" style="font-size: 16px">Administrateurs</button>
+            <button onclick="location.href='{{ url('companyManage') }}'" class="showcase__btn-ville" style="font-size: 16px">Entreprises</button>
+            <button onclick="location.href='{{ url('categoryManage') }}'" class="showcase__btn-ville" style="font-size: 16px">Catégories</button>
+            <button onclick="location.href='{{ url('subcategoryManage') }}'" class="showcase__btn-ville" style="font-size: 16px">Sous-catégories</button>
+            <button onclick="location.href='{{ url('event_index') }}'" class="showcase__btn-ville" style="font-size: 16px">Evènements</button>
+            <br><br>
+            <button onclick="location.href='{{ url('news_index') }}'" class="showcase__btn-ville" style="font-size: 16px">Actualités</button>
+            <button onclick="location.href='{{ url('coup_de_projecteur_index') }}'" class="showcase__btn-ville" style="font-size: 16px">Coups de projecteur</button>
+            <button onclick="location.href='{{ url('invention_index') }}'" class="showcase__btn-ville" style="font-size: 16px">Inventions</button>
+            <button onclick="location.href='{{ url('sucess_story_index') }}'" class="showcase__btn-ville" style="font-size: 16px">Success story</button>
+            <button onclick="location.href='{{ url('displayAdsAdmin') }}'" class="showcase__btn-ville" style="font-size: 16px">Pubs</button>
+
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+{#
+    <div >
+    <br>
+
+    <ul class="header-menu">
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button><a href="{{ url('userAdminManage') }}">Gestion des Administrateurs</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button><a href="{{ url('companyManage') }}">Gestion des entreprises</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button><a href="{{ url('categoryManage') }}">Gestion des Catégories</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('subcategoryManage') }}">Gestion des Sous-catégories</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('event_index') }}">Gestion des évènements</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('news_index') }}">Gestion des acctualités</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('coup_de_projecteur_index') }}">Gestion des coups de projecteur</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('invention_index') }}">Gestion des inventions</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('sucess_story_index') }}">Gestion des success story</a></button>
+            </form>
+        </li>
+        <li>
+            <form class="header-login col-l-2 col-l-offset-1">
+                <button >  <a href="{{ url('displayAdsAdmin') }}">Gestion des pubs</a></button>
+            </form>
+        </li>
+
+    </ul>
+    </div>
+#}
+{% endblock %}

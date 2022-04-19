@@ -1,0 +1,57 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Gestion des Utilisateurs</h3>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Email Validée</th>
+            <th>Compte actif</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.username }}</td>
+                <td>{{ company.email }}</td>
+                <td>{{ company.role }}</td>
+                <td>{% if  company.emailValidated == true %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+                <td>
+                    {% if  company.actived == true %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+                <td>
+                    {% if  company.actived == false and company.emailValidated==true %}
+                        <a href="{{ url('companyActivate',{id:company.id}) }}">Activer</a>
+                    {% elseif company.actived == true and company.emailValidated==true  %}
+
+                        <a href="{{ url('companyDisable',{id:company.id}) }}">Désactiver</a>
+
+                    {% else %}
+                        <!--
+                        <a href="{{ url('companyDisable',{id:company.id}) }}">Désactiver</a>
+                        -->
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,137 @@
+
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/shop.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 style="font-family: 'Droid';
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding-top: 10%;
+    font-size: 9vh;">Shop</h3>
+        </br></br></br></br></br></br>
+    </div>
+
+    {# ******************************* FinNavBar ***************************************** #}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Title -->
+                <h1 class="mt-4">{{ name | upper }}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by
+                    <a href="#">{{ products.company.username }}</a>
+
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p>Publiée le {{ products.creationdate| date }}</p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-fluid rounded" src="{{ asset('uploads/products/') }}{{ image }} " alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <h2>Description</h2>
+                <p>{{ description }}</p>
+<h2>Prix: {{ price  }} /KG</h2>
+                <hr>
+
+
+
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <form action="{{ path('add_comment_to_Product') }}" method="post" id="comment">
+
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="comment" placeholder="Ecrire un commentaire..." rows="3"></textarea><br>
+                            <input type="hidden"  name="product_id" value="{{ id }}">
+                            <button  class="btn btn-success" type="submit">Commenter</button>
+                        </div>
+                    </form>
+
+                </div>
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                <div class="alert alert-danger" role="alert">
+                    Pour publier un commentaire, il faut que vous vous <a href="#">connecter </a>, Sinon
+                    <a href="#">Inscrivez vous</a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+            <!-- Single Comment -->
+            {% for comment in products.comments %}
+                <div class="thumb-list">
+                    <figure><img alt="" src=""></figure>
+                    <div class="text-holder">
+
+                        <h6><strong>{{comment.getCreator().getUsername()}}</strong>  <p> {{ comment.getComment() }}</p></h6>
+                        <time class="post-date" datetime="2008-02-14 20:00">{{ comment.getCreatedAt()|date('F jS \\a\\t g:ia') }}</time>
+
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                            {% if ( comment.creator.id == app.user.id  ) %}
+                                <br>
+                                <a class="comment-reply-link" href="{{ path('deleteCommentFromProduct',{'id':comment.id}) }}">Supprimer <i class="fa fa-eraser"></i></a>
+
+                            {% else %}
+
+                            {% endif %}
+
+                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                            <br>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+
+    </div>
+
+    <!-- /.row -->
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+{% endblock %}

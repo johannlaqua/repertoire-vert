@@ -1,0 +1,223 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}<title>Tarifs et Niveaux</title>{% endblock %}
+
+{% block body %}
+
+    {# #}
+    <link rel="stylesheet" href="{{ asset('css/tarifs_niveaux.css') }}"/>
+    {# ******************************* NavBar ***************************************** #}
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/css/img/tarifs_niveaux/img-header-tarifs.jpg')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" with { 'role' : "USER" } %}
+
+        <div class="header-content">
+            <h3 class="banner-profil-title">Tarifs et Niveaux</h3>
+
+        </div>
+
+    </div>    {# ******************************* FinNavBar ***************************************** #}
+
+    {# ******************************* Green Intro ***************************************** #}
+    <div class="green-intro">
+        <div class="green-intro-text">
+            {# <div class="green-intro-title">Bienvenue dans votre tableau de bord !</div> #}
+            <div class="green-intro-content">
+                Inscrivez-vous gratuitement via le formulaire de référencement gaea21.
+                Les tarifs dépendent de votre statut (entrepreneurs, associations, collectivités ou entreprises) et du niveau de référencement.
+                Choisissez le niveau de référencement que vous souhaitez (niveau 0 ou 1).
+                Vous ne pouvez accéder au niveau 2 qu’après différentes étapes de validation.
+
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="tarifs">
+            <h4>Tarifs du Répertoire Vert</h4>
+            <div class="tarifs-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            <h5>Niveaux</h5>
+                        </th>
+                        <th>
+                            <h5>Tarifs entrepreneurs</h5>
+                            <p>(entreprises en création et/ou start-up de moins d'un an)</p>
+                        </th>
+                        <th>
+                            <h5>Tarifs associations</h5>
+                        </th>
+                        <th>
+                            <h5>Tarifs collectivités locales publiques</h5>
+                        </th>
+                        <th>
+                            <h5>Tarifs entreprises</h5>
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="70" viewBox="0 0 78 70"><g transform="translate(-802.684 -3560)">
+                                    <rect width="78" height="70" rx="10" transform="translate(802.684 3560)" fill="#5770ad"/>
+                                    <text transform="translate(813.685 3607)" fill="#fff" font-size="37">
+                                        <tspan x="0" y="0">N.0</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </td>
+                        <td>GRATUIT</td>
+                        <td>GRATUIT</td>
+                        <td>GRATUIT</td>
+                        <td>GRATUIT</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="70" viewBox="0 0 78 70">
+                                <g transform="translate(0 -0.286)"><rect width="78" height="70" rx="10" transform="translate(0 0.286)" fill="#ffbe2b"/>
+                                    <text transform="translate(11 47.285)" fill="#fff" font-size="37">
+                                        <tspan x="0" y="0">N.1</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </td>
+                        <td>CHF 150.-</td>
+                        <td>CHF 100.-</td>
+                        <td>Subventions ou dons en nature</td>
+                        <td>CHF 250.-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="70" viewBox="0 0 78 70">
+                                <g transform="translate(0.304 0.104)">
+                                    <rect width="78" height="70" rx="10" transform="translate(-0.304 -0.105)" fill="#618226"/>
+                                    <text transform="translate(10.696 44.897)" fill="#fff" font-size="35">
+                                        <tspan x="0" y="0">N.2</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </td>
+                        <td>CHF 450.-</td>
+                        <td>CHF 350.-</td>
+                        <td>Subventions ou dons en nature</td>
+                        <td>De CHF 700.- à CHF 1000.- selon le chiffre d'affaire</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="niveaux">
+            <h4>Niveaux de référencement du Répertoire</h4>
+            <div class="niveaux-content">
+
+                <div class="niveau-element">
+                    <span class="n0"></span>
+                    <div class="niveau-infos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="70" viewBox="0 0 78 70"><g transform="translate(-802.684 -3560)">
+                                <rect width="78" height="70" rx="10" transform="translate(802.684 3560)" fill="#5770ad"/>
+                                <text transform="translate(813.685 3607)" fill="#fff" font-size="37">
+                                    <tspan x="0" y="0">N.0</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                        <h6 class="n0">Acteur externe</h6>
+                        <ul>
+                            <li>Inscription gratuite</li>
+                            <li>Pas d'évaluation</li>
+                        </ul>
+                        <p>Pas de recommandation Gaea21</p>
+                        <h6 class="n0">Référencement mais pas d'évaluation</h6>
+                        <div class="img-niveau">
+                            <img src="{{ asset('css/img/tarifs_niveaux/niveau0-icon.svg') }}" alt="icone niveau 0">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="niveau-element">
+                   <span class="n1"></span>
+                    <div class="niveau-infos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="70" viewBox="0 0 78 70">
+                            <g transform="translate(0 -0.286)"><rect width="78" height="70" rx="10" transform="translate(0 0.286)" fill="#ffbe2b"/>
+                                <text transform="translate(11 47.285)" fill="#fff" font-size="37">
+                                    <tspan x="0" y="0">N.1</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                        <h6 class="n1">Membre de l'association Gaea21</h6>
+                        <ul>
+                            <li>Évaluation :<br>
+                                - questionnaire <br>
+                                - feedback client.</li>
+                            <li>Peer-reviewing :<br>
+                                - évaluation par des entreprises proposant des services similaires.</li>
+                        </ul>
+                        <p>Recommandation gaea21 niveau 1</p>
+                        <h6 class="n1">En cours d'évaluation</h6>
+                        <div class="img-niveau">
+                            <img class="yellow-icon" src="{{ asset('css/img/tarifs_niveaux/niveau1-icon.svg') }}" alt="icone niveau 1">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="niveau-element">
+                    <span class="n2"></span>
+                    <div class="niveau-infos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="78" height="70" viewBox="0 0 78 70">
+                            <g transform="translate(0.304 0.104)">
+                                <rect width="78" height="70" rx="10" transform="translate(-0.304 -0.105)" fill="#618226"/>
+                                <text transform="translate(10.696 44.897)" fill="#fff" font-size="35">
+                                    <tspan x="0" y="0">N.2</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                        <h6 class="n2">Membre du réseau Gaea21</h6>
+                        <ul>
+                            <li>Signature de la charte qualité de gaea21</li>
+                            <li>Evaluation : benchmark = détermination
+                                d'un prix par produit/service.
+                            </li>
+                            <li>Audit environnemental tous les 3 ans</li>
+                        </ul>
+                        <p>Recommandation gaea21 niveau 2</p>
+                        <h6 class="n2">Recommandation gaea21</h6>
+                        <div class="img-niveau">
+                            <img src="{{ asset('css/img/tarifs_niveaux/niveau2-icon.svg') }}" alt="icone niveau 2">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

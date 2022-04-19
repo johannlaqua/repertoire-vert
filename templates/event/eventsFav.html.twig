@@ -1,0 +1,54 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# include 'dialogbox.html.twig' #}
+    <!--<div class="jsdialog"><div class="jsdialog-content">Etes vous sûr(e) de vouloir supprimer ce produit ? <br/><br/> Si  vous cliquez sur Supprimer le produit sera effacé <strong>définitivement</strong><br/><div class="dialog-buttons"><div class="jsdialog-cancel-button" onclick="removeFlash();">Annuler</div><div class="jsdialog-ok-button" onclick="removeFlash();">Supprimer</div></div></div></div>-->
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mes évènements favoris</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='{{ url('company1_edit',{id:app.user.id}) }}'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-entreprise">Evènements</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-ville">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+          
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+
+    <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!--style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+         {% if events is empty %}
+            <div class="col-l-12 col-m-12 col-s-12">
+                <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                    <p>Aucun évenement en favoris</p>
+                </div>
+
+            </div>
+        {% else %}
+            {% for event in events %}
+                <a href="{{ url('event_show',{'id':event.id}) }}" style="max-width:200px; text-decoration:none;margin:10px;">
+                    <div class="product-card card">
+                        <div class="card-header">
+                            <img class="card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                            <span class="card-title">Nom: {{ event.name  }}</span>
+                        </div>
+                        <div class="card-header">
+
+                            <span class="card-title">Lieu: {{ event.place  }}</span>
+                            <br>
+                            <p>{{ event.startingdate|date('d M y') }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

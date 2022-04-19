@@ -1,0 +1,29 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Gestion des Catégories</h3>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subcategory in subcategories %}
+            <tr>
+                <td>{{ subcategory.name }}</td>
+                <td>{{ subcategory.description }}</td>
+                <td><a href="{{ url('subcategoryEdit',{'id':subcategory.id}) }}">Edit</a>
+                    <a href="{{ url('subcategoryDelete',{id:subcategory.id}) }}">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

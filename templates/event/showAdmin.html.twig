@@ -1,0 +1,48 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    <h1>{{ event.name }}</h1>
+<a href="{{ url('event_show',{'id':event.id}) }}" style="max-width:200px; text-decoration:none">
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Nom</th>
+                <td>{{ event.name }}</td>
+
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {% if n==0 %}
+
+                <a href="{{ url('addEventFavoris',{'id': event.id}) }}">Ajouter aux favoris<img src="{{ asset('css/img/favori1.png') }}" alt="logo-gaea21"></a>
+
+                {% elseif n==1%}
+                <a href="{{ url('deleteEventFavoris',{'id': event.id}) }}">Supprimer des favoris<img src="{{ asset('css/img/favori.png') }}" alt="logo-gaea21">
+
+                    {% endif%}
+                    {% endif%}
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ event.description }}</td>
+            </tr>
+            <tr>
+                <th>Date début</th>
+                <td>{{ event.startingDate ? event.startingDate|date('d M y')}}</td>
+            </tr>
+            <tr>
+                <th>Date fin</th>
+                <td>{{ event.finishDate ? event.finishDate|date('d M y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ event.place }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+{{ include('event/_delete_form.html.twig') }}
+{% endblock %}

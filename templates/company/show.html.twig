@@ -1,0 +1,58 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+
+    {# ******************************* NavBar Actualité ***************************************** #}
+    <div class="title-banner-container" style="background-image: url({{asset('/css/img/actualite/geneva.png')}})">
+        <h3 class="banner-title">Fiche Produit</h3>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+
+
+
+
+    <div class="green-banner col-l-12">
+        <h3>Le Répertoire Vert offre le référencement et l'évaluation de tous produit et/ou services professionnels verts proposés dans un rayon de 130km autour de Genève.</h3>
+    </div>
+
+    <div class="company col-l-12">
+
+    <div class="company-name"><h4>Fiche entreprise : {{ company.name }}</h4>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if n==0 %}
+
+            <a href="{{ url('addCompanyFavoris',{'slug':company.slug}) }}"><img src="{{ asset('css/img/favori1.png') }}" alt="logo-gaea21"></a>
+
+        {% elseif n==1%}
+            <a href="{{ url('deleteCompanyFavoris',{'slug':company.slug}) }}"><img src="{{ asset('css/img/favori.png') }}" alt="logo-gaea21"></a>
+
+        {% endif%}
+        {% endif%}
+
+    </div>
+
+    {% include './company/sheet.html.twig' with {'company' : company} %}
+    </div>
+
+
+  <div><h4>Produits et services : </h4></div>
+    <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+        {% for product in products %}
+
+            <a href="{{ url('productShow',{'slug':product.slug}) }}" style="max-width:200px; text-decoration:none">
+                <div class="product-card card">
+                    <div class="card-header">
+                        <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                        <span class="card-title">{{ product.name }}</span>
+                    </div>
+                    <div class="card-header">
+
+                        <span class="card-title">{{ product.slug }}</span>
+                        <br>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+{% block title %}Nouveautés{% endblock %}
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/css/img/actualite/geneva.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+
+        <div class="title-banner-container" >
+            <br><br><br><br><br>
+            <h3 class="banner-title">Nouveautés</h3>
+            <br> <br> <br><br>
+            <p class="banner-description">Les derniers produits, services et entreprises que le<span class="banner-yellow"> Répertoire Vert</span> recommande</p>
+
+        </div>
+
+
+    </div>
+
+    {# ******************************* FinNavBar ***************************************** #}
+
+    <div class="greencouncil-description-green col-l-12" style="height:100px; margin-bottom:20px;">
+        <br/>
+        <p style="color:white;">
+            Le répertoire vert offre le référencement et l'évaluation de tous les produits et/ou services professionnels verts proposés dans un rayon de 130 km autour de Genève.
+        </p>
+        <br/>
+    </div>
+    <!--
+    <br/><br/>
+    <div class="green-banner">
+        <h3>Nouveautés</h3>
+    </div>
+    -->
+    {% if products %}
+        <br/>
+        <h3 style="margin-left:30px; color:#5e833b;">{# productsTitle #}Derniers produits et services ajoutés</h3>
+        <br/><br/>
+        <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            {% for product in products %}
+                <a href="{{ url('productShow',{'slug':product.slug}) }}" style="max-width:200px; text-decoration:none">
+                    <div class="product-card card">
+                        <div class="card-header">
+                            <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                            <span class="card-title">{{ product.name }}</span>
+                        </div>
+                        <div class="card-header">
+
+                            <span class="card-title">{{ product.slug }}</span>
+                            <br>
+                            <p>{{ product.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if companies %}
+        <br/><br/>
+        <h3 style="margin-left:30px; color:#5e833b;">{{ companiesTitle }}</h3>
+        <br/><br/>
+        <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!--style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            {% for company in companies %}
+                <a href="{{ url('companyShow',{'slug':company.slug}) }}" style="max-width:200px; text-decoration:none">
+                    <div class="company-card card">
+                        <div class="card-header">
+                            <img class="card-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+
+                            <span class="card-title">{{ company.name }}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>{{ company.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if not companies and not products %}
+        <p>Aucun résultat pour votre recherche</p>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,63 @@
+body {
+    background-color: #EDEDED;
+    font-size: 1.04vw;
+  }
+
+  .header-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .header-content .banner-profil-title {
+    font-size: 4.68vw;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 4.8%;
+  }
+  .header-content .div-btn-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4.64%;
+  }
+  .header-content .btn-banner {
+    width: 12.08%;
+    background: none;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 0.52vw;
+  }
+  .header-content #activ-btn-banner {
+    color: white;
+    background-color: #618226;
+  }
+  .header-content .btn-banner:not(:last-of-type) {
+    margin-right: 2.34375%;
+  }
+  .header-content .btn-banner-icon {
+    width: 8.62%;
+    margin: 0% 18.5% 0% 16.8%;
+  }
+  .header-content .btn-banner-icon svg {
+    width: 100%;
+  }
+  
+.green-intro {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #618226;
+    color: white;
+    font-weight: bold;
+    font-size: 1.51vw;
+    padding: 3.07% 0%;
+  }
+  
+  .green-intro-text {
+    width: 80.3125%;
+  }

@@ -1,0 +1,37 @@
+{% extends 'base-nav.html.twig' %}
+
+{% block title %}Hello NAVBAR
+{% endblock %}
+
+{% block stylesheets %}
+
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block body %}
+	<div id="root"></div>
+	{# <div class="page-title-banner col-l-12 col-m-12 col-s-12">
+			<img class="banner-background" src="{{ asset('/css/img/forum/forum_header.jpg') }}" alt="">
+			<div class="banner-content"></div>
+		</div>
+		<div class="greencouncil-description-green col-l-12" style="text-align:center; height:100px;">
+			<br/>
+			<h2>Bienvenue sur le forum du répertoire vert</h2>
+		</div>
+		<div class="greencouncil-descrition-gray col-l-12" style="height:150px;">
+			<br/>
+			<p>
+				Prochainement nous vous proposerons de rentrer toutes questions et d'en débattre avec la communauté des consommateurs du répertoire vert. Nos modérateurs seront là pour vous répondre sur toutes les questions sur nous.
+			</p>
+			<br/>
+			<p>
+				Nous restons sur notre développement prévu pour l'instant et nous ajouterons au fur à mesure des onglets ou activités liés au site.
+			</p>
+			<br/>
+		</div> #}
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+{% endblock %}

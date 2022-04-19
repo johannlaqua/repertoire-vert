@@ -1,0 +1,23 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.tarif, 'Pack: ') }}
+        {{ form_widget(form.tarif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.adv, 'Publicité: ') }}
+        {{ form_widget(form.adv, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
+
+
+
+    {{ form_end(form) }}
+    {{ form_rest(form) }}
+
+{% endblock %}

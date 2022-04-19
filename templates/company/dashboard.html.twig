@@ -1,0 +1,60 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header-dashbord-entreprise.jpg')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Actualité</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='/profile/entreprise'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-entreprise">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-ville">Paramètres</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-ville">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    <div class="green-banner">
+        <h3>Mon compte</h3>
+    </div>
+    <ul class="profile-menu col-l-12">
+      <a href="/profile/entreprise">
+        <li>
+            <img src="{{ asset('css/icon/avatar_blanc.svg') }}" alt="">
+            <text>Profil</text>
+        </li>
+      </a>
+      <a href="/dashboard/entreprise" class="active">
+        <li>
+            <img src="{{ asset('css/icon/dash_blanc.svg') }}" alt="">
+            <text>Dashboard</text>
+        </li>
+      </a>
+      <a href="/parametres/entreprise">
+        <li>
+            <img src="{{ asset('css/icon/engrenage_blanc.svg') }}" alt="">
+            <text>Paramètres</text>
+        </li>
+      </a>
+      <a href="/produits">
+        <li>
+            <img src="{{ asset('css/icon/sac_blanc.svg') }}" alt="">
+            <text>Produits</text>
+        </li>
+      </a>
+      <a href="/services">
+        <li>
+            <img src="{{ asset('css/icon/service.svg') }}" alt="">
+            <text>Services</text>
+        </li>
+      </a>
+    </ul>
+    {% include './building.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <h2>Ajouter une publicité dans la page du forum</h2>
+    {{ form_start(Form) }}
+
+    {{ form_row(Form.profilelink) }}
+    {{ form_row(Form.slogan) }}
+    {{ form_row(Form.companyname) }}
+    {{ form_row(Form.photo) }}
+
+
+
+    {{ form_end(Form) }}
+
+{% endblock %}

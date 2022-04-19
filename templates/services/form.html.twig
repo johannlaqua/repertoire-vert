@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="{{ asset('css/services_form.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
+{# {% form_theme form 'services/form_theme.html.twig' %} #}
+
+<div class="wrap">
+
+    {{ form_start(form,{'attr': {'class': 'frm-content'}}) }}
+
+        <div class="frm-file-upload">
+            <div class="imgPreview">
+                {% if file_name is defined and file_name is not null %}
+                    <img src='/uploads/products/{{file_name}}' alt="" class="preview"/>
+                {% else %}
+                    <img src='' alt="" class="preview"/>
+                {% endif %}
+                <div style="color:red" class="div-erreur-image erreur"></div>
+            </div>
+            {{ form_label(form.image) }}
+            <div class="erreur">
+                {{ form_errors(form.image) }}
+            </div>
+            {{ form_widget(form.image,{'attr': {'class' : 'fileUpload'}}) }}
+        </div>
+
+        <div class="frm-nom-description">
+            {{ form_row(form.name,{'label': 'Nom *'}) }}
+            {{ form_row(form.description,{'label': 'Description *'}) }}
+        </div>
+
+        <div class="frm-subcat">
+            {{ form_row(form.subcategories,{'label': 'Sous-catégorie(s) *', 'attr': {'class': 'js-example-basic-multiple' } }) }}
+        </div>
+
+        <div class="frm-left">
+            {{ form_row(form.certification,{'label': 'Certification *'}) }}
+            {{ form_row(form.wantevaluation,{'label': 'Demande d\'évaluation'}) }}
+            {{ form_row(form.origin,{'label': 'Provenance'}) }}
+        </div>
+
+        <div class="frm-right">
+            {{ form_row(form.serviceduration,{'label': 'Grille tarifaire : *'}) }}
+            {{ form_row(form.price,{'label': 'Prix *'}) }}
+            {{ form_row(form.currency,{'label': 'Devise *'}) }}
+        </div>
+
+        <p class="frm_txt_expl_ent">* ce champ est obligatoire</p>
+    
+        {{ form_row(form._token) }}
+
+        <div class="frm-valider">
+            <button class="frm-validation-btn" type="submit">Valider</button>
+        </div>
+
+        <div class="success hidden">
+            Votre nouveau service a été enregistré ! Veuillez patienter le temps que l’équipe du Répertoire Vert le valide.
+        </div>
+
+    {{ form_end(form,{'render_rest': false}) }}
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="{{ asset('js/imageVerification.js') }}"></script>
+<script>
+
+
+    $(document).ready(function() {
+
+        ////// Preview image en fonction de la sélection //////
+        $(".fileUpload").on('change', function() {
+
+            let preview = true;
+            if($(fileInput).val() == ""){
+                document.querySelector('[type=file]').value = null;
+            }
+            verifyImage(preview);
+
+
+
+
+        })
+
+        ///// Affichage du menu à choix multiples des sous catégories avec icônes /////
+        let categories = [];
+        let category = '';
+        let subcategory = '';
+        {% for cat in user.categories %}
+
+            {% for subcat in cat.subcategories %}
+
+                subcategory = '{{ subcat.name | e('js')}}';
+                //console.log(subcategory)
+
+
+                if(!categories['{{ cat.name | e('js') }}']) {
+                    categories['{{ cat.name | e('js') }}'] = [subcategory];
+                } else {
+                    categories['{{ cat.name | e('js') }}'].push(subcategory)
+                    console.log(subcategory)
+                }
+
+
+            {% endfor %}
+        {% endfor %}
+
+        console.log(categories);
+
+        $(".js-example-basic-multiple").select2({
+            templateResult: function (state) {
+                console.log(state)
+                if (!state.id) {
+                    console.log("cc")
+                    return state.text;
+                }
+                var $state = '';
+                //console.log("cc1")
+                for(cat in categories) {
+                    //console.log(cat)
+                    categories[cat].forEach(subcat => {
+                        //console.log(subcat)
+                        if(state.text == subcat) {
+                            $state = $(
+                                '<span><img src="/images/Icones_Categories/'+cat+'/Icônes sous-catégories/' + subcat + '.png" class="img-flag black" /><img class="img-flag blue" src="/images/Icones_Categories/'+cat+'/Icones_Bleu_blanc_sous-categories/' + subcat + '.png" /> ' + state.text + '</span>'
+
+                            );
+                        }
+
+                    })
+
+                }
+
+                return $state;
+            }
+        })
+    })
+
+
+</script>

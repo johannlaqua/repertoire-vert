@@ -1,0 +1,2279 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : lun. 11 oct. 2021 à 14:42
+-- Version du serveur : 8.0.26
+-- Version de PHP : 8.0.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `nrbt_symfonyrvert`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `activitiesdisplay`
+--
+
+DROP TABLE IF EXISTS `activitiesdisplay`;
+CREATE TABLE IF NOT EXISTS `activitiesdisplay` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `owner` int NOT NULL,
+  `display` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_EAFB9F6DCF60E67C` (`owner`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ads`
+--
+
+DROP TABLE IF EXISTS `ads`;
+CREATE TABLE IF NOT EXISTS `ads` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `creator` int NOT NULL,
+  `location_id` int DEFAULT NULL,
+  `created_at` date NOT NULL,
+  `publishdatebegin` date DEFAULT NULL,
+  `publishdateend` date DEFAULT NULL,
+  `photo` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slogan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payed` tinyint(1) NOT NULL,
+  `price` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_7EC9F620BC06EA63` (`creator`),
+  KEY `IDX_7EC9F62064D218E` (`location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `creator` int NOT NULL,
+  `created_at` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BA388B7BC06EA63` (`creator`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `cart`
+--
+
+INSERT INTO `cart` (`id`, `creator`, `created_at`) VALUES
+(22, 65, '2021-08-13');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cartline`
+--
+
+DROP TABLE IF EXISTS `cartline`;
+CREATE TABLE IF NOT EXISTS `cartline` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `panier_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `produit_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_AC6FBE4FF77D927C` (`panier_id`),
+  KEY `IDX_AC6FBE4FF347EFB` (`produit_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_64C19C15E237E06` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `slug`) VALUES
+(31, 'Administration', 'L\'administration est un domaine de l\'activité publique ou privée, servie par une organisation infiniment complexe et détaillée. Dans le domaine des produits verts, elle comporte des sous catégories : Art et culture, développement urbain gestion espaces verts et chômage et emploi.', '94c213e88a8a844ddc39b63e6438a688.jpeg', 'administration'),
+(32, 'Alimentation & Boisson', 'Dans le domaine d’alimentation il est nécessaire d’utiliser des produits 100% écologiques et verts, cette catégorie contient des sous catégories : Fabrication des glaces, des boissons, horticultures, industrie alimentaire …', '34e2346a28ad0fe8e5eeea8e6a6a9125.jpeg', 'alimentation-boisson'),
+(33, 'Animaux', 'Les animaux du répertoire vert font partie des animaux de la ferme, chenils/spa et dressage.', '2b07c8da6d1ac51a1b2c227ed2ad4543.jpeg', 'animaux'),
+(34, 'Art & Design', 'Art et design est une activité de création, dans le domaine du répertoire vert existe des sous catégories : Art visuel, Architecture d’intérieur, Éco-conception …', '8dbb5f73664a49d8e76ef472cb8c20a8.jpeg', 'art-design'),
+(41, 'Soins médicaux', 'Ensemble des soins qui assurent le bien être.', 'ab05ae84ca606beae454ab5ffe887320.jpeg', 'soins-medicaux'),
+(42, 'Bureautique', 'Cette catégorie contient plusieurs sous catégories comme accessoires, meubles … qui doivent aboutir à la conformité des produits verts.', '5abd6bca5299dfccf3213a68c30755e7.jpeg', 'bureautique'),
+(44, 'Tourisme & Transport', 'Sorte de moyen de distraction.', '3346ebf0b2af62e3f53cfb8b9d526f26.jpeg', 'tourisme-transport'),
+(45, 'Consultant', 'Qui contient principalement 27 catégorie comme Agenda 21, certification, norme qui garantit un environnement purement vert.', '210dc523858c286d4509bb6e6b8bccd7.jpeg', 'consultant'),
+(46, 'Communauté', 'C’est une sorte de solidarité, de partage et de soutien.', '4dd367de430ee105262b5aa22c1d8276.jpeg', 'communaute'),
+(47, 'Formation', 'Elle est basée sur la recherche, l’orientation professionnelle.', 'fc112cd17847ca3931db42ab40c11460.jpeg', 'formation'),
+(48, 'Emploi vert', 'Contient 8 catégories comme Label, ONG, Organisations internationales…', '8c7e061dcc5f158c4982ac80ddcb54c6.jpeg', 'emploi-vert'),
+(49, 'Environnement', 'Contient 21 catégories comme Gestion de chantier, Éolien, Gestion de l’énergie…', '822265a4a1bede13f0884bfd05269dc9.jpeg', 'environnement'),
+(50, 'Gestion des déchets', 'Elle est basée sur le principe de tri des déchets.', 'e944be907f5e78a19b9a7ff8f3fe253d.jpeg', 'gestion-des-dechets'),
+(51, 'Green Building', 'Ensemble des activités vertes.', 'fcd5217bd71eef5787f966bb2f0552b1.jpeg', 'green-building'),
+(52, 'Green finance', 'C’est la finance verte.', '3e009f35b02bf1fd55dd06127c023d5d.jpeg', 'green-finance'),
+(54, 'Green tech - Clean Tech', 'C\'est la technologie verte.', '52cae087a674c188fec7684375e886c3.jpeg', 'green-tech-clean-tech'),
+(55, 'Jardinage et plantes', 'Contient 10 sous catégories comme réserve naturelle, magasin des plantes.', 'bcbf53f98d951cf37b22a6d591c2e99f.jpeg', 'jardinage-et-plantes'),
+(56, 'Label', 'Les entreprises qui assurent des produits verts.', '316294fd42102fe5a226eda1239b58db.jpeg', 'label'),
+(57, 'Loisirs et jeux', 'Contient 7 sous catégories.', '6ff4416c5b68923d24ab70477c8a4a3d.jpeg', 'loisirs-et-jeux'),
+(58, 'Maison', 'Contient 14 sous catégories.', 'bc8e53df47ee1ebfe8ad6186f78de31f.jpeg', 'maison'),
+(59, 'Média et communication', 'Contient 8 sous catégories comme TV, Radio, Presse écrite.', '1b05147f46115bb0aae434dece109acf.jpeg', 'media-et-communication'),
+(60, 'Mode et textile', 'Art et design est une activité de création, dans le domaine du répertoire vert existe des sous catégories : Art visuel, Architecture d’intérieur, Éco-conception …', 'd6b5255a07a67ce9927244a1718f9119.jpeg', 'mode-et-textile'),
+(61, 'ONG et associations', 'Qui assure la protection de l’environnement.', 'da36c1f2620693471eb60e7d90d74e34.jpeg', 'ong-et-associations'),
+(63, 'Produits ménagers', 'Content 13 sous catégories comme lessive, linge poussières …', '83591938e6d2a0036f14451cf794ff67.jpeg', 'produits-menagers'),
+(64, 'Santé et bien-être', 'Contient 30 sous catégories.', 'bdfb4bf813617e2f9aa2df46015a64ea.jpeg', 'sante-et-bien-etre'),
+(65, 'Artisanat', 'Dans le domaine du répertoire vert, il y a différents sous catégories qui font partie du catégorie artisanat comme : Métaux, verre, jouets…', '65207e511b450cba83e1801ff8e2362a.jpeg', 'artisanat'),
+(66, 'Compensation Carbone', 'Des produits qui réduisent au maximum le dégagement de CO2', '', 'compensation-carbone');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category_subcategory`
+--
+
+DROP TABLE IF EXISTS `category_subcategory`;
+CREATE TABLE IF NOT EXISTS `category_subcategory` (
+  `category_id` int NOT NULL,
+  `subcategory_id` int NOT NULL,
+  PRIMARY KEY (`category_id`,`subcategory_id`),
+  KEY `IDX_BA47E62312469DE2` (`category_id`),
+  KEY `IDX_BA47E6235DC6FE57` (`subcategory_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `category_subcategory`
+--
+
+INSERT INTO `category_subcategory` (`category_id`, `subcategory_id`) VALUES
+(31, 776),
+(31, 777),
+(31, 778),
+(31, 779),
+(31, 780),
+(31, 781),
+(31, 782),
+(31, 783),
+(31, 784),
+(31, 785),
+(31, 786),
+(31, 787),
+(31, 788),
+(31, 789),
+(31, 790),
+(31, 791),
+(31, 792),
+(32, 164),
+(32, 165),
+(32, 166),
+(32, 167),
+(32, 168),
+(32, 169),
+(32, 170),
+(32, 171),
+(32, 172),
+(32, 173),
+(32, 174),
+(32, 175),
+(32, 176),
+(32, 177),
+(32, 178),
+(32, 179),
+(32, 180),
+(32, 181),
+(32, 182),
+(32, 183),
+(32, 184),
+(32, 185),
+(32, 186),
+(32, 187),
+(32, 188),
+(32, 189),
+(32, 190),
+(32, 191),
+(32, 192),
+(32, 193),
+(32, 194),
+(32, 195),
+(32, 196),
+(33, 190),
+(33, 197),
+(33, 281),
+(33, 282),
+(33, 558),
+(33, 568),
+(33, 793),
+(33, 794),
+(33, 795),
+(33, 796),
+(33, 797),
+(34, 199),
+(34, 200),
+(34, 201),
+(34, 202),
+(34, 203),
+(34, 204),
+(34, 205),
+(34, 206),
+(34, 207),
+(34, 208),
+(34, 210),
+(34, 211),
+(34, 212),
+(41, 338),
+(41, 339),
+(41, 340),
+(41, 341),
+(41, 342),
+(41, 343),
+(42, 352),
+(42, 353),
+(42, 354),
+(42, 355),
+(42, 356),
+(42, 357),
+(42, 358),
+(44, 370),
+(44, 371),
+(44, 372),
+(44, 373),
+(44, 374),
+(44, 375),
+(44, 376),
+(44, 377),
+(44, 378),
+(44, 379),
+(44, 380),
+(44, 381),
+(44, 382),
+(45, 383),
+(45, 384),
+(45, 385),
+(45, 386),
+(45, 387),
+(45, 388),
+(45, 389),
+(45, 390),
+(45, 391),
+(45, 392),
+(45, 393),
+(45, 394),
+(45, 395),
+(45, 396),
+(45, 397),
+(45, 398),
+(45, 399),
+(45, 400),
+(45, 401),
+(45, 402),
+(45, 404),
+(45, 405),
+(45, 406),
+(46, 407),
+(46, 408),
+(46, 409),
+(46, 410),
+(46, 411),
+(46, 412),
+(46, 413),
+(46, 415),
+(46, 416),
+(46, 417),
+(46, 418),
+(46, 419),
+(46, 616),
+(46, 798),
+(46, 799),
+(47, 420),
+(47, 421),
+(47, 422),
+(47, 424),
+(47, 425),
+(47, 426),
+(47, 427),
+(48, 428),
+(48, 429),
+(48, 431),
+(48, 432),
+(48, 433),
+(48, 435),
+(49, 436),
+(49, 437),
+(49, 438),
+(49, 439),
+(49, 440),
+(49, 441),
+(49, 442),
+(49, 443),
+(49, 444),
+(49, 445),
+(49, 448),
+(49, 449),
+(49, 450),
+(49, 451),
+(49, 452),
+(49, 453),
+(49, 454),
+(49, 456),
+(50, 457),
+(50, 458),
+(50, 459),
+(50, 460),
+(50, 461),
+(50, 463),
+(50, 464),
+(50, 465),
+(50, 466),
+(50, 467),
+(50, 468),
+(50, 469),
+(50, 470),
+(50, 471),
+(51, 472),
+(51, 473),
+(51, 474),
+(51, 475),
+(51, 476),
+(51, 477),
+(51, 478),
+(51, 479),
+(51, 480),
+(51, 481),
+(51, 483),
+(51, 484),
+(51, 485),
+(51, 486),
+(51, 487),
+(51, 488),
+(51, 490),
+(51, 491),
+(51, 492),
+(52, 1),
+(52, 2),
+(52, 3),
+(52, 4),
+(52, 5),
+(52, 6),
+(52, 7),
+(52, 8),
+(52, 9),
+(54, 504),
+(54, 505),
+(54, 507),
+(54, 508),
+(54, 509),
+(54, 510),
+(54, 511),
+(54, 512),
+(54, 513),
+(54, 514),
+(54, 516),
+(54, 519),
+(54, 520),
+(54, 521),
+(54, 522),
+(54, 523),
+(55, 524),
+(55, 525),
+(55, 526),
+(55, 527),
+(55, 529),
+(55, 532),
+(55, 533),
+(56, 534),
+(56, 535),
+(56, 536),
+(56, 537),
+(56, 538),
+(56, 539),
+(56, 540),
+(56, 541),
+(56, 542),
+(56, 544),
+(56, 545),
+(56, 546),
+(56, 547),
+(56, 550),
+(56, 551),
+(56, 552),
+(56, 553),
+(56, 554),
+(56, 555),
+(56, 556),
+(56, 557),
+(56, 558),
+(56, 559),
+(56, 560),
+(57, 561),
+(57, 562),
+(57, 564),
+(57, 565),
+(57, 566),
+(57, 567),
+(57, 568),
+(58, 571),
+(58, 572),
+(58, 574),
+(58, 577),
+(58, 578),
+(58, 579),
+(58, 580),
+(58, 582),
+(59, 583),
+(59, 584),
+(59, 586),
+(59, 587),
+(59, 588),
+(59, 589),
+(60, 591),
+(60, 592),
+(60, 593),
+(60, 594),
+(60, 595),
+(60, 597),
+(60, 598),
+(60, 599),
+(60, 600),
+(60, 601),
+(61, 602),
+(61, 604),
+(61, 605),
+(61, 607),
+(61, 608),
+(61, 609),
+(61, 610),
+(61, 612),
+(61, 613),
+(61, 614),
+(61, 615),
+(61, 616),
+(61, 617),
+(61, 618),
+(61, 619),
+(61, 620),
+(61, 621),
+(61, 622),
+(61, 623),
+(61, 624),
+(63, 648),
+(63, 649),
+(63, 650),
+(63, 651),
+(63, 652),
+(63, 653),
+(63, 655),
+(63, 656),
+(63, 657),
+(63, 658),
+(63, 660),
+(64, 661),
+(64, 662),
+(64, 663),
+(64, 664),
+(64, 665),
+(64, 667),
+(64, 668),
+(64, 669),
+(64, 670),
+(64, 671),
+(64, 672),
+(64, 673),
+(64, 674),
+(64, 675),
+(64, 676),
+(64, 677),
+(64, 678),
+(64, 679),
+(64, 680),
+(64, 681),
+(64, 682),
+(64, 683),
+(64, 684),
+(64, 685),
+(64, 686),
+(64, 687),
+(64, 688),
+(64, 689),
+(64, 690),
+(65, 691),
+(65, 692),
+(65, 693),
+(65, 694),
+(65, 695),
+(65, 696),
+(65, 697),
+(65, 698),
+(65, 699),
+(65, 700),
+(65, 701),
+(65, 702),
+(66, 800),
+(66, 801),
+(66, 802),
+(66, 803),
+(66, 804),
+(66, 805),
+(66, 806);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentreport`
+--
+
+DROP TABLE IF EXISTS `commentreport`;
+CREATE TABLE IF NOT EXISTS `commentreport` (
+  `id` int NOT NULL,
+  `comment_id` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_E02106DFF8697D13` (`comment_id`),
+  KEY `IDX_E02106DFA76ED395` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comment_product_fav`
+--
+
+DROP TABLE IF EXISTS `comment_product_fav`;
+CREATE TABLE IF NOT EXISTS `comment_product_fav` (
+  `id` int NOT NULL,
+  `date` date NOT NULL,
+  `product_slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number` int NOT NULL,
+  `company_slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `communauty`
+--
+
+DROP TABLE IF EXISTS `communauty`;
+CREATE TABLE IF NOT EXISTS `communauty` (
+  `id` int NOT NULL,
+  `createur` int NOT NULL,
+  `departure` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `destination` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `groupmaxsize` int NOT NULL,
+  `departuredate` datetime NOT NULL,
+  `heuredepart` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_35C81BD6FAD8DA84` (`createur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `company`
+--
+
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE IF NOT EXISTS `company` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `certification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `influencezone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `street` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `streetnumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postcode` smallint NOT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `region` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wantevaluation` tinyint(1) NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vision` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `socialreason` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urlwebsite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `urlfacebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `urltwitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `urllinkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `starting_date` date DEFAULT NULL,
+  `package` smallint DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `latitude` double NOT NULL,
+  `longtitude` double NOT NULL,
+  `niveau` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activated` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `company`
+--
+
+INSERT INTO `company` (`id`, `name`, `certification`, `influencezone`, `street`, `streetnumber`, `postcode`, `city`, `region`, `country`, `phone`, `wantevaluation`, `description`, `vision`, `socialreason`, `urlwebsite`, `urlfacebook`, `urltwitter`, `urllinkedin`, `slug`, `starting_date`, `package`, `image`, `latitude`, `longtitude`, `niveau`, `activated`) VALUES
+(85, 'Entreprise Test', NULL, 'test', '11 rue des Bains', '11', 1205, 'Genève', 'GE', 'Suisse', '098765456', 1, 'grehgfjf', 'dg', 'gfg', NULL, 'http://', 'http://', 'http://', 'entreprise', '1800-01-01', NULL, 'ok', 46.1974025, 6.1350715, 'C.3', 0),
+(86, 'Lalalande', 'vdsjioji', '50km', '9 rue Lac Saint-André', NULL, 32767, 'Le Bourget-du-Lac', 'duo', 'France', 'sfgtfd', 0, 'dfsvdbfdfffffffffffff', 'dfdvsffffffffffffffffffffffffffffffffffffffffffffff', 'cdfd', 'https://lalaland.com', 'https://lalaland.com', 'https://lalaland.com', 'https://lalaland.com', 'lalaland', '1800-01-01', NULL, '616424945fd39.png', 45.6417818, 5.8726477, 'N.0', 0),
+(87, 'nom', NULL, 'test', '35 rue Jean', NULL, 2109, 'Geneve', '', 'SUIsse', '0978393404', 1, 'ff', 'f', '', NULL, 'http://', 'http://', 'http://', 'nom', '1800-01-06', NULL, 'ok', 46.2098795, 6.1182358, 'C.3', 0),
+(88, 'Une entreprise', NULL, 'test', 'adresse', NULL, 32767, '', '', 'Suisse', '987647393', 1, 'v', 'v', '', NULL, 'http://', 'http://', 'http://', 'une-entreprise', '1800-01-01', NULL, 'ok', 47.17636685, 8.5924438, 'C.3', 0),
+(89, 'Une entreprise', NULL, 'test', 'Route des Bains 42', NULL, 1892, 'Lavey-les-bains', 'b', 'Suisse', '987647393', 1, 'v', 'v', 'bg', NULL, 'http://', 'http://', 'http://', 'une-entreprise', '1800-01-01', NULL, 'ok', 46.2109557, 7.0125836, 'C.3', 0),
+(90, 'Une entreprise', NULL, 'test', 'Route des Bains 42', NULL, 1892, 'Lavey-les-bains', 'Vaud', 'Suisse', '987647393', 1, 'v', 'v', 'bg', NULL, 'http://', 'http://', 'http://', 'une-entreprise', '1800-01-01', NULL, 'ok', 46.2109557, 7.0125836, 'C.3', 0),
+(91, 'Libellule', NULL, 'test', 'Route des Bains 42', NULL, 1892, 'Lavey-les-Bains', 'Vaud', 'Suisse', '8748303', 1, 'f', 'f', 'fjdd', NULL, 'http://', 'http://', 'http://', 'libellule', '1800-01-01', NULL, 'ok', 46.2109557, 7.0125836, 'C.3', 0),
+(92, '', NULL, 'test', '9 rue oui', NULL, 32767, '', '', '', '', 1, '', '', '', NULL, 'http://', 'http://', 'http://', '', '1800-01-01', NULL, 'ok', 13.4143461, -1.773635, 'C.3', 0),
+(93, 'd', NULL, 'test', '9 rue Lac Saint Andre', NULL, 32767, 'Bourget du lac', '', '', '', 1, '', '', 'd', NULL, 'http://', 'http://', 'http://', 'd', '1800-01-01', NULL, 'ok', 45.6417818, 5.8726477, 'C.3', 0),
+(94, 'r', NULL, 'test', '9 rue Lac Saint André', NULL, 32767, 'Bourget du Lac', '', '', '', 1, '', '', 'r', NULL, 'http://', 'http://', 'http://', 'r', '1800-01-01', NULL, 'ok', 45.6417818, 5.8726477, 'C.3', 0),
+(95, 'Creator', NULL, 'test', '17 rue des Arbres', NULL, 10000, 'Troyes', '', '', '', 1, '', '', '', NULL, 'http://', 'http://', 'http://', 'creator', '1800-01-01', NULL, 'ok', 48.1743418, 3.7986237, 'C.3', 0),
+(97, 'f', NULL, 'test', '28 rue anatole france', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', NULL, 'http://', 'http://', 'http://', 'f', '1800-01-01', NULL, 'ok', 46.262094, 5.659297, 'C.3', 0),
+(99, 'maiaia', 'bf', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'maiaia', '1800-01-01', NULL, '6149dfae2c53e.jpg', 46.262094, 5.659297, 'C.3', 0),
+(100, 'abeille', 'd', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'abeille', '1800-01-01', NULL, '6149e14aef6c7.jpg', 46.262094, 5.659297, 'C.3', 0),
+(101, 'fd', 'v', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'fd', '1800-01-01', NULL, '6149e730b0ce6.jpg', 46.262094, 5.659297, 'C.3', 0),
+(102, 'vd', 'bf', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'vd', '1800-01-01', NULL, '6149e96404575.jpg', 46.262094, 5.659297, 'C.3', 0),
+(105, 'bf', '', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'bf', '1800-01-01', NULL, '6149ea805b9d7.jpg', 46.262094, 5.659297, 'C.3', 0),
+(106, 'bf', '', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'bf', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(107, 'Lion', 'vd', 'test', 'rue de Candolle 18', NULL, 1205, 'Geneve', 'Geneve', 'Suisse', '0948736227', 1, '', '', 'd', 'http://', 'http://', 'http://', 'http://', 'lion', '1800-01-01', NULL, NULL, 46.1979544, 6.1451145, 'N.1', 0),
+(108, 'v', '', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'v', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(109, 'Tournesol', 'f', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'tournesol', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(110, 'v', '', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'v', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(111, 'fd', 'f', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', '', '', '', 1, '', '', '', 'http://', 'http://', 'http://', 'http://', 'fd', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(112, 'f', 'v', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'f', 'f', '', 1, '', '', 'f', 'http://', 'http://', 'http://', 'http://', 'f', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(113, 'fd', 'v', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'v', 'France', '', 1, '', '', 'v', 'http://', 'http://', 'http://', 'http://', 'fd', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(114, 'vd', 'ffb', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'Ain', 'd', '', 1, '', '', 'sf', 'http://', 'http://', 'http://', 'http://', 'vd', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(115, 'vsbf', ' dfd', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'fb', 'France', '', 1, '', '', 'vsf', 'http://', 'http://', 'http://', 'http://', 'vsbf', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(116, 'op', 'vc', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'fd', 'France', '', 0, '', '', 'gd', 'http://', 'http://', 'http://', 'http://', 'op', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(117, 'vd', 'bg', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'f', 'France', '', 0, '', '', 'vd', 'http://', 'http://', 'http://', 'http://', 'vd', '1974-09-08', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(118, 'vd', 'bg', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'f', 'France', '', 0, '', '', 'vd', 'http://', 'http://', 'http://', 'http://', 'vd', '1974-09-08', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(119, 'vds', 'vfs', 'test', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'fds', 'France', '', 1, '', '', 'ds', 'http://', 'http://', 'http://', 'http://', 'vds', '1800-01-01', NULL, '', 46.262094, 5.659297, 'C.3', 0),
+(120, 'Loop', 'bg', 'test', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'Savoie', 'France', '+33479758159', 1, '', '', 'dv', 'http://', 'http://', 'http://', 'http://', 'loop', '2000-01-01', NULL, '', 45.6428274, 5.8712262, 'C.3', 0),
+(121, 'mpo', 'ngd', 'plus100km', '9 rue Lac Saint André', NULL, 32767, 'Le Bourget-du-Lac', 'bf', 'France', '07635462782', 0, '', '', 'w', 'http://', 'http://', 'http://', 'http://', 'mpo', '1800-01-01', NULL, '', 45.6417818, 5.8726477, 'C.3', 0),
+(122, 'vds', 'gnd', '10km', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'fv', 'France', '', 1, '', '', 'vds', 'http://', 'http://', 'http://', 'http://', 'vds', '1800-01-01', NULL, '614d982d6c9ea.png', 46.262094, 5.659297, 'C.3', 0),
+(123, 'Rolling', 're', '100km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'Savoie', 'France', '+33479758159', 1, '', '', 'gfks', 'http://', 'http://', 'http://', 'http://', 'rolling', '1814-01-01', NULL, '614d99384f11c.png', 45.6428274, 5.8712262, 'C.3', 0),
+(124, 'vdsb', 'bh', '50km', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', 'ods', 'France', '0974783', 1, '', '', 'vc', 'http://', 'http://', 'http://', 'http://', 'vdsb', '1800-01-01', NULL, '6155cfd163f9c.png', 46.262094, 5.659297, 'C.3', 0),
+(125, 'kuy', 'lgnf', '10km', '28 Rue Anatole France', NULL, 1100, 'Oyonnax', ',tu', 'France', '', 1, '', '', 'pgfd', 'http://', 'http://', 'http://', 'http://', 'kuy', '1800-01-01', NULL, '', 46.262094, 5.659297, 'N.1', 0),
+(126, 'gfs', 'fbd', '50km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'fbd', 'France', '+33479758159', 1, '', '', 'f', 'http://', 'http://', 'http://', 'http://', 'gfs', '1800-01-01', NULL, '615e9a7228549.png', 45.6428274, 5.8712262, 'N.1', 0),
+(127, 'gfd', 'vf', '20km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'gf', 'France', '+33479758159', 1, '', '', 'gfd', 'http://', 'http://', 'http://', 'http://', 'gfd', '1800-01-01', NULL, '', 45.6428274, 5.8712262, 'N.1', 0),
+(128, 'gf', 'fvd', '50km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'vd', 'France', '+33479758159', 1, '', '', 'vds', 'http://', 'http://', 'http://', 'http://', 'gf', '1800-01-01', NULL, '', 45.6428274, 5.8712262, 'N.1', 0),
+(129, 'Mon entreprise ', 'o', '50km', '9 rue Lac Saint André', NULL, 32767, 'Le Bourget-du-Lac', 'Savoie', 'France', '0785219873', 1, '', '', 'gkf', 'http://', 'http://', 'http://', 'http://', 'mon-entreprise', '2014-12-01', NULL, '6163e7a187076.png', 45.6417818, 5.8726477, 'N.1', 1),
+(130, 'Mon entreprise ', 'o', '50km', '9 rue Lac Saint André', NULL, 32767, 'Le Bourget-du-Lac', 'Savoie', 'France', '0785219873', 1, '', '', 'gkf', 'http://', 'http://', 'http://', 'http://', 'mon-entreprise', '2014-12-01', NULL, '6163e9d6782ab.png', 45.6417818, 5.8726477, 'N.1', 1),
+(131, 'COuCOu', 'b', '20km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'f', 'France', '+33479758159', 0, '', '', 'coucou', 'http://', 'http://', 'http://', 'http://', 'coucou', '1800-01-01', NULL, NULL, 45.6428274, 5.8712262, 'N.0', 1),
+(132, 'fxc', 'fd', '20km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'v', 'France', '+33479758159', 1, '', '', 'f', 'http://', 'http://', 'http://', 'http://', 'fxc', '1800-01-01', NULL, NULL, 45.6428274, 5.8712262, 'N.1', 1),
+(133, ' v', ' b', '100km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'vd', 'France', '+33479758159', 0, '', '', 'cvx', 'http://', 'http://', 'http://', 'http://', 'v', '1800-01-01', NULL, NULL, 45.6428274, 5.8712262, 'N.0', 1),
+(134, 'vff', 'fb', '100km', '28 Avenue du Lac d\'Annecy', NULL, 32767, 'Le Bourget-du-Lac', 'vf', 'France', '+33479758159', 0, '', '', 'fd', 'http://', 'http://', 'http://', 'http://', 'vff', '1800-01-01', NULL, NULL, 45.6428274, 5.8712262, 'N.0', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `company_category`
+--
+
+DROP TABLE IF EXISTS `company_category`;
+CREATE TABLE IF NOT EXISTS `company_category` (
+  `company_id` int NOT NULL,
+  `category_id` int NOT NULL,
+  PRIMARY KEY (`company_id`,`category_id`),
+  KEY `IDX_1EDB0CAC979B1AD6` (`company_id`),
+  KEY `IDX_1EDB0CAC12469DE2` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `company_category`
+--
+
+INSERT INTO `company_category` (`company_id`, `category_id`) VALUES
+(85, 33),
+(86, 32),
+(86, 34),
+(86, 35),
+(86, 36),
+(86, 37),
+(86, 38),
+(86, 39),
+(86, 40),
+(86, 43),
+(86, 53),
+(86, 61),
+(86, 62),
+(87, 32),
+(88, 58),
+(89, 58),
+(90, 58),
+(91, 32),
+(92, 32),
+(93, 51),
+(94, 49),
+(95, 31),
+(99, 32),
+(100, 31),
+(100, 32),
+(101, 31),
+(101, 32),
+(102, 31),
+(102, 32),
+(107, 42),
+(107, 45),
+(107, 48),
+(107, 59),
+(108, 41),
+(108, 50),
+(109, 45),
+(109, 49),
+(110, 34),
+(110, 45),
+(110, 49),
+(111, 34),
+(111, 54),
+(112, 42),
+(112, 47),
+(113, 47),
+(113, 51),
+(114, 48),
+(114, 52),
+(114, 66),
+(115, 51),
+(115, 56),
+(115, 60),
+(115, 65),
+(116, 32),
+(116, 47),
+(117, 55),
+(117, 59),
+(117, 60),
+(118, 55),
+(118, 59),
+(118, 60),
+(119, 50),
+(119, 55),
+(119, 59),
+(120, 47),
+(121, 32),
+(121, 55),
+(121, 60),
+(122, 32),
+(122, 33),
+(122, 56),
+(123, 51),
+(123, 52),
+(123, 59),
+(123, 64),
+(124, 41),
+(124, 46),
+(124, 50),
+(124, 55),
+(125, 56),
+(125, 57),
+(125, 60),
+(126, 47),
+(126, 51),
+(126, 56),
+(127, 42),
+(127, 47),
+(127, 56),
+(128, 47),
+(128, 51),
+(129, 44),
+(129, 48),
+(129, 52),
+(130, 44),
+(130, 48),
+(130, 52),
+(131, 48),
+(131, 57),
+(131, 61),
+(132, 56),
+(133, 61),
+(134, 47),
+(134, 51);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `company_fav`
+--
+
+DROP TABLE IF EXISTS `company_fav`;
+CREATE TABLE IF NOT EXISTS `company_fav` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_72686407A76ED395` (`user_id`),
+  KEY `IDX_72686407979B1AD6` (`company_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `company_favoris`
+--
+
+DROP TABLE IF EXISTS `company_favoris`;
+CREATE TABLE IF NOT EXISTS `company_favoris` (
+  `id` int NOT NULL,
+  `company_slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number` int NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `company_favoris`
+--
+
+INSERT INTO `company_favoris` (`id`, `company_slug`, `number`, `date`) VALUES
+(1, 'company', 3, '2021-08-01'),
+(2, 'company', 2, '2021-08-02'),
+(3, 'company', 1, '2021-08-03'),
+(4, 'company', 4, '2021-08-04'),
+(5, 'company', 15, '2020-08-03'),
+(6, 'company', 5, '2021-05-05'),
+(7, 'company', 3, '2020-11-11'),
+(8, 'company', 2, '2020-08-12'),
+(9, 'company', 6, '2021-07-29'),
+(10, 'company', 4, '2021-07-08'),
+(11, 'company', 4, '2021-06-18');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `coup_de_projecteur`
+--
+
+DROP TABLE IF EXISTS `coup_de_projecteur`;
+CREATE TABLE IF NOT EXISTS `coup_de_projecteur` (
+  `id` int NOT NULL,
+  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `photo` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lien` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `coup_de_projecteur`
+--
+
+INSERT INTO `coup_de_projecteur` (`id`, `nom`, `description`, `photo`, `video`, `lien`, `date`) VALUES
+(1, 'a', 'a', '789fcd2c749312247646484f01217046.jpg', 'a', 'a', '2021-05-26'),
+(2, 'c', 'c', '949f3b3adc3e664bd93dea66e7ef929d.jpg', 'c', 'c', '2021-05-26'),
+(3, 'x', 'x', 'bb9d4ff0b7d6f76ced27d54b8ea7dfbf.jpg', 'x', 'x', '2021-05-26'),
+(4, 'Kalundborg, symbiose industrielle au Danemark', 'La symbiose industrielle est un phénomène qui s\'est développé durant plusieurs décennies et qui fonctionnent encore. C\'est un réseau environnemental et de ressource qui a émergé ici à Katundborg, entre quatre entreprises et une collectivité. L\'Idée était d\'économiser des ressources et de créer un avantage au niveau de renvironnement. Ce n\'est pas une organisation qui e été planifié. Elle s\'est formé toute seule. Le nom « symbiose Industrielle • e été crée bien plus tard, lorsque nous avons réalisé que l\'organisation que nous avions là n\'était pas courante et que nous pouvions l\'utiliser dans d\'autres thématiques et d\'autres lieux pour le bénéfice de tous. La coopération n\'a rien d\'extraordinaire. c\'est Juste du bon sens. Quand deux entreprises ont commencé à penser que la réutilisation des déchets d\'une entreprise serait une chose smart.', '234b2224e290e41ae9c3a96fbf6b2bf4.jpg', 'Video', 'repertoirevert.org', '2021-06-22');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cssstyle`
+--
+
+DROP TABLE IF EXISTS `cssstyle`;
+CREATE TABLE IF NOT EXISTS `cssstyle` (
+  `id` int NOT NULL,
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_9EEF829F1D775834` (`value`),
+  UNIQUE KEY `UNIQ_9EEF829F5E237E06` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `depense`
+--
+
+DROP TABLE IF EXISTS `depense`;
+CREATE TABLE IF NOT EXISTS `depense` (
+  `id` int NOT NULL,
+  `createur` int NOT NULL,
+  `steps` int NOT NULL,
+  `co2` int NOT NULL,
+  `calories` int NOT NULL,
+  `transporttype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `distance` int NOT NULL,
+  `geo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `createdAt` date NOT NULL,
+  `privacy` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_34059757FAD8DA84` (`createur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `discussion`
+--
+
+DROP TABLE IF EXISTS `discussion`;
+CREATE TABLE IF NOT EXISTS `discussion` (
+  `id` int NOT NULL,
+  `recipient` int DEFAULT NULL,
+  `sender` int DEFAULT NULL,
+  `seen` tinyint(1) NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sent_at` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_C0B9F90F6804FB49` (`recipient`),
+  KEY `IDX_C0B9F90F5F004ACF` (`sender`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `discussionquote`
+--
+
+DROP TABLE IF EXISTS `discussionquote`;
+CREATE TABLE IF NOT EXISTS `discussionquote` (
+  `id` int NOT NULL,
+  `service` int DEFAULT NULL,
+  `sender` int DEFAULT NULL,
+  `recipient` int DEFAULT NULL,
+  `date` date NOT NULL,
+  `question` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_133A17D9E19D9AD2` (`service`),
+  KEY `IDX_133A17D95F004ACF` (`sender`),
+  KEY `IDX_133A17D96804FB49` (`recipient`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `doctrine_migration_versions`
+--
+
+DROP TABLE IF EXISTS `doctrine_migration_versions`;
+CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
+  `version` varchar(191) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `doctrine_migration_versions`
+--
+
+INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20210526052658', '2021-05-26 05:27:03', 5482),
+('DoctrineMigrations\\Version20210721134412', '2021-07-21 13:46:04', 134),
+('DoctrineMigrations\\Version20210721134842', '2021-07-21 13:53:06', 108),
+('DoctrineMigrations\\Version20210721140754', '2021-07-21 14:09:05', 85),
+('DoctrineMigrations\\Version20210721152405', '2021-07-21 15:24:50', 179),
+('DoctrineMigrations\\Version20210721153244', '2021-07-21 15:33:25', 147),
+('DoctrineMigrations\\Version20210721163442', '2021-07-21 16:35:33', 50),
+('DoctrineMigrations\\Version20210722150807', '2021-07-22 15:11:16', 77),
+('DoctrineMigrations\\Version20210806065758', '2021-08-06 06:59:18', 63),
+('DoctrineMigrations\\Version20210806071525', '2021-08-06 07:16:26', 34),
+('DoctrineMigrations\\Version20210806075415', '2021-08-06 07:54:50', 65),
+('DoctrineMigrations\\Version20210806081157', '2021-08-06 08:22:24', 55),
+('DoctrineMigrations\\Version20210806083640', '2021-08-06 08:37:37', 66),
+('DoctrineMigrations\\Version20210812132222', '2021-08-12 13:23:02', 114),
+('DoctrineMigrations\\Version20210812132700', '2021-08-12 13:27:31', 48),
+('DoctrineMigrations\\Version20210812132845', '2021-08-12 13:29:22', 55),
+('DoctrineMigrations\\Version20210812133029', '2021-08-12 13:31:05', 48),
+('DoctrineMigrations\\Version20210812133201', '2021-08-12 13:32:25', 53),
+('DoctrineMigrations\\Version20210812134021', '2021-08-12 13:41:24', 1223),
+('DoctrineMigrations\\Version20210812134350', '2021-08-12 13:44:14', 54),
+('DoctrineMigrations\\Version20210812134455', '2021-08-12 13:48:56', 65),
+('DoctrineMigrations\\Version20210812134913', '2021-08-12 14:06:02', 74),
+('DoctrineMigrations\\Version20210813173916', '2021-08-13 17:39:50', 210),
+('DoctrineMigrations\\Version20210913084213', '2021-09-13 09:28:49', 315),
+('DoctrineMigrations\\Version20210913094206', '2021-09-13 09:55:22', 512),
+('DoctrineMigrations\\Version20210913095901', '2021-09-13 11:57:55', 568),
+('DoctrineMigrations\\Version20210927140227', '2021-09-27 14:05:01', 439),
+('DoctrineMigrations\\Version20211005125338', '2021-10-06 15:47:38', 774),
+('DoctrineMigrations\\Version20211007095007', '2021-10-08 06:50:46', 1352),
+('DoctrineMigrations\\Version20211008070548', '2021-10-08 07:08:51', 680),
+('DoctrineMigrations\\Version20211008114334', '2021-10-08 11:44:50', 1402);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `event`
+--
+
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE IF NOT EXISTS `event` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `starting_date` date NOT NULL,
+  `finish_date` date NOT NULL,
+  `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3BAE0AA7A76ED395` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `event_fav`
+--
+
+DROP TABLE IF EXISTS `event_fav`;
+CREATE TABLE IF NOT EXISTS `event_fav` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_675425BCA76ED395` (`user_id`),
+  KEY `IDX_675425BC71F7E88B` (`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `favoritecompany`
+--
+
+DROP TABLE IF EXISTS `favoritecompany`;
+CREATE TABLE IF NOT EXISTS `favoritecompany` (
+  `id` int NOT NULL,
+  `date` date NOT NULL,
+  `idCompany` int NOT NULL,
+  `idUser` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_8A3982365F0662BD` (`idCompany`),
+  KEY `IDX_8A398236FE6E88D7` (`idUser`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `favoriteproduct`
+--
+
+DROP TABLE IF EXISTS `favoriteproduct`;
+CREATE TABLE IF NOT EXISTS `favoriteproduct` (
+  `id` int NOT NULL,
+  `date` date NOT NULL,
+  `idProduct` int DEFAULT NULL,
+  `idUser` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_16CC8FD4C3F36F5F` (`idProduct`),
+  KEY `IDX_16CC8FD4FE6E88D7` (`idUser`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fav_company`
+--
+
+DROP TABLE IF EXISTS `fav_company`;
+CREATE TABLE IF NOT EXISTS `fav_company` (
+  `user_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  PRIMARY KEY (`user_id`,`company_id`),
+  KEY `IDX_30AF0FDDA76ED395` (`user_id`),
+  KEY `IDX_30AF0FDD979B1AD6` (`company_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `forumads`
+--
+
+DROP TABLE IF EXISTS `forumads`;
+CREATE TABLE IF NOT EXISTS `forumads` (
+  `id` int NOT NULL,
+  `profilelink` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slogan` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `companyname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `photo` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `friendship`
+--
+
+DROP TABLE IF EXISTS `friendship`;
+CREATE TABLE IF NOT EXISTS `friendship` (
+  `id` int NOT NULL,
+  `user` int NOT NULL,
+  `friend` int DEFAULT NULL,
+  `is_accepted` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_7234A45F8D93D649` (`user`),
+  KEY `IDX_7234A45F55EEAC61` (`friend`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `invention`
+--
+
+DROP TABLE IF EXISTS `invention`;
+CREATE TABLE IF NOT EXISTS `invention` (
+  `id` int NOT NULL,
+  `nom` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `lien` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+CREATE TABLE IF NOT EXISTS `locations` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_17E64ABA5E237E06` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `marchandise`
+--
+
+DROP TABLE IF EXISTS `marchandise`;
+CREATE TABLE IF NOT EXISTS `marchandise` (
+  `id` int NOT NULL,
+  `packaging` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `weight` int DEFAULT NULL,
+  `weightunit` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `volume` int DEFAULT NULL,
+  `volumeunit` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `height` int DEFAULT NULL,
+  `width` int DEFAULT NULL,
+  `depth` int DEFAULT NULL,
+  `lengthunit` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `marchandise`
+--
+
+INSERT INTO `marchandise` (`id`, `packaging`, `quantity`, `weight`, `weightunit`, `volume`, `volumeunit`, `height`, `width`, `depth`, `lengthunit`) VALUES
+(55, 'fb', NULL, NULL, 'kg', NULL, 'ml', NULL, NULL, NULL, 'mm'),
+(57, 'fdi', 2, 1, 'kg', 1, 'ml', 1, 1, 3, 'dm'),
+(58, 'nb', NULL, NULL, 'kg', NULL, 'ml', NULL, NULL, NULL, 'mm'),
+(59, 'fd', NULL, NULL, 'kg', NULL, 'ml', NULL, NULL, NULL, 'mm'),
+(60, 'fhd', NULL, NULL, 'kg', NULL, 'ml', NULL, NULL, NULL, 'mm'),
+(62, 'bf', 2, NULL, 'kg', NULL, 'ml', NULL, NULL, NULL, 'mm'),
+(63, 'g', NULL, NULL, 'kg', NULL, 'ml', NULL, NULL, NULL, 'mm'),
+(64, 'fg', 2, 2, 'kg', 1, 'ml', 1, -2, 1, 'mm');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news`
+--
+
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int NOT NULL,
+  `nom` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `photo` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `news`
+--
+
+INSERT INTO `news` (`id`, `nom`, `photo`, `date`) VALUES
+(1, 'Le Répertoire Vert passe au bleu', 'Photo ici', '2021-06-22'),
+(2, 'Terrorem opperientes quaeque', 'Photo ici', '2021-06-22'),
+(3, 'Les aubergines à Jannine ont disparu !', 'Photo ici', '2021-06-22'),
+(4, 'Nouvelle catégorie dans la répertoire', 'Photo', '2021-06-22'),
+(5, 'Les tomates ne sont plus rondes, voyez-vous ça !', 'Photo', '2021-06-22'),
+(6, 'Votre dashboard actif au mois de mai !', 'Photo', '2021-06-22'),
+(7, 'Lancement du site repertoirevert.org', 'Photo', '2021-06-22'),
+(8, 'Lancement de l\'application mobile repertoirevert', 'Photo', '2021-06-22');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notification`
+--
+
+DROP TABLE IF EXISTS `notification`;
+CREATE TABLE IF NOT EXISTS `notification` (
+  `id` int NOT NULL,
+  `owner` int DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `opened` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BF5476CACF60E67C` (`owner`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `page`
+--
+
+DROP TABLE IF EXISTS `page`;
+CREATE TABLE IF NOT EXISTS `page` (
+  `id` int NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `body` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_140AB6202B36786B` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `participation`
+--
+
+DROP TABLE IF EXISTS `participation`;
+CREATE TABLE IF NOT EXISTS `participation` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idcovoiturage` int DEFAULT NULL,
+  `idparticipant` int NOT NULL,
+  `confirmed` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_182BA9BAEE06EE26` (`idcovoiturage`),
+  KEY `IDX_182BA9BA115E1BBE` (`idparticipant`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `person`
+--
+
+DROP TABLE IF EXISTS `person`;
+CREATE TABLE IF NOT EXISTS `person` (
+  `id` int NOT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `street` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `streetnumber` smallint DEFAULT NULL,
+  `postcode` smallint NOT NULL,
+  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `region` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` int NOT NULL,
+  `category` int DEFAULT NULL,
+  `creator` int NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `subtitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `body` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `views` int NOT NULL,
+  `approved` tinyint(1) NOT NULL,
+  `photo` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_5A8A6C8D64C19C1` (`category`),
+  KEY `IDX_5A8A6C8DBC06EA63` (`creator`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `postcategory`
+--
+
+DROP TABLE IF EXISTS `postcategory`;
+CREATE TABLE IF NOT EXISTS `postcategory` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_4FEC4F8F5E237E06` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `postcomment`
+--
+
+DROP TABLE IF EXISTS `postcomment`;
+CREATE TABLE IF NOT EXISTS `postcomment` (
+  `id` int NOT NULL,
+  `creator` int NOT NULL,
+  `post` int NOT NULL,
+  `comment` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_5D65518ABC06EA63` (`creator`),
+  KEY `IDX_5D65518A5A8A6C8D` (`post`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `postlike`
+--
+
+DROP TABLE IF EXISTS `postlike`;
+CREATE TABLE IF NOT EXISTS `postlike` (
+  `id` int NOT NULL,
+  `creator` int DEFAULT NULL,
+  `post` int DEFAULT NULL,
+  `created_at` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_B84FD43ABC06EA63` (`creator`),
+  KEY `IDX_B84FD43A5A8A6C8D` (`post`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `owner` int DEFAULT NULL,
+  `category_id` int DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `latitude` decimal(10,0) DEFAULT NULL,
+  `longitude` decimal(10,0) DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `origin` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `certification` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
+  `currency` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `wantevaluation` tinyint(1) NOT NULL,
+  `gaearecommanded` tinyint(1) NOT NULL,
+  `creation_date` date NOT NULL,
+  `updated_date` date DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `discr` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `niveau` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company_id` int NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_D34A04ADCF60E67C` (`owner`),
+  KEY `IDX_D34A04AD12469DE2` (`category_id`),
+  KEY `IDX_D34A04AD979B1AD6` (`company_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `product`
+--
+
+INSERT INTO `product` (`id`, `owner`, `category_id`, `name`, `latitude`, `longitude`, `description`, `origin`, `slug`, `certification`, `price`, `currency`, `wantevaluation`, `gaearecommanded`, `creation_date`, `updated_date`, `image`, `discr`, `niveau`, `company_id`, `type`) VALUES
+(53, 86, 47, 'Produit1', NULL, NULL, 'jn', 'getg', 'gfdg', 'certif', '20', '€', 0, 0, '0000-00-00', NULL, NULL, 'marchandise', '', 86, ''),
+(54, 85, 59, 'Produit2', NULL, NULL, NULL, '', '', '', NULL, NULL, 0, 0, '0000-00-00', NULL, NULL, 'service', '', 85, ''),
+(62, NULL, NULL, 'bfd', NULL, NULL, 'bfgdgfdg', 'France', 'bfd', 'bfdbvcbfdgg', '47', 'Euro', 0, 0, '2021-09-27', '2021-10-05', '615bf27e20e70.jpg', 'marchandise', NULL, 86, ''),
+(64, NULL, NULL, 'fdoskgp', NULL, NULL, 'vfd', 'gf', 'fdoskgp', 'gf', '50', 'Euro', 0, 0, '2021-10-06', '2021-10-07', '615dc5ae9b17e.png', 'marchandise', NULL, 86, 'marchandise');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `productads`
+--
+
+DROP TABLE IF EXISTS `productads`;
+CREATE TABLE IF NOT EXISTS `productads` (
+  `id` int NOT NULL,
+  `profilelink` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slogan` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `companyname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `photo` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `productcomment`
+--
+
+DROP TABLE IF EXISTS `productcomment`;
+CREATE TABLE IF NOT EXISTS `productcomment` (
+  `id` int NOT NULL,
+  `creator` int NOT NULL,
+  `product` int NOT NULL,
+  `comment` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` date NOT NULL,
+  `etoiles` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_F3BF44BBC06EA63` (`creator`),
+  KEY `IDX_F3BF44BD34A04AD` (`product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `product_click`
+--
+
+DROP TABLE IF EXISTS `product_click`;
+CREATE TABLE IF NOT EXISTS `product_click` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `number` int NOT NULL,
+  `company_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_1BAAB97C979B1AD6` (`company_id`),
+  KEY `IDX_1BAAB97C4584665A` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `product_click`
+--
+
+INSERT INTO `product_click` (`id`, `date`, `number`, `company_id`, `product_id`) VALUES
+(1, '2021-09-24', 8, 86, 53),
+(2, '2021-09-27', 3, 86, 53),
+(3, '2021-09-27', 3, 86, 62),
+(5, '2021-09-28', 1, 86, 62),
+(6, '2021-10-01', 7, 86, 62),
+(7, '2021-10-04', 8, 86, 62),
+(8, '2021-10-06', 2, 86, 62),
+(9, '2021-10-06', 1, 86, 64);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `product_fav`
+--
+
+DROP TABLE IF EXISTS `product_fav`;
+CREATE TABLE IF NOT EXISTS `product_fav` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_96B4B470A76ED395` (`user_id`),
+  KEY `IDX_96B4B4704584665A` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `product_subcategory`
+--
+
+DROP TABLE IF EXISTS `product_subcategory`;
+CREATE TABLE IF NOT EXISTS `product_subcategory` (
+  `subcategory_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  PRIMARY KEY (`subcategory_id`,`product_id`),
+  KEY `IDX_A1F33A575DC6FE57` (`subcategory_id`),
+  KEY `IDX_A1F33A574584665A` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `product_subcategory`
+--
+
+INSERT INTO `product_subcategory` (`subcategory_id`, `product_id`) VALUES
+(164, 64),
+(166, 64),
+(169, 64),
+(173, 64),
+(174, 64),
+(176, 64),
+(177, 64),
+(205, 64),
+(422, 53),
+(422, 54),
+(454, 62),
+(607, 53),
+(648, 62);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `report`
+--
+
+DROP TABLE IF EXISTS `report`;
+CREATE TABLE IF NOT EXISTS `report` (
+  `id` int NOT NULL,
+  `owner` int NOT NULL,
+  `creator` int NOT NULL,
+  `reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `reasondetails` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `urgent` tinyint(1) NOT NULL,
+  `decision` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_C42F7784CF60E67C` (`owner`),
+  KEY `IDX_C42F7784BC06EA63` (`creator`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `review`
+--
+
+DROP TABLE IF EXISTS `review`;
+CREATE TABLE IF NOT EXISTS `review` (
+  `id` int NOT NULL,
+  `owner` int NOT NULL,
+  `creator` int NOT NULL,
+  `value` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_794381C6CF60E67C` (`owner`),
+  KEY `IDX_794381C6BC06EA63` (`creator`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `service`
+--
+
+DROP TABLE IF EXISTS `service`;
+CREATE TABLE IF NOT EXISTS `service` (
+  `id` int NOT NULL,
+  `serviceduration` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `serviceoffercategories`
+--
+
+DROP TABLE IF EXISTS `serviceoffercategories`;
+CREATE TABLE IF NOT EXISTS `serviceoffercategories` (
+  `id` int NOT NULL,
+  `company` int DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BB59A884FBF094F` (`company`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `serviceofferuser`
+--
+
+DROP TABLE IF EXISTS `serviceofferuser`;
+CREATE TABLE IF NOT EXISTS `serviceofferuser` (
+  `id` int NOT NULL,
+  `service` int DEFAULT NULL,
+  `user` int DEFAULT NULL,
+  `company` int DEFAULT NULL,
+  `field` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3B7BB076E19D9AD2` (`service`),
+  KEY `IDX_3B7BB0768D93D649` (`user`),
+  KEY `IDX_3B7BB0764FBF094F` (`company`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE IF NOT EXISTS `services` (
+  `id` int NOT NULL,
+  `company` int DEFAULT NULL,
+  `categorie` int DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `field` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_7332E1694FBF094F` (`company`),
+  KEY `IDX_7332E169497DD634` (`categorie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `subcategory`
+--
+
+DROP TABLE IF EXISTS `subcategory`;
+CREATE TABLE IF NOT EXISTS `subcategory` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `subcategory`
+--
+
+INSERT INTO `subcategory` (`id`, `name`, `description`, `slug`, `image`) VALUES
+(1, 'Assurance', 'assurance', 'assurance', ''),
+(2, 'Banque', 'banque', 'banque', ''),
+(3, 'Business', 'business', 'business', ''),
+(4, 'Finance solidaire', 'Finance solidaire', 'finance-solidaire', ''),
+(5, 'Organisme de micro crédit', 'Organisme de micro crédit', 'organisme-de-micro-credit', ''),
+(6, 'Prix concours', 'Prix concours', 'prix-concours', ''),
+(7, 'Programmes de financement', 'Programmes de financement', 'programmes-de-financement', ''),
+(8, 'Programmes internationaux', 'Programmes internationaux', 'programmes-internationaux', ''),
+(9, 'Fond d’investissement', 'Fond d’investissement', 'fond-d-investissement', ''),
+(164, 'Apiculture', NULL, 'apiculture', '7e64759d3f9af99d325cbde5c72e0168.svg'),
+(165, 'Boulangerie & Pâtisserie', NULL, 'boulangerie_patisserie', '5eca33f38c1748bbed1825dceb393105.svg'),
+(166, 'Central d\'achat grossiste', NULL, 'central_dachat_grossiste', '9c7acc27c9af047134508fc6ee408c39.svg'),
+(167, 'Commerce alimentaire détaillant', NULL, 'commerce_alimentaire_detaillant', '0ac34a07ad042d1b4cd7cbfec54d747d.svg'),
+(168, 'Commerce & Vente', NULL, 'commerce_et_vente', 'a87d8b01a88bd206d3c344cc33abb69a.svg'),
+(169, 'Culture céréales & fruits', NULL, 'culture_cereales_fruits', 'c5a39d7035429261659fdc190a88c240.svg'),
+(170, 'Diététique', NULL, 'dietetique', 'e430a94057507050c09ed141ed0fd377.svg'),
+(171, 'Fabrication d\'aliments homogénéisés & diététique', NULL, 'fabrication_daliments_homogeneise_et_dietetique', '9e48548c980436856fbe20d48ee4008d.svg'),
+(172, 'Fabrication de bières', NULL, 'fabrication_de_bieres', '889e5f786ec230262e151b9d0bb29c7a.svg'),
+(173, 'Fabrication de boissons', NULL, 'fabrication_de_boissons', '04ccd7c297f522fb8e5a1ce22e1b9fb7.svg'),
+(174, 'Fabrication de boissons alcoolisées', NULL, 'fabrication_de_boissons_alcoolisees', 'f86d940e305042509140b3b628d74cb5.svg'),
+(175, 'Fabrication de condiments & assaisonnements', NULL, 'fabrication_de_condiments_et_assaisonnements', 'aa8aab9737143b490717fb8066523901.svg'),
+(176, 'Fabrication de glaces & sorbets', NULL, 'fabrication_de_glaces_et_sorbets', '588409b3c33112c855a33ac9c0af16aa.svg'),
+(177, 'Fabrication de pains & pâtisseries', NULL, 'fabrication_de_pains_et_patisseries', '0a0bc8dfbf03221287b72b0282808356.svg'),
+(178, 'Fabrication de plats préparés', NULL, 'fabrication_de_plats_prepares', '332de8f4389ce89386cfb5217337e1b3.svg'),
+(179, 'Fabrication de produits laitiers', NULL, 'fabrication_de_produit_laitier', '237875bafc736bc0d7ef6aef24fb738c.svg'),
+(180, 'Fabrication d\'huiles & graisses', NULL, 'fabrication_dhuiles_et_graisses', '0bb33a35c5e6b0eb1efb8793fb10f2c1.svg'),
+(181, 'Fast food', NULL, 'fast_food', '3eb20f22c8de0ca9f51891f4946172fb.svg'),
+(182, 'Fast food Livraison à domicile', NULL, 'fast_food_livraison_a_domicile', 'af28e39e8454b653e4514d64541a6cae.svg'),
+(183, 'Horticulture', NULL, 'horticulture', '98f78affd9f44439fedfba0c4609867a.svg'),
+(184, 'Industrie alimentaire', NULL, 'industrie_alimentaire', '5f26b34e0ad93e33d78e145cc87d99d6.svg'),
+(185, 'Industrie des eaux minérales & autres eaux', NULL, 'industrie_des_eaux_minerales_et_autres_eaux', '0b154afd9f7c5182ed95a756f233fa26.svg'),
+(186, 'Livraison à domicile', NULL, 'livraison_domicile', 'dc9ea06a913685c59c9b56480b36c468.svg'),
+(187, 'Magasin de vin & alcool & bière', NULL, 'magasin_de_vin_alcool_biere', '671a09ba0ff96a3eb3b86cb84c609b15.svg'),
+(188, 'Nutrition', NULL, 'nutrition', '7a1630e55e39720fc77cb25fd64eb023.svg'),
+(189, 'Pêche & pisciculture', NULL, 'peche_et_pisciculture', 'a3b76ccb742f465f31abe26e23d9f3e1.svg'),
+(190, 'Production animale', NULL, 'production-animale', '9f980354643387a7e8e38c4b2cdea1fe.svg'),
+(191, 'Restaurants', NULL, 'restaurants', '7807f73462cad21ebb46d3da69fdb8d3.svg'),
+(192, 'Traiteur', NULL, 'traiteur', 'bdeb8b04733070a2000c7f5657253f6d.svg'),
+(193, 'Transformation de sucre & cacao & thé & café', NULL, 'transformation_de_sucre_et_cacao_et_the_et_cafe', '552ddded134be892ba016b00b2f2bf1c.svg'),
+(194, 'Transformation & conservation de fruits & légumes', NULL, 'transformation_et_conservation_de_fruit_et_legume', '16b29401db337281c408f5de57c3b584.svg'),
+(195, 'Transformation & conservation de poisson', NULL, 'transformation_et_conservation_de_poisson', '095389397cf441720e08f896e3351a53.svg'),
+(196, 'Viticulture', NULL, 'viticulture', '91d290214d71fda4b36a7fa7fe7c08bb.svg'),
+(197, 'Ferme', NULL, 'ferme', 'fac4915703494fcb2ba94c5168fb0127.svg'),
+(199, 'Activité photographique', NULL, 'activite-photographique', '729a6e9af5f15c2166c2704cb8111a94.svg'),
+(200, 'Architecte d\'intérieur', NULL, 'architecte-dinterieur', 'b4aad5050784febdfb0da30c7c17264a.svg'),
+(201, 'Art visuel', NULL, 'art-visuel', 'db74a3cc291b4742f4f4be138b4733bb.svg'),
+(202, 'Commerce d\'objets d\'art', NULL, 'commerce-dobjets-dart', 'acebaf3d0d6dfdf2657da560e5e0a7ef.svg'),
+(203, 'Design de produit et d\'objet', NULL, 'design-de-produit-et-dobjet', 'fd539d95ec36272b63d91a29ecf89693.svg'),
+(204, 'Design graphique et communication', NULL, 'design-graphique-et-communication', 'ce73ed95c6b2946d1c310cdc5b96ccc3.svg'),
+(205, 'Design industriel de produit', NULL, 'design-industriel-de-produit', '120207268dd432e8ce12e49418afd23c.svg'),
+(206, 'Eco conception', NULL, 'eco-conception', '39a9478bf8af1c78b3412260cd6fbc9c.svg'),
+(207, 'Ecodesign mode ethique', NULL, 'ecodesign-mode-ethique', 'f1814c17fb660f569358cc383ec1c2ae.svg'),
+(208, 'Eco quartier', NULL, 'eco-quartier', '33611f5f5151cab5b8b6ac7fe15c693b.svg'),
+(209, 'Label', NULL, 'label', '2c017a8b332dfc35323a578cbf6c3aeb.svg'),
+(210, 'Mobilier', NULL, 'mobilier', '22137695f43428ccd62c157b81d74d03.svg'),
+(211, 'Packaging', NULL, 'packaging', 'e7f94bf2823b511812c390e980e24372.svg'),
+(212, 'Upcycling', NULL, 'upcycling', 'fc28b6d3cbe794307c3e86deec1e1519.svg'),
+(262, 'Agence de voyage', NULL, 'agence_de_voyage', '083b9e156dec075f78bbefba10184947.svg'),
+(281, 'Chenils - SPA', NULL, 'chenils-spa', 'b197a4fa0c851da7f093c97e0f40bbf0.svg'),
+(282, 'Dressage - Manège', NULL, 'dressage-manege', '9c132513924b0bf3320a5343aa59d529.svg'),
+(289, 'banana', NULL, 'banana', '/home/clients/6951db3e6d1a0c0cee441c0fdc7a56ef/web/SymfonyRepertoireVert/web/css/img/category/subcategory/3a3fb2ebacb05d2974a5ff81498646dd.svg'),
+(335, 'Test', NULL, 'test', '32bbea86d5342a211d314666dc613b0f.svg'),
+(338, 'Bain & Spa', NULL, 'bain-spa', 'bd1d81ef78b1600db7437ff3f810bdc7.svg'),
+(339, 'Boutique spécialisée', NULL, 'boutique-specialisee', 'e36d990c52f8f3098a51ceb3e78a2623.svg'),
+(340, 'Consultant en cosmétique', NULL, 'consultant-en-cosmetique', 'ac956eddb2ba9bb548a892269f90bcd8.svg'),
+(341, 'Do it yourself home made', NULL, 'do-it-yourself-home-made', '1bb52b7548764d33423a8b3a2be90b68.svg'),
+(342, 'Institut de beauté', NULL, 'institut-de-beaute', '91cb59ede728fb99e9d95060bad9ae66.svg'),
+(343, 'Massage', NULL, 'massage', '9e456613ef0000cdd583e4fa511aa7eb.svg'),
+(352, 'Accessoires de bureau', NULL, 'accessoires-de-bureau', 'caa84689d3f4f877aeb862790f567292.svg'),
+(353, 'Fabrication machine', NULL, 'fabrication-machine', '597af40f3f2dabba151d2851decc3e63.svg'),
+(354, 'Fabrication meuble', NULL, 'fabrication-meuble', '52ecffb567ae0990f31ebdca29902f3c.svg'),
+(355, 'Matériel électronique', NULL, 'materiel-electronique', 'e79aa605ae4272bf351144099f067f77.svg'),
+(356, 'Mobilier', NULL, 'mobilier', '630b1ff4d5dfb2230aefc636f2002136.svg'),
+(357, 'Nettoyage entretien', NULL, 'nettoyage-entretien', 'b68f1458c44c741da98c936428a9a90a.svg'),
+(358, 'Papeterie', NULL, 'papeterie', '717a7c77fcea2659ce0d121a93395d4b.svg'),
+(362, 'TEST 1', NULL, 'test-1', 'a4c4b09e8354eef6b1b83d38f775da97.svg'),
+(370, 'Compagnie aérienne', NULL, 'compagnie-aerienne', 'f09009dda5ec1ab25eedc8d03b6709bd.svg'),
+(371, 'Conseil Eco-mobilité', NULL, 'conseil-eco-mobilite', '5e33b6c8b68a08955ba2d16a3190fe70.svg'),
+(372, 'Covoiturage', NULL, 'covoiturage', 'ab7b131cfe80de3dba9ae9edf23f5e33.svg'),
+(373, 'Eco-Tourisme durable', NULL, 'eco-tourisme-durable', '8385f7335713b5243a20375c59050407.svg'),
+(374, 'Mobilité douce', NULL, 'mobilite-douce', '011b0b9a7478977e8094d82890abd6bc.svg'),
+(375, 'Transport de courrier coursier', NULL, 'transport-de-courrier-coursier', '8d837f5249038ee243b8d9b81c549189.svg'),
+(376, 'Transport marchandise', NULL, 'transport-marchandise', 'ef2d228f712f35d07f1aaaf9692ca66e.svg'),
+(377, 'Transport en commun', NULL, 'transport-en-commun', '5eeabac6be5a362d7312e09625b93891.svg'),
+(378, 'Transport maritime', NULL, 'transport-maritime', '5e40f12ccf779859f7f15a0ed1da35b9.svg'),
+(379, 'Transport voyage taxi', NULL, 'transport-voyage-taxi', '8b9e9ee3e15bbeb6c5111b3c9b45c00c.svg'),
+(380, 'Velo électrique', NULL, 'velo-electrique', '782ac50dcc531f19c723cc1adb0eb5e9.svg'),
+(381, 'Voiture électrique', NULL, 'voiture-electrique', 'cbefac188902be08004a15d3361cf1e3.svg'),
+(382, 'Voiture partagée', NULL, 'voiture-partagee', '0630dcd96c02c9aaf93e8050d8112321.svg'),
+(383, 'Agenda 21', NULL, 'agenda-21', 'f5e373450586d5fad09d6f6867df8323.svg'),
+(384, 'Architecture', NULL, 'architecture', '04b6efea1f1f778d5201674ebb6bd308.svg'),
+(385, 'Autres études et conseils techniques', NULL, 'autres-etudes-et-conseils-techniques', '292f3c09e4d3145d6f38eceb109e7d91.xml'),
+(386, 'Bureaux d\'études', NULL, 'bureaux-d-etudes', 'a5293679ae199e2b57d0fe8458758d93.svg'),
+(387, 'Certifications et normes', NULL, 'certifications-et-normes', '96bbedff8ce4fcdefcddb23ff37bf559.svg'),
+(388, 'Coaching individus familles', NULL, 'coaching-individus-familles', 'a2c3d824ac03ffc7baba59d1ee874f84.svg'),
+(389, 'Compensation carbone', NULL, 'compensation-carbone', '926b35148cdae77a6ee51980d2ea7ca8.svg'),
+(390, 'Conseil en bien être agencement', NULL, 'conseil-en-bien-etre-agencement', 'd973419054b6ec18aa21220380710459.svg'),
+(391, 'Consultant en environnement', NULL, 'consultant-en-environnement', '3a4bbed6892b1b7866e34ed6858b7421.svg'),
+(392, 'Droit de l\'urbanisme', NULL, 'droit-de-l-urbanisme', '44233d35c7ba9797ea1c0d5876927e06.svg'),
+(393, 'Droit environnemental', NULL, 'droit-environnemental', 'afe08cbb734762799b1cf044ce1f3a53.svg'),
+(394, 'Droit social', NULL, 'droit-social', 'c9bca726ebe8b3c8d8ab2ae8d4394531.svg'),
+(395, 'Développement urbain', NULL, 'developpement-urbain', 'aa40d976cfd34a9b4304986c03c4d1b0.svg'),
+(396, 'Eco conception analyse du cycle de vie', NULL, 'eco-conception-analyse-du-cycle-de-vie', '5869fbfbd5a04491270777cb13b9cd43.svg'),
+(397, 'Ecologie industrielle', NULL, 'ecologie-industrielle', '744a6f2efbe083a53ea8b2c385e9e5e6.svg'),
+(398, 'Economie verte', NULL, 'economie-verte', '5bd79847ea4158e3b7a2bea5ef6b54ea.svg'),
+(399, 'Etudes impacts', NULL, 'etudes-impacts', '9f484e8a9d971d7e84238cc1b9bcf0c5.svg'),
+(400, 'Gestion de l\'énergie', NULL, 'gestion-de-l-energie', '2f1a07d8acddb5640c7da5bc83b45519.svg'),
+(401, 'Gestion des déchets', NULL, 'gestion-des-dechets', 'b94b4511a003ace01a9c26bebf798fa0.svg'),
+(402, 'Greentech cleantech', NULL, 'greentech-cleantech', '2c3d7b088ac9b12535f1c74addb47bd1.svg'),
+(404, 'Nettoyage industriel', NULL, 'nettoyage-industriel', 'fb5274b5f28ad886985e191d895ffb62.svg'),
+(405, 'Permaculture agriculture d\'intérieur', NULL, 'permaculture-agriculture-d-interieur', '3f4d43c1f48b18608ff78032f27cd784.svg'),
+(406, 'processus industriel', NULL, 'processus-industriel', 'cdcbb868dd8c82fc19cef0c49e6ba98a.svg'),
+(407, 'Cercle hub', NULL, 'cercle-hub', '2e004aff9fe6176b324a56f489711b4a.svg'),
+(408, 'Communauté de genres', NULL, 'communaute-de-genres', '05c19bc497bb8c828f9514c080a05fc4.svg'),
+(409, 'Echange troc', NULL, 'echange-troc', '4029db837f072a138a33157e92b0dc5e.svg'),
+(410, 'Economie du partage', NULL, 'economie-du-partage', '794b57203cfd932815a306fc2031d31e.svg'),
+(411, 'Entraide solidarité', NULL, 'entraide-solidarite', 'c725543c6f659b97f861441e6f5a30df.png'),
+(412, 'Fatlabs', NULL, 'fatlabs', '75108cd1363b7857030c0bb74ab89839.png'),
+(413, 'Hubs espace partage', NULL, 'hubs-espace-partage', '17b55318d6dcc05cd314d4fcc6bbc342.svg'),
+(415, 'Mouvements sociaux', NULL, 'mouvements-sociaux', '4b112fc6f13a3e6a801ceb0eae6836c2.svg'),
+(416, 'Nouveaux paradigmes', NULL, 'nouveaux-paradigmes', 'a5abc9f6cf221a3a16b65c8a69def824.svg'),
+(417, 'Réparation produits endommagés', NULL, 'reparation-produits-endommages', '4b0a7656ac6403a32f7fd86eb1ca8078.svg'),
+(418, 'Soutien familial', NULL, 'soutien-familial', '7d9f8dc6752b96e2aeb5ad5d4b062b16.svg'),
+(419, 'Soutien minorité', NULL, 'soutien-minorite', 'e409b39c7a7fe08bc0a3112aa744b1f2.svg'),
+(420, 'Recherche', NULL, 'recherche', 'f24e7b55b54c741225cb40278e851167.svg'),
+(421, 'Post-formation', NULL, 'post-formation', 'a6f59cc6489664be8cf863c1e9659720.svg'),
+(422, 'Orientation professionnelle', NULL, 'orientation-professionnelle', 'a8fcf912197017e10b649efa329eefdd.svg'),
+(424, 'Hautes écoles', NULL, 'hautes-ecoles', 'd48dd9ac01a84b54776fad907b23b236.svg'),
+(425, 'Formation professionnelle', NULL, 'formation-professionnelle', '40beed0c9d77be023f67baceb9dce8b1.svg'),
+(426, 'Formation continue', NULL, 'formation-continue', '6f6ca645261d6b2d8c620d475de92598.svg'),
+(427, 'Formation universitaire', NULL, 'formation-universitaire', '8dd5b4887b73bbd97f4dc1387d5f1322.svg'),
+(428, 'Agences de placements - Agences d\'intérim', NULL, 'agences-de-placements-agences-d-interim', '5f6486ba3eddca8c6e33ffd67d96b29b.svg'),
+(429, 'Formation', NULL, 'formation', '4123f129d2b7fcd30401a50bcdd9d857.svg'),
+(431, 'ONG', NULL, 'ong', '5e19f560729c91fad2401fd829edce6c.svg'),
+(432, 'Organisations internationales', NULL, 'organisations-internationales', '003b7f9e5cf51468caaa5d7f12fb5baf.svg'),
+(433, 'Plateformes web', NULL, 'plateformes-web', '318d716fa1e6a1cef86391cb2a073e8f.svg'),
+(435, 'Stage', NULL, 'stage', 'ceaf0dcb971ace6296b730989d605349.svg'),
+(436, 'Eau', NULL, 'eau', '43f3a979f0de07d5c944f1b8a46c8336.svg'),
+(437, 'Aérothermie', NULL, 'aerothermie', '13d4ad40fa59ea22133d7f4a3a5945ec.svg'),
+(438, 'Bureau d\'étude - aménagement du territoire', NULL, 'bureau-d-etude-amenagement-du-territoire', '9c6e00b9872e99d84403dba631d5048e.svg'),
+(439, 'Bureau d\'étude - études d\'impact', NULL, 'bureau-d-etude-etudes-d-impact', 'b61b9812ddd65c87f85114e115f236fa.svg'),
+(440, 'Eolien', NULL, 'eolien', '04480ece4b0fda49fd8d9b2e2e547bfc.svg'),
+(441, 'Géothermie', NULL, 'geothermie', '8ab35b07e36494dae567c8efce04f1db.svg'),
+(442, 'Gestion de chantier', NULL, 'gestion-de-chantier', 'acadc74c2f5dfb46fd8fedbc1d8bde8c.svg'),
+(443, 'Gestion de la biodiversité', NULL, 'gestion-de-la-biodiversite', 'f79e0537690c5e08f70b29b4ab1b0dfe.svg'),
+(444, 'Gestion de la fabrication distribution assainissement des eaux', NULL, 'gestion-de-la-fabrication-distribution-assainissement-des-eaux', 'dc847fc324a6bab40c68611ad91c4984.svg'),
+(445, 'Gestion de la pollution de l\'air', NULL, 'gestion-de-la-pollution-de-l-air', '0170bd86883d77a6ffb211316347fe94.svg'),
+(448, 'Gestion des espaces naturels et forêts', NULL, 'gestion-des-espaces-naturels-et-forets', '2b4779ba17a5ebf05f21b5a11d74dcdf.svg'),
+(449, 'Gestion des nuisances sonores', NULL, 'gestion-des-nuisances-sonores', '76220364525c2c7e19f953d9f0677469.svg'),
+(450, 'Gestion des risques environnementaux', NULL, 'gestion-des-risques-environnementaux', '59f1ce48aa6711349e465296a182f27c.svg'),
+(451, 'Gestion des sols pollués', NULL, 'gestion-des-sols-pollues', '30ef3bbeef444a847040ee8e2ada6a62.svg'),
+(452, 'Green tech - Clean tech', NULL, 'green-tech-clean-tech', '39266ab21f088ccb6d30ffed16c5f272.svg'),
+(453, 'Hydroélectricité', NULL, 'hydroelectricite', '2de4ef480358437209b31713f478a087.svg'),
+(454, 'Jardinage et agriculture', NULL, 'jardinage-et-agriculture', 'e2f7e7ef6a64af1f20dc395245175c8c.svg'),
+(456, 'Solaire thermique', NULL, 'solaire-thermique', '7bd445e9d4bc58e04a93da0b71f22210.svg'),
+(457, 'Centre de recyclage et transformation des déchets', NULL, 'centre-de-recyclage-et-transformation-des-dechets', '0a0151f992538c6b2c200c9aece5a9df.svg'),
+(458, 'Bureau d\'étude de gestion des déchets', NULL, 'bureau-d-etude-de-gestion-des-dechets', 'cc231d8648ab56013071afa5bcc1a975.svg'),
+(459, 'Transformation des déchets', NULL, 'transformation-des-dechets', 'e7106fc0e610999a2a271cd5a5b1887e.pdf'),
+(460, 'Dépollution', NULL, 'depollution', 'f59820ee2c055ac98cd42564a56bb2b0.pdf'),
+(461, 'Organismes communaux - cantonnaux', NULL, 'organisme-communaux-cantonnaux', 'b88ea9059f096de8bfdfb6f83a66767d.svg'),
+(463, 'Déchetterie encombrants électroniques et électroménagers', NULL, 'dechetterie-encombrants-electroniques-et-electromenagers', 'c4c33ada393c1e69a1101dad60ba4b8d.svg'),
+(464, 'Centre de tri des déchets non dangereux', NULL, 'centre-de-tri-des-dechets-non-dangereux', '48426b68b912b011e7efcd93aa49b596.svg'),
+(465, 'Centre de tri et de traitement des déchets dangereux', NULL, 'centre-de-tri-et-de-traitement-des-dechets-dangereux', 'c7496b5a8cc133f2095828efe29be2e6.svg'),
+(466, 'Centre de compostage et de traitement des déchets organiques', NULL, 'centre-de-compostage-et-de-traitement-des-dechets-organiques', '497ad007bdd191b7293cb2ba0528460b.svg'),
+(467, 'Centre de réutilisation et de réparation des déchets', NULL, 'centre-de-reutilisation-et-de-reparation-des-dechets', '544aece04146a4d71b9d847d4ceb2394.svg'),
+(468, 'Centre de valorisation des déchets - upcycling', NULL, 'centre-de-valorisation-des-dechets-upcycling', '6e0b895e4945a2939fad73b58a4fb178.svg'),
+(469, 'Commerce de déchets et débris', NULL, 'commerce-de-dechets-et-debris', 'ab1e06b0104f855857a7f25735c4c518.svg'),
+(470, 'Décharge et centre d\'enfouissement', NULL, 'decharge-et-centre-d-enfouissement', 'cc3d013703d6d926509d8c8821777b4e.svg'),
+(471, 'Centre d\'incinération des déchets', NULL, 'centre-d-incineration-des-dechets', '253958e0418290e0f4c3b5216c96dd8a.svg'),
+(472, 'Vernis peinture colle', NULL, 'vernis-peinture-colle', 'ee779f7cd2e5b4a54f5e0b9917ca6d44.svg'),
+(473, 'Ventilation climatisation', NULL, 'ventilation-climatisation', '78aa37e9da5de8ac2d6cbd97ee6c0ec6.svg'),
+(474, 'Toiture', NULL, 'toiture', '201570c34cafecdeccdea644862899c3.svg'),
+(475, 'Sols', NULL, 'sols', '9f28d1ae2197d29e0c4951db58a0b926.svg'),
+(476, 'Récupération des eaux de pluie', NULL, 'recuperation-des-eaux-de-pluie', '2034a4474b235e048b53f3babf7d9c80.svg'),
+(477, 'Paysagistes', NULL, 'paysagistes', '5770631b1ab78dac77ee3e9a0aa4ecd1.svg'),
+(478, 'Outils pour particuliers et entreprises', NULL, 'outils-pour-particuliers-et-entreprises', 'e3ce983ca783114bebc8bbf295af0897.svg'),
+(479, 'Matériaux écologiques', NULL, 'materiaux-ecologiques', '8b3d44a0b748761eb7cf5add4c43826f.svg'),
+(480, 'Maisons passives', NULL, 'maisons-passives', 'be96aaf2fefd3335ed4f64676be108ec.svg'),
+(481, 'Maisons écologiques', NULL, 'maisons-ecologiques', 'be44afae9a02771438d535eba549f9cf.svg'),
+(483, 'Isolation', NULL, 'isolation', 'edc636d625322fc9b9de564c0afbdeb1.svg'),
+(484, 'Gestion de l\'énergie pour l\'habitat', NULL, 'gestion-de-l-energie-pour-l-habitat', '4502b38916c3b751b2e4d2a64d6b16c6.svg'),
+(485, 'Gestion de l\'eau', NULL, 'gestion-de-l-eau', '88060bc3226f87ab887beec32c24bffa.svg'),
+(486, 'Façade', NULL, 'facade', 'd0bfe3fe190f7a9c70515f435880525f.svg'),
+(487, 'Eclairage', NULL, 'eclairage', 'b04045ca53d422d2b9161cdb8359350c.svg'),
+(488, 'Autres technologies', NULL, 'autres-technologies', '1688ecb9391b17586751d45cdd614591.svg'),
+(490, 'Vitrages', NULL, 'vitrages', 'b204895e7380187c1cdd7c6ec2c75226.svg'),
+(491, 'Domotique', NULL, 'domotique', '6299345a59b005d35b6d860c924cba84.svg'),
+(492, 'Chauffage thermique solaire', NULL, 'chauffage-thermique-solaire', '9cbcf543c0fcdf9f7b0c0bb195d8898c.svg'),
+(504, 'Design durable', NULL, 'design-durable', '809818d9b2b0d4b8fb725e86febfdf43.svg'),
+(505, 'Nano technologie', NULL, 'nano-technologie', '243367e08164db064724625660e3a793.svg'),
+(507, 'Industrie verte', NULL, 'industrie-verte', 'a24530a878b9bbb6c27d49b9177df17e.svg'),
+(508, 'Technologie innovante dépollution', NULL, 'technologie-innovante-depollution', '352bd95ab9306ad828e5ee5f8fd094e2.svg'),
+(509, 'Technologie innovante de l\'énergie', NULL, 'technologie-innovante-de-l-energie', '0cb8ed7b179ec50656fe44259f6067c0.svg'),
+(510, 'Bio carburant', NULL, 'bio-carburant', '3b275dcb9554543b2a436b5cf98dc582.svg'),
+(511, 'Matériaux innovants', NULL, 'materiaux-innovants', 'a0bccebe0331795b4a4f3f653e7bb94b.svg'),
+(512, 'Technologie de stockage', NULL, 'technologie-de-stockage', 'cc6b97102869c934be4a09943494d292.pdf'),
+(513, 'Solaire', NULL, 'solaire', 'b1b2b40d1aa4e24416b5ef3e76311b65.pdf'),
+(514, 'Eolienne', NULL, 'eolienne', '73460f567de8df54fda36f56d4a6c9ae.pdf'),
+(516, 'Efficience énergétique', NULL, 'efficience-energetique', '460b1bdeba376a51f5ca4349fbd73b63.pdf'),
+(519, 'Energies renouvelables', NULL, 'energies-renouvelables', 'fb3d3a858992df180fbe1b77eecf05da.svg'),
+(520, 'Technologie verte', NULL, 'technologie-verte', 'f5836ba50248897c3afb1325638cb937.svg'),
+(521, 'Smart grids', NULL, 'smart-grids', '5de35ebb73fe8edff3e45cb0c06c9fa7.svg'),
+(522, 'Chimie verte', NULL, 'chimie-verte', '24601f736e548b4e935b9fa9282d63b5.svg'),
+(523, 'Eco mobilité', NULL, 'eco-mobilite', '1e68fc974df39c61ff82433c7cd1e06c.svg'),
+(524, 'Toiture - murs végétaux', NULL, 'toiture-murs-vegetaux', '0f23a20b46088e89b0e67cf4031b95f3.svg'),
+(525, 'Réserves naturelles', NULL, 'reserves-naturelles', 'eed9f648ec2e35c8e6ab359e83d164f4.svg'),
+(526, 'Permaculture', NULL, 'permaculture', 'cf40e2e850917c7eee6ed86065eb0c71.svg'),
+(527, 'Magasins de plantes', NULL, 'magasins-de-plantes', '6036e1db259a2b0cfb69f912b1db0d37.svg'),
+(529, 'Jardin botanique', NULL, 'jardin-botanique', '6ec82aee6b5effee59edbd62550278bc.svg'),
+(532, 'Agriculture d\'intérieur', NULL, 'agriculture-d-interieur', '583f28fb6d5b30ddb034f3e46f04086d.svg'),
+(533, 'Culture et entretien des plantes', NULL, 'culture-et-entretien-des-plantes', '1ef9c11c41933e2fa0204159e2308df6.xml'),
+(534, 'Transport et tourisme', NULL, 'transport-et-tourisme', '0f1f1f94666fd8b20f03fe5f689058a1.svg'),
+(535, 'Soins et beauté du corps', NULL, 'soins-et-beaute-du-corps', 'd656c513472ffaa6adbbafebdee66db5.svg'),
+(536, 'Santé et bien-être', NULL, 'sante-et-bien-etre', 'e8eb8776d88dc395c96050b1464ef081.svg'),
+(537, 'Produits ménagers', NULL, 'produits-menagers', '293d4e8fe61988c72ef8f0d2175aa57e.svg'),
+(538, 'ONG et associations', NULL, 'ong-et-associations', 'ebd2a53e1c4764307fa8e9f550064788.svg'),
+(539, 'Mode et textile', NULL, 'mode-et-textile', '463bd3001f809180ed5026cf250c08ee.svg'),
+(540, 'Média et communication', NULL, 'media-et-communication', '1756599fb2d6d484ca815a8fbbda8f18.svg'),
+(541, 'Maison', NULL, 'maison', '3433879c4094085e9f000428350a005e.svg'),
+(542, 'Loisirs et jeux', NULL, 'loisirs-et-jeux', '887862cddb35c98a817786361e1634ee.svg'),
+(544, 'Jardinage et agriculture', NULL, 'jardinage-et-agriculture', '0ef9e2d2042a66f6f20d275fd661d1f2.svg'),
+(545, 'Green tech - cleantech', NULL, 'green-tech-cleantech', '82f7d2498e4b05b509af4f80659c564f.svg'),
+(546, 'Green Finance', NULL, 'green-finance', 'e8a2d11248b3d14824fede1cf04de826.svg'),
+(547, 'Green building', NULL, 'green-building', 'e20ee85616c83e26fb656cec2394d88f.svg'),
+(550, 'Environnement', NULL, 'environnement', '686665ad84631b60baa3393d6f0e0261.svg'),
+(551, 'Emploi vert', NULL, 'emploi-vert', '786a850aa3f4bab3aea78891674ef027.svg'),
+(552, 'Consultants', NULL, 'consultants', '7bffab675213b424193d7f7cdc0540fd.svg'),
+(553, 'Compensation carbone', NULL, 'compensation-carbone', '5223f0bf0de23e118eb2e607f7384a7e.svg'),
+(554, 'Communauté', NULL, 'communaute', '3dda437db9062effad9d02db038a9938.svg'),
+(555, 'Bureautique', NULL, 'bureautique', 'e78dd62b60d690f3375abfe1c7bb5529.svg'),
+(556, 'Artisanat', NULL, 'artisanat', 'd359fcf6edcabd8ae206f71fe9b5302d.svg'),
+(557, 'Art et design', NULL, 'art-et-design', 'a5ce2d4a3bd124f2e37719a878ba9bd3.svg'),
+(558, 'Soins et santé pour animaux', NULL, 'soins-et-sante-pour-animaux', 'f946d1a99ec6fd88f3e924cd3b3bf380.svg'),
+(559, 'Alimentation et boisson', NULL, 'alimentation-et-boisson', '510c138ce4f5f5720df41bda942dbd99.svg'),
+(560, 'Administration', NULL, 'administration', 'bd71be4e5f298b539bf09ec9fa54aafc.svg'),
+(561, 'Constructions et commerce d\'aires de jeux', NULL, 'constructions-et-commerce-d-aires-de-jeux', 'b89643fdde1124a3598b74d847fb92fb.svg'),
+(562, 'Crèches', NULL, 'creches', '930e996cbddbaf377bd68eeff5577695.svg'),
+(564, 'Ludothèque', NULL, 'ludotheque', '5831bedd67fac919e051697da30debb2.svg'),
+(565, 'Fabrication de jeux et jouets', NULL, 'fabrication-de-jeux-et-jouets', '6eb010e3b622abf2423085c5eeae279c.svg'),
+(566, 'Activités loisirs', NULL, 'activites-loisirs', '5508605be6db2b35d78b07610623fe40.svg'),
+(567, 'Commerce de jeux et jouets', NULL, 'commerce-de-jeux-et-jouets', '5706d8b65ba37f2a3c6a77cfd744e5b0.svg'),
+(568, 'Vente en ligne', NULL, 'vente-en-ligne', 'dc455c351ed8745c500dc7cca2f9b98f.xml'),
+(571, 'Peinture-vernis-colle', NULL, 'peinture-vernis-colle', '74159f3fb9e071eae7a262bfe0819615.xml'),
+(572, 'Ventilation et climatisation', NULL, 'ventilation-et-climatisation', '9c640b86a811121780c803ce93ded510.svg'),
+(574, 'Plantes - jardin - potager', NULL, 'plantes-jardin-potager', 'c7c0a2d58b037e324752dae0505ec91c.svg'),
+(577, 'Isolation d\'appoint', NULL, 'isolation-d-appoint', '6ead2a8beef2c999a390eae59c931a94.svg'),
+(578, 'Magasin de décoration d\'intérieur', NULL, 'magasin-de-decoration-d-interieur', '33ddea50eef9cafb361ea3ad590bed5d.svg'),
+(579, 'Mobilier de maison', NULL, 'mobilier-de-maison', 'ef5419e36d475bced14734461a967943.svg'),
+(580, 'Domotique', NULL, 'domotique', 'b9f5caa3d616f8ca40025fe2346a5f4b.svg'),
+(582, 'Electroménager', NULL, 'electromenager', 'dacb82a2fbda27aa6be5607d72798dd6.svg'),
+(583, 'Web et réseaux sociaux', NULL, 'web-et-reseaux-sociaux', '003b05d6a856d1a14ffd388519adaecf.svg'),
+(584, 'Radio - TV', NULL, 'radio-tv', '2fc555b393aeddf113e683bc080a6dc1.svg'),
+(586, 'Agence de communication', NULL, 'agence-de-communication', '34d29e8ab800547e29e3b0ca69f70c1a.svg'),
+(587, 'Presse écrite', NULL, 'presse-ecrite', 'a0bdb00372b928314fd17acb991da1c8.svg'),
+(588, 'Hébergements - serveurs informatiques', NULL, 'hebergements-serveurs-informatiques', '07829159652bf790389ef5f3263b83a6.svg'),
+(589, 'Imprimerie', NULL, 'imprimerie', 'e7fb5ab2d36eccbdeeb3b25f23e46368.svg'),
+(591, 'Designers', NULL, 'designers', 'dd96d5ddfbd3fe18c4dc76b6c44f4a22.svg'),
+(592, 'Vêtements et accessoires féminins', NULL, 'vetements-et-accessoires-feminins', 'a08b9c24ed6aa8aedd7d065b40ab9576.svg'),
+(593, 'Vêtements et accessoires enfants', NULL, 'vetements-et-accessoires-enfants', 'fa4ca1e9adaaa2c4075e0898f1f2db8c.svg'),
+(594, 'Slow fashion', NULL, 'slow-fashion', '0c1a3b1732fcf3b490e53d7c0cdc19b1.svg'),
+(595, 'Mercerie', NULL, 'mercerie', 'a70a03a824f3675c837cc5904128e272.svg'),
+(597, 'Couture', NULL, 'couture', 'ec5c1552cf87df21977243dfaa3d4dfe.svg'),
+(598, 'Vêtements et accessoires homme', NULL, 'vetements-et-accessoires-homme', 'caa38ad825cee6eb3cebeb95ea419f46.svg'),
+(599, 'Textile et autres', NULL, 'textile-et-autres', 'fa66e8e2d2ef60f953ea01bf48c95450.svg'),
+(600, 'Chaussures', NULL, 'chaussures', '6dcf91bd873569f2b2a472b05a6df271.svg'),
+(601, 'Vêtements de sport', NULL, 'vetements-de-sport', '2ba4edd3333affabaaff7e3daff6222e.svg'),
+(602, 'Droit de l\'homme', NULL, 'droit-de-l-homme', '6311404aadc95d9dd84b1b971147119e.svg'),
+(604, 'Paix et désarmement', NULL, 'paix-et-desarmement', '1ce6e2dd27e95e73e55fc1481fbea02b.svg'),
+(605, 'Biodiversité', NULL, 'biodiversite', 'ad577c21542775a2c2646c49ce698c9a.svg'),
+(607, 'Education', NULL, 'education', '8dfc38b249e6b140a9ed0447713bb7d3.svg'),
+(608, 'Enfants - Jeunes', NULL, 'enfants-jeunes', 'a75b17a77a768480b807587e75a1995b.svg'),
+(609, 'Réfugiés', NULL, 'refugies', '8b31bf2747f0eaec715438c5038ebcec.svg'),
+(610, 'Santé', NULL, 'sante', 'bccbc17553433b43f4a16354bc8e5a66.svg'),
+(612, 'Pauvreté famine', NULL, 'pauvrete-famine', '0903a318c567f7b4e867c66e97dbfe92.svg'),
+(613, 'Recherche et développement', NULL, 'recherche-et-developpement', '38db946db86cc8add95cc67b903b2b1a.svg'),
+(614, 'Micro finance', NULL, 'micro-finance', 'd5ea9dac57b45f92f0f955d75229fa87.svg'),
+(615, 'Genre homme-femme', NULL, 'genre-homme-femme', '0998c77e53701e2ecbc2b224dd102072.svg'),
+(616, 'Economie verte - économie circulaire', NULL, 'economie-verte-economie-circulaire', '18394cdfbf255e4760cf7914bc48076e.svg'),
+(617, 'Catastrophe naturelle', NULL, 'catastrophe-naturelle', '97d316629447f2173ac37e89dc9652f6.svg'),
+(618, 'Commerce équitable', NULL, 'commerce-equitable', 'cd7ee1992fce57e5c01d3452757a9fa2.svg'),
+(619, 'Agriculture - nourriture', NULL, 'agriculture-nourriture', 'a02ac397fdc553fd3388f4aa14bf8663.svg'),
+(620, 'Agenda21', NULL, 'agenda21', '14a7709074e27f0256d8d0983c4412f8.pdf'),
+(621, 'Protection biodiversité', NULL, 'protection-biodiversite', 'b901538ca5924b32a0f6029ce7b1cf8d.svg'),
+(622, 'Energie', NULL, 'energie', '1649362ef3db504a196051d8436c9c8d.svg'),
+(623, 'Entreprenariat', NULL, 'entreprenariat', '622902ec3e5066839cb30982f90e2ed2.svg'),
+(624, 'Entraide et partenariat', NULL, 'entraide-et-partenariat', 'e1fa67295fe6ef0526852901d7b015a7.svg'),
+(648, 'Anticalaire - Détergent - Dégraissant', NULL, 'anticalaire-detergent-degraissant', 'fe0634be5ddac16f1306b55cdb266fca.svg'),
+(649, 'Lessive', NULL, 'lessive', '2b604ba5edd06ae0cd751570991cfadb.svg'),
+(650, 'Linge', NULL, 'linge', '5745c14b159bcc70719566f1fde3b78e.svg'),
+(651, 'Odeurs', NULL, 'odeurs', '216ae90aecf23ebb1aa98877230d9bc7.svg'),
+(652, 'Poussière', NULL, 'poussiere', '7fb11cf02de19ca586269f5fd1fe800f.svg'),
+(653, 'Salle de bain', NULL, 'salle-de-bain', '0665ee0ea9432e04bcf74a9a6d5429ca.svg'),
+(655, 'Toilettes', NULL, 'toilettes', '2bb001d1913a1e0fed2bb2ae3044bdb0.svg'),
+(656, 'Vaisselle', NULL, 'vaisselle', '5e6a749e3415bba2b8a9160ffe4d5532.svg'),
+(657, 'Vitres', NULL, 'vitres', '7b37b06cb8bbb73fd8a59fa02db16810.svg'),
+(658, 'Cuisine', NULL, 'cuisine', 'b539facd107470938083c6dd8f5e0296.xml'),
+(660, 'Insectes', NULL, 'insectes', 'ec954f7706d00059e63176d8be099a56.svg'),
+(661, 'Psychothérapie et psychologie', NULL, 'psychotherapie-et-psychologie', 'eac81c87f01188ec1f5888e5f269f8ba.svg'),
+(662, 'Remède de grand-mères', NULL, 'remede-de-grand-meres', '82af0003dbc26a86f8763d347f9de049.svg'),
+(663, 'Soins à domicile', NULL, 'soins-a-domicile', 'ac36f0728a3b5c9f3cd4e2cbbf2a0b1a.svg'),
+(664, 'Physiothérapie', NULL, 'physiotherapie', 'a4d87b09ef00fa5210e33418482086e8.svg'),
+(665, 'Pharmacie - Parapharmacie', NULL, 'pharmacie-parapharmacie', '0f1934822afae02b7dbe4ce210d315af.svg'),
+(667, 'Laboratoires médicaux', NULL, 'laboratoires-medicaux', 'ac52342a5fe75e8bafc892996df002d9.svg'),
+(668, 'Médecine douce', NULL, 'medecine-douce', 'a3df0d3a58a3434957cfce05659d98c9.svg'),
+(669, 'Industrie pharmaceutique', NULL, 'industrie-pharmaceutique', '4ffddd582d3d9e4a99212557eb7cae2d.svg'),
+(670, 'Institutions pour personnes âgées', NULL, 'institutions-pour-personnes-agees', '8270a5567c60c728da491879f2375c46.svg'),
+(671, 'Institutions pour personnes handicapées', NULL, 'institutions-pour-personnes-handicapees', 'eddd7c06ff80571e63ca0e4b1c0ea1a6.svg'),
+(672, 'Activités paramédicales', NULL, 'activites-paramedicales', '5883c3be9f6c771b3e4ca2334a9b351b.svg'),
+(673, 'Bien-être', NULL, 'bien-etre', '49d79092bd92949416233bf322fbdd5f.svg'),
+(674, 'Hébergements médicalisés', NULL, 'hebergements-medicalises', '4d37b4d65127efe26843283eb06caeb2.svg'),
+(675, 'Hôpitaux', NULL, 'hopitaux', '99ec0f06ca88feb28a10fa173fecb86e.svg'),
+(676, 'Herboristerie', NULL, 'herboristerie', '54ff5f77646159e9f7fc67911a7fab97.pdf'),
+(677, 'Massage - soins', NULL, 'massage-soins', '768106cf1614481cf04c242048f9442d.svg'),
+(678, 'Reiki', NULL, 'reiki', '90b3001869fb45f5abe4aa696c1a4994.svg'),
+(679, 'Naturopathie', NULL, 'naturopathie', '0e5c7ec2c943726bcd51cea03ebbc76b.svg'),
+(680, 'Ostéopathie', NULL, 'osteopathie', '561924988d29aec719e47b75a766e25b.svg'),
+(681, 'Luminothérapie', NULL, 'luminotherapie', 'dec1f1b1c8081e33d9556c65c8c35be2.svg'),
+(682, 'Kinésiologie', NULL, 'kinesiologie', '1497fcf3de9020f0c36647e54f2691b8.svg'),
+(683, 'Hypnose', NULL, 'hypnose', '3c548ee70351073922df3cda773359a5.svg'),
+(684, 'Homéopathie', NULL, 'homeopathie', '6fceb6fe215807c0f5bec79ebf66fdea.svg'),
+(685, 'Aromathérapie', NULL, 'aromatherapie', '85c3f704afd754a9f8d721785f063f86.svg'),
+(686, 'Acuponcture', NULL, 'acuponcture', 'cbcbda0f573e76a5fb7ceb524d773730.svg'),
+(687, 'Médecine chinoise', NULL, 'medecine-chinoise', 'd8e44fa90c03ad66b96ccf1e0f6f63a7.svg'),
+(688, 'Tai chi', NULL, 'tai-chi', '2f571e9ea2d3077a868b1826fd97e5a9.svg'),
+(689, 'Réflexologie', NULL, 'reflexologie', 'e5b12eb0d119b227296c449becd19554.svg'),
+(690, 'Shiatsu', NULL, 'shiatsu', '558d0620d0880e1d6b7378fbbd64ed0d.svg'),
+(691, 'Verre', NULL, 'verre', '18db905acbd195489f6be635c20a7fb2.svg'),
+(692, 'Pyrotechnie', NULL, 'pyrotechnie', '2c2119dce7cf555662c0226f30a9dba0.svg'),
+(693, 'Métier d\'art', NULL, 'metier-d-art', 'f1b26c1b57ccaa5923cf71567615e2be.svg'),
+(694, 'Métaux', NULL, 'metaux', 'b0848e8c41d8ec6e3bdda008f75905ff.svg'),
+(695, 'Maroquinerie', NULL, 'maroquinerie', '9fca35917520c43cdfe1376da27bcb84.svg'),
+(696, 'Jouets', NULL, 'jouets', 'e5c670111acb881f250e58084595f4d0.svg'),
+(697, 'Horlogerie', NULL, 'horlogerie', '8a0b3bfa08fb0b964bf8d565eb319fb7.svg'),
+(698, 'Fleuriste', NULL, 'fleuriste', '366ee1787fd343208137b2a9f03820ad.svg'),
+(699, 'Céramique', NULL, 'ceramique', '57a99270c6528ab09ef26e4089e20759.svg'),
+(700, 'Bois', NULL, 'bois', '4e37827060de07d022c490a3a0ce0bd3.svg'),
+(701, 'Bijouterie', NULL, 'bijouterie', '78556adb3469ba8152ae43959b71f349.svg'),
+(702, 'Atelier d\'artisanat', NULL, 'atelier-d-artisanat', '4a13ac68726a13646eca520cf3837115.svg'),
+(761, 'hahaha', NULL, 'hahaha', '2b37c55bb74de6c00f3f0c40084fa0ff.svg'),
+(776, 'Economie circulaire Économie verte', NULL, 'economie-circulaire-economie-verte', '9bb926a5ba2cfd5a838d8a82aca9cc67.svg'),
+(777, 'Agriculture', NULL, 'agriculture', 'dd07f5e39152f638517abcc577d4f015.svg'),
+(778, 'Art et culture', NULL, 'art-et-culture', 'Groupe51.jpg'),
+(779, 'Chômage et Emploi', NULL, 'chomage-et-emploi', 'Groupe52.jpg'),
+(780, 'Cohésion sociale', NULL, 'cohesion-sociale', '56e0a5e8b8aa950bf4ca11f0deba1d11.svg'),
+(781, 'Développement Durable', NULL, 'developpement-durable', '2002b8b855728f38edb7490fccc97521.svg'),
+(782, 'Développement territorial', NULL, 'developpement-territorial', '314b5e358b48d7e860d5147025ac8afc.svg'),
+(783, 'Développement urbain gestion espaces verts', NULL, 'developpement-urbain-gestion-espaces-verts', 'Groupe54.jpg'),
+(784, 'Economie de la transition', NULL, 'economie-de-la-transition', 'fdddd9ac38036236d35db62e2bd650ee.svg'),
+(785, 'Environnement', NULL, 'environnement', '33ce36c5696f8461015a5f20c8b3bb14.svg'),
+(786, 'Fiscalité', NULL, 'fiscalite', '5c1405fc0741743f1823d43d874771bb.svg'),
+(787, 'Formation Enseignement', NULL, 'formation-enseignement', '5bdab499c7cb570720fb28efd798f4b2.svg'),
+(788, 'Genre et minorité', NULL, 'genre-et-minorite', 'd2c833148fb2754134dd397437a41ef6.svg'),
+(789, 'Gestion bâtiment', NULL, 'gestion-batiment', 'f77aa24dc0dd30e414d6998c8a23624c.svg'),
+(790, 'Green tech Clean tech', NULL, 'greentech-cleentech', 'f3e8358ba089f034583970a86d06b858.svg'),
+(791, 'Santé prévention', NULL, 'sante-prevention', '62682b51d3745c65d4e0fcf5636a81d9.svg'),
+(792, 'Soutien aux entreprises', NULL, 'soutien-aux-entreprises', 'b1843b0f1c52bc5b13384aa4eb8a7346.svg'),
+(793, 'Service pour animaux', 'Service pour animaux', 'service-pour-animaux', ''),
+(794, 'Accessoire pour animaux', 'Accessoire pour animaux', 'accessoire-pour-animaux', ''),
+(795, 'Pension pour animaux', 'Pension pour animaux', 'pension-pour-animaux', ''),
+(796, 'Matériaux - Nourriture', 'Matériaux / Nourriture', 'materiaux-nourriture', ''),
+(797, 'Parc animalier', 'Parc animalier', 'parc-animalier', ''),
+(798, 'Plateforme d\'entraide - économie circulaire', 'Plateforme d\'entraide - économie circulaire\r\n', 'plateforme-d-entraide-economie-circulaire\r\n', ''),
+(799, 'Plateforme d\'entraide', 'plateforme-d-entraide-economie-circulaire', 'plateforme-d-entraide', ''),
+(800, 'Economie verte', 'Économie verte Compensation Carbone', 'economie-verte', ''),
+(801, 'Certification', 'Certification', 'certification', ''),
+(802, 'Mesure des émissions des entreprises', 'Mesure des émissions des entreprises', 'mesure-des-emissions-des-entreprises', ''),
+(803, 'Production lifestyle management', 'Production lifestyle management', 'production-lifestyle-management', ''),
+(804, 'Compensation carbone', 'Compensation carbone', 'compensation-carbone', ''),
+(805, 'Analyse du cycle de vie', 'Analyse du cycle de vie', 'analyse-du-cycle-de-vie', ''),
+(806, 'Ecologie industrielle', 'Écologie industrielle compensation carbone', 'ecologie-industrielle', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sucess_story`
+--
+
+DROP TABLE IF EXISTS `sucess_story`;
+CREATE TABLE IF NOT EXISTS `sucess_story` (
+  `id` int NOT NULL,
+  `nom` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `lien` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `photo` varchar(5000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `sucess_story`
+--
+
+INSERT INTO `sucess_story` (`id`, `nom`, `description`, `lien`, `date`, `photo`) VALUES
+(1, 'SucessStory 1', 'Description SucessStory 1', '/', '2021-06-22', '/home/clients/6951db3e6d1a0c0cee441c0fdc7a56ef/tmp/phpBCjORF');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tag`
+--
+
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE IF NOT EXISTS `tag` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tarifads`
+--
+
+DROP TABLE IF EXISTS `tarifads`;
+CREATE TABLE IF NOT EXISTS `tarifads` (
+  `id` int NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `price` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tarifadsuser`
+--
+
+DROP TABLE IF EXISTS `tarifadsuser`;
+CREATE TABLE IF NOT EXISTS `tarifadsuser` (
+  `id` int NOT NULL,
+  `tarif` int DEFAULT NULL,
+  `user` int DEFAULT NULL,
+  `adv` int DEFAULT NULL,
+  `paid` tinyint(1) NOT NULL,
+  `price` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `userorder`
+--
+
+DROP TABLE IF EXISTS `userorder`;
+CREATE TABLE IF NOT EXISTS `userorder` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `creator` int NOT NULL,
+  `products` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `shipping` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `total` int NOT NULL,
+  `created_at` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_507C2DE9BC06EA63` (`creator`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `userrv`
+--
+
+DROP TABLE IF EXISTS `userrv`;
+CREATE TABLE IF NOT EXISTS `userrv` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `emailValidated` tinyint(1) NOT NULL,
+  `actived` tinyint(1) NOT NULL,
+  `inscription_date` date DEFAULT NULL,
+  `connected` tinyint(1) DEFAULT NULL,
+  `discr` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gaeaUserId` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `userrv`
+--
+
+INSERT INTO `userrv` (`id`, `role`, `token`, `emailValidated`, `actived`, `inscription_date`, `connected`, `discr`, `gaeaUserId`) VALUES
+(63, 'ROLE_COMPANY', '351aed9236f65759c08466e58bced44ba419f43558', 0, 0, '2021-08-12', NULL, 'company', NULL),
+(65, 'ROLE_COMPANY', 'd0f53e674a469de1cb419c7a5265e9e76e52bc2b9e', 0, 0, '2021-08-13', NULL, 'company', NULL),
+(68, 'ROLE_COMPANY', '5494a6202b95ade9f0a4c884f5d475d7abbe9ece1c', 0, 0, '2021-08-18', NULL, 'company', NULL),
+(76, 'ROLE_COMPANY', '189e3bdb051d3fba03ff6707d86b6ad83efc717dbc', 0, 0, '2021-08-19', NULL, 'company', NULL),
+(77, 'ROLE_COMPANY', '83c40208c341a3fa959cfae0a3921538d9269e1ad1', 0, 0, '2021-08-19', NULL, 'company', NULL),
+(83, 'ROLE_COMPANY', 'd1064e6aa1e53cb5f872961b1f7ba11474669f17b8', 0, 0, '2021-08-19', NULL, 'company', NULL),
+(84, 'ROLE_COMPANY', 'ce52e4ccf7d431242413ec18bac8006f7a2eebe91c', 0, 0, '2021-09-01', NULL, 'company', NULL),
+(85, 'ROLE_COMPANY', '45db77845faeb5fb1555974cb202d63e104356e734', 0, 0, '2021-09-01', NULL, 'company', 47395),
+(86, 'ROLE_COMPANY', 'a494b97b85213a3ba0013b5d83237b89f865b28167', 0, 0, '2021-09-03', NULL, 'company', 47401),
+(87, 'ROLE_COMPANY', '62bfbde386831977e8e4265a0ebf9f0ecde717dc64', 0, 0, '2021-09-16', NULL, 'company', 47404),
+(88, 'ROLE_COMPANY', 'e794927abf3640648381e6666ef4fafaf4c40bff1c', 0, 0, '2021-09-20', NULL, 'company', 47422),
+(89, 'ROLE_COMPANY', 'a652db92e4fdb7688c6229d5eb96545f1adb7879f6', 0, 0, '2021-09-20', NULL, 'company', 47424),
+(90, 'ROLE_COMPANY', 'ff7f98b6890fbb371a0f86d7a1c64441099b1b4b41', 0, 0, '2021-09-20', NULL, 'company', 47425),
+(91, 'ROLE_COMPANY', '6d4b34cc8da785304860220f936b8594da5840f2d2', 0, 0, '2021-09-20', NULL, 'company', 47430),
+(92, 'ROLE_COMPANY', 'e40b84bcbf9494b8b1280cf0524698ebed25ec5867', 0, 0, '2021-09-20', NULL, 'company', 47436),
+(93, 'ROLE_COMPANY', '65a85d88000553a7405088df52616ceba8369f4d61', 0, 0, '2021-09-20', NULL, 'company', 47438),
+(94, 'ROLE_COMPANY', 'f09e0216e2dab15be7b8dfe1f75e952e15645a2eb9', 0, 0, '2021-09-20', NULL, 'company', 47439),
+(95, 'ROLE_COMPANY', 'd53289f1f9d262b6baa409386101e8786411a62d6a', 0, 0, '2021-09-20', NULL, 'company', 47440),
+(97, 'ROLE_COMPANY', '411ae0e9ea4bdcd9c6ed82290ef44979603331b97d', 0, 0, '2021-09-20', NULL, 'company', 47444),
+(99, 'ROLE_COMPANY', 'fd308ea5a3f3ecf7c17b5d9c3a91571c94d43d5455', 0, 0, '2021-09-21', NULL, 'company', 47484),
+(100, 'ROLE_COMPANY', 'fe43c0507adba505157d9fc05620505dd7e22d71b1', 0, 0, '2021-09-21', NULL, 'company', 47485),
+(101, 'ROLE_COMPANY', 'fbb611ea5802a4097a22b2471dcfa2db9360dfa221', 0, 0, '2021-09-21', NULL, 'company', 47486),
+(102, 'ROLE_COMPANY', 'a9a407ee86a70ccb5716dc21840fadf5ffcee590c6', 0, 0, '2021-09-21', NULL, 'company', 47487),
+(105, 'ROLE_COMPANY', '71bd5e7712f7f8dae2397da7affd328b15e3a3088a', 0, 0, '2021-09-21', NULL, 'company', 47490),
+(106, 'ROLE_COMPANY', '4eb58d86029a2cfab1043fd445021ba3d1db2d8327', 0, 0, '2021-09-21', NULL, 'company', 47491),
+(107, 'ROLE_COMPANY', '26f6cbe185ea8af29bb0852ef47f427540128d3978', 0, 0, '2021-09-22', NULL, 'company', 47501),
+(108, 'ROLE_COMPANY', '1f7502fcc987ab3e1a279bcf5860eb996eafe3176a', 0, 0, '2021-09-22', NULL, 'company', 47504),
+(109, 'ROLE_COMPANY', '80d93d9bf0361baaf2d36894ba1b259d10934a736b', 0, 0, '2021-09-22', NULL, 'company', 47505),
+(110, 'ROLE_COMPANY', '90d6110c29893f2113adc0d06d165d8e8d6bea5593', 0, 0, '2021-09-22', NULL, 'company', 47506),
+(111, 'ROLE_COMPANY', '8cda9ab33068c43874d219fcd9851d0c9ef8d65158', 0, 0, '2021-09-22', NULL, 'company', 47507),
+(112, 'ROLE_COMPANY', '40087cee12408a457b92a1e6295e3060e08f9c6e4a', 0, 0, '2021-09-22', NULL, 'company', 47508),
+(113, 'ROLE_COMPANY', 'caa677e30f5ddbe04468850cdafd1a0c66579e5117', 0, 0, '2021-09-22', NULL, 'company', 47509),
+(114, 'ROLE_COMPANY', '5a1db6fa667094f8486d5b296a60a6ba1dc97f024f', 0, 0, '2021-09-23', NULL, 'company', 47510),
+(115, 'ROLE_COMPANY', '51d80f4cfe11a88cea90e3e3c70f681392bd4cbdd4', 0, 0, '2021-09-23', NULL, 'company', 47511),
+(116, 'ROLE_COMPANY', '53aada5bbbd86f18ee54bcb745e96bcf71f2378324', 0, 0, '2021-09-23', NULL, 'company', 47512),
+(117, 'ROLE_COMPANY', 'ecab23a427d26475058d11a03282c9fc03eab4fe26', 0, 0, '2021-09-24', NULL, 'company', 47513),
+(118, 'ROLE_COMPANY', 'c1e1cc28debfc0bfa04078f2cd59a87fb04ca9fb42', 0, 0, '2021-09-24', NULL, 'company', 47514),
+(119, 'ROLE_COMPANY', 'd44289c1962f41cfad7e561d9a8e13bfa8628c7367', 0, 0, '2021-09-24', NULL, 'company', 47515),
+(120, 'ROLE_COMPANY', '5a47aec79aed193838f434e9139358a503e3e80c40', 0, 0, '2021-09-24', NULL, 'company', 47516),
+(121, 'ROLE_COMPANY', '7261a80acaad37eb9457362eb14aa4a037a6faa570', 0, 0, '2021-09-24', NULL, 'company', 47517),
+(122, 'ROLE_COMPANY', '5ec7b02c05b087ab74052cba47acec2b356571bc04', 0, 0, '2021-09-24', NULL, 'company', 47518),
+(123, 'ROLE_COMPANY', 'b2d5e8b49df6a74c6258f56ed54a7a2e8d98f4c5f4', 0, 0, '2021-09-24', NULL, 'company', 47519),
+(124, 'ROLE_COMPANY', '6edaf89fdd81839ff46327cbd496406f6fda1e6d77', 0, 0, '2021-09-30', NULL, 'company', 47520),
+(125, 'ROLE_COMPANY', 'ad10fa23dd36fd4ffec4ddf8abed326ee55f35cd85', 0, 0, '2021-10-01', NULL, 'company', 47521),
+(126, 'ROLE_COMPANY', 'afddc3d95384419c7f29bf2d72afb64e99b4a77fea', 0, 0, '2021-10-07', NULL, 'company', 47527),
+(127, 'ROLE_COMPANY', '41c15fbe31c77ed1aae27a07c84d111d8a07a151f7', 0, 0, '2021-10-07', NULL, 'company', 47529),
+(128, 'ROLE_COMPANY', '58e4826e990a3b29a2d2da8986ad8c8a63ebe96c2e', 0, 0, '2021-10-07', NULL, 'company', 47531),
+(129, 'ROLE_COMPANY', '5700c2042dee13648a91c26a1d55e0726dae33b682', 0, 0, '2021-10-11', NULL, 'company', 47542),
+(130, 'ROLE_COMPANY', 'be916852bca8ebcfd829b5391f8d49b9dea479c2dc', 0, 0, '2021-10-11', NULL, 'company', 47543),
+(131, 'ROLE_COMPANY', '9ac9c956d94f2f85e695b3ba8e8830b969204666a8', 0, 0, '2021-10-11', NULL, 'company', 47545),
+(132, 'ROLE_COMPANY', '8ba879d97e2904a5ecdf1e6b35d7ebbcb2ce4a5b99', 0, 0, '2021-10-11', NULL, 'company', 47547),
+(133, 'ROLE_COMPANY', '4e2e6b54dc3c5f6f427acaa45784fbf3b9875f5f32', 0, 0, '2021-10-11', NULL, 'company', 47548),
+(134, 'ROLE_COMPANY', 'ac64d56279c43869f7dbab191a7a360e4ce1bfedd9', 0, 0, '2021-10-11', NULL, 'company', 47549);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `visite`
+--
+
+DROP TABLE IF EXISTS `visite`;
+CREATE TABLE IF NOT EXISTS `visite` (
+  `id` int NOT NULL,
+  `date` date NOT NULL,
+  `number` int NOT NULL,
+  `company_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `activitiesdisplay`
+--
+ALTER TABLE `activitiesdisplay`
+  ADD CONSTRAINT `FK_EAFB9F6DCF60E67C` FOREIGN KEY (`owner`) REFERENCES `userrv` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `ads`
+--
+ALTER TABLE `ads`
+  ADD CONSTRAINT `FK_7EC9F62064D218E` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`),
+  ADD CONSTRAINT `FK_7EC9F620BC06EA63` FOREIGN KEY (`creator`) REFERENCES `userrv` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `FK_BA388B7BC06EA63` FOREIGN KEY (`creator`) REFERENCES `userrv` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `cartline`
+--
+ALTER TABLE `cartline`
+  ADD CONSTRAINT `FK_AC6FBE4FF347EFB` FOREIGN KEY (`produit_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_AC6FBE4FF77D927C` FOREIGN KEY (`panier_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `participation`
+--
+ALTER TABLE `participation`
+  ADD CONSTRAINT `FK_182BA9BA115E1BBE` FOREIGN KEY (`idparticipant`) REFERENCES `userrv` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_182BA9BAEE06EE26` FOREIGN KEY (`idcovoiturage`) REFERENCES `communauty` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `FK_D34A04AD12469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `FK_D34A04AD979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`),
+  ADD CONSTRAINT `FK_D34A04ADCF60E67C` FOREIGN KEY (`owner`) REFERENCES `userrv` (`id`);
+
+--
+-- Contraintes pour la table `product_subcategory`
+--
+ALTER TABLE `product_subcategory`
+  ADD CONSTRAINT `FK_A1F33A574584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_A1F33A575DC6FE57` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategory` (`id`);
+
+--
+-- Contraintes pour la table `userorder`
+--
+ALTER TABLE `userorder`
+  ADD CONSTRAINT `FK_507C2DE9BC06EA63` FOREIGN KEY (`creator`) REFERENCES `userrv` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

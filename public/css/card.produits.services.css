@@ -1,0 +1,55 @@
+.grid-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-column-gap: 2%;
+  background-color: none;
+  padding: 10px;
+  margin: 10px 10%;
+  max-width: 100%; }
+
+.lien-ficheProduit {
+  font-size: 1.04vw;
+  text-align: left; }
+
+.grid-infos {
+  padding: 20px; }
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  margin-top: 25px; }
+
+.btn-edit {
+  text-decoration: none;
+  background-color: none;
+  border: 1px solid black;
+  border-radius: .50rem;
+  color: black;
+  font-weight: normal;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5; }
+
+.btn-delete {
+  grid-column-end: auto;
+  text-decoration: none;
+  background-color: #a80000;
+  border: 1px solid transparent;
+  border-radius: .50rem;
+  color: whitesmoke;
+  font-weight: normal;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5; }
+
+.div-titre {
+  font-weight: bold;
+  margin-top: 2vh;
+  margin-bottom: 2vh; }
+
+.avis-produit-consomm {
+  margin-top: 10px; }
+
+/*# sourceMappingURL=_card.produits.services.css.map */

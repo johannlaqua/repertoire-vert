@@ -1,0 +1,99 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+    <link rel="stylesheet" href="{{ asset('css/produits_entreprise.css') }}"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/2.9.9/leaflet-search.min.css" integrity="sha512-8zuX58lcEgyZdtfTu5Iu9SDfadAirBVoZrJkmuZJ+/s80QZ/YTNVlEqPtE9iHqNXeCgd122pl+inU1Oxn9KXng==" crossorigin="anonymous" />
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_profil_entreprise2.png')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+
+        <div class="header-content">
+            <h3 class="banner-profil-title">Mon compte</h3>
+            {% include "components/boutons_header_produits_services.html.twig" %}
+            <div class="banner-profil-description">
+                Le Répertoire Vert offre le référencement et l’évaluation de tous les produits et/ou services professionnels verts proposés dans un rayon de 130 km autour de Genève
+            </div>
+        </div>
+
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    <div class="green-intro">
+        <div class="green-intro-text">
+            {# <div class="green-intro-title">Bienvenue dans votre tableau de bord !</div> #}
+            <div class="green-intro-content">
+                Bienvenue sur votre page produit !<br>
+                Vous pouvez consulter toutes les informations concernant votre entreprise ainsi que les produits que vous avez mis en ligne sur notre site.<br>
+                <br>
+                Vous avez le choix de modifier à tout moment vos produit ou votre description.
+            </div>
+        </div>
+    </div>
+    <div class="div-presentation-produits">
+        <div class="container-presentation-produits">
+            Vous bénéficiez également d’un regard sur les avis des consommateurs et des entreprises.
+        </div>
+    </div>
+
+
+    <div class="header-entreprise">
+        <div class="title-entreprise">
+            <div class="container-fiche">
+                <span>Modifier un produit</span>
+                <span class="pointe-droite">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 35 40">
+                        <path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+                    </svg>
+                </span>
+                <span>{{product.name}}</span>
+            </div>
+        </div>
+        <div class="favoris-entreprise">
+            <div class="container-favoris">
+                <div class="add-favoris">Ajouter aux favoris</div>
+                <div class="icon-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 30.3 28.817"><defs><style>.a{fill:#618226;}</style></defs><path class="a" d="M142.167,65.828l4.682,9.486,10.469,1.521-7.575,7.384,1.788,10.426-9.363-4.923L132.8,94.645l1.788-10.426-7.575-7.384,10.469-1.521Z" transform="translate(-127.017 -65.828)"/></svg>
+                </div>
+                <div class="nb-favoris">
+                    <span class="total-favoris">{{ product.productFavProducts|length }}</span> favoris
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'components/boutons_form_produits_services.html.twig' with {'serviceIsSelected': 'unselected', 'productIsSelected': 'unselected'}%}
+    {% include './services/form.html.twig' %}
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('js/produits_entreprise.js') }}"></script>
+        {#  #}<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+                      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+                      crossorigin=""></script>
+        {# <script src="{{ asset('js/leaflet-search.js') }}"></script> #}
+        <script src="{{ asset('js/map_entreprise.js') }}"></script>
+    {% endblock %}
+    {% include "footer.html.twig" %}
+{% endblock %}

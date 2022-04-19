@@ -1,0 +1,196 @@
+@import "util";
+$green : #618226;
+
+@mixin transition{
+  transition-property:all;
+  transition-duration:0.4s;
+  transition-timing-function:ease;
+}
+
+#wrap-map {
+  padding: widthpr(80, 1094.25);
+  font-family: "Droid Sans", sans-serif;
+  background-color: #EDEDED;
+
+  div.map-content{
+
+    display: flex;
+    justify-content: space-between;
+
+    div#sidemenu{
+      display: flex;
+      flex-wrap:wrap;
+      width: 20%;
+      gap: 15px 30px;
+      height: fit-content;
+
+      div.subcategory_menu{
+        background-color: #FFFFFF;
+        padding: 10px 30px 30px 30px;
+        border-radius: 10px;
+        p.pointer{
+          font-size: 9pt;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+        div.menu_title{
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          margin-bottom: 25px;
+
+          img{
+            width: 50px;
+            margin-right: 15px;
+          }
+
+          h3{
+            font-size: 15pt;
+            font-weight: bold;
+          }
+
+        }
+
+        div.subcatElement{
+          padding: widthpr(5, 199.41);
+          padding-left: widthpr(20, 199.41);
+          color: #618226;
+          border: 1px solid black;
+          border-radius: 10px;
+          margin: 10px;
+          margin-left: 0;
+          font-size: 11pt;
+          @include transition;
+
+          &:hover{
+            background-color: $green;
+            color: #FFFFFF;
+            cursor: pointer;
+            border: 1px solid $green;
+          }
+        }
+        //// Menu Sous-catégorie avec entreprises
+
+        div.subcatDetail {
+
+          div.subcatElement.clicked {
+            background-color: $green;
+            border: none;
+            color: #FFFFFF;
+            cursor: auto;
+            margin-bottom: 20px;
+          }
+
+          div.companyList {
+
+            div.companyContent {
+
+              div.companyTitle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                cursor: pointer;
+
+                &:hover {
+                  div.iconName span{
+                    background-color: $green;
+                  }
+                }
+
+                div.iconName {
+                  display: flex;
+                  align-items: center;
+                  margin-right: 10px;
+
+                  span {
+                    background-color: white;
+                    border: 1px solid $green;
+                    border-radius: 50%;
+                    width: 10px;
+                    height: 10px;
+                    display: block;
+                    @include transition;
+                  }
+
+                  img{
+                    width: 25px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                  }
+
+                  h4{
+                    font-size: 15pt;
+                    font-weight: bold;
+                    margin: 0;
+                  }
+                }
+                p{
+                  color: #818181;
+                  margin: 0;
+                  text-align: right;
+                  font-size: 9pt;
+                }
+              }
+
+              div.companyDetail {
+                p.pBorder, div.yAller {
+                  border: 1px solid black;
+                  border-radius: 10px;
+                  padding: 5px;
+                  font-size: 9pt;
+                }
+
+                div.yAller{
+                  padding: 15px;
+                  margin-bottom: 1rem;
+
+                  p {
+                    margin-top: 0;
+                  }
+                  div.imgYAller {
+                    display: flex;
+                    justify-content: space-around;
+                  }
+                }
+
+
+              }
+
+            }
+          }
+        }
+
+
+
+      }
+
+      div.categorie{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 60px;
+        }
+        p{
+          width:60px;
+          font-size: 8pt;
+          text-align: center;
+          margin: 0;
+          margin-top: widthpr(5,97.18);
+        }
+      }
+    }
+
+
+
+    div#map{
+      width: 70%;
+      height: 120vh;
+    }
+  }
+
+}

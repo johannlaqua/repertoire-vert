@@ -1,0 +1,69 @@
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# include 'dialogbox.html.twig' #}
+    <!--<div class="jsdialog"><div class="jsdialog-content">Etes vous sûr(e) de vouloir supprimer ce produit ? <br/><br/> Si  vous cliquez sur Supprimer le produit sera effacé <strong>définitivement</strong><br/><div class="dialog-buttons"><div class="jsdialog-cancel-button" onclick="removeFlash();">Annuler</div><div class="jsdialog-ok-button" onclick="removeFlash();">Supprimer</div></div></div></div>-->
+    <div class="green-banner">
+        <h3>Mes publicités</h3>
+    </div>
+
+
+        <a  href="{{ url('selectAdsPageAdmin') }}">Ajouter pub dans slider</a>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Entreprise</th>
+            <th>date début diffusion</th>
+            <th>date fin diffusion</th>
+            <th>Page</th>
+            <th>Slogan</th>
+            <th>photo</th>
+            <th>créee le </th>
+            <th>Payée </th>
+            <th>Action </th>
+            <!--<th>Conditionnement</th>-->
+
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for ads in ads %}
+        <tr>
+            <td>{{ ads.user.username }}</td>
+            <td>{{ ads.adv.publishdatebegin |date }}</td>
+            <td>{{ ads.adv.publishdateend |date }}</td>
+            <td>
+
+             {{ ads.adv.location.name }}
+
+            </td>
+            <td>{{ ads.adv.slogan }}</td>
+            <td> <img src="{{ asset('uploads/posts/') }}{{ads.adv.photo }}" style="width: 100px; height: 100px">
+            </td>
+            <td> {{ ads.adv.createdAt |date}}</td>
+
+
+            <td>
+            {% if(ads.paid==1) %}
+                Payée
+                {% else %}
+                Pas encore
+                {% endif %}
+            </td>
+            <td>   <a href="{{ path('updateAdStatus',{'id':ads.adv.id}) }}"> Mettre à jour l'état du paiement </a>
+            </td>
+            {% endfor %}
+
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

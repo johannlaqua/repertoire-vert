@@ -1,0 +1,409 @@
+/*pour faire le calcul pour transformer les px en %*/
+/*pour faire le calcul pour transformer les px en %*/
+/*pour faire le calcul pour transformer les px en vw*/
+body {
+  background-color: #EDEDED;
+}
+
+.icon-profil {
+  fill: none;
+}
+
+.banner-profil-description {
+  font-size: 1.46vw;
+  color: white;
+  font-weight: bold;
+  width: 48.5%;
+  text-align: center;
+  margin-bottom: 4.11%;
+}
+
+.green-intro {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #618226;
+  color: white;
+  font-weight: bold;
+  font-size: 1.51vw;
+  padding: 5.16% 0%;
+}
+
+.green-intro-text {
+  width: 80.3125%;
+}
+
+.div-dash-liens {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6.25%;
+  margin-top: 9.74%;
+}
+
+.div-dash-liens-content {
+  width: 55.36%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lien-dash {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.04vw;
+  border-radius: 0.52vw;
+  background-color: white;
+  color: black;
+  width: 21.82%;
+  padding: 3.1% 1%;
+}
+
+.lien-actif, .decoupage-actif {
+  background-color: black !important;
+  color: white !important;
+}
+
+.div-presentation-dashboard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.8125%;
+}
+
+.container-presentation-dashboard {
+  width: 81.4%;
+  font-weight: bold;
+  font-size: 1.46vw;
+}
+
+.div-selection-decoupage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 6.2%;
+}
+
+.container-selection-decoupage {
+  width: 56%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lien-decoupage {
+  cursor: pointer;
+  font-size: 1.46vw;
+  background-color: white;
+  color: black;
+  width: 17.77%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 1vw;
+  padding: 0.5% 0%;
+}
+
+.lien-decoupage a {
+  width: 100%;
+}
+
+.en-avant {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4.11%;
+}
+
+.div-visibilite {
+  margin-top: 3.3333333333%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.visibilite-content {
+  font-size: 1.46vw;
+  width: 26%;
+  background-color: #618226;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.78% 0%;
+  border: none;
+  cursor: pointer;
+}
+
+.lien-decoupage:not(.decoupage-actif):hover, .lien-dash:not(.lien-actif):hover {
+  color: white;
+  background-color: black;
+}
+
+.div-programs {
+  margin-top: 8%;
+  margin-bottom: 5.73%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-programs {
+  padding: 4% 0%;
+  background-color: white;
+  width: 67%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dash-program-card {
+  width: 28.36%;
+}
+
+.dash-program-card img {
+  width: 100%;
+}
+
+.dash-program-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 86.5%;
+}
+
+.dash-program-description {
+  padding: 3%;
+  font-size: 1.98vw;
+}
+
+.emplacement-chart {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-chart {
+  width: 50%;
+}
+.container-chart canvas {
+  height: 35vw;
+}
+
+@media screen and (max-width: 1024px) and (max-height: 600px) {
+  canvas {
+    height: 30vw !important;
+  }
+}
+@media screen and (max-width: 1024px) and (min-height: 601px) {
+  .green-intro-text {
+    font-size: 2vw;
+  }
+
+  .container-presentation-dashboard {
+    font-size: 2vw;
+  }
+
+  canvas {
+    height: 40vw !important;
+  }
+
+  .div-dash-liens-content {
+    width: 87%;
+  }
+  .div-dash-liens-content .lien-dash {
+    font-size: 2vw;
+  }
+
+  .container-selection-decoupage {
+    width: 87%;
+  }
+  .container-selection-decoupage .lien-decoupage {
+    font-size: 2.46vw;
+  }
+
+  .visibilite-content {
+    font-size: 2.5vw;
+    width: 55%;
+  }
+
+  .en-avant {
+    font-size: 2.5vw;
+  }
+}
+@media screen and (max-width: 480px) {
+  h3 {
+    margin-bottom: 10% !important;
+  }
+
+  .green-intro-text {
+    width: 80.2777777778%;
+    font-size: 3vw;
+  }
+
+  .container-presentation-dashboard {
+    font-size: 3vw;
+  }
+
+  .div-dash-liens-content {
+    width: 87%;
+  }
+  .div-dash-liens-content .lien-dash {
+    font-size: 2.5vw;
+    padding: 0;
+    border-radius: 1.5vw;
+  }
+
+  .container-chart {
+    width: 99%;
+  }
+  .container-chart canvas {
+    height: 85vw !important;
+  }
+
+  .container-selection-decoupage {
+    width: 87%;
+  }
+  .container-selection-decoupage .lien-decoupage {
+    font-size: 2.46vw;
+  }
+
+  .en-avant {
+    text-align: center;
+    font-size: 3vw;
+  }
+
+  .visibilite-content {
+    font-size: 3vw;
+    width: 55%;
+    border-radius: 4px;
+  }
+}
+div.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+div.page-content h4 {
+  color: #618226;
+  text-align: center;
+  margin: 50px 0;
+}
+div.page-content .tarifs-table {
+  background-color: #FFFFFF;
+  padding: 40px;
+  border-radius: 30px;
+  margin-bottom: 50px;
+}
+div.page-content .tarifs-table table {
+  border-collapse: collapse;
+}
+div.page-content .tarifs-table table h5 {
+  font-size: 0.9em;
+}
+div.page-content .tarifs-table table p {
+  font-weight: normal;
+  font-size: 0.8em;
+}
+div.page-content .tarifs-table table svg {
+  width: 60px;
+  height: 56px;
+}
+div.page-content .tarifs-table table th tr {
+  border-top: none;
+}
+div.page-content .tarifs-table table tbody tr {
+  border-top: 1px solid black;
+}
+div.page-content .tarifs-table table td {
+  text-align: center;
+}
+div.page-content .tarifs-table table th, div.page-content .tarifs-table table td {
+  padding: 20px;
+  border-right: 1px solid black;
+}
+div.page-content .tarifs-table table th:last-of-type, div.page-content .tarifs-table table td:last-of-type {
+  border-right: none;
+}
+div.page-content div.niveaux-content {
+  display: flex;
+  justify-content: space-between;
+}
+div.page-content div.niveaux-content div.niveau-element {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 30%;
+}
+div.page-content div.niveaux-content div.niveau-element span {
+  width: 100%;
+  border-radius: 9px;
+  height: 20px;
+  display: block;
+}
+div.page-content div.niveaux-content div.niveau-element span.n0 {
+  background-color: #5770AD;
+}
+div.page-content div.niveaux-content div.niveau-element span.n1 {
+  background-color: #FFBE2B;
+}
+div.page-content div.niveaux-content div.niveau-element span.n2 {
+  background-color: #618226;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos {
+  padding: 10%;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos svg:first-of-type {
+  width: 60px;
+  margin-bottom: 10px;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos div.img-niveau {
+  margin-top: auto;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos img {
+  width: 200px;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos img.yellow-icon {
+  width: 150px;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos h6 {
+  font-size: 1em;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos h6.n0 {
+  color: #5770AD;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos h6.n1 {
+  color: #FFBE2B;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos h6.n2 {
+  color: #618226;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos h6:last-of-type {
+  margin: 40px 0;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos ul {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+div.page-content div.niveaux-content div.niveau-element div.niveau-infos ul li {
+  list-style-position: inside;
+}
+
+/*# sourceMappingURL=tarifs_niveaux.css.map */

@@ -1,0 +1,241 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}
+    <title>firstPage</title>
+{% endblock %}
+
+
+{% block stylesheets %}
+
+    {# ******************************* NavBar ***************************************** #}
+    {{ encore_entry_link_tags('app') }}
+    {# ******************************* FinNavBar ***************************************** #}
+    <link rel="stylesheet" href="{{ asset('css/homepage.css') }}"/>
+{% endblock %}
+
+
+
+{% block body %}
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        {# <title>{% block title %}Welcome!{% endblock %}</title> #}
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        <!--<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('bundles/troopersalertify/toastr/css/toastr.css') }}" type="text/css" />
+
+        <script src="{{ asset('bundles/troopersalertify/toastr/js/toastr.js') }}"></script>
+        <title>Bienvenue</title>
+    </head>
+    <style type="text/css">
+        @font-face {
+            font-family: 'arial';
+            src:    url({{asset('fonts/arial.otf')}}) format('opentype'),
+            url({{asset('fonts/arial.woff')}}) format('woff'),
+            url({{asset('fonts/arial.otf')}}) format('truetype');
+        }
+        .page-banner {
+            position: relative;
+            width: 100%;
+            height: 713.5px;
+        }
+        .page-banner .banner-background {
+            top: 0;
+            left: 0;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            z-index: 0;
+        }
+        .page-banner .banner-content {
+            padding: 30px 0 30px 0;
+            text-align: center;
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            /*
+            z-index: 100;
+            z-index: 100;*/
+            z-index: 0;
+        }
+        .page-banner .banner-content h2 {
+            margin-bottom: 15px;
+            margin-top: 16.9px;
+        }
+        .page-banner .banner-content h3 {
+            margin-top: 510px;
+            color: white;
+            font-weight: bold;
+            font-size: 2.3em;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            max-width: 50%;
+            font-family: Droid Sans, sans-serif ;
+
+        }
+
+
+        .a{
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: Droid Sans, sans-serif ;
+            color: white;
+            padding-top: 2%;
+        }
+        .b{
+            font-size: 8.75rem;
+            font-weight: bold;
+            font-family: Droid Sans, sans-serif ;
+            color: white;
+        }
+        .c{
+            font-size: 1.25rem;
+            color: white;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Droid Sans, sans-serif ;
+        }
+        .d{
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #F0B322;
+            position: relative;
+            text-align: center;
+            font-family: Droid Sans, sans-serif ;
+        }
+        .e{
+            font-size: 2.5rem;
+            font-weight: bold;
+            position: relative;
+            text-align: center;
+            font-family: Droid Sans, sans-serif ;
+            color: black;
+        }
+        .f{
+            font-size: 1.425rem;
+            color: black;
+            font-family: Droid Sans, sans-serif ;
+            text-align: center;
+            color: black;
+        }
+        .g {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            color: white;
+            font-size: 1.25rem;
+            z-index: 1;
+        }
+        .x {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            color: white;
+            font-size: 1.25rem;
+            z-index: 1;
+            padding-right: 3%;
+        }
+        .h {
+            position: absolute;
+            top: 5%;
+            right: 8%;
+            color: white;
+            font-size: 1.25rem;
+            z-index: 1;
+        }
+        .page-banner {
+            height: 100vh;
+        }
+        .bold {
+            font-weight: bold;
+            font-family: Droid Sans, sans-serif;
+        }
+        .background-op {
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 40%;
+            padding: 1.5%;
+            margin: auto;
+            margin-top: 15%;
+        }
+
+    </style>
+    {# ******************************* NavBar ***************************************** #}
+     <div class="showcase"  style="height: 100%; width:100%;background-image: url({{asset('/images/homepage.png')}});background-position:center ;  background-size: cover ; background-repeat: no-repeat ">
+       {#   {% include "navbar.html.twig" %}#}
+         {% if app.user %}
+
+             <p><a class="x" href="/logout" >Log out</a><a class="g" href="/" >FR  </a><a class="h" href="/" > EN </a></p>
+         {% else %}
+             <p><a class="x" href="/login" >Log in</a><a class="g" href="/" >FR  </a><a class="h" href="/" > EN </a></p>
+
+         {% endif %}
+         <div class="top-left"><a ><img href="/" src="{{ asset('css/img/Prochainement/logo_repertoire_vert_ok.png') }}" alt="logo-gaea21"></a>
+         </div>
+        <div class="showcase-title">
+            <h2>Bienvenue sur le</h2>
+        </div>
+        <div  class="showcase-sous-title">
+            <h1 style=" font-size: 110px;width: 100%" >Répertoire Vert</h1>
+        </div>
+        <div class="paragraphe-showcase">
+            <a style="font-size: 16px; color: #535353">Le répertoire professionnel du développement durable offre le référencement et l'évaluation<br/>
+                de tous les produits et services professionnels "verts" proposés dans un rayon de 130km par rapport à Genève</a>
+        </div>
+    {#  {% if app.user %}
+
+            {% if app.user.role == "ROLE_COMPANY" %}
+                <div class="showcase__btn">
+                    <button class="showcase__btn-entreprise">
+                        <i class="far fa-building"></i>Entreprise</button>
+                    <button class="showcase__btn-individu">
+                        <i class="far fa-user"></i>Individu</button>
+                    <button class="showcase__btn-ville">
+                        <i class="fas fa-city"></i>Ville/Région</button>
+                </div>
+            {% elseif app.user.role == "ROLE_USER" %}
+                <div class="showcase__btn">
+                    <button class="showcase__btn-ville">
+                        <i class="far fa-building"></i>Entreprise</button>
+                    <button class="showcase__btn-entreprise">
+                        <i class="far fa-user"></i>Individu</button>
+                    <button class="showcase__btn-ville">
+                        <i class="fas fa-city"></i>Ville/Région</button>
+                </div>
+            {% endif %}
+
+        {% endif %}
+    #}
+    </div>
+
+    {# ******************************* FinNavBar ***************************************** #}
+
+
+        <div style="text-align: center"  class="showcase-title-firstPage">
+            <br>
+            <h4 style=" color:#618226 ;font-weight: bold;font-family: 'Droid Sans', sans-serif;">
+                Je suis...
+            </h4>
+        </div>
+
+
+            <div style="text-align: center" >
+                <img style="height: 100px" class="search-product-green" src="{{ asset('/css/img/Groupe 11.svg') }}" onclick="location.href='/homepage';">
+                <img style="height: 100px" class="search-product-green" src="{{ asset('/css/img/Groupe 10.svg') }}">
+                <img style="height: 100px" class="search-product-green" src="{{ asset('/css/img/Groupe 12.svg') }}" >
+            </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

@@ -1,0 +1,4 @@
+{% for friendsRequests in friendsRequests %}
+{{ friendsRequests.user.username }}<a href=" {{ path('accept_friend_request',{'id':friendsRequests.id}) }}">Accepter</a>
+
+{% endfor %}

@@ -1,0 +1,233 @@
+@use "sass:math";
+$widthbase:1920px;
+$heightbase:3376px;
+
+@function Pourcentage($number) {
+  @if type-of($number) =='number' and not unitless($number) {
+    @return  math.div($number, $number * 0 + 1)
+  }
+  @return $number;
+}
+
+@function widthpr($size,$widthbase){
+  @return 100% * $size /Pourcentage($widthbase);
+}
+
+@function heightpr($size,$heightbase){
+  @return 100% * $size /Pourcentage($heightbase);
+}
+
+
+
+
+  body{
+    top: heightpr(0,$heightbase);
+    left: widthpr(0,$widthbase);
+    width: widthpr(1920,$widthbase);
+    height: heightpr(3376,$heightbase);
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  }
+
+  .bloc{
+    margin-left: widthpr(189,$widthbase);
+    margin-right: widthpr(189,$widthbase);
+    width: widthpr(1542,$widthbase);
+    height: heightpr(172,$heightbase);
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+    font-size: 1.042vw; 
+    text-align: center;
+  }
+
+  .bloc-content{
+    padding-top:  0.6510416666666666vw;
+    text-align: center;
+    color: #1b1e21;
+    line-height: 1.2em;
+  }
+
+  .bloc-title{
+    color: #618226;
+    font-size: 1.4vw;
+    font-weight: bold;
+  }
+
+  .mrg{
+    padding-top: 0.62vw;
+  }
+  #nav-barre{
+    width: 100%;
+    height: heightpr(82,$heightbase);
+    //height: 2.513vw; 
+    background-color: #f2f5ed;
+    opacity: 0.997;
+    border-radius: 10px 10px 10px 10px;
+
+  }
+
+  #nav-title{
+    margin-left: widthpr(189,$widthbase);
+    width: widthpr(232,$widthbase);
+    font-family: DroidSans,Bold, sans-serif;;
+    font-size: 1.45vw;
+    
+
+  }
+ 
+  #nav-fav{
+   // margin-left: widthpr(550,$widthbase);
+    width:  widthpr(271,$widthbase);
+    margin-top: 20px;
+    font-size:  1.45vw;
+    //text-decoration: underline;
+
+  }
+ .item{
+     margin-top: 2vw;
+ }
+
+
+  #nav-barre{
+    width: 100%;
+    height: heightpr(75,$heightbase);
+    background-color: #f2f5ed;
+    opacity: 0.997;
+    border-radius: 10px 10px 10px 10px;
+
+  }
+
+  #nav-title{
+    margin-left: widthpr(189,$widthbase);
+    width: widthpr(232,$widthbase);
+    font-family: DroidSans,Bold, sans-serif;;
+    font-size: 2.734375vw;
+    margin-top: 0.9114583333333334vw;
+
+  }
+
+  #nav-fav{
+    margin-left: widthpr(840,$widthbase);
+    width:  widthpr(271,$widthbase);
+    margin-top:  1.2369791666666667vw;
+    font-size:  1.8229166666666667vw;
+  }
+
+
+.item{
+  display: inline;
+  padding-top:  0.9765625vw;
+}
+
+
+.al{
+  display: inline;
+}
+
+#imgT-marg{
+  margin-left: widthpr(189,$widthbase);
+
+}
+
+#imgT{
+  width: 524px;
+  height: 418px;
+}
+
+.btn-align {
+  display: inline;
+}
+
+
+
+
+#contentP{
+
+  margin-left: widthpr(50,$widthbase);
+  width: widthpr(655,$widthbase);
+  height: widthpr(268,$widthbase);
+  margin-top: 0px;
+
+
+}
+.btnmarg-l{
+  margin-left: widthpr(1380,$widthbase);
+}
+
+.btnmarg-r{
+  margin-left: widthpr(200,$widthbase);
+}
+
+.noborder , .noborder tr , .noborder td {
+  border: none;
+}
+
+
+.grey{
+  margin-left: widthpr(189,$widthbase);
+  width: widthpr(1542,$widthbase);
+  height: 653px;
+  background-color: #f2f5ed;
+}
+
+.bloc1{
+  position: absolute;
+  margin-top: 75px;
+  margin-left: widthpr(100,1542px);
+  width: widthpr(363,$widthbase);
+ // height: 26.506vw;b
+  height: 512px;
+  background-color: #FFFFFF;
+}
+
+  .sous-bloc1 ,.sous-bloc2 , .sous-bloc3{
+  margin-left: 0px;
+  position: absolute;
+  margin-top: 442px;
+  width: 100%;
+  height: 70px;
+
+  background-color: #ffbe2b;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.042vw; 
+  line-height: 70px;
+
+}
+
+.bloc2{
+  position: absolute;
+  margin-top: 75px;
+  margin-left: widthpr(475,1542px);
+  width: widthpr(363,$widthbase);
+  height: 512px;
+  background-color: #FFFFFF;
+}
+
+
+.bloc3{
+  position: absolute;
+  margin-top: 75px;
+  margin-left: widthpr(850,1542px);
+  width: widthpr(363,$widthbase);
+  height: 512px;
+  background-color: #FFFFFF;
+}
+
+
+
+.btnmarg-l{
+    margin-left: widthpr(1380,$widthbase);
+  }
+  
+  .btnmarg-r{
+    margin-left: widthpr(200,$widthbase);
+  }
+  
+  .noborder , .noborder tr , .noborder td {
+    border: none;
+  } 
+
+
+
+
+//sass public/sass/Product.scss public/css/Product.css --watch

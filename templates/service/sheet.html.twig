@@ -1,0 +1,17 @@
+<div class="product-logo col-l-4">
+    <img class="logo-img col-l-4" src="{{ asset('css/img/product/'~ service.image|basename) }}"
+         alt="logo-{{ service.name }}">
+</div>
+<div class="product-info col-l-offset-1 col-l-7">
+    <span class="info-label">Origine du service : </span><span class="info"> {{ service.origin }} </span><br>
+    <span class="info-label">Certification :</span><span class="info"> {{ service.certification }} </span><br>
+    <span class="info-label l-green">Recommandation gaea21 : </span><span
+            class="info">{% if service.gaearecommanded == true %} Oui{% else %} Non{% endif %}</span><br>
+    <span class="info-label ">Prix :</span><span class="info"> {{ service.price }} </span> <span class="info"> {{ service.currency }}{% if service.price > 1 and service.currency != "CHF" %}s {% endif %} </span><br>
+    <span class="info-label">Description du service : </span><span class="info"> {{ service.description }} </span><br>
+    <span class="info-label">Grille tarifaire : </span><span class="info"> {{ service.serviceduration }} </span><br>
+    <br><br>
+    <form action="{{ url('companyShowFromId',{'id':service.company.id}) }}">
+        <button style="background-color:green; border-radius:30px; color:white; font-size:120%; cursor:pointer"> Fiche entreprise </button>
+    </form>
+</div>

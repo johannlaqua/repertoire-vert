@@ -1,0 +1,49 @@
+{% extends 'base_shop.html.twig' %}
+
+{% block title %}Tous nos produits
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/shop.css') }}"/>
+    {# ******************************* NavBar ***************************************** #}
+    {{ encore_entry_link_tags('app') }}
+    {# ******************************* FinNavBar ***************************************** #}
+{% endblock %}
+
+{% block body %}
+
+    <div class="greenbanner">
+        <h1 class="grennbanner-title">Lorem ipsum</h1>
+        <p class="greenbanner-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">{% include 'shop/search.html.twig'  %}
+                {#% include 'product/_filter.html.twig' with {form:form, min:min, max:max} %#}
+            </div>
+            <div class="col-md-9">
+
+                <div class="d-flex justify-content-end" mb-2>
+                    {{knp_pagination_sortable(products, 'Prix', 'p.price')}}
+                    {{knp_pagination_sortable(products, 'Promo', 'p.promo')}}
+                </div>
+                <div class="grid">
+                    {% for products in products %}
+                        {% include 'shop/cart.html.twig' with {products:products} only %}
+                    {% endfor %}
+                </div>
+                <div class="mt-4">
+                    {{knp_pagination_render(products)}}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div>
+        <p>Lorem ipsum</p>
+    </div>
+
+{% endblock %}

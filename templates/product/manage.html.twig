@@ -1,0 +1,305 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/produits_entreprise.css') }}"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    {# <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/2.9.9/leaflet-search.min.css" integrity="sha512-8zuX58lcEgyZdtfTu5Iu9SDfadAirBVoZrJkmuZJ+/s80QZ/YTNVlEqPtE9iHqNXeCgd122pl+inU1Oxn9KXng==" crossorigin="anonymous" />
+    {{ encore_entry_link_tags('card_carrousel') }}
+{% endblock %}
+   
+
+{% block body %}
+
+
+        <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_profil_entreprise2.png')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+            {% include "navbar.html.twig" %}
+
+            <div class="header-content">
+                <h3 class="banner-profil-title">Mon compte</h3>
+                {% include "components/boutons_header_produits_services.html.twig" %}
+                <div class="banner-profil-description">
+                    Le Répertoire Vert offre le référencement et l’évaluation de tous les produits et/ou services professionnels verts proposés dans un rayon de 130 km autour de Genève
+                </div>
+            </div>
+
+        </div>
+        {# ******************************* FinNavBar ***************************************** #}
+        <div class="green-intro">
+            <div class="green-intro-text">
+                {# <div class="green-intro-title">Bienvenue dans votre tableau de bord !</div> #}
+                <div class="green-intro-content">
+                    Bienvenue sur votre page produit !
+                    Vous pouvez mettre à jour les informations concernant votre entreprise et les modifier à tout moment.
+                    Cette page vous permet aussi d’ajouter, modifier et supprimer des produits ou services que votre entreprise propose.
+                </div>
+            </div>
+        </div>
+        <div class="div-presentation-produits">
+            <div class="container-presentation-produits">
+                Vous bénéficiez également d’un regard sur les avis des consommateurs et des entreprises.
+            </div>
+        </div>
+
+
+        <div class="header-entreprise">
+
+            <div class="title-entreprise">
+                <div class="container-fiche">
+                    <span>Fiche entreprise</span>
+                    <span class="pointe-droite">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 35 40">
+                            <path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+                        </svg>
+                    </span>
+                    <span>{{company.name}}</span>
+                </div>
+            </div>
+
+            <div class="favoris-entreprise">
+                <div class="container-favoris">
+                    <div class="add-favoris">Ajouter aux favoris</div>
+                    <div class="icon-star">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 30.3 28.817">
+                            <defs>
+                                <style>.a{fill:#618226;}</style>
+                            </defs>
+                            <path class="a" d="M142.167,65.828l4.682,9.486,10.469,1.521-7.575,7.384,1.788,10.426-9.363-4.923L132.8,94.645l1.788-10.426-7.575-7.384,10.469-1.521Z" transform="translate(-127.017 -65.828)"/>
+                        </svg>
+                    </div>
+                    <div class="nb-favoris">
+                        <span class="total-favoris">{{ company.companyFavCompanies|length }}</span> favoris
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="div-profil">
+        <div class="container-profil">
+            <div class="entreprise-details">
+                <div class="logo-entreprise">
+                    {% if company.image is null %}
+                        <div class="no-logo">Aucun logo sélectionné</div>
+                    {% else %}
+                        <img src="{{ asset('css/img/company/' ~company.image) }}">
+                    {% endif %}
+                </div>
+                <div class="container-data-entreprise">
+                    <div class="data-entreprise">Coordonnées :</div>
+                    <div class="data-entreprise">{{ company.street }}<br> {{ company.postcode }}, {{ company.city }} <br>{{ company.country }}</div>
+                    <div class="data-entreprise">Tel. : {{company.phone}} <br> Fax : {{company.phone}}</div>
+                    <div class="data-entreprise">{{company.email}}<br>{{company.email}}</div>
+                </div>
+            </div>
+
+            <div class="div-description-vision">
+                <div class="container-description-vision">
+                    <div class="div-description">
+                        <div class="title-descrption-entreprise">
+                            Description de l’entreprise :
+                        </div>
+                        <div class="description-entreprise">
+                            <div class="description-pointe-droite">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 35 40">
+                                    <path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+                                </svg>
+                            </div>
+                            <div class="description-text">
+                                {{company.description}}
+                                {#
+                                    Lorem ipsum Paucorum Simonides beate vitiis nati levitate patriam ac splendor alia sed laeditur sunt levitate perfecta. Paucorum Simonides beate vitiis nati levitate patriam ac splendor alia sed laeditur sunt levitate perfecta.
+                                #}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div-vision">
+                        <div class="title-vision-entreprise">
+                            Vision du développement Durable
+                        </div>
+                        <div class="question-vision">
+                            Comment résumeriez-vous votre philosophie d’entreprise au sujet du développement durable ?
+                        </div>
+                        <div class="vision-entreprise">
+                            <div class="vision-pointe-droite">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 35 40">
+                                    <path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+                                </svg>
+                            </div>
+                            <div class="description-text">
+                                {{company.vision}}
+                                {#
+                                    Lorem ipsum Paucorum Simonides beate vitiis nati levitate patriam ac splendor alia sed laeditur sunt levitate perfecta. Paucorum Simonides beate vitiis nati levitate patriam ac splendor alia sed laeditur sunt levitate perfecta.
+                                #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-secteur">
+        <div class="container-secteur">
+           {# <div class="container-carte">
+               Carte
+           </div> #}
+            <div data-id="{{ company.id }}" data-lat="{{ company.latitude }}" data-long="{{ company.longtitude }}" id="map" class="container-carte">
+
+            </div>
+            <div class="container-tableau-secteur">
+                <table class="table1">
+                    <thead>
+                        <tr>
+                            <th>Secteurs d’activités</th>
+                            <th>Sous-secteurs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cat in company.categories %}
+                            <tr class="tr-brdb">
+                                <td class="td-brdr">
+                                        <div>
+                                            <img class="img-icones-cats"  src="{{ asset('images/Icones_Categories/'~cat.name~'/'~cat.name~'_noir.png') }}">
+                                            {{ cat.name }}
+                                        </div>
+                                </td>
+                                <td>
+                                    <div>
+
+                                        {% for subcategory in subcategories %}
+
+                                            {% if subcategory in cat.subcategories %}
+                                                <div>
+                                                    <img class="img-icones-sub-cats"  src="{{ asset('images/Icones_Categories/'~cat.name~'/Icônes sous-catégories/'~subcategory.name~'.png') }}">
+                                                    {{ subcategory.name }}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container-certifs">
+            <div class="container-google-map">
+                <div class="div-lieux">
+                    <div class="data-lieu">Haute-savoie</div>
+                    <div class="data-lieu">Genève</div>
+                    <div class="data-lieu">Lausanne</div>
+                </div>
+                {# <div class="div-map">
+                    Voir la carte <br> sur google map
+                </div> #}
+            </div>
+            <div class="div-certifications">
+                <div class="container-certifications">
+                    <div class="certif-data certif-data-mrgB">
+                        <div class="certif-title">Raison Sociale</div>
+                        <div class="certif-text">{{ company.socialreason }}</div>
+                    </div>
+                    <div class="certif-data certif-data-mrgB">
+                        <div class="certif-title">Début de l'activité</div>
+                        <div class="certif-text">{{ company.startingdate|date("Y-m-d") }}</div>
+                    </div>
+                    {% if company.certification != "" %}
+                        <div class="certif-data certif-data-mrgB">
+                            <div class="certif-title">Certification(s)</div>
+                            <div class="certif-text">{{ company.certification }}</div>
+                        </div>
+                    {% endif %}
+                    <div class="certif-data data-niveau certif-data-mrgB">
+                        <div class="certif-title title-niveau">Niveau :</div>
+                        <div class="certif-text text-niveau {{ company.niveau }}">
+                            {{ company.niveau }}
+                        </div>
+                    </div>
+                    {# <div class="certif-data">
+                        <div class="certif-title">Recommandation<br/> gaea21</div>
+                        {% if company.wantevaluation == 1 %}
+                            <div class="certif-text">Oui</div>
+                            {% else %}
+                                <div class="certif-text">Non</div>
+                        {% endif %}
+
+                    </div>#}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+        <div class="div-modif-produits">
+            <div class="container-modif-produits">
+                <div class="data-modif-produits masquer-tous-produits">
+                    <div class="voir-text" style="text-align: center">
+                        Masquer les produits / services
+                    </div>
+                </div>
+                {# <div class="data-modif-produits btn-modif-produits">
+                    <input class="search-input-product" type="text" placeholder="Rechercher un produit"/>
+                </div> #}
+                <button class="data-modif-produits btn-ajout-produit" onclick="location.href='/produit/ajout'">
+                    Ajouter un produit
+                </button>
+                <button class="data-modif-produits btn-ajout-service"  onclick="location.href='/services/ajout'">
+                    Ajouter un service
+                </button>
+            </div>
+
+        </div>
+        <div class="carousel-container" id="cards-carrousel">
+            {# % include 'components/carousel_categories.html.twig'%*/#}
+
+        </div>
+
+
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+
+    </div>
+    {% include "footer.html.twig" %}
+   
+
+    {% block javascripts %}
+   
+        {#  #}<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+                crossorigin=""></script>
+        {# <script src="{{ asset('js/leaflet-search.js') }}"></script> #}
+        <script src="{{ asset('js/map_entreprise.js') }}"></script>
+        {# <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> #}
+        <script src="{{ asset('js/produits_entreprise.js') }}"></script>
+        <script>
+            let userconnected = true;
+            var companyName = '{{ company.name}}';
+            var companyId = '{{ company.id}}';
+        </script>
+        {{encore_entry_script_tags('card_carrousel') }}
+    {% endblock %}
+{% endblock %}

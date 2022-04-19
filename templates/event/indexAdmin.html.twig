@@ -1,0 +1,52 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Event index{% endblock %}
+
+{% block body %}
+    <h1>Liste des évènements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>StartingDate</th>
+                <th>FinishDate</th>
+                <th>Place</th>
+                <th>Image</th>
+                <th>Créateur (Email)</th>
+                <th>actions</th>
+                <th>actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.id }}</td>
+                <td>{{ event.name }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.startingDate ? event.startingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ event.finishDate ? event.finishDate|date('Y-m-d') : '' }}</td>
+                <td>{{ event.place }}</td>
+                <td>{{ event.image }}</td>
+                <td>{{ event.user.email }}</td>
+                <td>
+                    <a href="{{ path('event_showAdmin', {'id': event.id}) }}">afficher</a>
+                </td>
+                <td>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">aucun évènement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('event_new') }}">Créer un évènement</a>
+{% endblock %}

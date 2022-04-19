@@ -1,0 +1,53 @@
+.btn{
+  width: 100px;
+  height: 50px;
+  padding:15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin:40px;
+}
+.btnModif{
+  position:relative;
+  width: 100px;
+  height: 30px;
+  background-color: gray;
+  padding:4px;
+  text-decoration: none;
+  color: white;
+  //font-weight: bold;
+  margin-bottom:5px;
+}
+.btnSupp{
+  position:relative;
+  width: 100px;
+  height: 30px;
+  background-color: maroon;
+  padding:4px;
+  text-decoration: none;
+  color: white;
+  //font-weight: bold;
+  margin-bottom:5px;
+  cursor:pointer;
+}
+
+$width_screen: 1920px;
+
+.search-product-green {
+  width: pxToPourcent(400px,$width_screen);
+  //margin-left: pxToPourcent(190px,$width_screen);
+}
+
+.search-product-white {
+  width: pxToPourcent(400px,$width_screen);
+ 
+}
+
+.search-company-white {
+  width: pxToPourcent(400px,$width_screen);
+ 
+}
+
+.search-company-yellow {
+  width: pxToPourcent(400px,$width_screen);
+}

@@ -1,0 +1,62 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Event index{% endblock %}
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mes évènements</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='{{ url('company1_edit',{id:app.user.id}) }}'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-entreprise">Evènements</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-ville">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+ 
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>StartingDate</th>
+                <th>FinishDate</th>
+                <th>Place</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.id }}</td>
+                <td>{{ event.name }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.startingDate ? event.startingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ event.finishDate ? event.finishDate|date('Y-m-d') : '' }}</td>
+                <td>{{ event.place }}</td>
+                <td>{{ event.image }}</td>
+                <td>
+                    <a href="{{ path('event_show', {'id': event.id}) }}">afficher</a>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">aucun évènement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('event_new') }}">Créer un évènement</a>
+{% endblock %}

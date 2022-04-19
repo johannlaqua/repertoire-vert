@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="{{ asset('public/css/service_form.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
+{% form_theme form 'service/form_theme.html.twig' %}
+
+
+<div class="wrap">
+
+        {{ form_start(form,{'attr': {'class': 'frm-content'}}) }}
+
+            <div class="frm-nom-description">
+                {{ form_row(form.name,{'label': 'Nom *'}) }}
+                {{ form_row(form.description,{'label': 'Description *'}) }}
+            </div>
+
+            <div class="frm-subcat">
+            {{ form_row(form.subcategory,{'label': 'Sous-catégorie *'}) }}
+            </div>
+
+            <div class="frm-left">
+                {{ form_row(form.certification,{'label': 'Certification *'}) }}
+                {{ form_row(form.wantevaluation,{'label': 'Demande d\'évaluation'}) }}
+                {{ form_row(form.origin,{'label': 'Provenence'}) }}
+                {{ form_row(form.serviceduration,{'label': 'Grille tarifaire : *'}) }}
+                {{ form_row(form.price,{'label': 'Prix *'}) }}
+                {{ form_row(form.currency,{'label': 'Devise *'}) }}
+
+                <p class="frm_txt_expl_ent">* ce champ est obligatoire</p>
+            </div>
+            <div class="frm-file-upload">
+                <div class="imgPreview">
+                    {% if file_name is defined and file_name is not null %}
+                        <img src='/uploads/products/{{file_name}}' alt="" class="preview"/>
+                    {% else %}
+                        <img src='' alt="" class="preview"/>
+                    {% endif %}
+                </div>
+                {{ form_row(form.image,{'label': 'Image du service *'}) }}
+            </div>
+            {{ form_row(form._token) }}
+            <br>
+            <div class="frm-valider">
+                <button class="frm-validation-btn" type="submit">Valider</button>
+            </div>
+            <div class="success hidden">
+                Votre nouveau service a été enregistré ! Veuillez patienter le temps que l’équipe du Répertoire Vert le valide.
+            </div>
+            <br>
+        {{ form_end(form,{'render_rest': false}) }}
+    </div>
+</div>

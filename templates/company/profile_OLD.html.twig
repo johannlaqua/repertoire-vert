@@ -1,0 +1,30 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mon profil entreprise</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='/profile/entreprise'" class="showcase__btn-entreprise">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-ville">Paramètres</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-ville">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+           
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+
+
+
+    {% include './company/form.html.twig' with {'form' : form, 'company' : company} %}
+</div>
+
+
+{% endblock %}

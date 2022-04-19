@@ -1,0 +1,74 @@
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+
+
+{% block body %}
+    {% for msg in app.flashes('success') %}
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <h2>Ajouter une publication</h2>
+        </div>
+        {{ form_start(Form) }}
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+
+                <div class="form-group">
+                    <label for="validate-text">Titre du post</label>
+                    <div class="input-group">
+                        {{ form_widget(Form.title,{'attr':{'type':'text','class':' form-control','placeholder':'Titre...'}}) }}
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="validate-optional">Sous Titre</label>
+                    <div class="input-group">
+                        {{ form_widget(Form.subtitle,{'attr':{'type':'text','class':' form-control' ,'placeholder':'Sous titre...'}}) }}
+                        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="validate-optional">Contenu</label>
+                    <div class="input-group">
+                        {{ form_widget(Form.body,{'attr':{'type':'text','class':' form-control' ,'placeholder':'Contenu...'}}) }}
+                        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="validate-optional">Photo!</label>
+                    <div class="input-group">
+                        {{ form_widget(Form.photo) }}
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="validate-email">Categorie</label>
+                    <div class="input-group" data-validate="email">
+                        {{ form_widget(Form.category,{'attr':{'type':'select','class':'form-control'}}) }}
+                        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                    </div>
+                </div>
+
+
+
+
+                {{ form_widget(Form.Ajouter,{'attr':{'type':'submit','class':'btn btn-primary col-xs-12'}}) }}
+
+            </div>
+
+
+        </div>
+    </div>
+    {{ form_end(Form) }}
+{% endblock %}
+
+
+

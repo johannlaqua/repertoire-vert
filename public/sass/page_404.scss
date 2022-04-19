@@ -1,0 +1,33 @@
+@import "module/form_password";
+
+body{
+  overflow: hidden;
+}
+
+.title-rv1, .title-rv2 {
+  color: #FFFFFF;
+}
+
+.title-rv-text{
+  background: rgba(255, 255, 255, 0.63);;
+  //opacity: 0.63;
+  padding: 40px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  margin-top: 40px;
+
+  h5, span{
+    font-weight: bold;
+  }
+  h5{
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (max-height: 600px){
+  .title-rv-text h5{
+    font-size: 3vw;
+  }
+}

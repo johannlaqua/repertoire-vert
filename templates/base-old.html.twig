@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    {# <title>{% block title %}Welcome!{% endblock %}</title> #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('css/css/actualite/actualite.css') }}"/>{% endblock %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/Card_product.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/entreprise.css') }}"/>
+    <!--<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/troopersalertify/toastr/css/toastr.css') }}" type="text/css" />
+
+    <link rel="stylesheet" href="{{ asset('css/css/form/form.css') }}"/>
+    <script src="{{ asset('bundles/troopersalertify/toastr/js/toastr.js') }}"></script>
+</head>
+<body>
+
+{{ app.session|alertify|raw }}
+<div id="root" ></div>
+<div class="container col-l-offset-2 col-l-8 col-m-offset-0 col-m-12 col-s-offset-0 col-s-12">
+    {# {% include "header.html.twig" %} #}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+    <script src="{{ asset('js/jQuery.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</div>
+
+</body>
+</html>

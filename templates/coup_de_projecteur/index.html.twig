@@ -1,0 +1,43 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}CoupDeProjecteur index{% endblock %}
+
+{% block body %}
+    <h1>CoupDeProjecteur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Video</th>
+                <th>Lien</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coup_de_projecteur in coup_de_projecteurs %}
+            <tr>
+                <td>{{ coup_de_projecteur.id }}</td>
+                <td>{{ coup_de_projecteur.nom }}</td>
+                <td>{{ coup_de_projecteur.description }}</td>
+                <td>{{ coup_de_projecteur.photo }}</td>
+                <td>{{ coup_de_projecteur.video }}</td>
+                <td>{{ coup_de_projecteur.lien }}</td>
+                <td>
+                    <a href="{{ path('coup_de_projecteur_show', {'id': coup_de_projecteur.id}) }}">show</a>
+                    <a href="{{ path('coup_de_projecteur_edit', {'id': coup_de_projecteur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('coup_de_projecteur_new') }}">Create new</a>
+{% endblock %}

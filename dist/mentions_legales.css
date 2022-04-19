@@ -1,0 +1,25 @@
+.showcase {
+  background-image: url("/images/header-mentions-legales.jpg");
+}
+
+.page_content {
+  background-color: #EDEDED;
+  height: 100%;
+  padding: 10%;
+}
+.page_content h2 {
+  margin-top: 5%;
+  font-size: 2.3vw;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1024px) and (min-height: 620px) {
+  .page_content p {
+    font-size: 3vw;
+  }
+  .page_content h2 {
+    font-size: 4vw;
+  }
+}
+
+/*# sourceMappingURL=mentions_legales.css.map */

@@ -1,0 +1,33 @@
+.wrap-map {
+  padding: 80px;
+}
+.wrap-map div.map-content {
+  display: flex;
+  justify-content: space-between;
+}
+.wrap-map div.map-content div#sidemenu {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20%;
+  gap: 15px 30px;
+}
+.wrap-map div.map-content div.categorie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrap-map div.map-content div.categorie img {
+  width: 60px;
+}
+.wrap-map div.map-content div.categorie p {
+  width: 60px;
+  font-size: 8pt;
+  text-align: center;
+  margin: 0;
+}
+.wrap-map div.map-content div#map {
+  width: 70%;
+  height: 200vh;
+}
+
+/*# sourceMappingURL=company_map.css.map */

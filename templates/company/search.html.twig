@@ -1,0 +1,46 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="title-banner-container" style="background-image: url({{asset('images/nouveautes.png')}})">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Résultat de la recherche - Entreprise</h3>
+    </div>
+
+    <div>
+    {% if companies is empty %}
+        <div class="col-l-12 col-m-12 col-s-12">
+            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                <p>Aucun résultat trouvé</p>
+            </div>
+
+        </div>
+    {% else %}
+
+        <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            {% for company in companies %}
+                <a href="{{ url('productShow',{'slug':company.slug}) }}" style="max-width:200px; text-decoration:none">
+                    <div class="product-card card">
+                        <div class="card-header">
+                            <img class="card-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+                            <span class="card-title">Nom:   {{ company.name }}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Description:   {{ company.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        </div>
+
+    {% endif %}
+
+
+
+
+    <div>
+        <form style="margin-bottom:30px; text-align:center;" action="/">
+            <button style="background-color:green; border-radius:30px; color:white; font-size:120%; cursor:pointer"> Retour </button>
+        </form>
+
+    </div>
+{% endblock %}

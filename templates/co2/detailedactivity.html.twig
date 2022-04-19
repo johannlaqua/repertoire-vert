@@ -1,0 +1,62 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+
+    <h2>Date</h2> <span>{{ createdAt| date }} </span>
+    <h2>CO2</h2> {{ co2 }} KG
+    <h2>Moyen de transport</h2> {{ transporttype }}
+<h2>paramétre d'affichage</h2> {{ privacy }}
+        <div id="mapid" style="height: 500px; width: auto"></div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        //TODO refactoring in js file
+        $.ajax({
+            url:'/AjaxUserGeo',
+            type: "POST",
+            dataType: "json",
+            data: {},
+            async: true,
+            success: function (data)
+            {
+                var mymap = L.map('mapid').setView([ 36.8065, 10.1815 ], 2);
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    maxZoom: 18,
+                    id: 'mapbox/streets-v11',
+                    tileSize: 512,
+                    zoomOffset: -1,
+                    accessToken: 'pk.eyJ1IjoicmVkb3hnZW51czY5IiwiYSI6ImNrMGh6dmh6djA3OW8zaXA1dDA3eGYxa24ifQ.aoKS5PsFip6HxcYeK4ktOA'
+
+                }).addTo(mymap);
+                // place markers
+                $.each(data, function(i, val) {
+
+                    console.log(data)
+
+
+                    var marker = L.marker([ val.lat, val.lng ]).addTo(mymap);
+                    marker.bindPopup("<b>" + "aa" + "</b>").openPopup();
+                });
+                //hide loader
+                $('#loader').hide();
+            }
+        });
+    </script>
+
+{% endblock %}
+
+

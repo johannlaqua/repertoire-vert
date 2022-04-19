@@ -1,0 +1,152 @@
+@import './base/variables';
+@import 'dashboard.scss';
+
+div.page-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+
+  h4{
+    color: $green;
+    text-align: center;
+    margin: 50px 0;
+  }
+
+  .tarifs-table{
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 30px;
+    margin-bottom: 50px;
+
+    table {
+      border-collapse: collapse;
+
+      h5 {
+        font-size: 0.9em;
+      }
+
+      p {
+        font-weight: normal;
+        font-size: 0.8em;
+      }
+
+      svg {
+        width: 60px;
+        height: 56px;
+      }
+
+      th {
+        tr {
+          border-top: none;
+        }
+
+      }
+
+      tbody tr {
+        border-top: 1px solid black;
+
+      }
+
+      td {
+        text-align: center;
+      }
+
+      th, td {
+        padding: 20px;
+        border-right: 1px solid black;
+
+        &:last-of-type{
+          border-right: none;
+        }
+      }
+    }
+
+  }
+
+  div.niveaux-content{
+    display: flex;
+    justify-content: space-between;
+
+    div.niveau-element{
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      width: 30%;
+
+      span{
+        width: 100%;
+        border-radius: 9px;
+        height: 20px;
+        display: block;
+
+        &.n0{
+          background-color: $blue;
+        }
+        &.n1{
+          background-color: $yellow;
+        }
+        &.n2{
+          background-color: $green;
+        }
+      }
+
+      div.niveau-infos{
+        padding: 10%;
+        padding-bottom: 60px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+
+        svg:first-of-type{
+          width: 60px;
+          margin-bottom: 10px;
+        }
+
+        div.img-niveau{
+          margin-top: auto;
+          height: 200px;
+          display: flex;
+          align-items: center;
+        }
+        img{
+          width: 200px;
+          &.yellow-icon{
+            width: 150px;
+          }
+        }
+
+        h6{
+          font-size: 1em;
+          &.n0{
+            color: $blue;
+          }
+          &.n1{
+            color: $yellow;
+          }
+          &.n2{
+            color: $green;
+          }
+          &:last-of-type{
+            margin: 40px 0;
+          }
+        }
+
+        ul{
+          width: 100%;
+          height: 200px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          li{
+            list-style-position: inside;
+          }
+        }
+
+      }
+    }
+
+  }
+
+}

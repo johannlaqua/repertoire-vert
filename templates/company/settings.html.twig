@@ -1,0 +1,465 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+{# REtirer nom/prénom du contact
+
+L'évaluation en variable à part en boolean
+ #}
+
+{% block body %}
+    {# {{dump(app.user)}} #}
+    {# ******************************* NavBar ***************************************** #}
+    <link rel="stylesheet" href="{{ asset('css/settings_company.css') }}"/>
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header-parametre-entreprise.png')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+
+        <div class="header-content">
+            <h3 class="banner-profil-title">Mon compte</h3>
+            <div class="div-btn-banner">
+                <button onclick="location.href='/profile/entreprise'" class="btn-banner" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a{fill:#fff;}.c{fill:none;stroke: black}.b{fill:black;font-size:18px;}.c,.d{stroke:black;stroke-miterlimit:10;stroke-width:1.5px;}.d{fill:none;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-463 -397)">
+                            <rect class="a" width="232" height="70" rx="10" transform="translate(463 397)"/>
+                            <text class="b" transform="translate(585.996 439)">
+                                <tspan x="-23.989" y="0">Profil</tspan>
+                            </text>
+                            <g transform="translate(-20234.004 4150)">
+                                <circle class="c" cx="4.743" cy="4.743" r="4.743" transform="matrix(0.299, -0.954, 0.954, 0.299, 20738.293, -3718.946)"/>
+                                <path class="d" d="M225.762,131.932a5.428,5.428,0,0,1,1.132.143c2.4.378,3.967,3.428,3.967,6.69H214.4c0-3.543,1.852-6.834,5.1-6.834Z" transform="translate(20521.611 -3846.652)"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button onclick="location.href='{{ url('Dashboard') }}'" class="btn-banner" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a-dash{fill:white;}.b-dash,.d-dash{fill:none;stroke:black;stroke-miterlimit:10;}.b-dash{stroke-width:1.5px;}.c-dash,.e-dash{fill:black;}.d-dash{stroke-width:0.5px;}.e-dash{font-size:18px;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-740 -397)">
+                            <rect class="a-dash" width="232" height="70" rx="10" transform="translate(740 397)"/>
+                            <g transform="translate(-8 20)"><circle class="b-dash" cx="10.5" cy="10.5" r="10.5" transform="translate(787 401)"/>
+                                <line class="b-dash" y2="2.882" transform="translate(797.5 401)"/>
+                                <line class="b-dash" x2="2.882" transform="translate(787 411.5)"/>
+                                <line class="b-dash" x2="2.882" transform="translate(805.117 411.5)"/>
+                                <line class="b-dash" x2="2.038" y2="2.038" transform="translate(790.141 403.882)"/>
+                                <line class="b-dash" x2="2.038" y2="2.038" transform="translate(803.07 416.812)"/>
+                                <line class="b-dash" y1="2.038" x2="2.038" transform="translate(790.564 417.237)"/>
+                                <line class="b-dash" y1="2.038" x2="2.038" transform="translate(803.295 404.506)"/>
+                                <circle class="c-dash" cx="1.052" cy="1.052" r="1.052" transform="translate(796.449 410.448)"/>
+                                <line class="d-dash" y1="1.422" x2="1.422" transform="translate(797.5 410.078)"/>
+                                <rect class="c-dash" width="3.508" height="1.09" transform="translate(795.568 418.975)"/>
+                            </g>
+                            <text class="e-dash" transform="translate(890 439)">
+                                <tspan x="-49.336" y="0">Dashboard</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </button>
+                <button onclick="location.href='/parametres/entreprise'" class="btn-banner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a-param{fill: #618226;}.b-param{font-size:18px;fill: white}.c-param{fill:none;stroke:white;stroke-miterlimit:10;stroke-width:1.5px;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-1018 -397)">
+                            <rect class="a-param" width="232" height="70" rx="10" transform="translate(1018 397)"/>
+                            <text class="b-param" transform="translate(1171 439)">
+                                <tspan x="-51.821" y="0">Paramètres</tspan>
+                            </text>
+                            <g transform="translate(453.75 268.502)">
+                                <g transform="translate(602.967 152.498)">
+                                    <path class="c-param" d="M603.745,167.687a.168.168,0,0,0,.157.116l2.049.028a8.931,8.931,0,0,0,1.887,2.191l-.275,2.029a.169.169,0,0,0,.091.173l2.195,1.106a.168.168,0,0,0,.193-.03l1.467-1.428a8.921,8.921,0,0,0,2.884.213l1.241,1.63a.168.168,0,0,0,.187.058l2.334-.77a.169.169,0,0,0,.116-.158l.028-2.049a8.924,8.924,0,0,0,2.191-1.887l2.029.275a.168.168,0,0,0,.173-.091L623.8,166.9a.168.168,0,0,0-.03-.193l-1.428-1.467a8.919,8.919,0,0,0,.213-2.884l1.63-1.241a.168.168,0,0,0,.058-.186l-.77-2.334a.168.168,0,0,0-.157-.116l-2.049-.028a8.917,8.917,0,0,0-1.887-2.191l.275-2.029a.169.169,0,0,0-.091-.173l-2.195-1.106a.168.168,0,0,0-.193.03l-1.467,1.428a8.92,8.92,0,0,0-2.884-.213l-1.241-1.63a.168.168,0,0,0-.187-.058l-2.334.77a.169.169,0,0,0-.116.158l-.028,2.049a8.923,8.923,0,0,0-2.191,1.887l-2.029-.275a.168.168,0,0,0-.173.091l-1.106,2.195a.168.168,0,0,0,.03.193l1.428,1.467a8.929,8.929,0,0,0-.213,2.884l-1.63,1.241a.168.168,0,0,0-.058.186Z" transform="translate(-602.967 -152.498)"/>
+                                </g>
+                                <circle class="c-param" cx="6.326" cy="6.326" r="6.326" transform="translate(607.283 156.814)"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button onclick="location.href='/produits'" class="btn-banner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a-produits{fill:#fff;}.b-produits{font-size:18px;fill:#161615;}.c-produits{fill:none;stroke:#161615;stroke-miterlimit:10;stroke-width:2.5px;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-1302 -397)">
+                            <rect class="a-produits" width="232" height="70" rx="10" transform="translate(1302 397)"/>
+                            <text class="b-produits" transform="translate(1437 439)">
+                                <tspan x="-63.983" y="0">Produits/Services</tspan>
+                            </text>
+                            <g transform="translate(598.342 313.836)">
+                                <path class="c-produits" d="M761.227,113.287a5.7,5.7,0,1,0-11.364,0" transform="translate(-14.973)"/>
+                                <rect class="c-produits" width="15.825" height="14.877" transform="translate(732.659 113.287)"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    <div class="div-presentation">
+        <div class="container-presentation">
+            <div class="presentation-title">Ici vous avez accès aux paramètres afin de modifier les données concernant votre entreprise.
+                Vous pouvez aussi mettre à jour votre mot de passe ou encore désactiver votre profil si vous souhaitez disparaître du Répertoire Vert.
+                N’hésitez pas à <a href="mailto:contact@repertoirevert.org">contacter notre équipe</a> si vous rencontrez la moindre difficulté.</div>
+            {# <div class="presentation-content"> Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops <br>cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem<br> adultae virginis diuturnum absentia pauperis erubesceret patris.</div>#}
+        </div>
+    </div>
+
+    {% if registeredToNewsletter == 0 %}
+        <div class="newsletter">
+            <button class="boutonNewsletter" id="button" onClick="newsletterInscription(true)">Je m'inscris à la newsletter</button>
+            <div class="success-newsletter" id="successlocation"></div>
+            <div class="error-newsletter" id="errorlocation"></div>
+        </div>
+    {% endif %}
+
+    
+    {########### MODIFICATION DU MDP #################}
+    <div class="div-title-mdp">
+        <div class="title-mdp">
+            Changer le mot de passe
+        </div>
+    </div>
+
+
+
+ <div class="div-modif-mdp">
+        <div class="container-modif-mdp">
+            <div class="form-modif-mdp">
+                <div class="champ-mdp">
+                    <label class="label-modif-mdp">Mot de passe actuel *</label>
+                    <input class="input-modif-mdp" type="password" id="actualpass" data-email="{{email}}"/>
+                </div>
+                <div class="champ-mdp">
+                    <label class="label-modif-mdp">Nouveau mot de passe *</label>
+                    <input class="input-modif-mdp" type="password" id="newpass"/>
+                    <div id="validpassword"></div>
+                </div>
+                <div class="champ-mdp">
+                    <label class="label-modif-mdp">Confirmer nouveau mot de passe *</label>
+                    <input class="input-modif-mdp" type="password" id="confirmnewpass"/>
+                </div>
+            </div>
+            <div class="legende-asterix legende-astérix-mdp">
+                 * ce champ est obligatoire
+            </div>
+        </div>
+        <input type="submit" id="submit-maj-mdp"  class="hidden-input"/>
+    </div>
+
+    <div class="div-maj-mdp">
+        <div class="container-maj-mdp">
+            <label class="label-btn-maj-mdp" for="form_send_mdp">Mettre à jour</label>
+        </div>
+    </div>
+
+    <div class = "div-modif-mdp">
+        <div id ="msgmodifmdp">
+        </div>
+    </div>
+
+
+    {######### Modifications des données ###########}
+    <div class="div-title-data">
+        <div class="title-data">
+            Je modifie mes données
+        </div>
+    </div>
+
+    <div class="div-modif-data">
+        <div class="container-modif-data">
+            <div class="colonne-modif-data">
+                {# <div class="champ-data">
+                    <label class="label-data">Pseudo *</label>
+                    <input type="text" id= "new_nickname" value="{{ username }}"/>
+                </div>
+
+                <div class="champ-data">
+                    <label class="label-data">Adresse mail *</label>
+                    <input type="text" id = "new_email" value="{{ email }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Confirmer l'adresse mail *</label>
+                    <input type="text" id = "new_email_comf" value="{{ email }}"/>
+                </div> #}
+                <div class="champ-data">
+                    <label class="label-data">Nom de l'entreprise</label>
+                    <input type="text" id = "new_company_name" value="{{ company.name }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Raison sociale</label>
+                    <input type="text" id = "new_social" value="{{ company.socialreason }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Adresse</label>
+                    <input type="text" id = "new_adress" value="{{ company.street}}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Ville</label>
+                    <input type="text" id = "new_town" value="{{ company.city }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Code postal</label>
+                    <input type="text" id = "new_postal" value="{{ company.postcode }}"/>
+                </div>
+
+
+                <div class="champ-data">
+                    <p><b>Personne de contact</b></p>
+                    <label class="label-data">Nom</label>
+                    <input type="text" id="new_lastname" value="{{ company.lastname }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Prénom</label>
+                    <input type="text" id="new_firstname" value="{{ company.firstname }}"/>
+                </div>
+
+
+            </div>
+            <div class="colonne-modif-data">
+                <div class="champ-data">
+                    <label class="label-data">Canton,département</label>
+                    <input type="text" id = "new_street" value="{{ company.region }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Pays</label>
+                    <input type="text" id = "new_country" value="{{ company.country }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Téléphone</label>
+                    <input type="text" id = "new_phone" value="{{ company.phone }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Site web</label>
+                    <input type="text" id = "new_urlweb" value="{{ company.urlwebsite }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Lien Linkedin</label>
+                    <input type="text" id = "new_linkedin" value="{{ company.urllinkedin }}" />
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Lien Facebook</label>
+                    <input type="text" id = "new_fburl" value="{{ company.urlfacebook }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Lien Twitter</label>
+                    <input type="text" id = "new_twitter" value="{{ company.urltwitter }}"/>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data" for="test">Début de l'activité</label>
+                    <div class="div-input-date-activite">
+                        <div class="select-date">
+                            <select id="date_day">
+                                {% for i in 1..31 %}
+                                    {% if i < 10 %}
+                                        <option value="0{{ i }}">0{{ i }}</option>
+                                    {% else %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        {% set months = ['Jan','Fév','Mar','Avr','Mai','Juin','Jui',
+                            'Aout','Sept','Oct','Nov','Déc']
+
+                        %}
+                        {% set number_month = 0 %}
+                        <div class="select-date">
+                            <select id="date_month">
+                                {% for month in months %}
+                                    {% set number_month = number_month + 1 %}
+                                    {% if number_month < 10 %}
+                                        <option value="0{{ number_month }}">{{ month }}</option>
+                                    {% else %}
+                                        <option value="{{ number_month }}">{{ month }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="select-date">
+                            <select id="date_year">
+                                {% for i in currentYear..1800  %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Certification(s)</label>
+                    <input type="text" id = "new_certif" value="{{ company.certification }}"/>
+                </div>
+
+
+                <div class="champ-data champ-data2">
+                    <label class="label-data">Zone d'influence géographique *</label>
+                    <div class="select-zone">
+                        <select id="influenceZone">
+                            {% set options = ["5km ou moins","10km","20km","50km","100km","plus de 100km"] %}
+                            <option value="{{company.influencezone}}" selected> {{company.influencezone}} </option>
+                            {% for option in options %}
+                                {% if company.influencezone != option %}
+                                    <option value="{{ option }}">{{ option }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="colonne-modif-data">
+                <div class="champ-data">
+                    <div class="title-evaluation">
+                        Je souhaite être évalué par gaea21 :<br>
+                        <a href="{{ url('tarifs-niveaux') }}">En savoir plus ></a>
+                    </div>
+                    <div class="evaluation-input">
+                        {% if company.wantevaluation %}
+                            <input id="evaluationYes" type="radio" name="evaluation" checked>
+                            <label for="evaluationYes" class="label-ellipse">Oui</label>
+
+                            <input id="evaluationNo" type="radio" name="evaluation">
+                            <label for="evaluationNo" class="label-ellipse">Non</label>
+                        {% else %}
+                            <input id="evaluationYes" type="radio" name="evaluation">
+                            <label for="evaluationYes" class="label-ellipse">Oui</label>
+
+                            <input id="evaluationNo" type="radio" name="evaluation" checked>
+                            <label for="evaluationNo" class="label-ellipse">Non</label>
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="champ-data">
+                    <label>Description de votre entreprise :</label>
+                    <textarea id= "new_desc" value="{{ company.description }}">{{ company.description }}</textarea>
+                </div>
+                <div class="champ-data">
+                    <label>
+                        Votre vision du Développement Durable :<br>
+                        Comment résumeriez-vous votre philosophie<br>
+                        d’entreprise au sujet du Développement Durable ?
+                    </label>
+                    <textarea id = "new_vision" value="{{ company.vision }}">{{ company.vision }}</textarea>
+                </div>
+                <div class="champ-data">
+                    <label> Téléchargez votre logo (jpeg/png)</label>
+                    <div class="upload-logo">
+                        <label for="logo-file" class="parcourir-logo">Parcourir</label>
+                        <div class="emplacement-upload">
+                            {% if company.image is null %}
+                                Aucun fichier
+                            {% else %}
+                                {{ company.image }}
+                            {% endif %}
+                        </div>
+                        <input id="logo-file" type="file"/>
+                        <div class="supprimer-logo">Supprimer l'image</div>
+                    </div>
+                </div>
+                <div style="color: red; margin-top: 10px;" class="div-erreur-image"></div>
+                <div class="legende-data-asterix">* ce champ est obligatoire</div>
+            </div>
+        </div>
+        <input type="submit" id="submit-maj-data" class="hidden-input">
+    </div>
+
+
+    <div class="div-maj-data">
+        <div class="container-maj-data">
+            <label for="submit-maj-data" class="label-btn-maj-data">Modifier</label>
+        </div>
+    </div>
+
+    <div id="form-error">
+    </div>
+    <div class="div-msg-valid">
+        <img class="hidden" src="{{ asset('images/ajax-loader.gif') }}" alt="loader">
+    </div>
+    <div class="div-msg-data hidden">
+         <div class="container-msg-data">
+            Le profil a bien été mis à jour !
+        </div>
+    </div>
+
+    {######### DESACTIVATION / ACTIVATION DU PROFIL ###########}
+    <div class="div-title-disable">
+        <div class="title-disable">
+            Désactivation du profil
+        </div>
+    </div>
+
+    <div class="div-disable-profil">
+        <div class="container-disable-profil">
+            {{form_start(desactivateForm, {'attr': {'class': 'form-disable-profil'}})}}
+            <div class="champ-disable-profil">
+                {{form_label(desactivateForm.email)}}
+                {{form_widget(desactivateForm.email, {'attr': {'class': 'input-disable-profil'}})}}
+                {{form_errors(desactivateForm.email)}}
+            </div>
+            <div class="champ-disable-profil">
+                {{form_label(desactivateForm.password.first)}}
+                {{form_widget(desactivateForm.password.first, {'attr': {'class': 'input-disable-profil'}})}}
+                {{form_errors(desactivateForm.password.first)}}
+            </div>
+            <div class="champ-disable-profil">
+                {{form_label(desactivateForm.password.second)}}
+                {{form_widget(desactivateForm.password.second, {'attr': {'class': 'input-disable-profil'}})}}
+                {{form_errors(desactivateForm.password.second)}}
+            </div>
+            {{ form_errors(desactivateForm) }}
+
+            <div class="div-send-disable container-send-disable div-disable-profil">
+                {{form_widget(desactivateForm.submit,
+                     {'attr':
+                        {'onclick': 'return confirm("En validant, vous recevrez un code de réactivation sur votre boite mail. Conservez ce code, il permet de réactiver votre compte à tout moment. Êtes-vous sûr(e) de vouloir désactiver votre compte ?")'
+                        ,'class': 'label-btn-send-disable'}}) }}
+            </div>
+            {{form_end(desactivateForm)}}
+            <div class="legende-asterix legende-astérix-profil">
+                * ce champ est obligatoire
+            </div>
+        </div>
+    </div>
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+    <script src="{{ asset('js/imageVerification.js') }}"></script>
+    <script src="{{ asset('js/parametres_entreprise.js') }}"></script>
+    <script src="{{ asset('js/newsletterPopUp.js') }}"></script>
+    {% include "footer.html.twig" %}
+{% endblock %}

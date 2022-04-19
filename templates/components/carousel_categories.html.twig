@@ -1,0 +1,19 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
+{% endblock %}
+
+<div class="main-carousel">
+    {% for cat in company.categories %}
+        <div class="carousel-cell">
+            <img src="{{ asset('images/Icones_Categories/'~cat.name~'/'~cat.name~'_noir.png') }}" alt="{{ cat.name }}">
+            <img class="hidden" src="{{ asset('images/Icones_Categories/'~cat.name~'/'~cat.name~'_bleu.png') }}" alt="{{ cat.name }}">
+        </div>
+    {% endfor %}
+
+</div>
+
+{% block javascripts %}
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="{{ asset('js/carousel.js') }}"></script>
+{% endblock %}

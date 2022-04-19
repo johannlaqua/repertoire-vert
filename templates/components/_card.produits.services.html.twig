@@ -1,0 +1,179 @@
+<div class="grid-card">
+    <div class="grid-photo">
+        <img src="uploads/products/{{ product.image }}" style="border-radius: .50rem;max-height:100%;max-width:100%">
+    </div>
+    <div class="grid-infos">
+        <div>
+            <div class="div-titre">
+                Nom
+            </div>
+            <div class="nom-produit">
+                <button onclick="location.href='/produit/{{ product.id }}'" title="{{ product.name }}" class="lien-ficheProduit" >
+                    {{ product.name }}
+                </button>
+            </div>
+            <div class="div-titre">
+                Descriptif
+            </div>
+            <div class="div-td">
+                {{ product.description }}
+            </div>
+            <div class="div-btn">
+                {% if product.type == "marchandise"%}
+                    <a href="{{ url('productEdit', {id: product.id}) }}" class="btn-edit">Modifier</a>
+                    <a href="{{ url('productDelete', {id: product.id}) }}" class="btn-delete">Supprimer</a>
+                {% elseif product.type == "service" %}
+                    <a href="{{ url('servicesEdit', {id: product.id}) }}" class="btn-edit">Modifier</a>
+                    <a href="{{ url('servicesDelete', {id: product.id}) }}" class="btn-delete">Supprimer</a>
+                {% else %}
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="grid-infos">
+        <div>
+            <div class="div-titre">
+                Origine du produit
+            </div>
+            <div class="div-td">
+                {{ product.origin }}
+            </div>
+            {# <div class="div-titre">
+                Recommandation GAEA21
+            </div>
+             <div class="gaearecommanded">
+                    <div class="gaea-oui {% if  not product.gaearecommanded %}gaearecommanded-false{% endif %}">
+                        <span class="span-oui">Oui</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3"/></svg>
+                    </div>
+                    <div class="gaea-non {% if  product.gaearecommanded %}gaearecommanded-false{% endif %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3"/></svg>
+                        <span class="span-non">Non</span>
+                    </div>
+                </div>#}
+            <div class="div-titre">
+                Prix
+            </div>
+            <div class="div-td">
+                {{ product.price }}
+                {% if product.currency == "Euro"%}
+                    €
+                {% else %}                
+                    {{ product.currency }}
+                {% endif %}
+                {% if product.type == "service"%}
+                    / {{ product.serviceduration }}
+                {% endif %}
+            </div>
+            <div class="div-titre">
+                Niveau
+            </div>
+            <div class="container-niveau-produit div-td">
+                <div class="niveau-produit {{ product.niveau }}">
+                    {{ product.niveau }}
+                </div>
+            </div>
+            <div class="div-titre">
+                Certification
+            </div>
+            <div class="div-td">
+                {{ product.certification }}
+            </div>
+        </div>
+    </div>
+    <div class="grid-infos">
+        <div class="avis-produit">
+            <div class="div-avis">
+                <div class="data-avis">
+                    <div class="avis-title" style="text-align: center;">
+                        Avis consommateur
+                    </div>
+                    <div class="avis-etoile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14.695" height="13.976" viewBox="0 0 14.695 13.976"><defs><style>.avis-conso{fill:#618226;}</style></defs><path class="avis-conso" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-127.017 -65.828)"/></svg>
+                    </div>
+                </div>
+                <div class="data-avis">
+                    <div class="avis-title" style="text-align: center;">
+                        Avis entreprise
+                    </div>
+                    <div class="avis-etoile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14.695" height="13.976" viewBox="0 0 14.695 13.976"><defs><style>.avis-entreprise{fill:#FFBE2B;}</style></defs><path class="avis-entreprise" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-127.017 -65.828)"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="avis-produit-consomm">
+                <div class="avis-etoiles">
+                    {% set indice_avis = 'avis_'~product.id %}
+                    {% set indice_note = 'note_'~product.id %}
+                    {% set nb_etoiles = 0 %}
+                    {% set nb_avis = 0 %}
+
+                    {% if avis_users[indice_note] is defined %}
+                        {% set nb_etoiles = avis_users[indice_note] %}
+                    {% endif %}
+
+                    {% if avis_users[indice_avis] is defined %}
+                        {% set nb_avis = avis_users[indice_avis] %}
+                    {% endif %}
+
+
+                    {% if nb_etoiles != 0 %}
+                        {% for i in 0..nb_etoiles-1 %}
+                            <div class="container-star">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star1{fill:#618226;stroke:#618226;stroke-miterlimit:10;}</style></defs><path class="avis-star1" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                            </div>
+                        {% endfor%}
+                    {% endif %}
+
+                    {% if nb_etoiles !=5 %}
+                        {% for i in 0..(5-nb_etoiles -1 ) %}
+                            <div class="container-star">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star1-vide{fill:none;stroke:#618226;stroke-miterlimit:10;}</style></defs><path class="avis-star1-vide" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="avis-nb">
+                    {{ nb_avis}} avis
+                </div>
+            </div>
+            <div class="avis-produit-entreprise">
+                    <div class="avis-etoiles">
+                        {% set indice_avis = 'avis_'~product.id %}
+                        {% set indice_note = 'note_'~product.id %}
+                        {% set nb_etoiles = 0 %}
+                        {% set nb_avis = 0 %}
+
+                        {% if avis_companies[indice_note] is defined %}
+                            {% set nb_etoiles = avis_companies[indice_note ] %}
+                        {% endif %}
+
+                        {% if avis_companies[indice_avis] is defined %}
+                            {% set nb_avis = avis_companies[indice_avis ] %}
+                        {% endif %}
+
+                        {% if nb_etoiles != 0 %}
+                            {% for i in 0..nb_etoiles - 1  %}
+                                <div class="container-star">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star2{fill:#ffbe2b;stroke:#ffbe2b;stroke-miterlimit:10;}</style></defs><path class="avis-star2" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if nb_etoiles !=5 %}
+                            {% for i in 0..(5-nb_etoiles - 1) %}
+                                <div class="container-star">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star2-vide{fill:none;stroke:#ffbe2b;stroke-miterlimit:10;}</style></defs><path class="avis-star2-vide" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                <div class="avis-nb">
+                    {{ nb_avis}} avis
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

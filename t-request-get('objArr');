@@ -1,0 +1,480 @@
+[33mcommit bf4321703f4fc59b03aa4a816c9c6ec8c38b2f22[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 9049ac2 0d81043
+Author: Tempestus <druaga9@gmail.com>
+Date:   Wed Oct 6 15:21:10 2021 +0200
+
+    Merge branch 'master' of https://gitlab.com/gaea21/SiteRepVert/repvert_dev-v5.2.3
+
+[33mcommit 9049ac273ed5514bfa0fe6d66f84f44849e1be3b[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Wed Oct 6 15:18:08 2021 +0200
+
+    Added the necessary functions in companyController for modifying a user and deactivating the account
+
+[33mcommit 0d81043cf874fc764902552fda3f0a29883a8e6d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Oct 6 15:15:36 2021 +0200
+
+    homepage.css
+
+[33mcommit a2cef026ab71c28d62bfb4841272526e6f7d8409[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Oct 4 19:41:36 2021 +0200
+
+    ajout parametre products dans services.yaml
+
+[33mcommit 47286a783b8aa37d9fc13d262ad2a6cba22b6765[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Oct 4 18:58:56 2021 +0200
+
+    workspace.xml ajout
+
+[33mcommit e95f8947c78fea63b12319951a1e54c29f34f175[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Wed Jul 14 11:18:23 2021 +0100
+
+    Fixation affichage sous categories
+
+[33mcommit d764a764bb62fa9d9710ad603aad9f53c64a367b[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Wed Jul 14 10:40:52 2021 +0100
+
+    retouche Actualités
+
+[33mcommit d40f0fec1ae38710242868eb30685641fc803025[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Tue Jul 13 13:55:20 2021 +0100
+
+    Remove lat lang inscription + fixation homepage Prd resp
+
+[33mcommit 1fe05b324c4fa0d850b976c65604de4434cb661d[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Tue Jul 13 10:59:26 2021 +0100
+
+    Retouche Actualités
+
+[33mcommit a55636b8cf1088fd62c097f8d7da958c6a84cb1c[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Mon Jul 12 23:05:53 2021 +0100
+
+    Fixation upload img (product/service/company/event)
+
+[33mcommit 20060937d72059fd0f22815f5641aa7be65cfbac[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Mon Jul 12 22:21:14 2021 +0100
+
+    Jointure product/subcategory
+
+[33mcommit bb431f24e3cd8a9cd5850c9e178b3cd1c9ea1362[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Mon Jul 12 21:56:36 2021 +0100
+
+    Login NavBar
+
+[33mcommit af5ccbfb878bee99ec0b2d08004d800a20fb45e8[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Sun Jul 11 19:36:33 2021 +0100
+
+    retouche Mon COmpte
+
+[33mcommit 5df7775c1908a1dd4b8dcc16e3586ab158475ac3[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Sun Jul 11 19:07:33 2021 +0100
+
+    Design Ajout produit/service + boutons Dashboard
+
+[33mcommit 22116dd589588a8089ee281fcfba7f653f01954b[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Fri Jul 9 15:08:02 2021 +0100
+
+    searchbar
+
+[33mcommit fc48ccadcfa13e050fa7f6dbc434be58fdeeddcb[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Fri Jul 9 10:58:09 2021 +0100
+
+    Sign Up changes
+
+[33mcommit c168a00af9bd2b23b61cea84ed829de0c72495b1[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Thu Jul 8 19:14:24 2021 +0100
+
+    Fixation:- Font
+
+[33mcommit f57af63df013c290f302fecc67522632cc3c45e4[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Thu Jul 8 17:57:09 2021 +0100
+
+    Fixation Font
+
+[33mcommit 5309bf7952463d1b87310dc67f05e60b8e9fa1a4[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Thu Jul 8 17:21:32 2021 +0100
+
+    Retouches Forum + Actualités
+
+[33mcommit 8b67e57eb3d37cac200f19940bd3f4857455c588[m
+Author: Jacem ROUABEH <jacem.rouabeh21@gmail.com>
+Date:   Thu Jul 8 08:51:51 2021 +0100
+
+    retouches Homepage Système d'évaluation+Telecharger l'appli
+
+[33mcommit f537be6c757f946163ceaeaad6d5086b79502fa5[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Oct 4 17:33:28 2021 +0200
+
+    dashboard.css.map
+
+[33mcommit 6d55c49a2e8a4ff056b7576a41126e2cf6145954[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Oct 4 17:21:00 2021 +0200
+
+    modif dashboard.css
+
+[33mcommit 5d2d72bd114372f1e1b25be94b9ba3ff9b01bb90[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Oct 4 17:06:55 2021 +0200
+
+    Début menu responsive
+
+[33mcommit 5981d39f720fcec79a3910bd8df57659c38f1751[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Oct 4 15:38:14 2021 +0200
+
+    Page tarifs niveaux version PC
+
+[33mcommit ae486d04b132396bcf0b0b170dc2affc438780a9[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Fri Oct 1 10:29:33 2021 +0200
+
+    Ajout des boutons ajouter produit sur page produits entreprise + niveaux entreprise à l'inscription + lien en savoir plus + page produit CSS
+
+[33mcommit a01e0217af138829083b7907a6bd1114f6f6a55f[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Thu Sep 30 17:28:00 2021 +0200
+
+    Fichiers
+
+[33mcommit d487d11ad664b3de89f60d31392ac29a4db50d68[m
+Merge: 5e26e21 a419680
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Thu Sep 30 17:17:34 2021 +0200
+
+    resolution conflit
+
+[33mcommit 5e26e21ce6c259f0c9663c5b14d6356f4f5a2d03[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Thu Sep 30 17:15:32 2021 +0200
+
+    Page modifications d'un produit
+
+[33mcommit a4196803d188e8a227d1092ddafdbd94f5ac1fb6[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 30 16:54:47 2021 +0200
+
+    Navbar is properly made depending on your status as a user
+
+[33mcommit 1df0d00bd04b9de16f0d32839ae403ffeeafe3d3[m
+Merge: b5fac52 27c9f78
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 30 13:04:42 2021 +0200
+
+    Merge branch 'Shir_mapEntreprise' of https://gitlab.com/gaea21/SiteRepVert/repvert_dev-v5.2.3 into Shir_mapEntreprise
+
+[33mcommit b5fac5285c2204a401296719b32b6163e00a91d1[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 30 13:04:23 2021 +0200
+
+    Added the login.js fix, as well as location of error, as well as logout problem when whitebar opens
+
+[33mcommit 27c9f78ef7fa744d737e51f9ad0cff2b2941c4c5[m
+Merge: 483a566 cde4cd4
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 29 16:30:47 2021 +0200
+
+    Merge branch 'Shir_mapEntreprise' of https://gitlab.com/gaea21/SiteRepVert/repvert_dev-v5.2.3 into Shir_mapEntreprise
+
+[33mcommit 483a56624b9ad10a2e7fac7cc8cca6cefe140fe6[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 29 16:30:13 2021 +0200
+
+    renommage de toutes les icones de sous categories et ajout des sous categories de green finance
+
+[33mcommit cde4cd400bc6261055719dc7a1c27a7d762dfe5c[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Wed Sep 29 09:00:38 2021 +0200
+
+    Added the search system for ALL companies called <search_all_companies> no arguments needed, returns all the companies present in the company
+
+[33mcommit bdc3ac1d4b8a8fefb37c1b12a714ab68edcadee2[m
+Merge: e65bc7b 0c8b712
+Author: Tempestus <druaga9@gmail.com>
+Date:   Wed Sep 29 08:56:44 2021 +0200
+
+    Merge branch 'Shir_mapEntreprise' of https://gitlab.com/gaea21/SiteRepVert/repvert_dev-v5.2.3 into Shir_mapEntreprise
+
+[33mcommit e65bc7bb0366cf75348eb219d2de68db9452c81d[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Wed Sep 29 08:55:34 2021 +0200
+
+    Added the logout system, added the login functionnal, added the navbar correct buttons
+
+[33mcommit 0c8b712dc3323520e1b4622faf364f1360485d09[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Tue Sep 28 23:38:49 2021 +0200
+
+    Affichage des images dans le select options des subcategories, avec hover qui met l'image bleue
+
+[33mcommit d16ca24852a824c0c1896b66ac7ad6b04bdea548[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Sep 27 17:49:21 2021 +0200
+
+    Modification d'un produit (marchandise) fonctionnel avec upload d'image
+
+[33mcommit a549e6f5ff22c669aa6d52c1e2df27fda105fe27[m
+Merge: 9b50adc 918e8fd
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Sat Sep 25 21:11:28 2021 +0200
+
+    Merge branch 'Shir_mapEntreprise' of https://gitlab.com/gaea21/SiteRepVert/repvert_dev-v5.2.3 into Shir_mapEntreprise
+
+[33mcommit 9b50adc557c31472642aad3fda1c069a00ac4115[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Sat Sep 25 21:11:01 2021 +0200
+
+    Recommandation gaea fonctionnelle dans inscription + zone d'influence + Récuperation des données sur page produits + ajout d'un produit fonctionnel + suppression d'un produit
+
+[33mcommit 918e8fd029cea4725a405b6594186a4b503601db[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 23 15:12:26 2021 +0200
+
+    Added error message on unsuccesfful login
+
+[33mcommit 46880276ba03e7f69f2da6841e0d05b018db6e10[m
+Merge: 5e38d9f e19f1aa
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 23 14:09:29 2021 +0200
+
+    Merge branches 'Shir_mapEntreprise' and 'Shir_mapEntreprise' of https://gitlab.com/gaea21/SiteRepVert/repvert_dev-v5.2.3 into Shir_mapEntreprise
+
+[33mcommit 5e38d9f03236e0437f5be0716118d8433053afc0[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 23 14:00:21 2021 +0200
+
+    Added the navbar twig to verify automatically if you're logged in
+
+[33mcommit e19f1aa76143884d505c551bf3ebb3b34cf6d919[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Thu Sep 23 13:16:54 2021 +0200
+
+    modifs map
+
+[33mcommit 2ce0462b167b9f5aaf76a8f5f711a239a675af59[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Thu Sep 23 11:59:49 2021 +0200
+
+    début recup infos (carte, etc..)
+
+[33mcommit 4b3feca58d39d9a70bdeec909ae14bbcf52e0a8b[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Thu Sep 23 10:55:58 2021 +0200
+
+    modif police boutons compte + loader inscription
+
+[33mcommit ec7b7540c19f507e70145753b3becbe966d7cf26[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Thu Sep 23 09:17:36 2021 +0200
+
+    Added all the required fields
+
+[33mcommit 27d8fd0b21da9195402a6653dc56596faac3f18e[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 22 17:41:47 2021 +0200
+
+    css header de toutes les pages du compte entreprise
+
+[33mcommit 8197490bf31d886199a41f76267f87ea1804e1f1[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 22 16:42:54 2021 +0200
+
+    reglages visuels pour inscription
+
+[33mcommit ec1c597269c6499ed43cffa8a2888b5763918468[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 22 16:18:49 2021 +0200
+
+    modif automatique du menu année selon année courante
+
+[33mcommit 817f805b949fa5398e08217c8b0d16ad0500ac21[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 22 15:12:29 2021 +0200
+
+    Messages d'erreur clean
+
+[33mcommit c9ee71835ac4984b9be8207d16e9ffaf5b7fb208[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Wed Sep 22 09:06:33 2021 +0200
+
+    centrage titre page inscription + ajout du css categories dans le scss
+
+[33mcommit 4201c21391fd435ef5a3ecdd027aac83e2869b99[m
+Merge: 2d01a00 5551f77
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Tue Sep 21 16:26:17 2021 +0200
+
+    pull et resolution conflits navbar
+
+[33mcommit 2d01a002cea5d108bbd071b16e3c78a9abfa5110[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Tue Sep 21 16:24:40 2021 +0200
+
+    Upload d'image avec affichage sur le profil fonctionnel
+
+[33mcommit 5551f77fc2c06a830a6a822831ffad8da3b5d704[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Mon Sep 20 16:09:55 2021 +0200
+
+    Changed account to Mon Compte
+
+[33mcommit f873cbae807804ad5464654e5f063c1980195cfc[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Mon Sep 20 16:07:56 2021 +0200
+
+    Added the templates fixed, the searchbar fixed, the navbar fixed
+
+[33mcommit d7f37bfcf0e6ca0ee2c68fd36de0858d36234249[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Mon Sep 20 14:18:11 2021 +0200
+
+    Added the redesign of registering
+
+[33mcommit e77d9254bb0e96000a631005f47649d8b3cc373a[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Sep 20 13:33:12 2021 +0200
+
+    resolution du bug de creation de user meme avec erreur'
+
+[33mcommit ad26485456cf7a7e844b1829bc98533999f8945a[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Mon Sep 20 11:07:55 2021 +0200
+
+    Added required * according to design
+
+[33mcommit b1775cefc4faee560fb917e2c4623c0f4cac024c[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Sep 20 11:05:08 2021 +0200
+
+    message d'erreur adresse
+
+[33mcommit dfe099ec223fe193eb2e3cff3bd61ec259c33275[m
+Author: Tempestus <druaga9@gmail.com>
+Date:   Mon Sep 20 10:34:14 2021 +0200
+
+    Modified the location of the error mesage now l112
+
+[33mcommit c9af9e5d4c8ec19cda70b497168fd7578fbf8f5a[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Mon Sep 20 09:53:28 2021 +0200
+
+    Css nav barre fonctionne
+
+[33mcommit 0b59a0a70a090efb019feafb2940b96b82829627[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Fri Sep 17 17:14:03 2021 +0200
+
+    login marche
+
+[33mcommit b9cfee0fef814fae9180bb73394b3e398c922a8a[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Fri Sep 17 14:53:27 2021 +0200
+
+    ajout de la navbar (un peu cassée)
+
+[33mcommit d5d1392cb9cdbe1eb58f457e76541791c566ebcd[m
+Author: Shir Frank <57755204+rooooose@users.noreply.github.com>
+Date:   Fri Sep 17 14:24:22 2021 +0200
+
+    app.css
+
+[33mcommit 398dcddaf5795620be8c849832c1c16377481938[m
+Author: rooooose <shir.flower0@gmail.com>
+Date:   Fri Sep 3 13:33:23 2021 +0200
+
+    récupération des coordonnées par l'adresse de l'entreprise à l'inscription
+
+[33mcommit 2ef03cbd495da806197807180f0fc00e40128da2[m
+Author: rooooose <shir.flower0@gmail.com>
+Date:   Thu Sep 2 15:46:49 2021 +0200
+
+    affichage de la carte pour 1 entreprise + lien vers la carte globale
+
+[33mcommit e9fd4660b04db460db915f548514d787819abeca[m
+Author: rooooose <shir.flower0@gmail.com>
+Date:   Wed Sep 1 17:11:09 2021 +0200
+
+    copie de code existant pour la carte
+
+[33mcommit fd74cbe380b2cf8cc21e7b790741a0157ac13d0c[m
+Author: rooooose <shir.flower0@gmail.com>
+Date:   Wed Sep 1 16:48:49 2021 +0200
+
+    début de mise en place de la carte
+
+[33mcommit 3fc5f7c19912f1f2257d30b56db5451ae6462253[m
+Author: rooooose <shir.flower0@gmail.com>
+Date:   Wed Sep 1 16:48:20 2021 +0200
+
+    début de mise en place de la carte
+
+[33mcommit 3abee23263e459447b8de5a58352ec842a7f6a54[m
+Merge: 5392c1a 2829f01
+Author: Joshua Bonacorsi <joshua.bonacorsi@gaea21.org>
+Date:   Tue Aug 24 08:08:20 2021 +0000
+
+    Merge branch 'JoshuaRelease' into 'Develop_JoshYohann'
+    
+    Joshua release
+    
+    See merge request gaea21/SiteRepVert/repvert_dev-v5.2.3!43
+
+[33mcommit 2829f01bcd1b27bf39e3ac0af9bbf7248c4d7b6e[m[33m ([m[1;31morigin/JoshuaRelease[m[33m)[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 09:43:33 2021 +0200
+
+    correction 0 mois sur les fonctions derniers inscrits et produits
+
+[33mcommit 0f0d0d18cf2eee0f5a022d45685d510c4da29f2a[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 09:04:38 2021 +0200
+
+    Correction settings, on met en text le type password du form3
+
+[33mcommit 5ffca909e5b521406215cd53669b3604616c10ec[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 09:03:05 2021 +0200
+
+    Correctionidauthentificator, plus de var dump a la connexion
+
+[33mcommit b1ce3cdeb82cedafa0051e800f03f877578507c1[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 06:29:34 2021 +0200
+
+    Correction navbar + shop
+
+[33mcommit 996aa37b6420527fbe2e3d122504bbc1445b40e6[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 06:24:47 2021 +0200
+
+    Debut javascript modifier les donnees param entreprise
+
+[33mcommit cced0b396537a9ad1b9fd8d9d6307d83d8de6334[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 06:08:32 2021 +0200
+
+    Ajout des messages apres click param entreprises
+
+[33mcommit defe81690a6ab150fc5bbc7b536d30dee971d9b7[m
+Author: JoshuaBona <joshua.bonacorsi@gaea.21>
+Date:   Tue Aug 24 05:28:13 2021 +0200
+
+    Backend DerniersInscrits et DerniersProduits

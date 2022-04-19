@@ -1,0 +1,37 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}
+    <title>Compte activé</title>
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/page_404.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+    <div class="showcase" style="width:100%;background-image:url({{asset('/images/header_prochainement.jpg')}});  height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+
+        {% include "navbar.html.twig" %}
+        <div class="div-banner-rv">
+            <div class="container-banner-rv">
+
+                <div class="div-title-rv">
+                    <div class="container-title-rv">
+                        <div class="title-rv1">Bienvenue sur le</div>
+                        <div class="title-rv2">Répertoire Vert</div>
+                        <div class="title-rv-text">
+                            <h5 style="color: #618226">Votre compte a bien été activé</h5>
+                            <p>Vous pouvez désormais vous connecter</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

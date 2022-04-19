@@ -1,0 +1,118 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <title>Répertoire Vert |Products</title>
+
+
+    <br>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/2.9.9/leaflet-search.min.css" integrity="sha512-8zuX58lcEgyZdtfTu5Iu9SDfadAirBVoZrJkmuZJ+/s80QZ/YTNVlEqPtE9iHqNXeCgd122pl+inU1Oxn9KXng==" crossorigin="anonymous" />
+     </head>
+
+<body>
+
+<div class="title-banner-container" style="background-image: url({{asset('/images/actualites.png')}})">
+    {% include "navbar.html.twig" %}
+    <h3 class="banner-title">Produits dans la carte</h3>
+</div>
+
+<br><br>
+
+
+
+
+
+
+
+<div id="map" style="height: 600px; width: 80%"></div>
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+<script src="{{ asset('js/leaflet-search.js') }}"></script>
+
+
+
+
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+
+
+<script>
+    //sample data values for populate map
+
+    //TODO refactoring in js file
+    var mymap = new L.Map('map', {zoom: 9, center: new L.latLng(36,9) });	//set center from first location
+
+    mymap.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
+    var markersLayer = new L.LayerGroup();	//layer contain searched elements
+
+    mymap.addLayer(markersLayer);
+
+    var controlSearch = new L.Control.Search({
+        position:'topright',
+        layer: markersLayer,
+        initial: false,
+        zoom: 12,
+        marker: false
+    });
+
+    mymap.addControl( controlSearch );
+
+
+    $.ajax({
+        url:'/rest/product',
+        type: "GET",
+        dataType: "json",
+        data: {},
+        async: true,
+        success: function (data)
+        {
+
+////////////populate map with markers from sample data
+            for(i in data) {
+                 title = data[i].name 	//value searched
+
+                    lat = data[i].latitude,
+                    lng = data[i].longitude,//position found
+                         loc =[lat,lng]
+                    marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+                marker.bindPopup('title: '+ title );
+                markersLayer.addLayer(marker);
+            }
+            console.log(name)
+////////////populate map with markers from sample data
+
+            // place markers
+
+            $.each(data, function(i, val) {
+
+                console.log(data)
+
+
+                var marker = L.marker([ val.latitude, val.longitude ]).addTo(mymap);
+                marker.bindPopup("<b>" + val.name + "</b>").openPopup();
+            });
+            //hide loader
+            $('#loader').hide();
+        }
+    });
+</script>
+</body>
+{% endblock %}

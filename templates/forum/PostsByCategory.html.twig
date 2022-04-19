@@ -1,0 +1,178 @@
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css">
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container hero-forum has-text-centered">
+            <h1 class="title">
+                Cherchez une publication
+            </h1>
+
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                    <input class="input is-medium" id="search" type="text" placeholder="Find a great content">
+
+                </p>
+                <p class="control">
+                    <a class="button is-medium is-info">
+                        Search
+                    </a>
+                </p>
+            </div>
+
+<h2>{{ name }}</h2>
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="#"> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var searchRequest = null;
+        $("#search").keyup(function() {
+            var minlength = 1;
+            var that = this;
+            var value = $(this).val();
+            var entitySelector = $("#entitiesNav").html('');
+            if (value.length >= minlength ) {
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "GET",
+                    url: "{{ path('ajax_search') }}",
+                    data: {
+                        'q' : value
+                    },
+                    dataType: "text",
+                    success: function(msg){
+                        //we need to check if the value is the same
+                        if (value===$(that).val()) {
+                            var result = JSON.parse(msg);
+                            $.each(result, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key === 'posts') {
+                                        if (id !== 'error') {
+                                            console.log(value[1]);
+                                            entitySelector.append('<li><b>'+value[1]+'</b><a href="/forum/detailedPost/'+id+'">'+'<img src="/uploads/posts/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
+                                        } else {
+                                            entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<br/>
+<div class="container">
+    <div class="columns">
+        <div class="column is-three-quarters">
+            <div class="tabs forum">
+                <ul>
+                    <li ><a href="{{ path('ListAllPostsSuggestionInForum') }}">All</a></li>
+
+                    {% for cats in cats %}
+                    <div id="myDIV">
+                        <li ><a href="{{ path('PostsByCategory',{'id':cats.id}) }}">{{ cats.name }}</a></li>
+                    </div>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="box forum">
+                {%  for posts in posts %}
+
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image avatar is-64x64">
+                                <img src="{{ asset('uploads/posts/') }}{{posts.photo }}" alt="Image" class="is-rounded">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content list-forum">
+                                <div class="is-pulled-right has-text-centered ">
+                                    <a href="#" class="love">
+                                        <span>
+                                    <i class="mdi mdi-heart-outline"></i>
+                                  </span>
+                                    </a>
+                                    <span>15</span>
+                                </div>
+                                <p class="text-content">
+                                    <a href="{{ path('DetailedPostandComments',{'id':posts.id}) }}">{{ posts.title }}
+                                        <span class="solved" title="Solved">
+                                  <i class="mdi mdi-checkbox-marked-circle"></i>
+                                </span>
+                                    </a>
+                                </p>
+                                <p class="tags-content">
+                                    <a class="tag is-rounded is-primary">NuxtJS</a>
+                                    <a class="tag is-rounded is-success">VueJS</a>
+                                    <a class="tag is-rounded is-warning">JavaScript</a>
+                                </p>
+                                <p class="info-content">
+                                    <a>
+                                        <i class="mdi mdi-eye-outline"></i>
+                                        <small>100k</small>
+                                    </a>
+                                    <a>
+                                        <i class="mdi mdi-comment-text-multiple-outline"></i>
+                                        <small>70</small>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+            <div class="box">
+                <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous">Previous</a>
+                    <a class="pagination-next">Next page</a>
+                    <ul class="pagination-list">
+                        <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                        <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                        <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box">
+                <h5 class="title is-5"># POPULAR TAGS</h5>
+                <div class="tags">
+                    <a class="tag is-rounded is-medium  is-primary">CO2</a>
+                    <a class="tag is-rounded is-medium is-success">Développement Durable</a>
+                    <a class="tag is-rounded is-medium is-warning">Répertoire Vert</a>
+                    <a class="tag is-rounded is-medium is-danger">Gaea21</a>
+                    <a class="tag is-rounded is-medium is-link">GES</a>
+                    <a class="tag is-rounded is-medium  is-success">Consommation</a>
+                    <a class="tag is-rounded is-medium is-info">Economie</a>
+                    <a class="tag is-rounded is-medium is-success">Covoiturage</a>
+                    <a class="tag is-rounded is-medium is-dark">Vert</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

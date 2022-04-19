@@ -1,0 +1,20 @@
+{{ form_start(form,{ 'attr': {'class': ' frm frm-category-edit col-l-offset-1 col-l-10'} }) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+
+<h4>Sous-Categories</h4>
+<ul class="subcategories col-l-12" data-prototype="{{ form_widget(form.subcategories.vars.prototype)|e('html_attr') }}">
+    {{ form_errors(form) }}
+    {% for subcategory in form.subcategories %}
+        <div class="subcategory col-l-12">
+            <li class="col-l-4">{{ form_row(subcategory.name) }}</li>
+            <li class="col-l-4">{{ form_row(subcategory.description) }}</li>
+            <li class="col-l-4">{{ form_row(subcategory.image) }}</li>
+        </div>
+    {% endfor %}
+</ul>
+{{ form_row(form._token) }}
+<button type="submit">Submit</button>
+{{ form_end(form) }}

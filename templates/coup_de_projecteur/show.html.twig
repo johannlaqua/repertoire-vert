@@ -1,0 +1,42 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}CoupDeProjecteur{% endblock %}
+
+{% block body %}
+    <h1>CoupDeProjecteur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ coup_de_projecteur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ coup_de_projecteur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ coup_de_projecteur.description }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ coup_de_projecteur.photo }}</td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td>{{ coup_de_projecteur.video }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ coup_de_projecteur.lien }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('coup_de_projecteur_index') }}">back to list</a>
+
+    <a href="{{ path('coup_de_projecteur_edit', {'id': coup_de_projecteur.id}) }}">edit</a>
+
+    {{ include('coup_de_projecteur/_delete_form.html.twig') }}
+{% endblock %}

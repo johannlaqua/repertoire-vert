@@ -1,0 +1,215 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+<div class="page-title-banner col-l-12 col-m-12 col-s-12">
+    <img class="banner-background" src="{{ asset('/css/img/news/actualite_header_rv.jpg') }}" alt="">
+    <div class="banner-content">
+
+        <h3 style="color:white;">Le <strong style="color:green;">Répertoire Vert</strong> vous permettra de découvrir événements et exemples de Développement Durable</h3>
+    </div>
+</div>
+<div class="greencouncil-description-green col-l-12" style="text-align:center; height:160px; margin-bottom:20px;">
+
+        <h4 style="color:white;">
+            En tant que membre du Répertoire Vert,
+        </h4>
+        <h4 style="color:white;">
+            vous aurez la possibilité de faire figurer votre actualité sur cette page.
+        </h4>
+    <br/>
+</div>
+
+
+
+<div class="greencouncil-description-green col-l-12" style="height:320px; background-color: white; display:flex; flex-direction:row; padding:0px;">
+  <div class="blabla" style="height:320px; width:60%; border-style:solid; border-width:1px; border-color:gray;  margin-left:0.5%;">
+      <div style="text-align:center; height:24px; width:100%; background-color:#636466; margin-top:0px;">
+          <p style="color:#e9b82d;">
+                Cherchez un événement
+          </p>
+          <div class="searchEvent">
+
+
+
+
+              {{ form(searchEventForm) }}
+
+              <table class="table">
+                  <thead>
+                  <tr>
+
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>StartingDate</th>
+                      <th>FinishDate</th>
+                      <th>Place</th>
+
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for event in events %}
+                      <tr>
+                          <td>{{ event.name }}</td>
+                          <td>{{ event.description }}</td>
+                          <td>{{ event.startingDate ? event.startingDate|date('Y-m-d') : '' }}</td>
+                          <td>{{ event.finishDate ? event.finishDate|date('Y-m-d') : '' }}</td>
+                          <td>{{ event.place }}</td>
+
+                      </tr>
+                  {% else %}
+                      <tr>
+                          <td colspan="8">aucun évènement trouvé</td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+
+
+          </div>
+      </div>
+
+  </div>
+  <div class="blabla" style="height:320px; width:37%; border-style:solid; border-width:1px; border-color:gray; margin-right:0.5%;">
+      <div style="text-align:center; height:24px; width:100%; background-color:#636466; margin-top:0px;">
+          <p style="color:#e9b82d;">
+                Les news du Répertoire
+          </p>
+      </div>
+        <div style="position: absolute;display: inline; justify-content: space-around;">
+        {% for new in news|reverse %}
+            <div style=" width: 100% ;display: inline;border-style:solid;">
+                <p style="position: relative;; width: 80%;"><img style="height: 50px; width: 10%;" src="{{ asset('css/img/news/' ~  new.Photo|basename) }}" alt="">
+                    {{new.Nom}}</p>
+            </div>
+        {% endfor %}
+        </div>
+  </div>
+</div>
+
+<div class="greencouncil-description-green col-l-12" style="height:60px; background-color: white; padding:0px;"></div>
+
+    <div class="greencouncil-description-green col-l-12" style="height:100%; width: 100%; background-color: white; padding-left:15px;">
+        <div class="blabla" style="height:100%; width:59%; border-style:solid; border-width:1px; border-color:gray; margin-left:0.9%;">
+            <div style="text-align:center; height:24px; width:100%; background-color:#636466; margin-top:0px;">
+                <p style="color:#e9b82d;">
+                    Agenda
+                </p><a href="{{ url('actualite') }}" style="color:#e9b82d;max-width:200px; text-decoration:none">Annuler filtre par mes favoris</a>
+                <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+                    {% if UpcomingeventsFav is empty %}
+                        <div class="col-l-12 col-m-12 col-s-12">
+                            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                                <p>Aucun évenement planifié</p>
+                            </div>
+
+                        </div>
+                    {% else %}
+                        {% for event in UpcomingeventsFav %}
+                            <a href="{{ url('event_show',{'id':event.id}) }}" style="max-width:200px; text-decoration:none">
+                                <div class="product-card card">
+                                    <div class="card-header">
+                                        <img class="card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                                        <span class="card-title">Nom: {{ event.name  }}</span>
+                                    </div>
+                                    <div class="card-header">
+
+                                        <span class="card-title">Lieu: {{ event.place  }}</span>
+                                        <br>
+                                        <p>{{ event.startingdate|date('d M y') }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+<div class="greencouncil-description-green col-l-12" style="height:60px; background-color: white; padding:0px;"></div>
+
+<div class="greencouncil-description-green col-l-12" style="height:220px; background-color: white; padding:0px; margin-bottom: 5%;">
+  <div class="blabla" style="height:100%; width:59%; border-style:solid; border-width:1px; border-color:gray; margin-left:0.9%;">
+      <div style="text-align:center; height:24px; width:100%; background-color:#636466; margin-top:0px;">
+          <p style="color:#e9b82d;">
+            Sucess Story
+          </p>
+      </div>
+      {% set sucess = sucessStory|last %}
+        <div style="display: flex; border-top: 1px solid grey; border-bottom : 1px solid grey; margin-top: 3%; padding: 3%">
+            <img style="height: 120px; width: 170px;" src="{{ asset('css/img/sucess/' ~  sucess.photo|basename) }}" alt="">
+            <div>
+                <p>{{sucess.description}}</p>
+                <a href="{{sucess.lien}}">En savoir plus</a>
+            </div>
+        </div>
+  </div>
+</div>
+
+<div class="greencouncil-description-green col-l-12" style="height:320px; background-color: white; padding:0px;">
+  <div class="blabla" style="height:150%; width:59%; border-style:solid; border-width:1px; border-color:gray; float: left; margin-left:0.9%; margin-top: 10%; margin-bottom: 10%;">
+      <div style="text-align:center; height:24px; width:100%; background-color:#636466; margin-top:0px;">
+          <p style="color:#e9b82d;">
+                Coup de projecteur
+          </p>
+      </div>
+      {% set projecteur = coupDeProjecteur|last %}
+        <div>
+            <div style="display: flex;">
+
+                <h3 style="color: green; padding-left: 10%">{{projecteur.nom}}</h3>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
+                <p style="width: 50%;font-size: 10px">{{projecteur.description}}</p>
+                <div>
+                    <img style="max-height: 100%; max-width: 100%;" src="{{ asset('css/img/coup_de_projecteur/' ~  projecteur.photo|basename) }}" alt="">
+                    <p>{{projecteur.video}}</p>
+                    <p> Plus d'informations : <a href={{projecteur.lien}}>{{projecteur.lien}}</a></p>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+
+    <div class="greencouncil-description-green col-l-12" style="height:100%; width: 100%; background-color: white; padding-left:15px;">
+        <div class="blabla" style="height:100%; width:100%; border-style:solid; border-width:1px; border-color:gray;margin-top:10px;">
+            <div style="text-align:center; height:24px; width:100%; background-color:#636466; margin-top:0px;">
+                <p style="color:#e9b82d;">
+                    Vous avez raté...
+                </p>
+                <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+                    {% if LastEventsFav is empty %}
+                        <div class="col-l-12 col-m-12 col-s-12">
+                            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                                <p>Aucun évenement favoris raté</p>
+                            </div>
+
+                        </div>
+                    {% else %}
+                        {% for event in LastEventsFav %}
+                            <a href="{{ url('event_show',{'id':event.id}) }}" style="max-width:200px; text-decoration:none;margin:10px;">
+                                <div class="product-card card">
+                                    <div class="card-header">
+                                        <img class="card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                                        <span class="card-title">Nom: {{ event.name  }}</span>
+                                    </div>
+                                    <div class="card-header">
+
+                                        <span class="card-title">Lieu: {{ event.place  }}</span>
+                                        <br>
+                                        <p>{{ event.startingdate|date('d M y') }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

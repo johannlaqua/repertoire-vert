@@ -1,0 +1,12 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="company col-l-12">
+
+        <div class="company-name"><h4>Fiche entreprise : {{ company.name }}</h4></div>
+        {% include './company/sheet.html.twig' with {'company' : company} %}
+    </div>
+    <form action="{{ url('companyDisable',{id:company.id}) }}" method="post">
+        <input type="hidden" name="validate" value="1">
+        <input type="submit" value="Désactiver">
+    </form>
+{% endblock %}

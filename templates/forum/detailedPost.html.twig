@@ -1,0 +1,164 @@
+
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+
+
+{% block body %}
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <div class="container">
+
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h1 class="mt-4">{{ title | upper }}</h1>
+
+            <!-- Author -->
+            <p class="lead">
+                by
+                <a href="#">{{ posts.creator.username }}</a> <td><a href="{{ path('report_user',{'id':posts.creator.id}) }}"><button class="form-control">signaler cet utilisateur</button></a></td>
+
+            <span style="float: right">Consultée {{ views }} fois</span>
+            </p>
+
+            <hr>
+
+            <!-- Date/Time -->
+            <p>Publiée le {{ posts.CreatedAt| date }}</p>
+
+            <hr>
+
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{ asset('uploads/posts/') }}{{ photo }} " alt="">
+
+            <hr>
+            <a href="{{ path('PostsByCategory',{'id':posts.category.id}) }}">Plus de posts dans la catégorie {{ posts.category.name }}</a>
+
+            <!-- Post Content -->
+            <h2>Contenu</h2>
+            <p>{{ body |raw}}</p>
+
+            <hr>
+
+            <!-- Comments Form -->
+            <a href="{{ path('post_like', {'id':posts.id}) }}" class="btn btn-link js-like">
+                {% if app.user and posts.isLikeByUser(app.user) %}
+
+                    <i class="fas fa-thumbs-up"></i>
+
+                {% else %}
+                    <i class="far fa-thumbs-up"></i>
+
+                {% endif %}
+                <span class="js-likes">{{ posts.likes | length }}</span>
+
+
+                <span class="js-label">J'aime</span>
+            </a>
+            </li>
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <form action="{{ path('add_comment') }}" method="post" id="comment">
+
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="comment" placeholder="Ecrire un commentaire..." rows="3"></textarea><br>
+                            <input type="hidden"  name="post_id" value="{{ posts.getId() }}">
+                            <button  class="btn btn-success" type="submit">Commenter</button>
+                        </div>
+                    </form>
+
+                </div>
+            {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+            <div class="alert alert-danger" role="alert">
+                Pour publier un commentaire, il faut que vous vous <a href="#">connecter </a>, Sinon
+                <a href="#">Inscrivez vous</a>
+                {% endif %}
+
+            </div>
+                </div>
+
+
+            <!-- Single Comment -->
+        {% for comment in posts.comments %}
+        <div class="thumb-list">
+            <figure><img alt="" src=""></figure>
+            <div class="text-holder">
+
+                <h6><strong>{{comment.getCreator().getUsername()}}</strong>  <p> {{ comment.getComment() }}</p></h6>
+                <time class="post-date" datetime="2008-02-14 20:00">{{ comment.getCreatedAt()|date('F jS \\a\\t g:ia') }}</time>
+
+                <a class="comment-reply-link" href=" {{ path('report_comment',{'id':comment.id}) }}">signaler <i class="fa fa-eraser"></i></a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                    {% if ( comment.creator.id == app.user.id  ) %}
+                        <br>
+                        <a class="comment-reply-link" href="#">Supprimer <i class="fa fa-eraser"></i></a>
+
+                    {% else %}
+
+                    {% endif %}
+
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                    <br>
+
+                {% endif %}
+
+            </div>
+        </div>
+        {% endfor %}
+
+            </div>
+
+
+
+            </div>
+
+    <!-- /.row -->
+
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function onClickBtnLike(event)
+        {
+            event.preventDefault();
+            const url= this.href;
+            const spanCount = this.querySelector('span.js-likes');
+            const icone = this.querySelector('i');
+            axios.get(url).then(function(response) {
+                spanCount.textContent= response.data.likes;
+                if(icone.classList.contains('fas')) {
+                    icone.classList.replace('fas', 'far');
+                }
+                else {
+                    icone.classList.replace('far', 'fas');
+                } }).catch(function(error) {
+                if(error.response.status ===403){
+                    $(function() {
+                        $.bootstrapGrowl("Veuillez vous connecter pour pouvoir aimer cette publication !");
+                    })
+                }
+            });
+        }
+        document.querySelectorAll('a.js-like').forEach(function (link) {
+            link.addEventListener('click',onClickBtnLike);
+        })
+    </script>
+{% endblock %}

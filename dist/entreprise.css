@@ -1,0 +1,320 @@
+@charset "UTF-8";
+body {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 84.824120603%;
+  font-family: DroidSans-Bold, Droid Sans, sans-serif;
+}
+
+.bloc {
+  margin-left: 9.84375%;
+  margin-right: 9.84375%;
+  width: 80.3125%;
+  height: 4.3216080402%;
+  font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  font-size: 1.042vw;
+  text-align: center;
+}
+
+.bloc-content {
+  padding-top: 0.6510416667vw;
+  text-align: center;
+  color: #1b1e21;
+  line-height: 1.2em;
+}
+
+.bloc-title {
+  color: #618226;
+  font-size: 1.4vw;
+  font-weight: bold;
+}
+
+.mrg {
+  padding-top: 0.62vw;
+}
+
+#nav-barre {
+  width: 100%;
+  height: 2.0603015075%;
+  background-color: #f2f5ed;
+  opacity: 0.997;
+  border-radius: 10px 10px 10px 10px;
+}
+
+#nav-title {
+  margin-left: 9.84375%;
+  width: 12.0833333333%;
+  font-family: DroidSans, Bold, sans-serif;
+  font-size: 1.45vw;
+}
+
+#nav-fav {
+  margin-left: 18.2291666667%;
+  width: 14.1145833333%;
+  margin-top: 20px;
+  font-size: 1.45vw;
+  text-decoration: underline;
+}
+
+#triangle-code {
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 15px solid #ffbe2B;
+}
+
+.item, .alignE {
+  display: inline;
+}
+
+#Logo {
+  position: absolute;
+  margin-left: 8.2291666667%;
+  width: 11.25%;
+  height: 14.37vw;
+}
+
+#infos {
+  position: absolute;
+  margin-left: 21.875%;
+  font-size: 1.042vw;
+}
+
+#txtt {
+  margin-left: 37.1354166667%;
+  font-weight: bold;
+  font-size: 1.6927083333vw;
+  top: 0px;
+}
+
+#desc {
+  font-size: 1.042vw;
+  margin-left: 38.90625%;
+  width: 44.0104166667%;
+  height: 72px;
+  font-weight: normal;
+  margin-top: 30px;
+  text-align: left;
+}
+
+#vis {
+  margin-left: 36.9791666667%;
+  margin-top: 3.6458333333%;
+  font-size: 1.458vw;
+}
+
+#res {
+  margin-left: 37.1354166667%;
+  margin-top: 1.5625%;
+  font-weight: normal;
+  font-size: 1.042vw;
+}
+
+#vis-desc {
+  margin-left: 38.90625%;
+  margin-top: 0.5729166667%;
+  width: 44.0104166667%;
+  height: 72px;
+  font-weight: normal;
+  font-size: 1.042vw;
+}
+
+.alin {
+  display: inline-block;
+}
+
+#map {
+  margin-left: 9.84375%;
+  width: 25.7291666667%;
+  height: 18.864vw;
+  border: grey solid;
+}
+
+/*
+#tb{
+    position: absolute;
+    border-radius: 10px;
+    margin-left: widthpr(25,$widthbase);
+    width: widthpr(1018,$widthbase);
+    height: 361px;
+    background-color: #f2f5ed;;
+}
+
+.col11,.col12{
+    margin-left: 0px;
+    width: 509px;
+    color: white;
+    text-align: center;
+    font-size: 1.8229166666666667vw;
+
+}
+
+.r1{
+    width: 100%;
+    top: 0px;
+    height: 79px;
+    border-radius: 10px;
+    background-color: #618226;
+}
+#tb thead{
+    border-radius: 20px;
+}
+
+
+   <div id="map" class="alin"></div>
+         <table  id="tb" class="alin"> 
+         <thead>
+            <tr class="r1">
+                <th class="col11" scope="col">Secteur d'activités</th>
+                <th class="col12" scope="col">Sous-secteurs</th>
+            </tr>
+         </thead>
+        </table> 
+
+*/
+#cert {
+  margin-top: 0px;
+  margin-left: 1.3020833333%;
+}
+
+/*
+#cert span:nth-child(1n),#cert span:nth-child(2n), #cert span:nth-child(3n){
+    font-weight: bold;
+}
+*/
+.ville {
+  font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  font-size: 1.042vw;
+  font-weight: bold;
+  color: black;
+}
+
+#hautesav {
+  font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  font-size: 1.042vw;
+  font-weight: bold;
+  color: black;
+  margin-left: 12.9166666667%;
+}
+
+#geneve {
+  font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  font-size: 1.042vw;
+  font-weight: bold;
+  color: black;
+  margin-left: 0.78125%;
+}
+
+#lausanne {
+  font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  font-size: 1.042vw;
+  font-weight: bold;
+  color: black;
+  margin-left: 1.8229166667%;
+}
+
+.lign, .lign2 {
+  display: inline-block;
+}
+
+.poz {
+  position: absolute;
+  margin-left: 2.0833333333%;
+  width: 53.0208333333%;
+  font-size: 1.042vw;
+}
+
+.deb {
+  margin-left: 20.8333333333%;
+}
+
+.deb2 {
+  margin-left: 26.0416666667%;
+}
+
+.fin {
+  margin-left: 20.8333333333%;
+}
+
+#rond {
+  width: 2.188vw;
+  height: 0.9045226131%;
+  border-radius: 7px;
+  background-color: #618226;
+  color: white;
+  text-align: center;
+}
+
+/*
+<div id="nav-barre" >
+                <div class="item"  id="nav-title">Fiche entreprise <div id="triangle-code"></div>Comme une tomate</div>
+                <div class="item"  id="nav-fav">Ajouter aux favoris</div>
+                <div class="item" > </div>
+</div></br></br></br>
+
+
+*/
+.grey {
+  margin-left: 9.84375%;
+  width: 80.3125%;
+  height: 653px;
+  background-color: #f2f5ed;
+}
+
+.bloc1 {
+  position: absolute;
+  margin-top: 75px;
+  margin-left: 6.4850843061%;
+  width: 18.90625%;
+  height: 512px;
+  background-color: #FFFFFF;
+}
+
+.sous-bloc1, .sous-bloc2, .sous-bloc3 {
+  margin-left: 0px;
+  position: absolute;
+  margin-top: 442px;
+  width: 100%;
+  height: 70px;
+  background-color: #ffbe2b;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.042vw;
+  line-height: 70px;
+}
+
+.bloc2 {
+  position: absolute;
+  margin-top: 75px;
+  margin-left: 30.804150454%;
+  width: 18.90625%;
+  height: 512px;
+  background-color: #FFFFFF;
+}
+
+.bloc3 {
+  position: absolute;
+  margin-top: 75px;
+  margin-left: 55.1232166018%;
+  width: 18.90625%;
+  height: 512px;
+  background-color: #FFFFFF;
+}
+
+.btnmarg-l {
+  margin-left: 71.875%;
+}
+
+.btnmarg-r {
+  margin-left: 10.4166666667%;
+}
+
+.noborder, .noborder tr, .noborder td {
+  border: none;
+}
+
+/*# sourceMappingURL=entreprise.css.map */

@@ -1,0 +1,202 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}Statistiques{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('userActivities') }}">Mes activités</a>
+    <div style=" background-color:  white;text-align: center;width: 100%;">
+
+
+
+
+        <div style=" background-color:  white;text-align: center;width: 100%;">
+
+            {% if n >6 or n<4 %}
+
+                <h4 style="font-weight: bold;text-align: center  ;color:orangered"> <br><br><br>Total Emission Co2 &nbsp; : {{ n }}KG</h4>
+            {% elseif n> 3  or n<2 %}
+                <h4 style="font-weight: bold;text-align: center  ;color:yellowgreen"> <br><br><br>Total Emission Co2 &nbsp; : {{ n }}KG</h4>
+
+            {% elseif n> 2  or n<1 %}
+                <h4 style="font-weight: bold;text-align: center  ;color:forestgreen"> <br><br><br>Total Emission Co2 &nbsp; : {{ n }}KG</h4>
+            {% else %}
+            {% endif %}
+
+        </div>
+        <div style="background-color:  #F1F4ED;  width: 100%;">
+
+            <div style=" width: 60%;display: flex;margin: 0 auto;">
+                <canvas id="myChart"  ></canvas>
+            </div>
+
+            <div style=" width: 60%;display: flex;margin: 0 auto;">
+                <canvas id="donut"  ></canvas>
+            </div>
+            <br><br>
+            <div style="width: 45%;margin: 0 auto;">
+                <ul >
+                    <li>
+                        <a href="{{ path('userStats') }}" class="buttonTime button1">Tous mes activités</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('userStatsPerWeek') }}" class="buttonTime ">Par semaine</a>
+                    </li>
+                    <li>
+                        <a href="" class="buttonTime ">3 mois</a>
+                    </li>
+                    <li>
+                        <a href="" class="buttonTime ">6 mois</a>
+                    </li>
+                    <li>
+                        <a href="" class="buttonTime ">1 an</a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <br><br><br>
+        </div>
+        {% if activities ==null %}
+        <div style="display: block;margin: auto;">
+            <br>
+
+            <p style="font-weight: bold;text-align: center; width:100% ">Vous voulez utiliser le systéme de calcul d'émission co2 ?</p>
+            <a href="" class="buttonQuestion button1">Télecharger notre application mobile</a>
+        </div>
+{% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    <script>
+
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+
+            // The type of chart we want to create
+            type: 'bar',
+
+            // The data for our dataset
+            data: {
+
+                labels: {{ ActivityDate|  raw }},
+                datasets: [{
+                    scaleOverride: true,
+                    barPercentage: 0.5,
+                    scaleSteps:2,
+                    label: 'Emission co2 par KG',
+                    backgroundColor:[
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+
+
+                    ],
+                    barThickness: 4,
+
+                    data:  {{ activitiesnmb| raw }}
+
+                }]
+
+            },
+
+
+            // Configuration options go here
+            options : {
+                indexAxis: 'y',
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 10,
+                            stepValue: 5,
+                            max: 10
+                        }
+                    }]
+                }
+            }
+        });
+
+
+
+
+
+
+
+        var ctx2 = document.getElementById('donut').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+
+            // The type of chart we want to create
+            type: 'doughnut',
+
+            // The data for our dataset
+            data: {
+
+                labels: {{ ActivityDate|  raw }},
+                datasets: [{
+                    scaleOverride: true,
+                    barPercentage: 0.5,
+                    scaleSteps:2,
+                    label: 'Emission co2 par KG',
+                    backgroundColor:[
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                        ],
+
+                        barThickness: 4,
+
+                    data:  {{ activitiesnmb| raw }}
+
+                }]
+
+            },
+
+
+            // Configuration options go here
+            options : {
+                indexAxis: 'y',
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 10,
+                            stepValue: 5,
+                            max: 10
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
+
+{% endblock %}

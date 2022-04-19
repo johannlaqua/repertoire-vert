@@ -1,0 +1,14 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="green-banner">
+        <h3>Gestion de la sous- {{ categoryName }}</h3>
+    </div>
+    {{ form_start(form,{ 'attr': {'class': ' frm frm-subcategory col-l-offset-1 col-l-10'} }) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form._token) }}
+    <button type="submit">Submit</button>
+    {{ form_end(form) }}
+{% endblock %}

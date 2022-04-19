@@ -1,0 +1,350 @@
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css">
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container hero-forum has-text-centered">
+            <h1 class="title">
+               Cherchez une publication
+            </h1>
+
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                    <input class="input is-medium" id="search" type="text" placeholder="Cherche une publication">
+
+                </p>
+                <p class="control">
+                    <a class="button is-medium is-info">
+                        Search
+                    </a>
+                </p>
+            </div>
+
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="#"> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var searchRequest = null;
+        $("#search").keyup(function() {
+            var minlength = 1;
+            var that = this;
+            var value = $(this).val();
+            var entitySelector = $("#entitiesNav").html('');
+            if (value.length >= minlength ) {
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "GET",
+                    url: "{{ path('ajax_search') }}",
+                    data: {
+                        'q' : value
+                    },
+                    dataType: "text",
+                    success: function(msg){
+                        //we need to check if the value is the same
+                        if (value===$(that).val()) {
+                            var result = JSON.parse(msg);
+
+                            $.each(result, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key === 'posts') {
+                                        if (id !== 'error') {
+                                            console.log(value[1]);
+                                            entitySelector.append('<li><b>'+value[1]+'</b><a href="/forum/detailedPost/'+id+'">'+'<img src="/uploads/posts/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
+                                        } else {
+                                            entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<br/>
+<div class="container">
+    <div class="columns">
+        <div class="column is-three-quarters">
+            <div class="tabs forum">
+                <ul>
+                    <li class="is-active"><a href="{{ path('ListAllPostsSuggestionInForum') }}>All</a></li>
+                    {% for cats in cats %}
+                    <li><a href="{{ path('PostsByCategory',{'id':cats.id}) }}">{{ cats.name }}</a></li>
+                   {% endfor %}
+                </ul>
+            </div>
+            <div class="box forum">
+                {%  for allPosts in allPosts %}
+                <article class="media">
+                    <div class="media-left">
+                        <figure class="image avatar is-64x64">
+                            <img src="{{ asset('uploads/posts/') }}{{allPosts.photo }}" alt="Image" class="is-rounded">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content list-forum">
+                            <div class="is-pulled-right has-text-centered ">
+                                <a href="#" class="love">
+                                        <span>
+                                    <i class="mdi mdi-heart-outline"></i>
+                                  </span>
+                                </a>
+                                <span>15</span>
+                            </div>
+                            <p class="text-content">
+                                <a href="{{ path('DetailedPostandComments',{'id':allPosts.id}) }}">{{ allPosts.title }}
+                                    <span class="solved" title="Solved">
+                                  <i class="mdi mdi-checkbox-marked-circle"></i>
+                                </span>
+                                </a>
+                            </p>
+
+                                <a href="{{ path('updatePost',{'id':allPosts.id}) }}">Update
+
+                            <p class="info-content">
+                                <a>
+                                    <i class="mdi mdi-eye-outline"></i>
+                                    <small>20</small>
+                                </a>
+                                <a>
+                                    <i class="mdi mdi-comment-text-multiple-outline"></i>
+                                    <small>1</small>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+             {% endfor %}
+            </div>
+            <div class="box">
+                <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous">Previous</a>
+                    <a class="pagination-next">Next page</a>
+                    <ul class="pagination-list">
+                        <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                        <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                        <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box">
+                <h5 class="title is-5">#TOP 5 Publications</h5>
+                <div class="tags">
+                    {% for topPosts in topPosts %}
+                    <a class="tag is-rounded is-medium  is-primary">{{ topPosts.title }}</a>
+{% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <style>
+        .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+        .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
+        .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+        .MultiCarousel .leftLst { left:0; }
+        .MultiCarousel .rightLst { right:0; }
+
+        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row">
+            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                <div class="MultiCarousel-inner">
+
+
+
+
+
+
+                    {% for adsbyPack in adsbyPack %}
+
+                        {% if adsbyPack.adv.location.name=="forum" and adsbyPack.paid==true  %}
+                            {% if adsbyPack.tarif.type=='pack1' %}
+                                <div   class="item">
+                                    <div class="pad15">
+                                        <img src="{{ asset('uploads/posts/') }}{{adsbyPack.adv.photo }}" style="width:100px; height: 100px "  >
+                                        <p>{{adsbyPack.adv.creator.username}}</p>
+                                        <p>{{adsbyPack.adv.slogan}}</p>
+
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!--pack 2 condition -->
+                            {% if adsbyPack.tarif.type=='pack2' %}
+                                <div   class="item">
+                                    <div class="pad15" style="width: 200px; 200px;" >
+                                        <img src="{{ asset('uploads/posts/') }}{{adsbyPack.adv.photo }}" style="width:100px; height: 100px "  >
+                                        <p>{{adsbyPack.adv.creator.username}}</p>
+                                        <p>{{adsbyPack.adv.slogan}}</p>
+
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!-- pack 3 condition-->
+
+                            {% if adsbyPack.tarif.type=='pack3' %}
+                                <div    class="item">
+                                    <div class="pad15" style="width: 300px; 300px;">
+                                        <img src="{{ asset('uploads/posts/') }}{{adsbyPack.adv.photo }}" style="width:100px; height: 100px "  >
+                                        <p>{{adsbyPack.adv.creator.username}}</p>
+                                        <p>{{adsbyPack.adv.slogan}}</p>
+
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        {% else %}
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                </div>
+                <button class="btn btn-primary leftLst"><</button>
+                <button class="btn btn-primary rightLst">></button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            var itemsMainDiv = ('.MultiCarousel');
+            var itemsDiv = ('.MultiCarousel-inner');
+            var itemWidth = "";
+
+            $('.leftLst, .rightLst').click(function () {
+                var condition = $(this).hasClass("leftLst");
+                if (condition)
+                    click(0, this);
+                else
+                    click(1, this)
+            });
+
+            ResCarouselSize();
+
+
+
+
+            $(window).resize(function () {
+                ResCarouselSize();
+            });
+
+            //this function define the size of the items
+            function ResCarouselSize() {
+                var incno = 0;
+                var dataItems = ("data-items");
+                var itemClass = ('.item');
+                var id = 0;
+                var btnParentSb = '';
+                var itemsSplit = '';
+                var sampwidth = $(itemsMainDiv).width();
+                var bodyWidth = $('body').width();
+                $(itemsDiv).each(function () {
+                    id = id + 1;
+                    var itemNumbers = $(this).find(itemClass).length;
+                    btnParentSb = $(this).parent().attr(dataItems);
+                    itemsSplit = btnParentSb.split(',');
+                    $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+                    if (bodyWidth >= 1200) {
+                        incno = itemsSplit[3];
+                        itemWidth = sampwidth / incno;
+                    }
+                    else if (bodyWidth >= 992) {
+                        incno = itemsSplit[2];
+                        itemWidth = sampwidth / incno;
+                    }
+                    else if (bodyWidth >= 768) {
+                        incno = itemsSplit[1];
+                        itemWidth = sampwidth / incno;
+                    }
+                    else {
+                        incno = itemsSplit[0];
+                        itemWidth = sampwidth / incno;
+                    }
+                    $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+                    $(this).find(itemClass).each(function () {
+                        $(this).outerWidth(itemWidth);
+                    });
+
+                    $(".leftLst").addClass("over");
+                    $(".rightLst").removeClass("over");
+
+                });
+            }
+
+
+            //this function used to move the items
+            function ResCarousel(e, el, s) {
+                var leftBtn = ('.leftLst');
+                var rightBtn = ('.rightLst');
+                var translateXval = '';
+                var divStyle = $(el + ' ' + itemsDiv).css('transform');
+                var values = divStyle.match(/-?[\d\.]+/g);
+                var xds = Math.abs(values[4]);
+                if (e == 0) {
+                    translateXval = parseInt(xds) - parseInt(itemWidth * s);
+                    $(el + ' ' + rightBtn).removeClass("over");
+
+                    if (translateXval <= itemWidth / 2) {
+                        translateXval = 0;
+                        $(el + ' ' + leftBtn).addClass("over");
+                    }
+                }
+                else if (e == 1) {
+                    var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+                    translateXval = parseInt(xds) + parseInt(itemWidth * s);
+                    $(el + ' ' + leftBtn).removeClass("over");
+
+                    if (translateXval >= itemsCondition - itemWidth / 2) {
+                        translateXval = itemsCondition;
+                        $(el + ' ' + rightBtn).addClass("over");
+                    }
+                }
+                $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+            }
+
+            //It is used to get some elements from btn
+            function click(ell, ee) {
+                var Parent = "#" + $(ee).parent().attr("id");
+                var slide = $(Parent).attr("data-slide");
+                ResCarousel(ell, Parent, slide);
+            }
+
+        });
+    </script>

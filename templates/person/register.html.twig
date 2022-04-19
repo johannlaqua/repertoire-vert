@@ -1,0 +1,14 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+{% block body %}
+
+    <div class="title-banner-container" style="background-image: url({{asset('/images/login.jpg')}})">
+        {% include "navbar.html.twig" %}
+        <br><br><br>
+        <h3 class="banner-title">Inscription particulier</h3>
+        <br><br><br>
+    </div>
+    {% include './person/formn.html.twig' with {'form' : form} %}
+
+{% endblock %}

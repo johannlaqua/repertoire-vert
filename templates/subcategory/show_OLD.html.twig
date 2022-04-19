@@ -1,0 +1,77 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="green-banner">
+
+        <h3>{{ subcategory.name }}</h3>
+    </div>
+
+{% if products is empty %}
+    <div class="col-l-12 col-m-12 col-s-12">
+        <div style="margin: 20px 20px 20px 20px; text-align:center;">
+            <p>Aucun produit/service pour cette sous-catégorie</p>
+        </div>
+
+    </div>
+{% else %}
+    <div class="col-l-12 col-m-12 col-s-12">
+        <div style="margin: 20px 20px 20px 20px; text-align:center;">
+            <p>Produits et services de cette sous-catégorie</p>
+        </div>
+
+    </div>
+    <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+        {% for product in products %}
+            <a href="{{ url('productShow',{'slug':product.slug}) }}" style="max-width:200px; text-decoration:none">
+                <div class="product-card card">
+                    <div class="card-header">
+                        <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}" alt="">
+                        <span class="card-title">Nom:   {{ product.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Description:   {{ product.description }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+    {# if products #}
+    <!--
+    <p>{#subcategory.name#}</p>
+    {# for product in subcategory.product #}
+        <p>{#product.name#}</p>
+    {# endfor #}
+    -->
+    {# if products #}
+        <!--<h3>{# productsTitle #}</h3>-->
+          <!--<div class="card-container col-l-12">-->
+
+
+
+          <!--</div>-->
+    {# endif
+
+    {% if subcategory.product %}
+
+        <div class="card-container col-l-12"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            {% for product in subcategory.product %}
+                <a href="{{ url('productShow',{'slug':product.slug}) }}" style="max-width:200px; text-decoration:none">
+                    <div class="product-card card">
+                        <div class="card-header">
+                            <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                            <span class="card-title">{{ product.name }}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>{{ product.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if not subcategory.product %}
+        <p>Aucun résultat pour votre recherche</p>
+    {% endif %}#}
+
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}
+	<title>Profil Entreprise</title>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/2.9.9/leaflet-search.min.css" integrity="sha512-8zuX58lcEgyZdtfTu5Iu9SDfadAirBVoZrJkmuZJ+/s80QZ/YTNVlEqPtE9iHqNXeCgd122pl+inU1Oxn9KXng==" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="{{ asset('css/profile_entreprise.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	{# ******************************* NavBar ***************************************** #}
+
+	
+
+<div class="showcase" style="width:100%;background-image: url({{asset('/images/header_profil_entreprise2.png')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat " >
+        
+		    {% include "navbar.html.twig"  %}
+
+
+            <div class="header-content ">
+                <div class="banner-profil-description">
+                {# ajout du nom de la company #}
+           
+                 <h3 class="banner-profil-title">{{company.name}}</h3>
+             </div>
+            </div>
+      
+        
+	</div>
+
+	{# <div
+		class="banner-profil-description">{# Le Répertoire Vert offre le référencement et l’évaluation de tous les produits et/ou services professionnels verts proposés dans un rayon de 130 km autour de Genève 
+
+	</div> #}
+	{# ******************************* FinNavBar ***************************************** #}
+
+
+	<div class="header-entreprise">
+
+		<div class="title-entreprise">
+			<div class="container-fiche">
+				<span>Fiche entreprise</span>
+				<span class="pointe-droite">
+					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 35 40">
+						<path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+					</svg>
+				</span>
+				<span>{{ company.name }}</span>
+			</div>
+		</div>
+
+	</div>
+	{# ############################################################################# #}
+
+	<div class="container-profil">
+		<div class="entreprise-details">
+			<div class="logo-entreprise">
+				{% if company.image is null %}
+					<div class="no-logo">Aucun logo sélectionné</div>
+				{% else %}
+					<img src="{{ asset('css/img/company/' ~company.image) }}">
+				{% endif %}
+
+			</div>
+			<div class="container-data-entreprise">
+				<div class="data-entreprise">{{company.name}}</div>
+				<div class="data-entreprise">{{ company.street }}</div>
+				<div class="data-entreprise">{{ company.city }}</div>
+				<div class="data-entreprise">{{ company.postcode }}</div>
+				<div class="data-entreprise">{{ company.email }}</div>
+				<div class="data-entreprise">{{company.phone}}</div>
+			</div>
+		</div>
+
+		<div data-id="{{ company.id }}" data-lat="{{ company.latitude }}" data-long="{{ company.longtitude }}" id="map" class="carte-entreprise"></div>
+	</div>
+
+	<div class="div-description-vision">
+		<div class="container-description-vision">
+			<div class="div-description">
+				<div class="title-descrption-entreprise">
+					Description de l’entreprise :
+				</div>
+				<div class="description-entreprise">
+					<div class="description-pointe-droite">
+						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 35 40">
+							<path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+						</svg>
+					</div>
+					<div class="description-text">
+						{{ company.description }}
+					</div>
+				</div>
+			</div>
+
+			<div class="div-vision">
+				<div class="title-vision-entreprise">
+					Vision du développement Durable
+				</div>
+				<div class="question-vision">
+					Comment résumeriez-vous votre philosophie d’entreprise au sujet du développement durable ?
+				</div>
+				<div class="vision-entreprise">
+					<div class="vision-pointe-droite">
+						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 35 40">
+							<path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/>
+						</svg>
+					</div>
+					<div class="description-text">
+						{{ company.vision }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  {% for cat in company.categories %}
+
+        {# ON CALCULE LE NOMBRE TOTAL DE SUBCAT POUR CHAQUE CATEGORIES #}
+        {% set total_subcat = 0 %}
+        {% for subcat in cat.subcategories %}
+            {%  set total_subcat = total_subcat + 1 %}
+        {% endfor %}
+        {% set icon_par_colonne  = (total_subcat/3) %}
+        {% set icon_par_colonne = icon_par_colonne|round(0,'ceil') %}
+
+        {# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #}
+
+
+        <div class="div-subcat">
+            <div class="container-subcat">
+                <div class="cat-principal">
+                    <div class="container-icon-cat">
+                        <div class="icon-cat">
+                            <img  src="{{ asset('images/Icones_Categories/'~cat.name~'/' ~cat.name|basename ~'.png') }}">
+                        </div>
+                    </div>
+                    <div class="cat-name">{{ cat.name }}</div>
+                </div>
+				<div class="all-subcat">
+
+					{% for subcat in subcategories %}
+
+						{% if subcat in cat.subcategories %}
+
+							<div class="card-subcat subcat-mrgb">
+								<div class="container-icon-subcat">
+									<div class="icon-subcat">
+										<img  src="{{ asset('images/Icones_Categories/'~cat.name~'/Icônes sous-catégories/'~ subcat.name~'.png') }}">
+									</div>
+								</div>
+								<div class="subcat-name">
+									{{subcat.name}}
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+
+				</div>
+
+            </div>
+        </div>
+    {% endfor %}
+
+{# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #}
+    <div class="div-modif-suppr">
+		<div class="btn-modifier"  onclick="location.href='/category/{{categoryId}}/subcategory/show/{{subcategoryId}}'">Retour</div>
+    </div>
+	{# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #}
+
+	{#########  PROGRAMMES GAEA 21 ###########}
+	<div class="div-programs">
+		<div class="container-programs">
+
+			<div class="dash-program-card">
+				<img src="{{ asset('css/img/image_SLP.jpg') }}">
+			</div>
+
+			<div class="dash-program-card">
+				<img src="{{ asset('css/img/image_GC.jpg') }}">
+			</div>
+
+			<div class="dash-program-card">
+				<img src="{{ asset('css/img/image_GES.jpg') }}">
+			</div>
+
+		</div>
+	</div>
+
+	{% block javascripts %}
+
+		{# <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+				                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+				                crossorigin=""></script>#}
+		<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+		<script src="{{ asset('js/map_entreprise.js') }}"></script>
+		<script>
+			$('.categories-button').click(function () {
+let categories = [];
+$.get('/rest/category', function (dataCategories) {
+dataCategories.forEach(category => {
+let checkbox = document.getElementById(category.name)
+if (checkbox.checked) {
+categories.push(category)
+}
+})
+
+
+let objArr = JSON.stringify({"categories": categories});
+
+$.ajax({method: "POST", url: "/redirectModifyCategories/", dataType: "json", data: objArr}).done(function (response2) {
+console.log(response2)
+location.href = '/profile/entreprise'
+})
+
+});
+})
+		</script>
+	{% endblock %}
+
+	{% include 'footer.html.twig' %}
+{% endblock %}

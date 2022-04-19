@@ -1,0 +1,1162 @@
+/*élément du menu de navigation supérieur */
+
+
+.div-navbar a{
+  color:white;
+  text-decoration: none;
+}
+
+div.img{
+  width: 21%;
+}
+
+.logoRepertoireVert{
+  position: absolute;
+  left:5.89vw;
+  top: 0.9vw;
+  width:10.21vw;
+}
+
+.navbarHomeButton, .navbarHomeButton:hover{
+  position: absolute;
+  top: 2.44vw;
+  left: 25.96vw;
+  color:white;
+}
+
+
+
+.navbarHomeButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 25.96vw;
+}
+
+.navBarServicesButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 41.60vw;
+  color:white;
+}
+
+.navBarQuiSommesNousButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 31.27vw;
+  color:white;
+}
+
+.navbarActualitesButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 48.82vw;
+  color:white;
+}
+
+.navbarNouveautesButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 56.33vw;
+  color:white;
+}
+
+.navbarCommunauteButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 64.4vw;
+  color:white;
+}
+
+.navbarShopButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 72.47vw;
+  color:white;
+}
+
+.navbarInscriptionButton {
+  position: absolute;
+  top: 2.44vw;
+  left: 82.75vw;
+}
+
+.navbarLoginButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 88.75vw;
+}
+
+.navbarLangueButton{
+  position: absolute;
+  top: 2.44vw;
+  right: 3.38vw;
+}
+
+.navbarAccountButton{
+  position: absolute;
+  top: 2.44vw;
+  left: 79.0vw;
+  color: white;
+}
+
+   /*Barre blanche apparaissant au click des éléments supérieurs*/ 
+
+
+   .div-navbar {
+    position: relative;
+    width: 100vw;
+    height:3.67vw;
+    display: flex;
+    font-size: 0.93vw;
+    color: white;
+    flex-direction: column;
+}
+
+.container-navbar {
+  width: 100vw;
+  position:absolute;
+  display: flex;
+  margin-top: 1.302%;
+  margin-left: 9.8%;
+  margin-right: 2.4%;
+}
+
+.contenuBarreBlancheNavigation {
+  left: 0;
+  width: 100%;
+  height: 22vw;
+  background-color: white;
+  margin-top: 5.833333vw;
+  display: flex-start;
+  padding: 0000;
+  position: relative;
+ 
+}
+.contenuNewsletter{
+   // left: 0;
+   width: 100%;
+   // height: 20vw;
+   background-color: white;
+   display: flex;
+   
+   flex-direction: column;
+ 
+   align-items: center;
+   padding-top: 2%;
+   padding-bottom: 2%;
+}
+.form{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+   /*Contenus surchargé des barres blanches*/ 
+
+.navBarreBlanche{
+  position: absolute;
+  width: 100vw;
+  height: 15vw;
+  margin-top:0;
+}
+
+.container-logo-navbar-noir{
+width: 9vw;
+height: 3vw;
+}
+
+
+.imageQuiSommesNous{
+  position:absolute;
+  top: 1.97vw;
+  left: 9.8vw;
+  width: 3.23vw;
+  height: 3.2vw;  
+  padding-right: 1.4vw;
+  margin: 0 0 0 0 ;
+  padding: 0 0 0 0 ;
+
+}
+ .NavBoxQuiSommesNous {
+  position:absolute;
+  top: 3.9vw;
+  left: 14.53125vw;
+  width: 13.38541667vw;
+  height: 7.65625vw;
+  color:black;
+
+}
+
+
+span.titreQuiSommesNous{
+position:absolute;
+top: 1.97vw;
+left: 14.53125vw;
+height: 1.09375vw;
+color:#618226;
+font-size: 0.93vw;
+font-weight: Bold;
+
+}
+
+.navBoxEntrepriseImage{
+  position: absolute;
+  margin-left: 2.9vw;
+  width: 11.77vw;
+  height: 8.33vw;
+  top: 2.55vw;
+  left:30.78vw;
+  margin: 0000; 
+  border-radius: 0.5vw;
+}
+
+.navBoxEntrepriseTitre{
+  position:absolute;
+  top:11.97vw;
+  font-size: 12pt;
+  color: black;
+  left:30.78vw;
+  font-weight: Bold;
+  font-size: 1.04vw;
+
+}
+
+
+.navBoxIndividusImage{
+  position: absolute;
+  margin-left: 2.9vw;
+  width: 11.77vw;
+  height: 8.33vw;
+  top: 2.55vw;
+  left: 50.01vw;
+  margin: 0000; 
+  border-radius: 0.5vw;
+
+}
+
+.navBoxIndividusTitre{
+  position:absolute;
+  top:11.97vw;
+  font-size: 12pt;
+  color: black;
+  left:50.01vw;
+  font-weight: Bold;
+  font-size: 1.04vw;
+
+}
+
+
+.navBoxVilleRegionImage{
+  position: absolute;
+  margin-left: 2.9vw;
+  width: 11.77vw;
+  height: 8.33vw;
+  top: 2.55vw;
+  left: 69.23vw;
+  margin: 0000; 
+  border-radius: 0.5vw;
+
+}
+
+.navBoxVilleRegionTitre{
+  position:absolute;
+  top:11.97vw;
+  font-size: 12pt;
+  color: black;
+  left:69.23vw;
+  font-weight: Bold;
+  font-size: 1.04vw;
+
+}
+
+
+
+.navBoxContainer{
+  position: relative;
+  display: block;
+}
+
+/* Contenu formulaire login dans la barre blanche */
+
+
+
+.titreBoxLogin{
+ left:14.32vw;
+ top:1.98vw;
+ color:#618226;
+ font-size: 9;
+}
+
+.titreBoxLogin:hover { 
+  color: black; 
+}
+
+.smallImageLoginForm{
+  position:absolute;
+  top: 1.97vw;
+  left: 9.8vw;
+  width: 3.23vw;
+  height: 3.2vw;  
+  padding-right: 0000;
+  border-radius: 0.5vw;
+
+}
+
+
+.labelEmailBoxLogin{
+  position: absolute;
+  left:14.32vw;
+  color: black;
+  top:4.84vw;
+
+}
+
+.inputEmailBoxLogin{
+  position: absolute;
+  top: 6.57vw;
+  left:14.32vw;
+  border-radius: 0.5vw;
+  border-color:#618226;
+  width: 11.51vw;
+  height: 1.98vw;
+  border-style: solid;
+  border-width: 0.1vw;
+}
+
+.labelPasswordBoxLogin{
+  position: absolute;
+  left:30.63vw;
+  color: black;
+  top:4.84vw;
+}
+
+.titleboxNameNewslett{
+  color:#618226;
+ 
+  font-weight: bold;
+  margin-top: 2%;
+  font-size: 1.5vw;
+  
+  // position: absolute;
+}
+
+.labelNameBoxNewsletter {
+  color:#618226;
+  // position: absolute;
+  top: 3.10vw;
+  // float: right;
+  font-weight: bold;
+}
+
+.labelMailBoxNewsletter {
+  color:#618226;
+  // position: absolute;
+  top: 6.10vw;
+  // float: left;
+  font-weight: bold;
+  
+}
+
+.labelPostalBoxNewsletter {
+  color:#618226;
+  // position: absolute;
+  
+  font-weight: bold;
+  top: 9.10vw;
+  // float: left;
+}
+
+.labelFirstNameBoxNewsletter {
+  color:#618226;
+  // position: absolute;
+  font-weight: bold;
+  top: 12.10vw;
+  // float: right;
+}
+.CubeBoxNews {
+  color:#618226;
+  background-color: #618226;
+  left: 0.7vw;
+  top: 0.3vw;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+}
+.labelCityBoxNewsletter {
+  color:#618226;
+  // position: absolute;
+  // top: 15.10vw;
+  // float: right;
+  
+  font-weight: bold;
+}
+
+
+
+.inputNameBoxNewsletter {
+  border-radius: 25px;
+    border: 2px solid #618226;
+    padding: 20px; 
+    width: 10vw;
+    height: 15px; 
+    // top: 2.84vw;
+  // float: right;
+  
+  // position: absolute;
+  // left: 6.3vw;
+}
+
+.inputMailBoxNewsletter {
+  border-radius: 25px;
+    border: 2px solid #618226;
+    padding: 20px; 
+    width: 10vw;
+    height: 15px;
+   
+    // top: 5.84vw;
+  // float: left;
+  // left: 6.3vw;
+  
+  font-weight: bold;
+  // position: absolute;
+}
+
+.inputSubmitBoxnewsletter {
+  border-radius: 18px;
+    background: #618226;
+    color: white;
+    padding-top: 0.3vw;
+    padding-bottom: 0.3vw;
+    padding-left: 1.0vw;
+    padding-right: 1.0vw;
+    margin-top: 4%;
+    // top: 18vw;
+    // left: 7.6vw;
+    
+  font-weight: bold;
+    // position: absolute;
+}
+
+.inputPostalBoxNewsletter { 
+  border-radius: 25px;
+    border: 2px solid #618226;
+    padding: 20px; 
+    width: 10vw;
+    height: 15px; 
+    
+  // position: absolute;
+  // top: 8.84vw;
+  // float: left;
+  
+  // left: 6.3vw;
+}
+
+.inputFirstNameBoxNewsletter {
+  border-radius: 25px;
+    border: 2px solid #618226;
+    padding: 20px; 
+    width: 10vw;
+    height: 15px;   
+    
+  // position: absolute;
+  // top: 11.84vw;
+  // float: right;
+  
+  // left: 6.3vw;
+}
+
+.inputCityBoxNewsletter {
+  border-radius: 25px;
+    border: 2px solid #618226;
+    padding: 20px; 
+    width: 10vw;
+    height: 15px; 
+    // top: 14.84vw;
+  // float: right; 
+  
+  // position: absolute;
+  left: 6.3vw;
+}
+
+.containerFormulaire{
+  width: 100%;
+  display: flex;
+  padding-left: 6%;
+  padding-right: 6%;
+  
+  justify-content: space-between;
+  margin-top: 2%;
+  // border: 2px solid black;
+}
+
+
+.inputPasswordBoxLogin{
+  position: absolute;
+  top: 6.57vw;
+  left:30.63vw;
+  border-radius: 0.5vw;
+  border-color:#618226;
+  width: 11.51vw;
+  height: 1.98vw;
+  border-style: solid;
+  border-width: 0.1vw;
+
+}
+
+
+.inputSubmitBoxLogin{
+  position: absolute;
+  top:8.9vw;
+  left:70.4vw;
+  width: 6.51vw;
+  height: 2.08vw;
+  border-radius: 1vw ;
+  color:#618226;
+  border:0.15vw;
+  border-color:#618226;
+  border-style: solid;
+  background-color: white;
+  cursor: pointer ;
+  
+}
+
+.labelErrorLocation{
+  position:absolute;
+  top: 6vw;
+  left: 55.5vw;
+  
+  width: 27vw;
+  height: 2vw;
+  border-radius: 1vw ;
+
+}
+
+.labelErrorLocation{
+  color: rgb(255, 0, 0);
+}
+
+.success{
+  color : darkgreen;
+}
+
+
+.labelErrorLocationNewsletter{ 
+  color: rgb(255, 0, 0);
+  margin-top: 2%;
+}
+
+
+
+
+
+
+.imageLoginForm{
+  position: absolute;
+  top:2.66vw;
+  left: 81.2vw;
+  height:8.33vw;
+  width: 11.77vw;
+  border-radius: 0.5vw;
+
+}
+
+a.redirectionInscriptionBoxLogin{
+
+  color:#618226;
+  position:absolute;
+  left: 14.32vw;
+  top: 9.3vw;
+  z-index:0;
+}
+
+div.responsive-menu{
+  display: none;
+}
+
+@media screen and (max-width: 1024px) and (max-height: 600px){
+
+  div#navRoot{
+    display: none;
+  }
+
+  div.responsive-menu-container{
+    position: absolute;
+    z-index: 100;
+    color: #618226;
+
+    div.responsive-menu-content{
+      background-color: white;
+      width: 40%;
+      max-height: 100%;
+      left: 0;
+      padding-top: 3%;
+      padding-bottom: 6%;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+
+      div.container-ligne{
+        width: 100%;
+        span.ligne-verte{
+          background-color: #618226;
+          height: 1px;
+          width: 90%;
+          display: block;
+          float: right;
+        }
+      }
+
+      .option-menu{
+
+        width: 100%;
+
+        .div-menu{
+          color: #618226;
+          width: 100%;
+          padding: 3% 13%;
+          font-size: 1.8vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+
+          &:hover, &.selected{
+            background-color: #A3B681;
+            color: #FFFFFF;
+            font-weight: normal;
+
+            &:before{
+              content: '';
+              display: block;
+              width: 5%;
+              height: 100%;
+              background-color: #618226;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+            img{
+
+              &.img-verte{
+                display: none;
+              }
+              &.img-blanche{
+                display: block;
+              }
+            }
+
+          }
+
+          img{
+            //float: right;
+            //padding-right: 15%;
+            width: 13%;
+
+            &.img-blanche{
+              display: none;
+            }
+
+            &.interrogation{
+              width: 8%;
+            }
+          }
+        }
+
+        div.subMenu{
+          display: flex;
+          flex-direction: column;
+          padding: 0 7%;
+          font-size: 1.5vw;
+          a{
+            padding: 4% 0;
+            color: #618226;
+
+            &.underline{
+              border-bottom: 1px solid #618226;
+            }
+
+          }
+
+          &.login{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            span {
+              margin-top: 5%;
+            }
+
+            div{
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              padding: 5% 0;
+            }
+
+            button, input{
+              padding: 2% 5%;
+              margin-top: 5%;
+              border-radius: 5px;
+              border: 1px solid #618226;
+              background-color: #FFFFFF;
+            }
+          }
+
+        }
+
+      }
+
+      div.monCompte{
+        margin-top: 5%;
+      }
+      div.langues{
+        margin-bottom: 0;
+        //margin-top: 30%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 10%;
+        padding-bottom: 5%;
+
+        .div-menu{
+          width: 77%;
+          font-size: 1.8vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #618226;
+        }
+
+        span:first-child{
+          margin-right: 17px;
+        }
+      }
+
+    }
+
+
+  }
+
+  div.responsive-menu{
+    /*margin-left: auto;*/
+    padding: 2% 7%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+
+  div.burgerMenu{
+    span{
+      width: 5.5vw;
+      height: 0.3vw;
+      display: block;
+      background-color: white;
+      margin-bottom: 1.5vw;
+      border-radius: 2px;
+    }
+  }
+
+  .logoRepertoireVert{
+    width: 100%;
+    height: auto;
+    position: inherit;
+  }
+
+}
+
+@media screen and (max-width: 1024px) and (min-height: 601px){
+
+  div#navRoot{
+    display: none;
+  }
+
+  div.responsive-menu-container{
+    position: absolute;
+    z-index: 100;
+    color: #618226;
+
+    div.responsive-menu-content{
+      background-color: white;
+      width: 55%;
+      max-height: 100%;
+      left: 0;
+      padding-top: 3%;
+      padding-bottom: 6%;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+
+      div.container-ligne{
+        width: 100%;
+        span.ligne-verte{
+          background-color: #618226;
+          height: 1px;
+          width: 90%;
+          display: block;
+          float: right;
+        }
+      }
+
+      .option-menu{
+
+        width: 100%;
+
+        .div-menu{
+          color: #618226;
+          width: 100%;
+          padding: 3% 13%;
+          font-size: 2.5vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+
+          &:hover, &.selected{
+            background-color: #A3B681;
+            color: #FFFFFF;
+            font-weight: normal;
+
+            &:before{
+              content: '';
+              display: block;
+              width: 5%;
+              height: 100%;
+              background-color: #618226;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+            img{
+
+              &.img-verte{
+                display: none;
+              }
+              &.img-blanche{
+                display: block;
+              }
+            }
+
+          }
+
+          img{
+            //float: right;
+            //padding-right: 15%;
+            width: 13%;
+
+            &.img-blanche{
+              display: none;
+            }
+
+            &.interrogation{
+              width: 8%;
+            }
+          }
+        }
+
+        div.subMenu{
+          display: flex;
+          flex-direction: column;
+          padding: 0 7%;
+          font-size: 2vw;
+          a{
+            padding: 4% 0;
+            color: #618226;
+
+            &.underline{
+              border-bottom: 1px solid #618226;
+            }
+
+          }
+
+          &.login{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            span {
+              margin-top: 5%;
+            }
+
+            div{
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              padding: 5% 0;
+            }
+
+            button, input{
+              padding: 2% 5%;
+              margin-top: 5%;
+              border-radius: 5px;
+              border: 1px solid #618226;
+              background-color: #FFFFFF;
+            }
+          }
+
+        }
+
+      }
+
+      div.monCompte{
+        margin-top: 5%;
+      }
+      div.langues{
+        margin-bottom: 0;
+        //margin-top: 30%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 10%;
+        padding-bottom: 5%;
+
+        .div-menu{
+          width: 77%;
+          font-size: 3vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #618226;
+        }
+
+        span:first-child{
+          margin-right: 17px;
+        }
+      }
+
+    }
+
+
+  }
+
+  div.responsive-menu{
+    /*margin-left: auto;*/
+    padding: 2% 7%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+
+  div.burgerMenu{
+    span{
+      width: 7vw;
+      height: 0.5vw;
+      display: block;
+      background-color: white;
+      margin-bottom: 2vw;
+      border-radius: 2px;
+    }
+  }
+
+  .logoRepertoireVert{
+    width: 100%;
+    height: auto;
+    position: inherit;
+  }
+
+}
+
+@media screen and (max-width: 480px){
+
+  div#navRoot{
+    display: none;
+  }
+
+  div.responsive-menu-container{
+    position: absolute;
+    z-index: 100;
+    color: #618226;
+
+    div.responsive-menu-content{
+      background-color: white;
+      width: 75%;
+      max-height: 100%;
+      left: 0;
+      padding-bottom: 6%;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding-top: 6%;
+
+      div.container-ligne{
+        width: 100%;
+        span.ligne-verte{
+          background-color: #618226;
+          height: 1px;
+          width: 90%;
+          display: block;
+          float: right;
+        }
+      }
+
+      .option-menu{
+
+        width: 100%;
+
+        .div-menu{
+          color: #618226;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+          padding: 5% 13%;
+          font-size: 4vw;
+
+          &:hover, &.selected{
+            background-color: #A3B681;
+            color: #FFFFFF;
+            font-weight: normal;
+
+            &:before{
+              content: '';
+              display: block;
+              width: 5%;
+              height: 100%;
+              background-color: #618226;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+            img{
+
+              &.img-verte{
+                display: none;
+              }
+              &.img-blanche{
+                display: block;
+              }
+            }
+
+          }
+
+          img{
+            //float: right;
+            //padding-right: 15%;
+            width: 13%;
+
+            &.img-blanche{
+              display: none;
+            }
+
+            &.interrogation{
+              width: 8%;
+            }
+          }
+        }
+
+        div.subMenu{
+          display: flex;
+          flex-direction: column;
+          padding: 0 7%;
+          font-size: 3vw;
+          a{
+            padding: 4% 0;
+            color: #618226;
+
+            &.underline{
+              border-bottom: 1px solid #618226;
+            }
+
+          }
+
+          &.login{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            div{
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              padding: 5% 0;
+            }
+
+            button, input{
+              padding: 2% 5%;
+              margin-top: 5%;
+              border-radius: 5px;
+              border: 1px solid #618226;
+              background-color: #FFFFFF;
+            }
+          }
+
+        }
+
+      }
+
+      div.monCompte{
+        margin-top: 5%;
+      }
+      div.langues{
+        margin-bottom: 0;
+        //margin-top: 30%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 10%;
+        padding-bottom: 5%;
+
+        .div-menu{
+          width: 77%;
+          font-size: 4vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #618226;
+        }
+
+        span:first-child{
+          margin-right: 17px;
+        }
+      }
+
+    }
+
+
+  }
+
+  div.responsive-menu{
+    /*margin-left: auto;*/
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    padding: 4% 7%;
+  }
+
+  div.burgerMenu{
+    span{
+      width: 7vw;
+      height: 0.5vw;
+      display: block;
+      background-color: white;
+      margin-bottom: 2vw;
+      border-radius: 2px;
+    }
+  }
+
+  .logoRepertoireVert{
+    width: 100%;
+    height: auto;
+    position: inherit;
+  }
+
+  div.img{
+    width: 29%;
+  }
+
+.redredred{
+  background-color: red;
+}
+}

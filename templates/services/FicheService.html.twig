@@ -1,0 +1,230 @@
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+    <link rel="stylesheet" href="{{ asset('css/produits_entreprise.css') }}"/>
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_profil_entreprise2.png')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+
+        <div class="header-content">
+            <h3 class="banner-profil-title">Mon compte</h3>
+            {% include "components/boutons_header_produits_services.html.twig" %}
+            <div class="banner-profil-description">
+                Le Répertoire Vert offre le référencement et l’évaluation de tous les produits et/ou services professionnels verts proposés dans un rayon de 130 km autour de Genève
+            </div>
+        </div>
+
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    <div class="green-intro">
+        <div class="green-intro-text">
+            {# <div class="green-intro-title">Bienvenue dans votre tableau de bord !</div> #}
+            <div class="green-intro-content">
+                Bienvenue sur votre page produit !<br>
+                Vous pouvez consulter toutes les informations concernant votre entreprise ainsi que les produits que vous avez mis en ligne sur notre site.<br>
+                <br>
+                Vous avez le choix de modifier à tout moment vos produits ou votre description.
+            </div>
+        </div>
+    </div>
+    <div class="div-presentation-produits">
+        <div class="container-presentation-produits">
+            Vous bénéficiez également d’un regard sur les avis des consommateurs et des entreprises.
+        </div>
+    </div>
+
+    <div class="header-entreprise">
+        <div class="title-entreprise">
+            <div class="container-fiche">
+                <span class="fiche-produit-nom">{{product.name}}</span>
+            </div>
+        </div>
+        <div class="favoris-entreprise">
+            <div class="container-favoris">
+                <div class="add-favoris">Ajouter aux favoris</div>
+                <div class="icon-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 30.3 28.817"><defs><style>.a{fill:#618226;}</style></defs><path class="a" d="M142.167,65.828l4.682,9.486,10.469,1.521-7.575,7.384,1.788,10.426-9.363-4.923L132.8,94.645l1.788-10.426-7.575-7.384,10.469-1.521Z" transform="translate(-127.017 -65.828)"/></svg>
+                </div>
+                <div class="nb-favoris">
+                    <span class="total-favoris">{{ product.productFavProducts|length }}</span> favoris
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div-profil-produit">
+        <div class="container-profil-produit">
+            <div class="image-profil-produit">
+                {% if product.image is null %}
+                    <div class="no-logo">Aucun logo sélectionné</div>
+                {% else %}
+                    <img  src="/uploads/products/{{ product.image }}">
+                {% endif %}
+            </div>
+            <div class="description-profil-produit">
+                <div class=" data-description-produit niveau-ref">
+                    <div class="data-title-produit data-niveau-produit">
+                        <span>Niveau de référencement :</span> <div class="niveau-profil-produit">{{product.niveau}}</div>
+                    </div>
+                </div>
+                {# <div class=" data-description-produit">
+                    <div class="data-title-produit">
+                        <span>Origine du produit :</span> {{ product.origin }}
+                    </div>
+                </div> #}
+                <div class=" data-description-produit">
+                    <div class="data-title-produit">
+                        <span>Certification :</span> {{ product.certification }}
+                    </div>
+                </div>
+                <div class=" data-description-produit">
+                    <div class="data-title-produit">
+                        <span>Prix :</span> {{ product.price }}
+                        {% if product.currency == "Euro"%}
+                            €
+                        {% else %}
+                            {{ product.currency }}
+                        {% endif %} / {{ product.serviceduration }}
+                    </div>
+                </div>
+                {# <div class=" data-description-produit">
+                <div class="data-title-produit">
+                    <span>Recommandation gaea21 :</span>
+                    {% if product.gaearecommanded %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </div>
+            </div> #}
+                <div class=" data-description-produit">
+                    <div class="data-title-produit description">
+                        <span> Description du produit :</span> {{ product.description }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="avis-profil-produit">
+                <div class="div-avis">
+                    <div class="avis-produit">
+                        <div class="avis-produit-title">Avis entreprises</div>
+                        <div class="avis-produit-entreprise">
+                            <div class="avis-etoiles">
+                                {% set indice_avis = 'avis_'~product.id %}
+                                {% set indice_note = 'note_'~product.id %}
+                                {% set nb_etoiles = 0 %}
+                                {% set nb_avis = 0 %}
+
+                                {% if avis_companies[indice_note] is defined %}
+                                    {% set nb_etoiles = avis_companies[indice_note ] %}
+                                {% endif %}
+
+                                {% if avis_companies[indice_avis] is defined %}
+                                    {% set nb_avis = avis_companies[indice_avis ] %}
+                                {% endif %}
+
+                                {% if nb_etoiles != 0 %}
+                                    {% for i in 0..nb_etoiles - 1  %}
+                                        <div class="container-star">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star2{fill:#ffbe2b;stroke:#ffbe2b;stroke-miterlimit:10;}</style></defs><path class="avis-star2" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                        </div>
+                                    {% endfor%}
+                                {% endif %}
+
+                                {% if nb_etoiles !=5 %}
+                                    {% for i in 0..(5-nb_etoiles - 1) %}
+                                        <div class="container-star">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star2-vide{fill:none;stroke:#ffbe2b;stroke-miterlimit:10;}</style></defs><path class="avis-star2-vide" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="avis-nb2 avis-nb2-entreprise">
+                                {{ nb_avis}} avis
+                            </div>
+                        </div>
+                        <div class="avis-produit-title title-avis-conso">Avis consommateurs</div>
+                        <div class="avis-produit-consomm">
+                            <div class="avis-etoiles">
+                                {% set indice_avis = 'avis_'~product.id %}
+                                {% set indice_note = 'note_'~product.id %}
+                                {% set nb_etoiles = 0 %}
+                                {% set nb_avis = 0 %}
+
+                                {% if avis_users[indice_note] is defined %}
+                                    {% set nb_etoiles = avis_users[indice_note] %}
+                                {% endif %}
+
+                                {% if avis_users[indice_avis] is defined %}
+                                    {% set nb_avis = avis_users[indice_avis] %}
+                                {% endif %}
+
+
+                                {% if nb_etoiles != 0 %}
+                                    {% for i in 0..nb_etoiles-1 %}
+                                        <div class="container-star">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star1{fill:#618226;stroke:#618226;stroke-miterlimit:10;}</style></defs><path class="avis-star1" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                        </div>
+                                    {% endfor%}
+                                {% endif %}
+
+                                {% if nb_etoiles !=5 %}
+                                    {% for i in 0..(5-nb_etoiles -1 ) %}
+                                        <div class="container-star">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star1-vide{fill:none;stroke:#618226;stroke-miterlimit:10;}</style></defs><path class="avis-star1-vide" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="avis-nb2 avis-nb2-conso">
+                                {{ nb_avis}} avis
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="div-modif-produits">
+        <div class="container-modif-produits modif-productShow">
+            <button onclick="location.href='/produits'"  class="data-modif-produits voir-tous-produits">
+                <div class="voir-text">
+                    Fiche entreprise
+                </div>
+            </button>
+            <button onclick="location.href='{{ url('servicesEdit', {id: product.id}) }}'"  class="data-modif-produits voir-tous-produits">
+                <div class="data-modif-produits btn-modif-produits">
+                    Modifier le service
+                </div>
+            </button>
+        </div>
+
+    </div>
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+    {% include "footer.html.twig" %}
+{% endblock %}

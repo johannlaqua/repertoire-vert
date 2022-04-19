@@ -1,0 +1,86 @@
+.div-navbar {
+  width: 100%;
+  display: flex;
+  margin-top: 1.302%;
+  font-size: 0.93vw;
+  color: white;
+}
+
+.container-navbar {
+  width: 87.8%;
+  display: flex;
+  margin-left: 9.8%;
+  margin-right: 2.4%;
+}
+
+.div-gauche-navbar {
+  width: 69.2%;
+  display: flex;
+  margin-right: 21%;
+}
+
+.div-droite-navbar {
+  width: 9.8%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.container-gauche-navbar, .container-droite-navbar {
+  width: 100%;
+  display: flex;
+}
+
+.container-droite-navbar span {
+  cursor: pointer;
+}
+
+.div-logo-navbar-noir {
+  width: 15.2%;
+  margin-right: 4.6%;
+}
+
+.container-logo-navbar-noir {
+  width: 100%;
+}
+
+.container-logo-navbar-noir img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.div-navbar-menus {
+  width: 100%;
+  display: flex;
+}
+
+.container-navbar-menus {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.div-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.div-menu:not(:last-of-type) {
+  margin-right: 6.1%;
+}
+
+.div-navbar-login {
+  cursor: pointer;
+}
+
+.pipe-navbar {
+  margin: 0% 2%;
+}
+
+.div-langue-navbar {
+  margin-left: 10%;
+}
+
+/*# sourceMappingURL=navbar.css.map */

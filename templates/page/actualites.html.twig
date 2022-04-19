@@ -1,0 +1,344 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}<title>Actualités</title>{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/css/actualite/actualite.css') }}"/>
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="title-banner-container" style="background-image: url({{asset('/images/actualites.png')}})">
+    {% include "navbar.html.twig" %}
+    <h3 class="banner-actualite-title">Actualité</h3>
+    <div class="banner-description">Voulez vous partager vos actualités ? Devenez membre</div>
+</div>
+
+<div class="green-intro">
+    <div class="green-intro-text">
+        Le Répertoire Vert vous permet de découvrir les événements et exemples de Développement Durables.
+        En tant que membre du Répertoire Vert, vous avez la possibilité de faire
+        figurer votre actualité sur cette page.
+    </div>
+</div>
+<section class="actualités">
+
+{# <div class="subtitle-container">
+    <h5 class="subtitle-title">Late minutis ortum porrigitur dextro mediam adnexa</h5>
+    <p class="subtitle-description">Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.<p>
+</div> #}
+
+<br><br>
+<!--Les news du répertoire-->
+<div class="news-title">
+    Les news du Répertoire
+</div>
+<div class="news-container">
+    <div class="news-content">
+        <div class="container-arrow carousel__button--prev" id="prev1">
+            <div class="left-arrow ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(0 40) rotate(-90)"/></svg>
+            </div>
+        </div>
+        <div class="news-event">
+        {% for new in news %}
+            <div class="carousel__item--next1 carousel__item--prev1">
+                <div class="news-left">
+                    <img src="..\public\images\Fotolia_55784_Subscription_L.png" alt="champ de blé" />
+                </div>
+                <div class="news-right">
+                    <span class="news-subtitle">{{ new.nom }}</span>
+                    <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non gravida tellus. Sed gravida suscipit cursus. Suspendisse sit amet velit id diam imperdiet imperdiet vulputate non diam.orem ipsum dolor sit amet, consectetur adipiscing elit. Cras non gravida tellus. Sed gravida suscipit cursus. Suspendisse sit amet velit id diam imperdiet imperdiet vulputate non diam. ….</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="container-arrow carousel__button--next" id="next1">
+            <div class="right-arrow " >
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/></svg>
+            </div>
+        </div>
+    </div>
+    <div class="container-pagination">
+        <input type="radio" id="page1" name="pagination"/>
+        <label for="page1" class="icon-pagination--next1 icon-pagination--prev1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg></svg></label>
+        <input type="radio" id="page2" name="pagination"/>
+        <label for="page1" class="icon-pagination--next1 icon-pagination--prev1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        <input type="radio" id="page3" name="pagination"/>
+        <label for="page3" class="icon-pagination--next1 icon-pagination--prev1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        <input type="radio" id="page4" name="pagination"/>
+        <label for="page4" class="icon-pagination--next1 icon-pagination--prev1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+    </div>
+</div>
+
+<!--Success story-->
+<div>
+    <h2 class="news-title"><b>Success story</b></h2>
+</div>
+    <div class="news-container">
+        <div class="news-content">
+            <div class="container-arrow carousel__button--prev" id="prev2">
+                <div class="left-arrow " >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(0 40) rotate(-90)"/></svg>
+                </div>
+            </div>
+            <div class="news-event">
+                {% for i in 0..3 %}
+                {% for story in sucessStory %}
+                    <div class="carousel__item--next2 carousel__item--prev2">
+                        <div class="news-left">
+                            <img src="..\public\images\Fotolia_55784_Subscription_L.png" alt="champ de blé" />
+                        </div>
+                        <div class="news-right">
+                            <span class="news-subtitle">{{ story.nom }} : Notre {{ i }}ème SuccessStory !</span>
+                            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non gravida tellus. Sed gravida suscipit cursus. Suspendisse sit amet velit id diam imperdiet imperdiet vulputate non diam.orem ipsum dolor sit amet, consectetur adipiscing elit. Cras non gravida tellus. Sed gravida suscipit cursus. Suspendisse sit amet velit id diam imperdiet imperdiet vulputate non diam. ….</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="container-arrow carousel__button--next" id="next2">
+                <div class="right-arrow " >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="container-pagination">
+            <input type="radio" id="page1" name="pagination"/>
+            <label for="page1" class="icon-pagination--next2 icon-pagination--prev2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg></svg></label>
+            <input type="radio" id="page2" name="pagination"/>
+            <label for="page1" class="icon-pagination--next2  icon-pagination--prev2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+            <input type="radio" id="page3" name="pagination"/>
+            <label for="page3" class="icon-pagination--next2  icon-pagination--prev2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+            <input type="radio" id="page4" name="pagination"/>
+            <label for="page4" class="icon-pagination--next2  icon-pagination--prev2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        </div>
+    </div>
+
+<!--Agenda-->
+<div>
+    <h2 class="news-title agenda-title"><b>Agenda</b></h2>
+</div>
+    <div class="news-container">
+        {% if SixUpcomingevents is empty %}
+        <div>
+            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                <p>Aucun évenement planifié</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="agenda-content">
+            {% for event in SixUpcomingevents|slice(0,6)%}
+            <div class="agenda-data agenda-left calendrier">
+
+            </div>
+            <div class="agenda-data agenda-middle">
+                <img src="{{ asset('css/img/event/'~ event.image|basename) }}">
+            </div>
+            <div class="agenda-data agenda-right">
+                <div class="agenda-date">
+                    <div class="date-data1 date-day">Samedi</div>
+                    <div class="date-data1 date-number">{{ event.startingdate|date('d',"Europe/Paris") }}</div>
+                    <div class="date-data1 date-Month">Juillet</div>
+                </div>
+                <div class="event-description">
+                    <div class="event-title">{{ event.name  }}</div>
+                    <div class="event-text">{{ event.description  }} à <b>17h</b> </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+
+    <div class="news-container">
+            <div class="liste-event">
+                {% for i in 0..2 %}
+                {% for event in SixUpcomingevents|slice(0,6)%}
+                    <div class="event-container">
+                        <div class="img-event">
+                            <img src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                        </div>
+                        <div class="event-infos">
+                            <div class="agenda-date">
+                                <div class="date-data date-day2">SAMEDI</div>
+                                <div class="date-data date-number2">{{ event.startingdate|date('d',"Europe/Paris") }}</div>
+                                <div class="date-data date-Month2">Juillet</div>
+                            </div>
+                            <div class="event-description">
+                                <div class="event-title2">{{ event.name  }}</div>
+                                <div class="event-text">{{ event.description  }} à <b>17h</b> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                {% endfor %}
+            </div>
+    </div>
+<!--Chercher un évènement-->
+    <div class="news-title">
+        <div><b>Chercher un événement</b></div>
+    </div>
+<div class="recherche-event">
+    <div class="data-search">
+        <div class="nature-event">
+          <span>Nature de l'événement</span>
+          <input class="nature-lieu-input" type="text"/>
+        </div>
+        <div class="lieu-event">
+            <span>Lieu de l'événement</span>
+            <input class="nature-lieu-input" type="text"/>
+        </div>
+        <div class="date-event">
+            <span>Date de l'événement</span>
+
+            <div class="select-mois-annee">
+                <span>Mois</span>
+                <input type="text"/>
+                <span>Année</span>
+                <input class="data-annee" type="text"/>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+    <div class="container-valider">
+        <button class="valider-button">Valider</button>
+    </div>
+    <p class="atelier">Ateliers Alimentation Responsable <br>Le samedi 16 mai, de 15h00 à 17h00</p>
+
+{# //////////////////////////////////////////// #}
+
+
+
+<!--Coup de projecteur-->
+<div>
+    <h2 class="news-title"><b>Coup de projecteur</b></h2>
+</div>
+
+<div class="projo-container">
+    <div class="projo-blanc">
+        <div class="projo-text">
+            <span>Kalundborg,<br> symbiose industrielle au Danemark</span>
+            <br>
+            <div>La symbiose industrielle est un phénomène qui s’est développé durant plusieurs décennies et qui fonctionnent encore. C’est un réseau environnemental et de ressource qui a émergé ici à Kalundborg, entre quatre entreprises et une collectivité. L’idée était d’économiser des ressources et de créer un avantage au niveau de l’environnement. Ce n’est pas une organisation qui a été planifié. Elle s’est formé toute seule. Le nom « symbiose industrielle » a été crée bien plus tard, lorsque nous avons réalisé que l’organisation que nous avions là n’était pas courante et que nous pouvions l’utiliser dans d’autres thématiques et d’autres lieux pour le bénéfice de tous. La coopération n’a rien d’extraordinaire, c’est juste du bon sens. Quand deux entreprises ont commencé à penser que la réutilisation des déchets d’une entreprise serait une chose smart.</div>
+        </div>
+        <div class="projo-right">
+            <div class="projo-block">
+                <div class="projo-content projo-content1">Photos</div>
+            </div>
+            <div class="projo-block">
+                <div class="projo-content projo-content2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 129 129"><g transform="translate(-1226 -4549)"><circle cx="64.5" cy="64.5" r="64.5" transform="translate(1226 4549)" fill="#f2f5ed"/><path d="M28.5,0,57,49H0Z" transform="translate(1323 4585) rotate(90)"/></g></svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Les derniers inscrits-->
+<div>
+    <h2 class="news-title"><b>Les derniers inscrits</b></h2>
+</div>
+
+<div class="inscrit-container">
+    <div class="fleche-gauche carousel2__button--prev" id="prev3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(0 40) rotate(-90)"/></svg>
+    </div>
+    <div class="middle-inscrit">
+        {% for i in 1..8 %}
+            {% for company in companies %}
+             <div class="card-entreprise carousel2__item--next3 carousel2__item--prev3">
+                <div class="entreprise-title">Entreprise {{i}} {{ company.name }}</div>
+                 <div class="entreprise-text">{{ company.description }} levitate properantes fluvii inopino difficultatibus venissent adulta et pro rumores properantes lucem et tuetur per tuetur. properantes fluvii inopino difficultatibus venissent.</div>
+                 <div><a href="#" class="formulaire-link">{{ company.urlwebsite }}</a></div>
+                 <div class="container-fiche-produit">
+                     <a class="fiche-produit">Voir la fiche produit</a>
+                     <span><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 18"><g ><circle  cx="9" cy="9" r="9"/><circle  cx="9" cy="9" r="8.5"/></g></svg></span>
+                 </div>
+             </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div class="fleche-droite carousel2__button--next" id="next3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/></svg>    </div>
+    </div>
+
+
+    <div class="container-pagination">
+        <input type="radio" id="page1" name="pagination"/>
+        <label for="page1" class="icon-pagination2--next3 icon-pagination2--prev3"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg></svg></label>
+        <input type="radio" id="page2" name="pagination"/>
+        <label for="page1" class="icon-pagination2--next3  icon-pagination2--prev3"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        <input type="radio" id="page3" name="pagination"/>
+        <label for="page3" class="icon-pagination2--next3  icon-pagination2--prev3"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        <input type="radio" id="page4" name="pagination"/>
+        <label for="page4" class="icon-pagination2--next3  icon-pagination2--prev3"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+    </div>
+<div class="inscription-rv">
+    <p>Vous aussi vous souhaitez faire partie du Répertoire Vert ?<br>Inscrivez-vous gratuitement via <a href="#" title="Lien vers le formulaire" class="formulaire-link">le formulaire</a> de référencement.</p>
+</div>
+
+
+<!--Vous avez raté...-->
+<div class="raté">
+    <h2 class="news-title"><b>Vous avez raté...</b></h2>
+</div>
+
+    <div class="inscrit-container">
+        <div class="fleche-gauche carousel2__button--prev" id="prev4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(0 40) rotate(-90)"/></svg>
+        </div>
+        <div class="middle-inscrit">
+            {% for i in 1..5 %}
+            <div class="card-rate carousel2__item--next4 carousel2__item--prev4">
+                <div class="bande-jaune">
+                    <div class="container-data-bande">
+                        <div class="data-bande">Soirée {{i}} gaea21</div>
+                        <div class="data-bande">Soirée complètement gaea !</div>
+                        <div class="data-bande">Au Point Bar, Genève</div>
+                        <div class="data-bande">C'était le <span class="date">31 mars 2016</span></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="fleche-droite carousel2__button--next" id="next4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 35 40"><path d="M20,0,40,35H0Z" transform="translate(35) rotate(90)"/></svg>    </div>
+    </div>
+    <div class="container-pagination">
+        <input type="radio" id="page1" name="pagination"/>
+        <label for="page1" class="icon-pagination2--next4 icon-pagination2--prev4"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg></svg></label>
+        <input type="radio" id="page2" name="pagination"/>
+        <label for="page1" class="icon-pagination2--next4  icon-pagination2--prev4"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        <input type="radio" id="page3" name="pagination"/>
+        <label for="page3" class="icon-pagination2--next4  icon-pagination2--prev4"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+        <input type="radio" id="page4" name="pagination"/>
+        <label for="page4" class="icon-pagination2--next4  icon-pagination2--prev4"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><defs><style>.a,.c{fill:none;}.a{stroke:#000;}.b{stroke:none;}</style></defs><g class="a"><circle class="b" cx="7" cy="7" r="7"/><circle class="c" cx="7" cy="7" r="6.5"/></g></svg></label>
+    </div>
+
+
+
+
+    <div class="container-container-cards">
+        <div class="container-cards">
+            <div class="card-vide"></div>
+            <div class="card-vide"></div>
+            <div class="card-vide"></div>
+        </div>
+    </div>
+
+
+        {% block javascripts %}
+            <script src="{{ asset('js/slider.js') }}"></script>
+            <script src="{{ asset('js/slider-deux.js') }}"></script>
+            {# {{ encore_entry_script_tags('app') }} #}
+        {% endblock %}
+    {% include "footer.html.twig" %}
+{% endblock %}

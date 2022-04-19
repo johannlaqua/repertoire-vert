@@ -1,0 +1,69 @@
+{% extends 'base_homepage.html.twig' %}
+{% block stylesheet %}
+
+
+{% endblock %}
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Fiche Evènement</h3>
+        </br></br></br></br></br></br>
+    </div>
+
+    {# ******************************* FinNavBar ***************************************** #}
+    </br></br></br>
+    <div id="nav-barre" >
+
+        <div class="company-name"><h4>Nom de l'évènement : {{ event.name }}</h4>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% if n==0 %}
+
+            <a href="{{ url('addEventFavoris',{'id': event.id}) }}">Ajouter aux favoris<img src="{{ asset('css/img/favori1.png') }}" alt="logo-gaea21"></a>
+
+            {% elseif n==1%}
+            <a href="{{ url('deleteEventFavoris',{'id': event.id}) }}">Supprimer des favoris<img src="{{ asset('css/img/favori.png') }}" alt="logo-gaea21"></a>
+
+                {% endif%}
+                {% endif%}
+
+        </div>
+    </div>
+    </br></br></br>
+
+
+    <div>
+
+        <img id="Logo" class="alignE" src="{{ asset('css/img/company/'~ event.image|basename) }}"
+             alt="logo-{{ event.name }}">
+
+        <div id="infos" class="alignE">
+            <span> Coordonnées:</br> </span>
+            <span>Date début : {{ event.startingDate ? event.startingDate|date('d M y')}}</span></br>
+            <span>Date fin : {{ event.finishDate ? event.finishDate|date('d M y') : '' }}</span></br>
+            <span>Lieu: {{ event.place }}</span> </br>
+
+        </div>
+
+        <div id="txtt" class="alignE">
+            Description de l’évènement :
+            <div id="desc"> {{ event.description }} </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

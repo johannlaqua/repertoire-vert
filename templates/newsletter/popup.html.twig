@@ -1,0 +1,106 @@
+{% extends 'base_homepage.html.twig' %}
+ 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/newsletter.css') }}">
+   
+
+{% endblock %}
+
+
+{% block body %}
+
+   <div class="container">
+   <p>Notre site est dans la phase finale de sa réalisation.</p>
+   <p>Cette étape se distingue par deux dimensions:</p>
+
+   <ul>
+   <li>Inscription des entreprises dans les 27 catégories (phase de 3 mois environ)</li>
+   <li>Intégration finale des pages et des fonctionnalités manquantes.</li>
+   </ul>
+
+   <p>Vous avez la possibilité de participer à l'élaboration en intégrant la communauté RV et pourrez ainsi donner votre avis sur les différentes mises à jour successives (nouvelles fonctionnalités et nouvelles pages) :</p>
+   
+   </div> 
+
+    <button data-modal-target="#modal">Open Modal</button>
+    <div class="modal" id="modal">
+
+        <div class="modal-header">
+            <div class="title titleboxNameNewslett">Inscription à la Newsletter</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+
+        <div class="modal-body" >
+
+           
+          
+               <label for="caseACocher">je m'inscris a l'entreprise</label>
+    <input type="checkbox" id="inscription" >
+
+    <label for="caseACocher2">je m'inscris a la newsletter</label>
+    <input type="checkbox" id="newsletter" >
+
+    <div class="hidden" id="formulaire">
+            
+                
+                <div class="form-group">
+                    <label for="nom" class="labelNameBoxNewsletter">nom</label>
+                    <input type="text" name="nom" id="nom" class="inputNameBoxNewsletter form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom" class="labelFirstNameBoxNewsletter">prenom</label>
+                    <input type="text" name="prenom" id="prenom" class="inputFirstNameBoxNewsletter form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="labelMailBoxNewsletter">email</label>
+                    <input type="text" name="mail" id="mail" class="form-control inputMailBoxNewsletter">
+                    <span id="validemail"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="ville" class="labelCityBoxNewsletter">ville</label>
+                    <input type="text" name="ville" id="ville" class="form-control inputCityBoxNewsletter">
+                </div>
+
+                <div class="form-group">
+                    <label for="codePostal" class="labelPostalBoxNewsletter">code postal</label>
+                    <input type="text" name="code_postal" id="code_postal" class="form-control inputPostalBoxNewsletter">
+                </div>
+
+           
+               <span  className="labelErrorLocation" id="errorlocation"></span>
+             
+
+                
+    </div> 
+
+              
+
+                <button  class="inputSubmitBoxnewsletter hidden " id="button" >Je m'inscris!</button>
+                <div class="div-erreur-champs" id="champserreurs"></div>
+
+                
+                <button  class="continueNavigation" id="continue">Je poursuis ma navigation sans m'inscrire !</button>
+                
+        </div> 
+
+     </div>
+
+    <div id="overlay"></div>
+
+{# ****************************************************************************************************************************************** #}
+   
+{% endblock %}
+{% block javascripts %}
+        <script src="{{asset('js/jQuery.js')}}"></script> 
+         
+        <script src="{{asset('js/newsletterPopUp.js')}}"></script>  
+
+{% endblock %}
+
+
+
+
+

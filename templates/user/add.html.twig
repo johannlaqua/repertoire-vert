@@ -1,0 +1,23 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Ajout d'un administrateur</h3>
+    </div>
+    <div class="frm frm-user col-l-offset-2 col-l-8 col-l-pull-2">
+        <div class="frm-header">
+            Informations
+        </div>
+        {{ form_start(form,{ 'attr' : { 'class': 'frm-content' } }) }}
+        {{ form_row(form.username,{'label': 'Identifiant'}) }}
+        {{ form_row(form.email.first,{'label': 'Email'}) }}
+        {{ form_row(form.email.second,{'label': 'Confirmez votre email'}) }}
+{#  #}{{ form_row(form.Password.first, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.Password.second, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form._token) }}
+        <input type="submit">
+        {{ form_end(form,{'render_rest': false}) }}
+    </div>
+{% endblock %}

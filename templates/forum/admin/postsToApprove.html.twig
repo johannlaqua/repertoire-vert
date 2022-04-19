@@ -1,0 +1,86 @@
+
+    <div class="row">
+
+            <div class="white-box">
+                <h3 class="box-title">Publications en attente</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover" >
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                            <th>Createur</th>
+                            <th>Sous titre</th>
+                            <th>Affiche </th>
+                            <th>options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in eventNa %}
+                            <tr>
+                                <td>{{ event.id }}</td>
+                                <td>{{ event.title }}</td>
+                                <td>{{ event.creator.username }} </td>
+                                <td> {{ event.subtitle }}</td>
+                                <td><img src="{{ asset('uploads/posts/') }}{{event.photo }}"  style="height: 80px; width: 120px"> </td>
+                                <td><a href="" class="label label-danger">refuser</a>
+                                    <a href="{{ path('AcceptPost',{'id':event.getId()}) }}"class="label label-success">accepter</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title">tous Evenement  </h3>
+
+                <form method="get">
+                    <a href=""><i class="fa fa-refresh"></i></a>
+                </form>
+                <form class="app-search hidden-xs" method="post">
+                    <input type="text" placeholder="Search..." class="form-control" name="search">
+                    <a href=""><i class="fa fa-search"></i></a>
+
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table table-hover" >
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre event</th>
+                            <th>organisateur</th>
+                            <th>Description</th>
+
+                            <th>Affiche</th>
+
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in eventa %}
+                            <tr>
+                                <td>{{ event.id }}</td>
+                                <td>{{ event.title }}</td>
+                                <td>{{ event.creator.username }} </td>
+                                <td> {{ event.subtitle }}</td>
+
+                                <td><img src="{{ asset('uploads/posts/') }}{{event.photo }}"  style="height: 80px; width: 120px"> </td>
+
+                                <td><a href="" class="label label-danger">supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+

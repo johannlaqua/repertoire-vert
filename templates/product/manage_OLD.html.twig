@@ -1,0 +1,70 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/homepage.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mes produits</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='{{ url('company1_edit',{id:app.user.id}) }}'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-ville">Evènements</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-entreprise">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+     
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+
+    <div class="row">
+        <a class="btn" href="{{ url('productAdd') }}">Ajouter un produit</a>
+        <a class="btn1"  href="{{ url('productsFav') }}">Mes produits/services favoris</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Certification</th>
+            <th>Evaluation gaea21</th>
+            <th>Provenance</th>
+            <!--<th>Conditionnement</th>-->
+            <th>Prix</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+            {% for marchandise in marchandises %}
+                <tr>
+                <td><a href="{{ url('productShow',{'slug':marchandise.slug}) }}" style="text-decoration:none;color:black;">{{ marchandise.name }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':marchandise.slug}) }}" style="text-decoration:none;color:black;">{{ marchandise.certification }}</a></td>
+                <td>{% if marchandise.gaearecommanded == true %}
+                {# "Oui" #}
+                {% else %}
+                {# "Non" #}
+                {% endif %}
+                </td>
+                <td><a href="{{ url('productShow',{'slug':marchandise.slug}) }}" style="text-decoration:none;color:black;">{{ marchandise.origin }}</a></td>
+                <!--<td>{# marchandise.packaging #}</td>-->
+                <!--<td>{# product.unit #}</td>-->
+                <td><a href="{{ url('productShow',{'slug':marchandise.slug}) }}" style="text-decoration:none;color:black;">{{ marchandise.price }} {{ marchandise.currency }}{% if marchandise.price > 1 and marchandise.currency != "CHF" %}s {% endif %}</a></td>
+                <td class="prodServEddition">
+                    <a class="btnModif" href="{{ url('productEdit',{'id':marchandise.id}) }}">Modifier</a>
+                    <a class="btnSupp" onclick="return confirm('Etes vous sûr(e) de vouloir supprimer ce produit ? Si  vous cliquez sur OK le produit sera supprimé définitivement');" href="{{ url('productDelete',{'id':marchandise.id}) }}">Supprimer</a>
+                    <!--<div class="btnSupp" onclick="return addProductRemovalDialogBox()" href="">Supprimer</div>-->
+                    <!--onclick="return confirm('Etes vous sûr(e) de vouloir supprimer ce produit ? Si  vous cliquez sur OK le produit sera supprimé définitivement');" href="{# url('productDelete',{'id':marchandise.id}) #}"-->
+                </td>
+
+            {% endfor %}
+
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

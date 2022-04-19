@@ -1,0 +1,11 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Ajout d'une catégorie</h3>
+    </div>
+    {% include './category/form.html.twig' with {'form' : form} %}
+
+{% endblock %}

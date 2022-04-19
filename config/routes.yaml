@@ -1,0 +1,426 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: welcome/index.html.twig
+
+
+green-advice:
+  path: /conseil-vert
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/conseil-vert.html.twig
+
+forum:
+  path: /forums
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/forum.html.twig
+
+contact:
+  path: /contact
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/contact.html.twig
+
+contact_ville:
+  path: /contact_ville
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/contact_ville.html.twig
+
+contact_individu:
+  path: /contact_individu
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/contact_individu.html.twig
+
+login:
+  path: /login
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: user/login.html.twig
+
+program:
+  path: /SustainableLivingProgram
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+ges:
+  path: /ges
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+grow_your_own:
+  path: /grow_your_own
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+green_coaching_indv_famille:
+  path: /green_coaching_indv_famille
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+consom_action:
+  path: /consom_action
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+eco_geste:
+  path: /eco_geste
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+associatedprograms:
+  path: /associatedprograms
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/program.html.twig
+
+
+
+ListeEntreprise:
+  path: /ListeEntreprise
+  controller: App\Controller\CompanyController::manage
+  defaults:
+    template: company/manage.html.twig
+
+map:
+  path: /map
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/map.html.twig
+
+DashVisites:
+  path: /Dashboard/Visites
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: company/dashboardVisite.html.twig
+
+pub:
+  path: /pub
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: page/ventesEncartPub.html.twig
+
+AjouterUnPost:
+  path: /forum/addPost
+  controller: App\Controller\ForumController::addPostAction
+  defaults:
+    template: forum/addpost.html.twig
+
+updatePost:
+  path: /forum/updatePost/{id}
+  controller: App\Controller\ForumController::UpdateanAction
+testhom:
+  path: /testhom
+  controller: App\Controller\ForumController::index
+
+ListAllPostsSuggestionInForum:
+  path: /forum/listAllPosts
+  controller: App\Controller\ForumController::listAllPostsSuggestionAction
+  defaults:
+    template: forum/listAllPosts.html.twig
+
+FindByDate:
+  path: /forum/FindByDate
+  controller: App\Controller\ForumController::FindByDateAction
+  defaults:
+    template: forum/listAllPosts.html.twig
+
+
+ListAllPostsGeneralInForum:
+  path: /forum/listAllPosts
+  controller: App\Controller\ForumController::listAllPostsGeneralAction
+  defaults:
+    template: forum/listAllPosts.html.twig
+
+add_comment:
+  path:   /addcomment
+  defaults: { _controller: App\Controller\ForumController::addCommentAction }
+
+report_comment:
+  path:   /reportComment/{id}
+  defaults: { _controller: App\Controller\ForumController::reportComment }
+
+report_user:
+  path:   /reportUser/{id}
+  defaults: { _controller: App\Controller\ForumController::reportUser }
+
+post_like:
+  path:   /forum/detailedPost/{id}/like
+  defaults: { _controller: App\Controller\ForumController::likeAction }
+
+DetailedPostandComments:
+  path: /forum/detailedPost/{id}
+  controller: App\Controller\ForumController::ShowdetailedPostAction
+  defaults:
+    template: forum/detailedPost.html.twig
+
+PostsByCategory:
+  path: /forum/Postsbycategory/{id}
+  controller: App\Controller\ForumController::PostsByCategoryAction
+
+
+PostsByAuthor:
+  path: /forum/PostsbyAuthor/{id}
+  controller: App\Controller\ForumController::PostsByUser
+
+ajax_search:
+  path:  /forum/search
+  defaults: { _controller: App\Controller\ForumController::searchPostAction }
+  methods: GET
+
+Shop:
+  path: /shop/products/
+  controller: App\Controller\ShopController::AfficheAction
+
+Focus_Product:
+  path: /FocusProduct/{id}
+  controller: App\Controller\ShopController::FocusProduct
+  
+Add_to_Cart:
+  path:   /addToCart/{id}
+  defaults: { _controller: App\Controller\ShopController::addProductToCart }
+
+Increase_Qte_Cart:
+  path:   /increaseQte/{id}
+  defaults: { _controller: App\Controller\ShopController::increaseQte }
+
+Decrease_Qte_Cart:
+  path:   /decreaseQte/{id}
+  defaults: { _controller: App\Controller\ShopController::decreaseQte }
+
+User_Cart:
+  path: /shop/cart/
+  controller: App\Controller\ShopController::DisplayCartAction
+
+Order:
+  path: /shop/order/
+  controller: App\Controller\ShopController::OrderAction
+
+Remove_From_Cart:
+  path:   /removeFromCart/{id}
+  defaults: { _controller: App\Controller\ShopController::deleteFromCartAction }
+
+add_comment_to_Product:
+  path:   /addcommenttoProduct
+  defaults: { _controller: App\Controller\ShopController::addCommentAction }
+
+deleteCommentFromProduct:
+  path:   /deleteCommFromProd
+  defaults: { _controller: App\Controller\ShopController::deleteCOmmentFromProduct }
+searchPro:
+  path:   /shop/searchPro
+  defaults: { _controller: App\Controller\ShopController::searchProduct }
+
+
+ProductsByCategory:
+  path: /forum/ProductsByCategory/{id}
+  controller: App\Controller\ShopController::ProductsByCategoryAction
+
+PayWithStripe:
+  path:  /charge
+  defaults: { _controller: App\Controller\ShopController::PayWithStripeAction }
+  methods: POST
+
+UserOrders:
+  path:   /shop/userOrders
+  defaults: { _controller: App\Controller\ShopController::UsersOrddersAction }
+
+ajax_search_product:
+  path:  /shop/search
+  defaults: { _controller: App\Controller\ShopController::searchAction }
+  methods: GET
+
+
+ProductsByCompany:
+  path: /shop/ProductsByCompany/{id}
+  controller: App\Controller\ShopController::DisplayProductsByCompany
+
+PdfOrder:
+  path: /shop/pdfOrder/{id}
+  controller: App\Controller\ShopController::pdfAction
+
+#Admin
+
+DisplayReportedCOmments:
+  path: /admin/forum
+  controller: App\Controller\AdminForumController::DisplayReportedcomments
+
+DisplayReportedUsers:
+  path: /reportedUsers/
+  controller: App\Controller\AdminForumController::DisplayReportedUsers
+
+DisplayUnapprovedposts:
+  path: /unapproved
+  controller: App\Controller\AdminForumController::notApprovedPosts
+  defaults:
+    template: forum/admin/postsToApprove.html.twig
+
+AcceptPost:
+  path: /acceptPost/{id}
+  controller: App\Controller\AdminForumController::AcceptPosttAction
+
+
+deleteReportedComment:
+  path: /deleteReportedComment/{id}
+  controller: App\Controller\AdminForumController::deleteReportedComment
+#Frienship
+
+displayUsers:
+  path: /friendship
+  controller: App\Controller\FriendshipController::AfficheAction
+
+send_friend_request:
+  path:   /send_friend_request/{id}
+  defaults: { _controller: App\Controller\FriendshipController::sendFriendRequest }
+
+displayFriendsList:
+  path:   /myFriends
+  defaults: { _controller: App\Controller\FriendshipController::DisplayFriendsAction }
+
+displayFriendsRequests:
+  path:   /myFriendsRequests
+  defaults: { _controller: App\Controller\FriendshipController::getFriendRequests }
+
+
+accept_friend_request:
+  path:   /accept_friend_request/{id}
+  defaults: { _controller: App\Controller\FriendshipController::AcceptFriendRequestAction }
+
+SendMessageAction:
+  path:   /SendMessageAction/{id}
+  defaults: { _controller: App\Controller\DiscussionController::SendMessageAction }
+
+#Activities Co2
+userActivities:
+  path:   /myactivities
+  defaults: { _controller: App\Controller\DepenseController::GetActivitiesByUser }
+
+userStats:
+  path:   /mystats
+  defaults: { _controller: App\Controller\DepenseController::statistiques }
+
+userStatsPerWeek:
+  path:   /mystatsperWeek
+  defaults: { _controller: App\Controller\DepenseController::statistiquesByWeek }
+
+ActivityDetail:
+  path:   /activitydetails/{id}
+  defaults: { _controller: App\Controller\DepenseController::ShowdetailedactivityAction }
+
+UserProfileStats:
+  path:   /userprofilestats/{id}
+  defaults: { _controller: App\Controller\DepenseController::getUserProfileStats }
+
+updatePrivacy:
+  path:   /updateprivacy/{id}
+  defaults: { _controller: App\Controller\DepenseController::UpdatePrivacy }
+
+ajax_user_geo:
+  path:  /AjaxUserGeo
+  defaults: { _controller: App\Controller\DepenseController::getJsonDetails }
+  methods: POST
+
+api_login_check:
+  path: /api/login_check
+
+#ads
+addAdCompany:
+  path:   /new_add
+  defaults: { _controller: App\Controller\AdsController::addAdAction }
+
+addAdstepTwoCompany:
+  path:   /add_ads_steptwo
+  defaults: { _controller: App\Controller\AdsController::AddAdssteptwo }
+
+displayAdsCompany:
+  path:   /my_ads
+  defaults: { _controller: App\Controller\AdsController::displaymyAds }
+
+displayAdsAdmin:
+  path:   /admin/allAds
+  defaults: { _controller: App\Controller\AdsController::displayAdsAdmin }
+
+selectAdsPageAdmin:
+  path:   /admin/selectAdsdisplayPages
+  defaults: { _controller: App\Controller\AdsController::selectAdsPagesAdmin }
+
+
+addAddToForumAdmin:
+  path:   /admin/addAdtoForumPageAdmin
+  defaults: { _controller: App\Controller\AdsController::addAdtoForumPageAdmin }
+
+addAddToProductPageAdmin:
+  path:   /admin/addAdtoproductPageAdmin
+  defaults: { _controller: App\Controller\AdsController::addAdtoProductPageAdmin }
+
+PayWithStripeAds:
+  path:  /chargeAds
+  defaults: { _controller: App\Controller\AdsController::PayWithStripeAction }
+  methods: POST
+
+myPacks:
+  path:  /mypacks
+  defaults: { _controller: App\Controller\AdsController::displaymyPacks }
+
+updatePackAd:
+  path:  /updatemyAd/{id}
+  defaults: { _controller: App\Controller\AdsController::UpdatePackAdsAction }
+
+deletePackAd:
+  path:  /deletePack/{id}
+  defaults: { _controller: App\Controller\AdsController::deletePackAction }
+
+updateAd:
+  path:  /updateAd/{id}
+  defaults: { _controller: App\Controller\AdsController::UpdateAdsAction }
+
+updateAdStatus:
+  path:  /updateAdStatus/{id}
+  defaults: { _controller: App\Controller\AdsController::UpdatePaymentStatus }
+
+#MAp
+displayproductsonMap:
+  path:  /productsinmap
+  defaults: { _controller: App\Controller\MapController::displayProductsMapPage }
+
+displayCompaniessonMap:
+  path:  /companiesinmap
+  defaults: { _controller: App\Controller\MapController::displayCompaniesMapPage }
+
+ComingSoon:
+  path: /ComingSoon
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/Prochainement(EN).html.twig
+
+ProchainementFR:
+  path: /Prochainement
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/Prochainement(FR).html.twig
+
+
+ProchainementEN:
+  path: /ComingSoon
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: default/Prochainement(EN).html.twig
+
+SousCategorie:
+  path: /SousCategorie
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: /subcategory/page_sous_categorie.html.twig

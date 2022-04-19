@@ -1,0 +1,79 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Mon compte</h3>
+    </div>
+    <ul class="profile-menu col-l-12">
+      <a href="/profile/entreprise">
+        <li>
+            <img src="{{ asset('css/icon/avatar_blanc.svg') }}" alt="">
+            <text>Profil</text>
+        </li>
+      </a>
+      <a href="/dashboard/entreprise">
+        <li>
+            <img src="{{ asset('css/icon/dash_blanc.svg') }}" alt="">
+            <text>Dashboard</text>
+        </li>
+      </a>
+      <a href="/parametres/entreprise">
+        <li>
+            <img src="{{ asset('css/icon/engrenage_blanc.svg') }}" alt="">
+            <text>Paramètres</text>
+        </li>
+      </a>
+      <a href="/produits">
+        <li>
+            <img src="{{ asset('css/icon/sac_blanc.svg') }}" alt="">
+            <text>Produits</text>
+        </li>
+      </a>
+      <a href="/services" class="active">
+        <li>
+            <img src="{{ asset('css/icon/service.svg') }}" alt="">
+            <text>Services</text>
+        </li>
+      </a>
+    </ul>
+    <div class="row">
+        <a class="btn" href="{{ url('serviceAdd') }}">Ajouter un service</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Certification</th>
+            <th>Evaluation gaea21</th>
+            <th>Provenance</th>
+            <th>Tarification</th>
+            <th>Tarifs</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+
+                <tr>
+
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.name }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.certification }}</a></td>
+                <td>{{ service.gaearecommanded }}</td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.origin }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.serviceduration }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.price }} {{ service.currency }}{% if service.price > 1 and service.currency != "CHF" %}s {% endif %}</a></td>
+                <td class="prodServEddition">
+                    <a class="btnModif" href="{{ url('servicesEdit',{id:service.id}) }}">Modifier</a>
+                    <a class="btnSupp" onclick="return confirm('Etes vous sûr(e) de vouloir supprimer ce service ? Si  vous cliquez sur OK le service sera supprimé définitivement');" href="{{ url('servicesDelete',{id:service.id}) }}">Supprimer</a>
+                </td>
+
+
+              </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

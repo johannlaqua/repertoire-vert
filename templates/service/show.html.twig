@@ -1,0 +1,24 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="green-banner" style="height:100px;">
+        <h3>Fiche service</h3>
+    </div>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if n==0 %}
+
+            <a href="{{ url('addProductFavoris',{'slug': product.slug}) }}"><img src="{{ asset('css/img/favori1.png') }}" alt="logo-gaea21"></a>
+
+        {% elseif n==1%}
+            <a href="{{ url('deleteFavoris',{'slug': product.slug}) }}"><img src="{{ asset('css/img/favori.png') }}" alt="logo-gaea21"></a>
+
+        {% endif%}
+    {% endif%}
+    {{ dumps(n) }}
+    <div class="product col-l-12">
+        <div class="product-header col-l-12" style="margin-bottom:40px">
+            <div class="header-name">{{ service.name }}</div>
+        </div>
+
+        {% include './services/sheet.html.twig' with {'service' : service} %}
+    </div>
+{% endblock %}

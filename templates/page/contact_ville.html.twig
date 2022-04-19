@@ -1,0 +1,64 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}Contact (Entreprise){% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}"/>
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_contact.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-profil-title">Prendre contact avec le Répertoire Vert</h3>
+    </div>
+
+    <div class="green-intro">
+        <div class="green-intro-text">
+            Vous avez une question, un problème ou une demande particulière, n’hésitez pas
+            à nous contacter via le formulaire<br/> ci-dessous.<br/>
+            Notre équipe y répondra dans les plus brefs délais.
+        </div>
+    </div>
+
+    <div class="container-contact_ville">
+        Envoyer un mail directement...
+    </div>
+
+    <div class="title-equipe">
+        L’équipe du Répertoire Vert est là pour vous aider
+    </div>
+
+    <div class="container-equipe">
+        <div class="equipe-RV">
+            <div class="card-equipe">
+                <div class="card-data">
+                    <div class="card-nom">Ducom-Dubes Frédéric</div>
+                    <div class="card-role">Coordinateur</div>
+                    <div class="card-mail">frederic.ducom@repertoirevert.org</div>
+                </div>
+            </div>
+
+            <div class="card-equipe">
+                <div class="card-data">
+                    <div class="card-nom">Mister Superman</div>
+                    <div class="card-role">Responsable IT</div>
+                    <div class="card-mail">mister.superman@repertoirevert.org</div>
+                </div>
+            </div>
+
+            <div class="card-equipe">
+                <div class="card-data">
+                    <div class="card-nom">Mister Barman</div>
+                    <div class="card-role">Responsable communication</div>
+                    <div class="card-mail">mister.barman@repertoirevert.org</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}

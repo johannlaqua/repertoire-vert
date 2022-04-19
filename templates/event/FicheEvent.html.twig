@@ -1,0 +1,85 @@
+{% extends 'base_homepage.html.twig' %}
+{% block stylesheet %}
+
+
+{% endblock %}
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+<div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+    {% include "navbar.html.twig" %}
+    <h3 class="banner-title">Fiche Evènement</h3>
+    </br></br></br></br></br></br>
+</div>
+
+{# ******************************* FinNavBar ***************************************** #}
+     {#  <div class="bloc">
+
+        <p class="bloc-title">
+            Late minutis ortum porrigitur dextro mediam adnexa
+        </p>
+
+        <p class="bloc-content">
+            Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops</br>
+            cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem</br>
+            adultae virginis diuturnum absentia pauperis erubesceret patris.
+        </p>
+
+
+    </div>#}
+</br></br></br>
+
+
+    <div id="nav-barre" >
+
+        <div class="company-name" ><h4>Nom: {{ event.name }}</h4></div>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if n==0 %}
+
+        <a href="{{ url('addEventFavoris',{'id': event.id}) }}">Ajouter aux favoris<img src="{{ asset('css/img/favori1.png') }}" alt="logo-gaea21"></a>
+
+        {% elseif n==1%}
+        <a href="{{ url('deleteEventFavoris',{'id': event.id}) }}">Supprimer des favoris<img src="{{ asset('css/img/favori.png') }}" alt="logo-gaea21">
+
+            {% endif%}
+            {% endif%}
+
+    </div></br></br></br> 
+ 
+    
+    <div class="product col-l-12">
+        <div class="product-logo col-l-4">
+            <img class="logo-img col-l-4" src="{{ asset('css/img/event/'~ event.image|basename) }}"
+                 alt="logo-{{ event.name }}">
+        </div>
+        <div class="product-info col-l-offset-1 col-l-7">
+            <span class="info-label">Description : </span> <span class="info"> {{ event.description }} </span><br>
+            <span class="info-label">Date début : </span> <span class="info"> {{ event.startingDate ? event.startingDate|date('d M y')}} </span><br>
+
+            <span class="info-label ">Date fin : </span> <span class="info"> {{ event.finishDate ? event.finishDate|date('d M y') : '' }} </span> <span class="info"> {{ marchandise.currency }}{% if marchandise.price > 1 and marchandise.currency != "CHF" %}s {% endif %} </span><br>
+            <span class="info-label">Lieu : </span> <span class="info"> {{ event.place }}</span><br>
+        </div>
+    </div>
+
+    </br></br>
+
+
+
+
+
+</br></br>
+      
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

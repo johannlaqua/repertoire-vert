@@ -1,0 +1,45 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# include 'dialogbox.html.twig' #}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mes produits/services favoris</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='{{ url('company1_edit',{id:app.user.id}) }}'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-ville">Evènements</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-entreprise">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+     
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+    
+
+    <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+        {% for product in products %}
+            <a href="{{ url('productShow',{'slug':product.slug}) }}" style="max-width:200px; text-decoration:none">
+                <div class="product-card card">
+                    <div class="card-header">
+                        <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                        <span class="card-title">{{ product.name }}</span>
+                    </div>
+                    <div class="card-header">
+
+                        <span class="card-title">{{ product.slug }}</span>
+                        <br>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

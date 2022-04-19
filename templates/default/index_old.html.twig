@@ -1,0 +1,577 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Bienvenue
+{% endblock %}
+
+{% block stylesheets %}
+	<link
+	rel="stylesheet" href="{{ asset('css/homepage.css') }}"/>
+	{# ******************************* NavBar ***************************************** #}
+	{{ encore_entry_link_tags('app') }}
+	{# ******************************* FinNavBar ***************************************** #}
+{% endblock %}
+
+{% block body %}
+	{# ******************************* NavBar ***************************************** #}
+	<div id="root"></div>
+	<div class="showcase" style="width:100%;background-image: url('css/img/NavBar/header_entreprise.png'); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+
+		<div class="showcase-title">
+			<h2>Bienvenue sur le</h2>
+		</div>
+		<div class="showcase-sous-title">
+			<h1>Répertoire Vert</h1>
+		</div>
+		<div class="paragraphe-showcase">
+			<a>Le répertoire professionnel du développement durable offre le référencement et l'évaluation<br/>
+				de tous les produits et services professionnels "verts" proposés dans un rayon de 130km par rapport à Genève</a>
+		</div>
+		<div class="showcase__btn">
+			<button class="showcase__btn-entreprise">
+				<i class="far fa-building"></i>Entreprise</button>
+			<button class="showcase__btn-individu">
+				<i class="far fa-user"></i>Individu</button>
+			<button class="showcase__btn-ville">
+				<i class="fas fa-city"></i>Ville/Région</button>
+		</div>
+	</div>
+
+	{# ******************************* FinNavBar ***************************************** #}
+
+	{#<div class="page-title-banner col-l-12 col-m-12 col-s-12">
+				        <img class="banner-background" src="{{ asset('/css/img/homepage_header.jpg') }}" alt="">
+				        <div class="banner-content">
+				            <h2>Bienvenue sur le Répertoire Vert</h2>
+				            <p>Le Répertoire professionnel du Développement Durable offre un référencement et  une évaluation de tous les produits et services professionels "verts" proposés dans un rayon de 130 km autour de Genève.</p>
+				        </div>
+				    </div>#}
+
+
+	<div class="repertory-description col-l-12">
+		<img class="repertory-image" src="{{ asset('/css/img/image-partie-économie-verte.png') }}">
+
+		<div class="repertory-content">
+
+			<div class="title">
+				<h1 class="title">Nous créons de la valeur ajoutée et stimulons l'éco-consommation</h1>
+			</div>
+
+			<p class="title-content">
+				Nous donnons aux consommateurs un outil pour des choix responsables et une solution pour des prix abordables.<br>"Vert" est pour nous synonyme d'éco-conscience, de choix et de comportements durables, efficaces et profitables.<br>Nous permettons aussi aux entreprises d'être plus visibles, plus impliquées, plus efficaces et plus rentables.</p>
+
+
+			<div class="responsible-production col-l-12">
+
+				<div class="responsible-title">
+					<h3 class="l-green">PRODUCTION RESPONSABLE</h3>
+					<img class="logo-eye" src="{{ asset('/css/img/eye.png') }}" alt="">
+				</div>
+				<div class="responsible-content">
+					<p class="responsible-content-1">Le
+						<span class="l-bold">Répertoire Vert</span>
+						vous fait bénéficier d’une
+						<span class="l-bold">meilleure visibilité</span>
+						et d’une
+						<span class="l-bold">meilleure diffusion</span>
+						sur le marché des
+						<span class="l-bold">produits</span>
+						et
+						<span class="l-bold">services verts</span>, dans le but d'<span class="l-bold">accroître</span>
+						les
+						<span class="l-bold">ventes</span>
+						de vos produits et services verts.</p>
+
+					<p class="responsible-content-2">Grâce au
+						<span class="l-bold">processus d’audit</span>, vous pourrez non seulement
+						<span class="l-bold">diminuer</span>
+						votre
+						<span class="l-bold">impact environnemental</span>, mais aussi
+						<span class="l-bold">renforcer</span>
+						le
+						<span class="l-bold">capital confiance</span>
+						de votre entreprise auprès des éco-consommateurs.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="categories">
+		<h3 class="categories-title">Secteurs d'activités</h3>
+		<div class="categories-content">
+			<p>Le Répertoire Vert est divisé en 27 secteurs d'activités, allant de l'alimentation au bâtiment, en passant par les textiles, les médias et bien d'autres encore.</p>
+		</div>
+
+		<div class="m-search-product">
+			<div class="search-functionality col-l-12 col-m-12 col-s-12">
+				<img class="search-product-green" src="{{ asset('/css/img/Groupe 60.png') }}" onclick="searchProduct();">
+				<img class="search-product-white" src="{{ asset('/css/icon/conseil vert.png') }}" onclick="searchProduct();">
+				<img class="search-company-white" src="{{ asset('/css/icon/rechercher une entreprise.png') }}" onclick="searchProduct();">
+				<img class="search-company-yellow" src="{{ asset('/css/icon/btn recherche produit@2x.png') }}" onclick="searchProduct();">
+			</div>
+		</div>
+	</div>
+
+	{#<div id="repertoire" class="m-categories col-l-12 col-m-12 col-s-12">
+				        <div id="categories" class="categories col-l-12">
+				            <div id="repertoire" class="m-categories col-l-12">
+				                {% for category in categories %}
+				                    <div class="category-element">
+				                        <a href="{{ asset('/category/'~ category.slug )}}"> 
+				                            <img class="element-image" src="{{ asset('css/img/category/' ~  category.image|basename) }}" alt=""></a>
+				                        <h4 class="element-title">{{ category.name }}</h4>
+				                    </div>
+				                {% endfor %}
+				            </div>
+				        </div>
+				    </div>#}
+
+
+	<div class="card_container">
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/administration.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/administration" class="card_category">Administration</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/alimentation.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/alimentation-boisson" class="card_category">Alimentation</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/animaux.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/animaux" class="card_category">Animaux</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/art et design.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/art-design" class="card_category">Art et Design</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/artisanat.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/artisanat" class="card_category">Artisanat</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/bureautique.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/bureautique" class="card_category">Bureautique</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/communaute.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/communaute" class="card_category">Communauté</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/compensation carbone.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/compensation-carbone
+																				                " class="card_category">Compensation Carbone</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/consultant.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/consultant" class="card_category">Consultant</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/emplois verts.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/emploi-vert" class="card_category">Emploi Verts</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/environnement.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/environnement" class="card_category">Environnement</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/formation.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/formation" class="card_category">Formation</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/gestion des dechets.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/gestion-des-dechets" class="card_category">Gestion des Déchets</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/green building.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/green-building" class="card_category">Green Building</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/green finance.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/green-finance" class="card_category">Green Finance</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/green tech.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/green-tech-clean-tech" class="card_category">Green tech Clean tech</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/jardinage.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/jardinage-et-plantes" class="card_category">Jardinage et Agriculture</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/labels.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/label" class="card_category">Labels</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/loisirs et jeux.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/loisirs-et-jeux" class="card_category">Loisirs et Jeux</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/maison.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/maison" class="card_category">Maison</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/medias communication.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/media-et-communication" class="card_category">Médias & Communication</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/mode et textile.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/mode-et-textile" class="card_category">Mode & Textile</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/ong.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/ong-et-associations" class="card_category">ONG & Association</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/produits menagers.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/produits-menagers" class="card_category">Produits Ménagers</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/beaute du corps.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/beaute-du-corps" class="card_category">Soin & Beauté du corps</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/transport tourisme.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/tourisme-transport" class="card_category">Transport & Tourisme</a>
+			</div>
+		</article>
+		<article class="article_card">
+			<figure class="card_image">
+				<img src="./css/img/category/sante.jpg" alt="#"/>
+			</figure>
+			<div class="card_content">
+				<a href="/category/sante-et-bien-etre" class="card_category">Santé & Bien-être</a>
+			</div>
+		</article>
+	</div>
+
+	<div class="modelconcept-container">
+		<div>
+			<h2 class="modelconcept-title">Modèle et concept</h2>
+		</div>
+		<div class="modelconcept-content">
+			<p>Le Répertoire Vert est basé sur
+				<span class="l-bold">1 QUESTIONNAIRE QUALITATIF ET QUANTITATIF</span><br>
+				développé avec la participation de chercheurs et d'experts dans les domaines suivants :</p>
+		</div>
+		<div class="modelconcept-list">
+			<div class="list-one">
+				<div class="list-container">
+					<img class="logo-1" src="{{ asset('css/icon/Icon metro-organization.svg') }}" alt="logo">
+					<p>Lean management & organisation</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-2" src="{{ asset('css/icon/Icon awesome-recycle.svg') }}" alt="logo">
+					<p>Cycle de vie de produit</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-3" src="{{ asset('css/icon/Icon material-high-quality.svg') }}" alt="logo">
+					<p>Qualité de vie au travail</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-4" src="{{ asset('css/icon/Icon awesome-envira.svg') }}" alt="logo">
+					<p>Système de gestion environnemental</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-5" src="{{ asset('css/icon/Icon material-directions-transit.svg') }}" alt="logo">
+					<p>Mobilité & transport</p>
+				</div>
+
+			</div>
+
+			<div class="list-two">
+				<div class="list-container">
+					<img class="logo-6" src="{{ asset('css/icon/Icon awesome-building.svg') }}" alt="logo">
+					<p>Responsabilité sociale de l'entreprise</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-7" src="{{ asset('css/icon/Icon open-graph.svg') }}" alt="logo">
+					<p>Etude d'impact</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-8" src="{{ asset('css/icon/Icon simple-graphql.svg') }}" alt="logo">
+					<p>Gestion de projet</p>
+				</div>
+				<div class="list-container">
+					<img class="logo-9" src="{{ asset('css/icon/Icon metro-money.svg') }}" alt="logo">
+					<p>Management durable</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-evaluationsystem">
+		<div>
+			<h2 class="title-evaluationsystem">Système d'évaluation</h2>
+		</div>
+		<div class="content-evaluationsystem">
+			<p>Il détermine 4 niveaux de référencement basés sur une triple évaluation :</p><br>
+
+			<div class="content-evaluationsystem-list">
+				<div class="list-container">
+					<li>Niveau 0 : Acteur externe</li>
+					<li>Niveau 1 : Membre de l'association
+						<span class="l-bold">gaea21</span>
+					</li>
+					<li>Niveau 2 : Membre du réseau
+						<span class="l-bold">gaea21</span>
+					</li>
+					<li>Niveau 3 : Détenteur du label
+						<span class="l-bold">gaea21</span>
+					</li><br>
+				</div>
+				<div class="list-container">
+					<table>
+						<h4>Critères d'évaluation :</h4><br>
+
+						<li>Celle de l'association gaea21</li>
+						<li>Celle des professionnels de la branche d'activité concernée</li>
+						<li>Celle du public (les consom'acteurs)</li>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="associatedprogramme">
+
+		<div>
+			<h2 class="associatedprogramme-title">Programmes associés</h2>
+		</div>
+
+		<div class="programmes">
+			<div class="programme">
+
+				<img class="programme-image-1" src="{{ asset('/css/img/programmes-associes/Composant 6-10.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-2" src="{{ asset('/css/img/programmes-associes/Composant 6-11.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-3" src="{{ asset('/css/img/programmes-associes/Composant 6-12.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-4" src="{{ asset('/css/img/programmes-associes/Composant 6-13.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-5" src="{{ asset('/css/img/programmes-associes/Composant 6-14.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-6" src="{{ asset('/css/img/programmes-associes/Composant 6-15.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-7" src="{{ asset('/css/img/programmes-associes/Composant 6-16.jpg') }}" onclick="SustainableLivingProgram();">
+				<img class="programme-image-8" src="{{ asset('/css/img/programmes-associes/Composant 6-17.jpg') }}" onclick="SustainableLivingProgram();">
+
+			</div>
+		</div>
+	</div>
+
+	<div class="logos-qrcode">
+		<img
+		class="qrcode" src="{{ asset('/css/icon/qr-code-appli-repertoire-vert.png') }}">
+		{#<img class="qrcode-2" src="{{ asset('/css/icon/Rectangle 117.svg') }}">#}
+		<img class="app-rv" src="{{ asset('/css/icon/Groupe 94@2x.png') }}">
+	</div>
+
+	<div class="partners">
+		<h2 class="partners-title">Partenaires principaux</h2>
+		<div class="partner">
+			<div class="partners1">
+
+				<a href="http://www.gaea21.org">
+					<img class="partner-image" src="/css/icon/Groupe 33.png">
+				</a>
+				{#<img class="partner-image2" src="{{ asset('css/img/logo_eco-mind_cmjn_fr.png') }}">#}
+			</div>
+
+			{#<div class="partners2 ">
+												                <!--<div style="margin-left: 240px;">Avec le soutien de:</div>-->
+												                <a href="https://www.entraide.ch/fr">
+												                    <img class="partner-image3" src="/css/img/partners/loro.svg">
+												                </a>
+												                <div>
+												                    <p> réalisation de la phase 1 du Répertoire Vert a été possible par le soutien <br> de la Loterie Romande. Avec nos remerciements.</p>
+												                </div>
+												            </div>#}
+
+			<div>
+				<a href="https://www.entraide.ch/fr">
+					<img class="partner-image-2" src="/css/icon/Groupe 34.svg">
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="footer">
+		<img class="footer-image" src="{{ asset('/css/img/footer/footer.png') }}">
+		<div class="footer-contact">
+			<h5 class="footer-contact-title">Contact</h5>
+			<span>Avenue des Morgines 9</span>
+			<span>1213 Petit-Lancy</span>
+			<span>Suisse</span>
+			<!--<span>Phone : +62 500 800 123</span>-->
+			<span>Fax : 079 256 14 30</span>
+			<span>Email : contact@repertoirevert.org</span>
+			<span>Website :
+				<a href="http://www.gaea21.org">www.gaea21.org</a>
+			</span>
+		</div>
+
+		<!--<div class="footer-partners col-l-offset-1 col-l-2 col-m-offset-1 col-m-2 col-s-offset-1 col-s-2">-->
+		<div class="footer-partners">
+			<h4 class="footer-partners-title">Partenaires</h4>
+			<li>
+				<a href="https://www.loro.ch/fr">Loterie Romande</a>
+			</li>
+			<li>
+				<a href="http://www.gaea21.org">gaea21</a>
+			</li>
+			{#<li><a href="">Eco-conso</a></li>#}
+			<li>
+				<a href="">Eco-mind</a>
+			</li>
+		</div>
+		<!--<div class="footer-sitemap col-l-offset-1 col-l-2 col-m-offset-1 col-m-2 col-s-offset-1 col-s-2">-->
+		<div class="footer-mention">
+			<h5 class="footer-mention-title">Mentions légales</h5>
+			{#<li><a href="/">Home</a></li>
+												            <li><a href="/#categories">Répertoire</a></li>
+												            <li><a href="/conseil-vert">Conseil Vert</a></li>
+												            <li><a href="/rechercherEvenement">Actualités</a></li>
+												            <li><a href="/nouveautes">Nouveautés</a></li>
+												            <li><a href="/forum">Forum</a></li>
+												            <li><a href="/contact">Contact</a></li>
+												            <!--<li><a >Derniers inscrits</a></li>
+												            <li><a>Nouveaux produits</a></li>-->
+												    #}
+		</div>
+
+		<!--<div class="footer-legales col-l-offset-2 col-l-3 col-m-offset-1 col-m-3 col-s-offset-1 col-s-3">
+								        <div class="footer-legales"  style="margin-right: 110px; ">
+								            <h3>Mentions Légales</h3>
+								        </div>
+								    
+								        <div class="footer-joinus col-l-offset-1 col-l-3 col-m-offset-1 col-m-3 col-s-offset-1 col-s-3">
+								        <div class="footer-joinus">
+								            <h3>Rejoignez-nous</h3>
+								        </div>-->
+
+		<div class="footer-social">
+			<div class="footer-facebook">
+				<img src="{{ asset('/css/icon/facebookb.png') }}">
+			</div>
+
+			<div class="footer-linkedin">
+				<img src="{{ asset('/css/icon/linkedinb.png') }}">
+			</div>
+
+			<div class="footer-twitter">
+				<img src="{{ asset('/css/icon/twitterb.png') }}">
+			</div>
+		</div>
+
+	</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+	{# ******************************* NavBar ***************************************** #}
+	{{ encore_entry_script_tags('app') }}
+	{# ******************************* FinNavBar ***************************************** #}
+
+{% endblock %}

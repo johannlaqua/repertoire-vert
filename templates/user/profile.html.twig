@@ -1,0 +1,42 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Mon compte</h3>
+    </div>
+    <ul class="profile-menu col-l-12">
+      <a href="/profileEntreprise" class="active">
+        <li>
+            <img src="{{ asset('css/icon/avatar_blanc.svg') }}" alt="">
+            <text>Profil</text>
+        </li>
+      </a>
+      <a href="/StatistiquesVisites">
+        <li>
+            <img src="{{ asset('css/icon/dash_blanc.svg') }}" alt="">
+            <text>Dashboard</text>
+        </li>
+      </a>
+      <a href="/parametres/entreprise">
+        <li>
+            <img src="{{ asset('css/icon/engrenage_blanc.svg') }}" alt="">
+            <text>Paramètres</text>
+        </li>
+      </a>
+      <a href="/produits">
+        <li>
+            <img src="{{ asset('css/icon/sac_blanc.svg') }}" alt="">
+            <text>Produits</text>
+        </li>
+      </a>
+      <a href="/services">
+        <li>
+            <img src="{{ asset('css/icon/service.svg') }}" alt="">
+            <text>Services</text>
+        </li>
+      </a>
+    </ul>
+    {% include './company/form.html.twig' with {'form' : form} %}
+{% endblock %}

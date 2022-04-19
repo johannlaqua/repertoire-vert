@@ -1,0 +1,36 @@
+.m-subcategory{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  min-height: 500px;
+  .subcategory-element{
+    margin-top: 20px;
+
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    overflow: hidden;
+    //border-bottom: solid 3px $green;
+    cursor:pointer;
+    &:hover{
+      .element-image{
+        background-color: yellow;
+      }
+    }
+    .element-image{
+      line-height: 200px;
+      width: 80%;
+      height: 80%;
+      text-align: center;
+      background-color: #DADADA;
+    }
+    .element-title{
+      text-align: center;
+      width: 100%;
+      height: 10%;
+      font-size: 0.8em;
+    }
+  }
+}

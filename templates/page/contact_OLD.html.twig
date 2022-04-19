@@ -1,0 +1,84 @@
+{% extends 'base-nav.html.twig' %}
+{% block title %}Hello NAVBAR
+{% endblock %}
+
+{% block stylesheets %}
+
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+{% block body %}
+	{% include "index.html.twig" %}
+
+	<div class="green-banner-short">
+		<h2>L’équipe du Répertoire Vert est là pour vous aider
+		</h2>
+	</div>
+	<div class="card-container-contact">
+		<div class="card-contacts">
+			<div class="card-header-contact">
+				<img class="card-image-contact" src="{{ asset('css/img/contact/Frédéric_Ducom-Dubes.png') }}">
+			</div>
+			<div>
+				<p>Frédéric Ducom-Dubes</p>
+			</div>
+			<div>
+				<p>Coordinateur du Répertoire Vert</p>
+			</div>
+			<div>
+				<p>frederic.ducom@repertoirevert.org</p>
+			</div>
+			<div>
+				<p>+33 786 52 29 59</p>
+			</div>
+			<div>
+				<p>
+					9 Avenue des Morgines, 1213 Petit-Lancy, Geneve, Suisse</p>
+			</div>
+		</div>
+		<!--
+								        <div class="card-contacts">
+								            <div class="card-header-contact">
+								                <img class="card-image-contact" src="/css/img/contacts/Goran_Cirkoski.jpg">
+								            </div>
+								            <div>
+								                <p>Goran Cirkoski</p>
+								            </div>
+								            <div>
+								                <p>Directeur Commercial Suisse</p>
+								            </div>
+								            <div>
+								                <p>goran.cirkoski@repertoirevert.org</p>
+								            </div>
+								            <div>
+								                <p>+41 76 693 75 34</p>
+								            </div>
+								            <div>
+								                <p> 9 Avenue des Morgines, 1213 Petit-Lancy, Geneve, Suisse</p>
+								            </div>
+								        </div>
+								        -->
+
+
+		<div class="card-contacts">
+			<div class="card-header-contact">
+				<img class="card-image-contact" src="{{ asset('css/img/contact/Alexandre_Nguyen.jpg') }}">
+			</div>
+			<div>
+				<p>Alexandre Nguyen</p>
+			</div>
+			<div>
+				<p>Responsable informatique application</p>
+			</div>
+			<div>
+				<p>alexandr.nguyen21@gmail.com</p>
+			</div>
+		</div>
+
+
+	</div>
+
+{% endblock %}

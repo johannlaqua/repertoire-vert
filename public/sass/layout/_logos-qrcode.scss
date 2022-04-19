@@ -1,0 +1,17 @@
+$width_screen: 1920px;
+
+.logos-qrcode {
+    justify-content: space-around;
+
+}
+
+.qrcode {
+    margin-left: pxToPourcent(581,$width_screen);
+    width: pxToPourcent(199,$width_screen);
+}
+
+.app-rv {
+    margin-right: pxToPourcent(320,$width_screen);
+    padding-left: pxToPourcent(150,$width_screen);
+    width: pxToPourcent(670,$width_screen);
+}

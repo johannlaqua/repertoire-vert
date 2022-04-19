@@ -1,0 +1,11 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}New CoupDeProjecteur{% endblock %}
+
+{% block body %}
+    <h1>Create new CoupDeProjecteur</h1>
+
+    {{ include('coup_de_projecteur/_form.html.twig') }}
+
+    <a href="{{ path('coup_de_projecteur_index') }}">back to list</a>
+{% endblock %}

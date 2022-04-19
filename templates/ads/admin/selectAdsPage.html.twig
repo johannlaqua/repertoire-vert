@@ -1,0 +1,21 @@
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+ <h1>Veuillez choisir la page ou vous voullez méttre la publicité</h1>
+<ul>
+    <li>
+    <a href="{{ path('addAddToForumAdmin') }}">Page du Forum</a>
+    </li>
+    <li>
+    <a href="{{ path('addAddToProductPageAdmin') }}">Pages des Produits</a></li>
+    <li>
+    <a href="">Agenda</a>
+    </li>
+
+</ul>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Liste administrateur des comptes utilisateurs inactifs{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        {#   let users = {{ users }}#}
+    </script>
+    <script src="{{  asset('js/admin/activationCompte.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+{% endblock %}
+
+{% block body %}
+    <div id="activation_compte">
+
+        <table class="table" id="tableauUser">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prénom</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td><button id="{{ user.id }}" type="button" class="btn btn-dark" data-token="{{ user.confirmationToken }}" onClick="enableAccount({{ user.id }})">Activer le compte</button></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+{% endblock %}
+

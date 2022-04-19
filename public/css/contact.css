@@ -1,0 +1,136 @@
+body {
+  background-color: #F0F0F0 !important;
+}
+
+.banner-profil-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 50.3125%;
+  color: white;
+  font-weight: bold;
+  font-size: 4.6875vw;
+  margin: 18.85% 0% 22.1875% 0%;
+}
+
+.container-contact {
+  margin-top: 3.18%;
+  margin-bottom: 5.73%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.04vw;
+}
+
+.container-contact_ville {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.04vw;
+  font-weight: bold;
+  margin: 8.4375% 0% 6.875% 0%;
+}
+
+.contact-form {
+  width: 45.68%;
+  margin-bottom: 2.76%;
+}
+
+.contact-data {
+  margin-top: 4.45%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact-data label {
+  font-size: 1.04vw;
+}
+
+.contact-data input {
+  padding: 5% 2%;
+  font-size: 1.45vw;
+  background-color: white;
+  width: 100%;
+  height: 4vw;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+.contact-data textarea {
+  padding: 3%;
+  background-color: white;
+  width: 100%;
+  min-height: 25vw;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+.contact-legend {
+  font-size: 1.04vw;
+  margin-top: 5.13%;
+}
+
+.contact-send {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container-send-btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.14% 5.6%;
+  background-color: #618226;
+  width: 9.43%;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.title-equipe {
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  color: #618226;
+  font-size: 1.98vw;
+  margin-bottom: 5.3125%;
+}
+
+.container-equipe {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6.875%;
+}
+
+.equipe-RV {
+  display: flex;
+  justify-content: space-between;
+  width: 67%;
+}
+
+.card-equipe {
+  background-color: white;
+  width: 29.0625%;
+  box-shadow: 0 3px 6px #00000029;
+}
+
+.card-data {
+  padding: 6.7% 0%;
+  color: white;
+  margin-top: 100%;
+  text-align: center;
+  font-size: 1.04vw;
+  background-color: #5B6FA7;
+}
+
+/*# sourceMappingURL=contact.css.map */

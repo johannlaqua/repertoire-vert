@@ -1,0 +1,71 @@
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# include 'dialogbox.html.twig' #}
+    <!--<div class="jsdialog"><div class="jsdialog-content">Etes vous sûr(e) de vouloir supprimer ce produit ? <br/><br/> Si  vous cliquez sur Supprimer le produit sera effacé <strong>définitivement</strong><br/><div class="dialog-buttons"><div class="jsdialog-cancel-button" onclick="removeFlash();">Annuler</div><div class="jsdialog-ok-button" onclick="removeFlash();">Supprimer</div></div></div></div>-->
+    <div class="green-banner">
+        <h3>Mes publicités</h3>
+    </div>
+
+    <div class="row">
+        <a class="btn" href="{{ url('addAdCompany') }}">Ajouter une publicité</a>
+
+    </div>
+    <a class="btn" href="{{ url('myPacks') }}">Mes Packs</a>
+    <table>
+        <thead>
+        <tr>
+            <th>date début diffusion</th>
+            <th>date fin diffusion</th>
+            <th>Page</th>
+            <th>Slogan</th>
+            <th>photo</th>
+
+
+            <th>créee le </th>
+            <th>Action </th>
+            <!--<th>Conditionnement</th>-->
+
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for ads in ads %}
+        <tr>
+            <td>{{ ads.publishdatebegin |date }}</td>
+            <td>{{ ads.publishdateend |date }}</td>
+            <td>
+{{ ads.location.name }}
+            </td>
+            <td>{{ ads.slogan }}</td>
+            <td> <img src="{{ asset('uploads/posts/') }}{{ads.photo }}" style="width: 100px; height: 100px">
+
+            <td> {{ ads.createdAt |date}}</td>
+
+            <td><a href="{{ path('updateAd',{'id':ads.id}) }}" ><button class="btn btn-primary"> Modifier</button></a></td>
+
+
+            {% endfor %}
+
+        </tr>
+        </tbody>
+    </table>
+
+    <br><br><br>
+    {% for tarifsAds in tarifsAds %}
+        <ul>
+       Pack: {{ tarifsAds.type }} {{ tarifsAds.price }} CHF <a href="{{ path('addAdstepTwoCompany') }}">Je veux ce pack</a>
+        </ul>
+    {% endfor %}
+
+
+
+
+
+{% endblock %}

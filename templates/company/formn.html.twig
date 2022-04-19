@@ -1,0 +1,256 @@
+<section class="form-container">
+    <p class="form-header">Données entreprise</p>
+    {# {{ form_start(form,{ 'attr' : { 'class': 'form-company' } }) }} #}
+    
+        <div class="form-sub-left">
+            <div id="form-error"></div>
+            <span id="response"></span>
+            <div class="form-company-widget-container" >
+                <label for="pseudo" class="form-company-label form-label-username">Pseudo *</label>
+                <input id="pseudo" class="form-company-widget form-widget-username"></input>
+            </div>
+            <div class="form-company-widget-container" id="pseudo1">
+                <label for="mdp" class="form-company-label form-label-mdpF">Mot de passe</label>
+                <input id="mdp" name="mdp" class="form-company-widget form-widget-mdpF"></input>
+                <div id="validpassword"></div>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="mdpconfirm" class="form-company-label form-label-mdpS">Confirmer le mot de passe</label>
+                <input id="mdpconfirm" class="form-company-widget form-widget-mdpS"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="mail" class="form-company-label form-label-mailF">Adresse mail</label>
+                <input id="mail" class="form-company-widget form-widget-mailF"></input>
+                <div id="validemail"></div>
+            </div>
+
+            <div class="form-company-widget-container">
+                <label for="mailconfirm" class="form-company-label form-label-mailS">Confirmer l'adresse mail</label>
+                <input id="mailconfirm" class="form-company-widget form-widget-mailS"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="name" class="form-company-label form-label-name">Nom de l'entreprise</label>
+                <input id="name" class="form-company-widget form-widget-name"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="socialreason" class="form-company-label form-label-socialreason">Raison sociale</label>
+                <input id="socialreason" class="form-company-widget form-widget-socialreason"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="adresse" class="form-company-label form-label-street">Adresse</label>
+                <input id="adresse" class="form-company-widget form-widget-street"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="ville" class="form-company-label form-label-ville">Ville</label>
+                <input id="ville" class="form-company-widget form-widget-ville"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="postcode" class="form-company-label form-label-postcode">code postal</label>
+                <input id="postcode" class="form-company-widget form-widget-postcode"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="canton" class="form-company-label form-label-region">Canton</label>
+                <input id="canton" class="form-company-widget form-widget-region"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="pays" class="form-company-label form-label-pays">Pays</label>
+                <input id="pays" class="form-company-widget form-widget-pays"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="tel" class="form-company-label form-label-téléphone">Téléphone</label>
+                <input id="tel" class="form-company-widget form-widget-téléphone"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="website" class="form-company-label form-label-website">Site Web</label>
+                <input id="website" class="form-company-widget form-widget-website"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="linkedin" class="form-company-label form-label-linkedin">Lien Linkedin</label>
+                <input id="linkedin" class="form-company-widget form-widget-linkedin"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="facebook" class="form-company-label form-label-facebook">Lien Facebook</label>
+                <input id="facebook" class="form-company-widget form-widget-facebook"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="twitter" class="form-company-label form-label-twitter">Lien Twitter</label>
+                <input id="twitter" class="form-company-widget form-widget-twitter"></input>
+            </div>
+        </div>
+            <div class="form-sub-right">
+                <div class="form-company-widget-container">
+                    <label for="date" class="form-company-label form-label-date">Début de l'activité</label>
+                    <div class="form-date-container">
+                        <input id="date" class="form-company-widget form-widget-date"></input>
+                    </div>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="certifications" class="form-company-label form-label-certif">Certification(s)*</label>
+                    <input id="certifications" class="form-company-widget form-widget-certif"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="activité" class="form-company-label form-label-category">Secteur(s) d'activité(s)</label>
+                    <input id="activité" class="form-company-widget form-widget-category"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="influenceZone" class="form-company-label form-label-influenceZone">Zone(s) d'influence(s) géographique(s)</label>
+                    <input id="influenceZone" class="form-company-widget form-widget-influenceZone"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="evaluation" class="form-company-label form-label-evaluation">Je souhaite être évalué par Gaea21 : (voir le tableau ci-dessous)</label>
+                    <input id="evaluation" class="form-company-widget form-widget-evaluation"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="description" class="form-company-label form-label-description">Description de votre entreprise</label>
+                    <input id="description" class="form-company-widget form-widget-description"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for"vision" class="form-company-label form-label-vision">Votre vision du Développement Durable :
+                                                        Comment résumeriez-vous votre philosophie
+                                                        d’entreprise au sujet du Développement Durable ?</label>
+                    <input id="vision" class="form-company-widget form-widget-vision"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <div id="g-recaptcha"></div>
+                    <div id="g-recaptcha-error"></div> 
+                </div>
+                <button class="form-company-btn"  id="btn"><span id ="load" class="" role="status" aria-hidden="true"></span>Valider</button>
+
+            </div>
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.name,{'label': 'Nom de l\'entreprise *', 
+                'label_attr': {'class' : 'form-company-label form-label-name' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-name' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.socialreason,{'label': 'Raison sociale *', 
+                'label_attr': {'class' : 'form-company-label form-label-socialreason' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-socialreason' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.street,{'label': 'Adresse', 
+                'label_attr': {'class' : 'form-company-label form-label-street' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-street' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.city,{'label': 'Ville', 
+                'label_attr': {'class' : 'form-company-label form-label-ville' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-ville' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.postcode,{'label': 'Code postal', 
+                'label_attr': {'class' : 'form-company-label form-label-postcode' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-postcode' } }) }}
+            </div> #}
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.region,{'label': 'Canton, département', 
+                'label_attr': {'class' : 'form-company-label form-label-region' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-region' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.country,{'label': 'Pays', 
+                'label_attr': {'class' : 'form-company-label form-label-country' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-country' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.phone,{'label': 'Téléphone', 
+                'label_attr': {'class' : 'form-company-label form-label-phone' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-phone' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.urlwebsite,{'label': 'Site web', 
+                'label_attr': {'class' : 'form-company-label form-label-website' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-website' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.urllinkedin,{'label': 'Lien Linkedin', 
+                'label_attr': {'class' : 'form-company-label form-label-linkedin' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-linkedin' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.urlfacebook,{'label': 'Lien Facebook', 
+                'label_attr': {'class' : 'form-company-label form-label-facebook' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-facebook' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.urltwitter,{'label': 'Lien Twitter', 
+                'label_attr': {'class' : 'form-company-label form-label-twitter' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-twitter' } }) }}
+            </div>
+        </div> #}
+        {# <div class="form-sub-right">
+            <div class="form-company-widget-container">
+                {{ form_label (form.startingdate, 'Début de l\'activité')}}
+                <div class="form-date-container">
+                    {{form_widget(form.startingdate)}}
+                </div> #}
+                {#{ form_row(form.startingdate,{'label': 'Début de l\'activité *', 
+                'label_attr': {'class' : 'form-company-label form-label-debutActivite' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-debutActivite' } }) }#}
+            {# </div> #}
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.certification,{'label': 'Certification(s) *', 
+                'label_attr': {'class' : 'form-company-label form-label-certif' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-certif' } }) }}
+            </div> #}
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.category,{'label': 'Mon/mes secteur(s) d\'activité(s) *', 
+                'label_attr': {'class' : 'form-company-label form-label-category' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-category' } }) }}
+            </div> #}
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.influencezone,{'label': 'Zone d\'influence géographique *', 
+                'label_attr': {'class' : 'form-company-label form-label-influenceZone' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-influenceZone' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.wantevaluation,{'label':'Je souhaite être évalué par Gaea21 : (voir le tableau ci-dessous)', 
+                'label_attr': {'class' : 'form-company-label form-label-evaluation' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-evaluation' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.description,{'label': 'Description de votre entreprise', 
+                'label_attr': {'class' : 'form-company-label form-label-description' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-description' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.vision,{'label': 'Votre vision du Développement Durable :
+                                                    Comment résumeriez-vous votre philosophie
+                                                    d’entreprise au sujet du Développement Durable ?', 
+                'label_attr': {'class' : 'form-company-label form-label-vision' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-vision' } }) }}
+            </div> #}
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.latitude,{'label': 'Latitude *',
+                    'label_attr': {'class' : 'form-company-label form-label-postcode' },
+                    'attr' : { 'class': 'form-company-widget form-widget-postcode' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.longtitude,{'label': 'Longtitude *',
+                    'label_attr': {'class' : 'form-company-label form-label-postcode' },
+                    'attr' : { 'class': 'form-company-widget form-widget-postcode' } }) }}
+            </div> #}
+
+            {# <div class="form-company-widget-container">
+                {{ form_row(form.image,{'label': 'Téléchargez votre logo (jpeg/png)', 
+                'label_attr': {'class' : 'form-company-label form-label-image' }, 
+                'attr' : { 'class': 'form-company-widget form-widget-image' } }) }}
+            </div>
+            {{ form_row(form._token) }}
+            <br>
+            #} 
+            
+
+
+            {# {{ form_end(form,{'render_rest': false}) }} #} 
+
+        
+    
+</section>
+{% block javascripts %}
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+<script src="{{ asset('js/redirect.js') }}"></script>
+
+{% endblock %}

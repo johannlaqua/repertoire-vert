@@ -1,0 +1,33 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Gestion de reporting</h3>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Utilisateur signalé</th>
+            <th>utilisateur</th>
+            <th>Raison</th>
+
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rc in rc %}
+            <tr>
+                <td>{{ rc.owner.getUsername() }}</td>
+                <td>{{ rc.creator.getUsername() }}</td>
+                <td>{{ rc.reasondetails  }}</td>
+                <td><a href="{{ path('deleteReportedComment',{'id':rc.owner.getId()}) }}"><button class="form-control">Disable</button></a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}New SucessStory{% endblock %}
+
+{% block body %}
+    <h1>Create new SucessStory</h1>
+
+    {{ include('sucess_story/_form.html.twig') }}
+
+    <a href="{{ path('sucess_story_index') }}">back to list</a>
+{% endblock %}

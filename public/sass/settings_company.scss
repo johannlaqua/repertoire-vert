@@ -1,0 +1,595 @@
+@import "profile_entreprise";
+@import "base/variables";
+
+body{
+  background-color: #EDEDED;
+  border: solid 0.05vw #707070 ;
+  font-size: 1.04vw;
+}
+/*input[type=radio]{
+  display: none;
+}*/
+////////////////////////////////////////
+//// BANNIERE AVEC LES 4 BOUTONS
+
+.icon-profil{
+  fill: none;
+}
+.banner-profil-description{
+  font-size: 1.46vw;
+  color: white;
+  font-weight: bold;
+  width: 48.5%;
+  text-align: center;
+  margin-bottom: 4.11%;
+}
+
+/////////////////////////////////////
+.div-presentation{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #618226;
+  padding: 2.71% 0%;
+}
+.container-presentation{
+  width: 80.3125%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.presentation-title{
+  color: white;
+  font-size: 1.46vw;
+  margin-bottom: 1.5%;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+}
+.presentation-content{
+  font-size: 1.04vw;
+  text-align: left;
+  color: white;
+  width: 100%;
+}
+/////////////////////////////////////////////////////////////
+// CHANGER LE MDP et DESACTIVER LE PROFIL////////////////////
+////////////////////////////////////////////////////////////
+.div-title-mdp,.div-title-disable{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7.65625%;
+  margin-bottom: 2.1875%;
+}
+
+ul{
+  list-style-type: none;
+  padding-left: 0;
+  width: 100%;
+  margin-top: 3%;
+  color: red;
+}
+.title-mdp, .title-disable{
+  color: #618226;
+  font-weight: bold;
+  font-size: 1.98vw;
+}
+////////////
+.div-modif-mdp,.div-disable-profil{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-modif-mdp,.container-disable-profil{
+  width: 66.67%;
+  display: flex;
+  flex-direction: column;
+}
+.form-modif-mdp,.form-disable-profil{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3.125%;
+}
+.champ-mdp,.champ-disable-profil{
+  width: 24.73%;
+}
+.champ-mdp:not(:last-of-type),.champ-disable-profil:not(:last-of-type)
+{
+  margin-right: 8.4375%;
+}
+.label-modif-mdp,.label-disable-profil{
+  margin-bottom: 0.5%;
+}
+.input-modif-mdp,.input-disable-profil{
+  width: 100%;
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius:0.52vw;
+  height: 2.03125vw;
+  padding-left: 2.5%;
+}
+////////
+.div-maj-mdp,.div-send-disable,.div-maj-data{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5625%;
+
+}
+.div-maj-data{
+  margin-bottom: 0.78125%;
+}
+.div-maj-mdp{
+  margin-bottom: 7.14%;
+}
+.div-send-disable{
+  margin-bottom: 4.0625%;
+}
+.container-maj-mdp,.container-send-disable,.container-maj-data{
+  width: 12.76%;
+}
+.label-btn-maj-mdp,.label-btn-send-disable,.label-btn-maj-data{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 1.46vw;
+  font-weight: bold;
+  border-radius: 0.52vw;
+  outline: none;
+  border: none;
+  padding: 5.31% 0%;
+}
+.div-msg-disable-profil{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6.78125%;
+}
+
+.container-msg-disable-profil
+{
+  width: 50%;
+  font-size: 1.04vw;
+  text-align: center;
+}
+.lien-contactez-nous{
+  border: none;
+  outline: none;
+  text-decoration: underline;
+
+  font-weight: bold;
+}
+/////////////////////////////////////
+// MODIFICATIONS DES DONNEES ///////
+///////////////////////////////////
+.div-title-data{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.6%;
+  margin-top: 7.65625%;
+}
+.title-data{
+  width: 26%;
+  color:#618226;
+  font-weight: bold;
+  font-size: 1.98vw;
+}
+//////////////
+// FORMULAIRE DONNEES
+.div-maj-data{
+  margin-top: 4.11%// on compense le margin bottom de chaque colonne
+}
+.div-modif-data{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-modif-data{
+  width: 74%;
+
+  display: flex;
+}
+.colonne-modif-data:not(:last-of-type){
+  width: 25%;
+}
+.colonne-modif-data:nth-child(3){
+  width:34.8%
+}
+.colonne-modif-data{
+
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+
+}
+.colonne-modif-data:not(:last-of-type){
+  margin-right: 7.61%;
+}
+.champ-data{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6.2%;// il faudra compenser avec le margint op du boutton modifier
+}
+.champ-data label{
+  margin-bottom: 1%;
+}
+.champ-data input{
+  background-color: white;
+  border-radius: 0.52vw;
+  padding: 2.5% 0%;
+  border: none;
+  outline: none;
+}
+
+// date activité
+.div-input-date-activite{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+
+.champ-data textarea{
+  background-color: white;
+  border: none;
+  border-radius: 0.52vw;
+  height:12vw;
+}
+.legende-data-asterix{
+  margin-top: 15%;
+}
+
+/////////////////
+/// MSG DONNEES MODIFIEES OK
+.div-msg-data{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.hidden{
+    display: none;
+  }
+}
+.container-msg-data{
+  text-align: center;
+  width:25%;
+  background-color:#618226 ;
+  color:#FFFFFF;
+  font-weight: bold;
+  font-size: 1.46vw;
+  border-radius: 0.52vw;
+  padding: 0.4% 0%;
+}
+
+
+////////////////////////////////////////////////
+//// PROGRAMMES ///////////////////////////////
+//////////////////////////////////////////////
+.div-programs{
+  margin-top: 8%;
+  margin-bottom:5.73% ;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container-programs{
+  padding: 4% 0%;
+  background-color: white;
+  width: 67%;
+  display: flex;
+  justify-content: space-around;
+}
+.dash-program-card{
+  width: 28.36%;
+}
+.dash-program-card img{
+  width: 100%;
+}
+.dash-program-head
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 86.5%;
+}
+.dash-program-description{
+  padding: 3%;
+  font-size: 1.98vw;
+}
+////////////////////////////////////////////
+////////// STYLE POUR LES SELECT //////////
+//////////////////////////////////////////
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.select-date:not(:last-of-type)
+{
+  margin-right:8.4%;
+}
+.select-date select {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  outline:0;
+  box-shadow:none;
+  border:0!important;
+  background: white;
+  background-image: none;
+  flex: 1;
+  cursor:pointer;
+  padding: 0 5%;
+}
+.select-date select::-ms-expand {
+  display: none;
+}
+.select-date {
+  position: relative;
+  display: flex;
+  width: 28.5%;
+  height: 2.03vw;
+  background: white;
+  overflow: hidden;
+  border-radius: 0.52vw;
+}
+
+
+.select-date::after {
+  color: white;
+  width:29%; // 29% trop gros
+  height: 2.03vw;
+  content: '\2BC6'; // 25BC trop gros , 25BE petit ??
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: black;
+  cursor:pointer;
+  pointer-events:none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.52vw;
+}
+///////// ZONE ET SECTEUR
+
+
+.select-zone select,.select-secteur select {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  outline:0;
+  box-shadow:none;
+  border:0!important;
+  background: white;
+  background-image: none;
+  flex: 1;
+  cursor:pointer;
+}
+.select-zone select::-ms-expand,.select-secteur select::-ms-expand {
+  display: none;
+}
+.select-zone,.select-secteur {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 2.03vw;
+  background: white;
+  overflow: hidden;
+  border-radius: 0.52vw;
+}
+
+
+.select-zone::after,.select-secteur::after {
+  color: white;
+  width:8%; // 29% trop gros
+  height: 2.03vw;
+  content: '\2BC6'; // 25BC trop gros , 25BE petit ??
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: black;
+  cursor:pointer;
+  pointer-events:none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.52vw;
+}
+
+////////////////////////////////////////////
+//////// STYLE DU CHOIX EVALUATION ////////
+a{
+  color: black;
+  &:hover{
+    font-weight: bold;
+  }
+  &:active{
+    //color: black;
+  }
+}
+.evaluation-input{
+  //width:70%;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin: 0;
+  }
+
+  input{
+    margin-right: 10px;
+  }
+}
+
+label:not(:last-of-type)
+{
+  margin-right:10% ;
+}
+.a2{
+  fill: white !important;
+}
+
+/////////////////////////
+// Upload de fichier////
+///////////////////////
+.upload-logo{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+input[type='file'],.hidden-input{
+  display: none;
+}
+.emplacement-upload{
+  background-color: white;
+  color: black;
+  border-radius: 0.52vw;
+  width: 63.7%;
+  margin-left: 2.8%;
+  padding: 2.25% 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.parcourir-logo{
+  cursor:pointer;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32%;
+  padding: 2.25% 0%;
+  border-radius: 0.52vw;
+}
+.supprimer-logo{
+  cursor:pointer;
+  margin-top:4.5% ;
+  width: 50.14%;
+  background-color: white;
+  color: black;
+  border-radius: 0.52vw;
+  padding: 2.25% 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*.categories {
+  z-index: 9;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: #ededed;
+  border: solid 5px white;
+}
+
+.categories-list {
+  margin: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.categories-element {
+  width: 25%;
+  margin-bottom: 1vh;
+}
+
+.categories-element label {
+  width: 50%;
+  padding: 4px 2px;
+  border-radius: 0.52vw;
+  background-color: white;
+  z-index: 10;
+}
+
+.categories-button {
+  background-color: green;
+  padding: 2.25% 0%;
+  border-radius: 0.52vw;
+  background-color: green;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.categories-popup-button {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.categories-popup-button button {
+  padding: 0.9% 5%;
+  margin: 0.5%;
+}*/
+
+div#form-error{
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+}
+
+.div-msg-valid{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    width: 25px;
+  }
+}
+
+.newsletter{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4vw;
+
+  .boutonNewsletter{
+    background-color: $green;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 1vw;
+    font-size: 1.46vw;
+    border-radius: 0.52vw;
+    margin-bottom: 2vw;
+  }
+
+  .success-newsletter{
+    color: $green;
+  }
+
+  .error-newsletter{
+    color: red;
+  }
+}

@@ -1,0 +1,49 @@
+﻿<div class="frm col-l-offset-2 col-l-8 col-l-pull-2">
+    <div class="frm-header">
+        Données entreprise
+    </div>
+    <br/>
+
+    <p class="frm_txt_expl_ent" style="color:white;">Les champs avec un * sont obligatoires.</p>
+    <p class="frm_txt_expl_ent" style="color:white;">Pour le/les autre(s) champs que vous ne voudriez </p>
+    <p class="frm_txt_expl_ent" style="color:white;">pas compléter, veuillez le/les remplir par "vide".</p><br/>
+    {{ form_start(form,{ 'attr' : { 'class': 'frm-company frm-content' } }) }}
+    {{ form_row(form.username,{'label': 'Identifiant *'}) }}
+    {{ form_row(form.Password.first, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.Password.second, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.email.first,{'label': 'Email *'}) }}
+    {{ form_row(form.email.second,{'label': 'Confirmez votre email *'}) }}
+{#  {{ form_row(form.Password.first, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.Password.second, {'attr': {'class': 'form-control'}}) }}#}
+    {{ form_row(form.name,{'label': 'Nom de l\'entreprise *'}) }}
+    {{ form_row(form.socialreason,{'label': 'Raison Sociale *'}) }}
+    {{ form_row(form.street,{'label': 'Adresse *'}) }}
+    {{ form_row(form.streetnumber,{'label': 'N° de rue *'}) }}
+    {{ form_row(form.postcode,{'label': 'Code postal *'}) }}
+    {{ form_row(form.city,{'label': 'Ville *'}) }}
+    {{ form_row(form.region,{'label': 'Canton / Département *'}) }}
+    {{ form_row(form.country,{'label': 'Pays'}) }}
+
+    {{ form_row(form.phone,{'label': 'Téléphone *'}) }}
+    {{ form_row(form.urlwebsite,{'label': 'Site de l\'entreprise'}) }}
+    {{ form_row(form.urlfacebook,{'label': 'Facebook de l\'entreprise'}) }}
+    {{ form_row(form.urltwitter,{'label': 'Twitter de l\'entreprise'}) }}
+    {{ form_row(form.urllinkedin,{'label': 'Linkedin de l\'entreprise'}) }}
+    {{ form_row(form.startingdate,{'label': 'Début d\'activité'}) }}
+    {{ form_row(form.certification,{'label': 'Certification'}) }}
+    {{ form_row(form.category,{'label': 'Secteurs d\'activités *'}) }}
+    {{ form_row(form.influencezone,{'label': 'Zone géographique d\'activité (principale) *'}) }}
+    {{ form_row(form.wantevaluation,{'label': 'Je souhaite être évalué par Gaea21'}) }}
+    {{ form_row(form.description,{'label': 'Description de votre entreprise *'}) }}
+
+    {{ form_row(form.vision,{'label': 'Votre vision du développement \n durable *'}) |nl2br}}
+    <br>
+    <div class="frm-file-upload">
+        {{ form_row(form.image,{'label': 'Votre logo jpeg / .png *'}) }}
+    </div>
+    {{ form_row(form._token) }}
+    <br>
+    <button class="frm-validation-btn" type="submit">Valider</button>
+
+    {{ form_end(form,{'render_rest': false}) }}
+</div>

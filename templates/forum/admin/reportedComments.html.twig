@@ -1,0 +1,33 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Gestion Forum</h3>
+    </div>
+    {% include 'forum/admin/postsToApprove.html.twig' %}
+    <table>
+        <thead>
+        <tr>
+            <th>commentaire</th>
+            <th>utilisateur</th>
+            <th>date de signal</th>
+
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rc in rc %}
+            <tr>
+                <td>{{ rc.comment.comment }}</td>
+                <td>{{ rc.user.getUsername() }}</td>
+                <td>{{ rc.createdAt | date }}</td>
+<td><a href="{{ path('deleteReportedComment',{'id':rc.comment.getId()}) }}"><button class="form-control">Supprimer</button></a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

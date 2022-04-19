@@ -1,0 +1,82 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <!doctype html>
+    <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <title>Répertoire Vert |Companies</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/2.9.9/leaflet-search.min.css" integrity="sha512-8zuX58lcEgyZdtfTu5Iu9SDfadAirBVoZrJkmuZJ+/s80QZ/YTNVlEqPtE9iHqNXeCgd122pl+inU1Oxn9KXng==" crossorigin="anonymous" />
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('companies_map') }}
+    {% endblock %}
+</head>
+
+
+
+
+
+<body>
+
+<div class="title-banner-container" style="background-image: url({{asset('/images/actualites.png')}})">
+    {% include "navbar.html.twig" %}
+    {# <h3 class="banner-title">Entreprises dans la carte</h3>#}
+    </div>
+
+<div id="wrap-map">
+    {#<div class="filter-bar"></div>
+    <div class="map-content">
+        <div id="sidemenu">
+             {% for category in categories %}
+                <div class="categorie">
+                    <img src="{{ asset("images/Icones_Categories/"~category.name~"/"~category.name~".png") }}" alt="{{ category.name }}">
+                    <p>{{ category.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="subcategory_menu">
+            <p>< liste des catégories</p>
+            <div class="menu_title">
+                <img src="" alt="">
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>#}
+</div>
+
+
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+<script src="{{ asset('js/leaflet-search.js') }}"></script>
+{# <script type="module" src="{{ asset('js/sideMenu.jsx') }}"></script> #}
+{% block javascripts %}
+    {{ encore_entry_script_tags('companies_map') }}
+{# {{ encore_entry_script_tags('companyMap_sideMenu') }} #}
+{% endblock %}
+
+
+
+
+
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+
+
+</body>
+{% endblock %}

@@ -1,0 +1,453 @@
+body{
+  background-color: #F0F0F0;
+}
+/////////////////////////////////
+// BANNIERE
+.banner-conseil-title{
+  color: white;
+  font-weight: bold;
+  font-size: 4.875vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.7%;
+}
+.banner-conseil-text{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  text-align: center;
+  margin-bottom:21.25% ;
+  font-weight: bold;
+}
+/////////////////////////////
+//////////////////////////////////////////////
+// INTERET POUR MOI //////////////////////////
+.interet-pour-moi-title{
+  margin-top: 6.98%;
+  margin-bottom: 2.5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+}
+.div-interet{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.interet{
+  margin-bottom: 7.34%;
+  width: 58.3%;
+  display: flex;
+  align-items: center;
+}
+.interet-img{
+
+  width: 27.1%;
+  margin-right: 5.36%;
+}
+.interet-img img{
+  width: 100%;
+}
+.interet-content{
+
+  width: 67.6%;
+}
+//////////////////////////////////////////////
+// COMBIEN CA COUTE /////////////////////////
+.cb_coute_title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+  margin-bottom: 2.55%;
+}
+.div-cb_coute{
+  width: 100%;
+  margin-bottom: 2.86%;
+}
+.cb_coute_content{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.cb_coute-data{
+  width: 19%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.cb_coute-data:not(:last-of-type)
+{
+  margin-right: 4.98%;
+}
+.data-vignette{
+  border-radius: 50%;
+  background-color:#618226;
+  width: 15%;// 15% de 365
+  height: 2.86vw;// 15% DE 365 = 55px => 2.86vw
+ padding-top: 2.2%;
+
+}
+.data-vignette2
+{
+  padding-left: 3.5%;
+}
+.data-vignette svg{
+  width: 80%;
+  height: 2vw;
+  display: flex;
+}
+.data-title{
+  margin-top: 7.02%;
+  font-size: 1.7vw;
+  font-weight: bold;
+}
+.data-description{
+  text-align: center;
+}
+.data-description span{
+  color:#618226;
+}
+.div-profiter{
+  width:100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+}
+.profiter-content{
+  display: flex;
+  width: 70%;
+
+}
+.data-en-profiter{
+
+  width: 20%;
+
+}
+.data-en-profiter svg{
+  width: 100%;
+}
+.data-en-profiter:nth-child(1)
+{
+  margin-left: 6.5%;
+}
+.data-en-profiter:not(:last-of-type)
+{
+  margin-right: 14%;
+}
+
+.comment-ca-marche-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+  margin-top: 7.6%;
+  margin-bottom: 2.24%;
+}
+.comment-ca-marche-content{
+  padding: 0 26%;
+  text-align: center;
+  margin-bottom: 3.54%;
+}
+.consomaction-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+  margin-top: 6.15%;
+  margin-bottom: 2.86%;
+}
+.div-consomaction{
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.consomaction-content{
+
+  width: 70%;//65
+  display: flex;
+  font-size: 1.04vw;
+}
+.consomaction-img{
+  width: 36%;//36%
+  margin-right: 6.6%;
+}
+.consomaction-img img{
+  width: 100%;
+}
+.consomaction-subtitle{
+  font-weight: bold;
+  font-size: 1.46vw;
+  text-align: left;
+  padding-right: 50%;
+}
+.consomaction-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  width: 32%;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1% 0%;// Normalement 5% mais bcp trop grand
+}
+.consomaction-description{
+  width: 57%;//57.34
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.consomaction-text{
+  margin: 1% 0% 0% 0%;// NORMALEMENT 2.8%
+}
+
+.temoignages-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+  margin-top: 7.4%;
+  margin-bottom: 2.34%;
+}
+.temoignages-desc{
+  width: 100%;
+  text-align: center;
+}
+.div-temoignages{
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.93%;
+  margin-bottom: 1.72%;
+}
+.temoignages-content{
+  display: flex;
+  justify-content: space-between;
+  max-width: 72.5%;
+}
+.temoignages-arrow{
+  display: flex;
+  align-items: center;
+  width: 2.51%;//2.51 TROP PETIT
+
+}
+.temoignages-arrow:first-of-type{
+  margin-right: 2.4%;
+}
+.temoignages-arrow:last-of-type{
+  margin-left: 2.4%;
+}
+.temoignages-middle{
+  display: flex;
+  max-width: 90.5%;
+  overflow: hidden;
+}
+.temoignages-card{
+  background-color: white;
+  display: flex;
+  min-width: 48.8%;
+  max-width: 48.8%;
+  padding: 8.5% 5%;// 17% 10% TROP GROS
+}
+.temoignages-card:not(:last-of-type){
+  margin-right: 2.23%;
+}
+.temoignages-card-img{
+  width: 44.5%;
+  margin-right: 8.64%;
+}
+.temoignages-card-img img{
+  width: 100%;
+}
+.temoignages-card-description{
+  width: 44.5%;
+  line-height: 1.2;
+}
+.temoignages-card-title{
+  font-weight: 700;
+}
+.temoignages-left-arrow, .temoignages-right-arrow{
+  width: 100%;
+  cursor: pointer;
+}
+.temoignages-left-arrow svg,.temoignages-right-arrow svg{
+  width: 100%;
+}
+////////////////////////////////////////////////////////////
+/////// PAGINATION ////////////////////////////////////////
+.icon-pagination--next{
+  width: 0.78%;
+}
+.icon-pagination--next:not(:last-of-type){
+  margin-right: 0.36%;
+}
+.icon-pagination--next svg{
+  width: 100%;
+}
+.carousel__item--next:not(.carousel__item--next--visible){
+display: none;
+}
+///////////////////////////////////////////////////////////////
+/////////// PROGRAMMES ASSOCIES
+.programmes-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+  margin-top: 7.4%;
+  margin-bottom: 2.6%;
+}
+.programmes-line{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+ }
+.programmes-line-content{
+  width: 80.3125%;
+  display: flex;
+  justify-content: space-between;
+}
+.programme-card{
+  display: block;
+  width: 23.5%;
+}
+.programme-img{
+  width: 100%;
+}
+.programme-img img{
+  width: 100%;
+}
+.programme-name{
+  width: 100%;
+  background-color:#FFBE2B;
+  color: white;
+  text-align: center;
+  padding: 2.2% 0%;
+
+}
+.programmes-line:not(:last-of-type){
+  margin-bottom: 6.5625%;
+}
+////////////////////////////////////////////:
+.programmes-line2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.programmes-line2-content{
+  width: 80.3125%;
+  display: flex;
+  justify-content: space-between;
+}
+.programme-card2{
+  display: block;
+  width: 20%;
+}
+.programme-img2{
+  width: 100%;
+}
+.programme-img2 img{
+  width: 100%;
+}
+.programme-name2{
+  font-weight: bold;
+  width: 100%;
+  background-color:white;
+  color: black;
+  text-align: center;
+  padding: 2.2% 0%;
+}
+.partenaires_title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #618226;
+  font-size: 1.98vw;
+  font-weight: bold;
+  margin-top: 7.4%;
+  margin-bottom: 2.6%;
+}
+/////////////////////////////////////////////////////////////////////////////
+///// PARTIES DIMENSIONS ///////////////////////////////////////////////////
+
+.dimension-item:hover{
+background-color: #618226;
+}
+.dimension-item:hover .item{
+  fill: #FFFFFF !important;
+}
+.dimension-item:hover .path{
+  fill: #FFFFFF !important;
+}
+.dimension-item:hover .background-path{
+  fill: #618226 !important;
+  stroke: #FFFFFF !important;
+}
+.dimension-item:hover .cartable{
+  stroke: #FFFFFF !important;
+}
+.dimension-line{
+  width: 100%;
+  display: flex;
+}
+.dimensions-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.one-dimension{
+  width: 10.9375%;
+}
+.dimension-item{
+  cursor: pointer;
+  border-radius: 50%;
+  width: 100%;
+  height: 11vw;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5.7%;
+}
+.one-dimension:not(:last-of-type)
+{
+  margin-right: 7.66%;
+}
+.dimension-item svg{
+
+  width: 57%;
+}
+.dimension-name{
+  text-align: center;
+}
+.dimension-line1{
+  margin-bottom:1.61%;
+}
+#Groupe_149,#Groupe_148,#Groupe_146
+{
+  width: 100%;
+}

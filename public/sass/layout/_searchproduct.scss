@@ -1,0 +1,15 @@
+$width_screen: 1920px;
+
+.search-title {
+    padding-left: pxToPourcent(760,$width_screen);
+    font-size: pxToVw(28px,$width_screen);
+}
+
+.titre-panier {
+    color: #618226;
+    text-decoration: underline;
+    font-size: pxToVw(28px,$width_screen);
+}
+
+
+

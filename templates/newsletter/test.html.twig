@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<title>Hello NewsletterController!</title>
+
+{% block body %}
+<table class="table table-bordered table-striped">
+{# {"id":3488,"username":"Lyna Muller","email":"lyna.muller21@gmail.com"} #}
+    <thead class="thead-dark">
+        <tr>
+            <th>username</th>
+            <th>ID</th>
+            <th>mail</th>                      
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for user in allPlatformUsers %}
+            <tr>
+                <td>{{user.username}}</td>
+                <td>{{user.id}}</td>
+                <td>{{user.email}}</td>
+            
+            </tr>
+        {% endfor %}
+
+
+
+        
+    </tbody>
+
+   
+</table>
+{% endblock %}

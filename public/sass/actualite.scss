@@ -1,0 +1,628 @@
+/* @font-face {
+  font-family: Droid;
+  src: url(/public/css/Fonts/DroidSans.ttf);
+} */
+body{
+  font-size: 1.04vw;
+}
+.title {
+  background-color: #618226;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 2.8vh;
+  font-weight: bold;
+}
+
+.title-banner-container {
+  background-repeat: no-repeat;
+  background-size: cover;
+  //height: 80vh;
+}
+
+.banner-actualite-title {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  margin-top: 14.1%;
+  font-size: 4.6875vw;
+}
+
+.banner-description {
+  font-weight: bold;
+  color: white;
+  font-size: 1.46vw;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  height: 8vw;
+  padding-bottom: 5.625%;
+}
+
+.banner-description-small {
+  width: 45%;
+}
+
+.banner-yellow {
+  color: #FFBE2B;
+}
+
+.subtitle-container {
+  display: block;
+  width: 40%;
+  text-align: center;
+  margin: auto;
+}
+
+.subtitle-title {
+  color: #618226;
+  font-size: 2.5vh;
+  font-weight: bold;
+  padding-top: 3%;
+}
+
+.subtitle-description {
+  color: black;
+  line-height: 2.3vh;
+  padding-bottom: 5%;
+}
+
+/*.event-container {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+}*/
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//      PAGINATION                             //
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+
+.carousel__item--next1:not(.carousel__item--next1--visible),
+.carousel__item--next2:not(.carousel__item--next2--visible),
+.carousel2__item--next3:not(.carousel2__item--next3--visible),
+.carousel2__item--next4:not(.carousel2__item--next4--visible)
+{
+  display: none;
+}
+
+.carousel__item--next1--visible,.carousel__item--next2--visible
+{
+  animation: fadeVisibility 0.5s;
+  display: flex;
+  justify-content: space-around;
+}
+.carousel2__item--next3--visible,.carousel2__item--next3--visible
+{
+  animation: fadeVisibility 0.5s;
+  display: block;
+  justify-content: space-around;
+}
+
+
+@keyframes fadeVisibility {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: opacity linear;
+  }
+}
+
+/**********NOUVEAU DESIGN**********/
+
+.green-intro {
+  width: 100%;
+  background-color: #618226;
+  color: #FFFFFF;
+  text-align: left;
+  font-size: 1.46vw;
+}
+
+.green-intro-text {
+  padding-top: 4.43%;
+  padding-left: 9.06%;
+  padding-bottom: 4.9%;
+  padding-right: 10.63%;
+}
+.news-title {
+  color: #000000;
+  text-align: center;
+  font-size: 1.87vw;
+  font-weight: bold;
+}
+.news-container {
+  margin: auto;
+  background-color: white;
+  width: 70%;
+  margin-top: 1%; //  normalement 1.6% mais c'est trop
+  margin-bottom: 2.24%;
+}
+.container-arrow{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  width: 1.94%;
+}
+.left-arrow,.right-arrow{
+  width: 100%;
+  height: 6.2%;
+  transform: matrix(0, -1, 1, 0, 0, 0);
+  background: #000000 0% 0% no-repeat padding-box;
+  opacity: 1;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.right-arrow{
+  transform: rotate(0.25turn);
+}
+.news-content{
+  padding-top:5.52%;
+  padding-bottom: 3.7%;
+  display: flex;
+  justify-content: center;
+  margin-left: 7.95%;
+  margin-right: 7.95%;
+  width:84.3%;
+}
+.news-event{
+  display: flex;
+  width: 96%;
+  max-width: 96%;
+  overflow: hidden;
+}
+.carousel__item--next1,.carousel__item--next2{
+  min-width: 100%;
+}
+.news-left {
+  width: 36.8%;// probleme :   rapport longueur/largeur = 1.5 sur le design, ici 1.25
+  min-width: 36.8%;
+  //float: left;
+  //margin: 5%;
+  border: 1px solid;
+  margin-right: 4.87%;
+  margin-left: 5.8%;
+}
+
+.news-right {
+  font-size: 1.04vw;
+  width: 47.6%;
+  min-width: 47.6%;
+  margin-right: 5.8%;
+}
+.news-subtitle{
+  font-size: 1.46vw;
+  font-weight: bold;
+}
+.container-pagination{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container-pagination label{
+  margin-bottom: 2%; //normalement 2.76 mais trop grand
+}
+.container-pagination input
+{
+  display: none;
+}
+.icon-pagination--next1,.icon-pagination--next2,
+.icon-pagination2--next3,.icon-pagination2--next4{
+  width: 1.04%;
+}
+.icon-pagination--next1 svg,.icon-pagination--next2 svg,
+.icon-pagination2--next3 svg,.icon-pagination2--next4 svg {
+  fill: black;
+  width: 100%;
+}
+.icon-pagination--next1:not(:last-of-type),.icon-pagination--next2:not(:last-of-type),
+.icon-pagination2--next3:not(:last-of-type),.icon-pagination2--next4:not(:last-of-type),
+{
+  margin-right: 1.19%;
+}
+//////////////////////////////////
+// agenda
+.agenda-title{
+  margin: 8.6% auto;
+}
+.agenda-content {
+
+  display: flex;
+  align-items: center;
+  padding:4% 3.6% 4% 3.6%;
+}
+.agenda-left{
+  width: 36%;
+  border: solid thin black;
+}
+.agenda-middle{
+  margin-left: 5.37%;
+  margin-right:2.8%;
+  width: 27.8%;
+  height:63%;
+}
+.agenda-middle img
+{
+  width: 100%;
+  height: 100%;
+}
+.agenda-right
+{
+  display: flex;
+  flex-direction: column;
+  font-size:1.04vw;
+}
+.agenda-date
+{
+  text-align: center;
+}
+.event-title
+{
+  font-size: 1.46vw;
+  color: #618226;
+}
+.event-title2{
+  color:#618226 ;
+}
+.date-day,.date-number
+{
+  font-weight: bold;
+  color: #618226;
+  font-size:1.46vw ;
+}
+.date-day2,.date-number2{
+  color: #618226;
+}
+.date-data1:not(:first-of-type){
+  margin-top: -3%;// compenser line-height??
+}
+.date-data:last-of-type{
+  margin-top: -8%;// compenser line-height??
+}
+/////////////////////////////////
+// AGENDA 2
+////////////////////////////////
+.liste-event{
+  display: flex;
+  align-items: center;
+  padding:3.7%  2.7% 2.6%;
+}
+.event-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  //width:27.54%; // normalement 27.54% mais pas centré
+}
+.event-container:not(:last-of-type)
+{
+  margin-right:6.3%;
+}
+.img-event{
+  width:69%;
+  margin-bottom: 6.8%;
+}
+.img-event img
+{
+  width: 100%;
+}
+.event-infos{
+  display: flex;
+  font-size: 1.04vw;
+}
+.event-infos .agenda-date{
+  margin-right: 6.12%;
+}
+///////////////////////////////////
+/// REchercher un évenement
+/////////////////////////
+.recherche-event{
+  display: flex;
+  justify-content: center;
+}
+.data-search{
+  margin-top: 3.9%;
+  margin-bottom:3.9% ;
+  width: 100%;
+  display: flex;
+  font-size: 1.04vw;
+  margin-left: 31%;
+}
+.data-search span{
+  margin-left: 3%;
+}
+.nature-lieu-input
+{
+  width: 100%;
+}
+.nature-event, .lieu-event{
+  display: flex;
+  flex-direction: column;
+  width: 16%;//15.8 normalement mais trop petit si on vetu décalé le label
+  margin-right: 4.1%;
+}
+.data-search input, .date-event input{
+  outline: none;
+  border: none;
+  border-radius: 20px; // > 15px c'est le max
+}
+.date-event input:not(.data-annee)
+{
+  width:8%;// normalement 19 mais ca fait aps le bon truc
+}
+.data-annee{
+  width: 11%;
+}
+
+.atelier {
+  margin-bottom: 5.45%;
+  text-align: center;
+}
+
+// boutton valider
+.container-valider{
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.57% ;
+}
+.valider-button{
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.46vw;
+  border: none;
+  text-align: center;
+  width: 14%;//normalement 18 mais trop grand  et ne respecte pas le bonne écart entre les input
+  background-color: black;
+  color: white;
+  padding: 1% 0;
+  border-radius: 10px;
+
+}
+
+
+//////////////////////////////////
+/////////////////////////////////
+.actualités {
+  background-color: #EDEDED;
+}
+
+/*.validate-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: #000000;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 12%;
+}*/
+
+.projo-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  margin-top: 2.6%;
+  margin-bottom: 6.3%;
+}
+
+.projo-blanc {
+  display: flex;
+  background-color: white;
+  width: 70%;
+  padding:3.7% 4.9% 3.7%  2.3% ;
+
+}
+
+.projo-text {
+
+  max-width: 38.8444%;// normalement 37.5 mais sinon pas sur 2 lignes
+  font-size: 1.04vw;
+  line-height: 1.1;
+  margin-right: 14.2%;
+
+}
+.projo-text span{
+
+  font-weight: bold;
+  font-size: 1.46vw;
+}
+.projo-text div{
+  margin-top: 2.8%;
+}
+.projo-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 41.2%;
+}
+.projo-block {
+  background-color: white;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.projo-content{
+  font-size: 1.04vw;
+  width: 23.46%;
+}
+.projo-content2{
+  position: relative;
+  margin: 8.7% 20.3%;
+}
+.projo-content1{
+  margin:13.2% 30.0% 20.3% 43.12% ;
+}
+.ecclipse{
+  width: 100%;
+}
+.svg-play{
+  position: absolute;
+  width: 38%;
+
+
+}
+/////////////////////////////////
+.inscrit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4.1%;
+  margin-bottom: 1.15%;
+}
+.middle-inscrit{
+  display: flex;
+  font-size: 1.04vw;
+  width: 70%;
+  max-width: 70%;
+  overflow: hidden;
+}
+.fleche-gauche{
+margin-right: 2.7%;
+}
+.fleche-droite{
+  margin-left: 2.7%;
+}
+.fleche-gauche,.fleche-droite{
+  display: flex;
+  align-items: center;
+  width:1.82% ;
+  cursor: pointer;
+}
+
+.card-entreprise{
+  width: 28.6%;
+  min-width: 28.6%;
+  background-color: white;
+  padding: 1.64% 3.95% ;
+  line-height: 1.37;
+}
+.card-entreprise:not(:last-of-type){
+  margin-right: 7.16%;
+}
+.entreprise-title {
+  font-weight: bold;
+  font-size: 1.46vw;
+  text-align: center;
+}
+
+.entreprise-text {
+  margin-top: 38.4%;
+  text-align: left;
+  font-size: 1.04vw;
+}
+
+.inscription-rv{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top:1.82%;
+}
+
+.container-fiche-produit {
+  padding: 4.33%;
+  margin-top: 15%;
+  background-color: #618226;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.04vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.fiche-produit{
+  color: white;
+  background:none;
+  outline: none;
+  border: none;
+}
+.container-fiche-produit span{
+  width: 7.8%;
+}
+.container-fiche-produit svg{
+  stroke: white;
+  fill: none;
+}
+
+
+//////////////////////
+.raté {
+  margin-top: 6.7%;
+}
+.card-rate{
+  width: 28.6%;
+  min-width: 28.6%;
+  background-color: white;
+  line-height: 1.37;
+}
+.card-rate:not(:last-of-type){
+  margin-right: 7.16%;
+}
+.bande-jaune{
+  padding: 2.9% 5.5%;
+  margin-top:101% ;
+  background-color:#FFBE2B ;
+  color: white;
+}
+.bande-jaune .date{
+  font-weight: bold;
+}
+.formulaire-link{
+  text-decoration: none;
+  color:#618226;
+}
+
+/* **************************** */
+.container-container-cards{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 70%;
+  height: 39.4%;
+  min-height: 50.23%;
+  margin-top: 6.43%;
+  margin-bottom: 11.46%;
+  padding: 3.91% 2.18%;
+}
+
+.card-vide {
+  border: 1px solid black;
+  width: 28.36%;
+  padding-top: 39%;
+}
+.card-vide:not(:last-of-type) {
+  margin-right: 4.06%;
+}

@@ -1,0 +1,11 @@
+<div class='jsdialog'>
+  <div class='jsdialog-content'>
+  Etes vous sûr(e) de vouloir supprimer ce produit ?
+  <br/><br/>
+  Si  vous cliquez sur Supprimer le produit sera effacé <strong>définitivement</strong>
+  <br/>
+    <div class='dialog-buttons'><div class='jsdialog-cancel-button' onclick='removeJsDialog();'>Annuler</div>
+      <a class='jsdialog-ok-button' href='{{ url('productDelete',{id:product.id}) }}'>Supprimer</a>
+    </div>
+  </div>
+</div>

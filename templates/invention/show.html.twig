@@ -1,0 +1,42 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Invention{% endblock %}
+
+{% block body %}
+    <h1>Invention</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ invention.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ invention.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ invention.description }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ invention.lien }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ invention.photo }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ invention.date ? invention.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('invention_index') }}">back to list</a>
+
+    <a href="{{ path('invention_edit', {'id': invention.id}) }}">edit</a>
+
+    {{ include('invention/_delete_form.html.twig') }}
+{% endblock %}

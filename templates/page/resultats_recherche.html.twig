@@ -1,0 +1,57 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="green-banner">
+        <h3>Résultats de la recherche</h3>
+    </div>
+    <!--
+    <div class="search col-l-12">
+        <input class="search-data" type="text" name="input" placeholder="Rechercher">
+
+        <input class="search-chk" type="radio" value="entreprise" name="type">Entreprise
+        <input class="search-chk" type="radio" value="produit" name="type" checked>Produit
+        <button class="search-submit" onclick="search();">Rechercher</button>
+    </div>
+    -->
+    {% if products %}
+        <br/>
+        <h3 style="margin-left:10px; ">{{ productsTitle }}</h3>
+        <br/>
+          <div class="card-container col-l-12">
+              {% for product in products %}
+                  <a href="{{ url('productShow',{'slug':product.slug}) }}" class="search result-link" style="text-decoration:none">
+                      <div class="product-card card">
+                          <div class="card-header">
+                              <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                                  <span class="card-title">{{ product.name }}</span>
+                          </div>
+                          <div class="card-content">
+                              <p>{{ product.description }}</p>
+                          </div>
+                    </div>
+                  </a>
+              {% endfor %}
+          </div>
+    {% endif %}
+    {% if companies %}
+        <br/>
+        <h3 style="margin-left:10px;">{{ companiesTitle }}</h3>
+        <br/>
+{% for company in companies %}
+<a href="{{ url('companyShow',{'slug':company.slug}) }}" class="search result-link" style="text-decoration:none">
+    <div class="company-card card">
+        <div class="card-header">
+            <img class="card-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+
+            <span class="card-title">{{ company.name }}</span>
+        </div>
+        <div class="card-content">
+            <p>{{ company.description }}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% if not companies and not products %}
+        <p>Aucun résultat pour votre recherche</p>
+    {% endif %}
+{% endblock %}

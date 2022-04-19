@@ -1,0 +1,69 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Person index{% endblock %}
+
+{% block body %}
+    <h1>Person index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>Token</th>
+                <th>EmailValidated</th>
+                <th>Actived</th>
+                <th>Inscriptiondate</th>
+                <th>Connected</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Street</th>
+                <th>Streetnumber</th>
+                <th>Postcode</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Country</th>
+                <th>Phone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for person in people %}
+            <tr>
+                <td>{{ person.id }}</td>
+                <td>{{ person.username }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.password }}</td>
+                <td>{{ person.role }}</td>
+                <td>{{ person.token }}</td>
+                <td>{{ person.emailValidated ? 'Yes' : 'No' }}</td>
+                <td>{{ person.actived ? 'Yes' : 'No' }}</td>
+                <td>{{ person.inscriptiondate ? person.inscriptiondate|date('Y-m-d') : '' }}</td>
+                <td>{{ person.connected ? 'Yes' : 'No' }}</td>
+                <td>{{ person.firstname }}</td>
+                <td>{{ person.lastname }}</td>
+                <td>{{ person.street }}</td>
+                <td>{{ person.streetnumber }}</td>
+                <td>{{ person.postcode }}</td>
+                <td>{{ person.city }}</td>
+                <td>{{ person.region }}</td>
+                <td>{{ person.country }}</td>
+                <td>{{ person.phone }}</td>
+                <td>
+                    <a href="{{ path('person1_show', {'id': person.id}) }}">show</a>
+                    <a href="{{ path('person1_edit', {'id': person.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('person1_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Ajout  d'un produit</h3>
+    </div>
+    {% include './product/form.html.twig' with {'form' : form} %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base_homepage.html.twig' %}
+{% block body %}
+    <div class="green-banner">
+        <h3>Répértoire Vert</h3>
+    </div>
+    <div class="search col-l-12">
+        <input class="search-data" type="text" name="input" placeholder="Rechercher">
+
+        <input class="search-chk" type="radio" value="entreprise" name="type">Entreprise
+        <input class="search-chk" type="radio" value="produit" name="type" checked>Produit
+        <button class="search-submit" onclick="search();">Rechercher</button>
+    </div>
+    {% if products %}
+
+        <h3>{{ productsTitle }}</h3>
+        <div class="card-container col-l-12">
+            {% for product in products %}
+                <div class="product-card card">
+                    <div class="card-header">
+                        <img class="card-image" src="{{ asset('css/img/product/'~ product.image|basename) }}">
+                        <span class="card-title">{{ product.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if companies %}
+
+        <h3>{{ companiesTitle }}</h3>
+        <div class="card-container col-l-12">
+            {% for company in companies %}
+                <div class="company-card card">
+                    <div class="card-header">
+                        <img class="card-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+
+                        <span class="card-title">{{ company.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ company.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if not companies and not products %}
+        <p>Aucun résultat pour votre recherche</p>
+    {% endif %}
+{% endblock %}

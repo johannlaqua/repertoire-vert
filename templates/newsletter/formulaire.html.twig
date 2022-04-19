@@ -1,0 +1,63 @@
+ {% extends 'base_homepage.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/newsletter.css') }}">
+   
+
+{% endblock %}
+{% block body %}
+<div class="containerFormulaire">
+    <div class="contenuBarreBlancheNavigation ">
+                
+                
+        <span class="titleboxNameNewslett">Inscription à la communauté et à la newsletter</span>
+
+
+       <div class="form-group">
+                <label for="nom" class="labelNameBoxNewsletter">nom</label>
+                <input type="text" name="nom" id="nom" class="inputNameBoxNewsletter form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="prenom" class="labelFirstNameBoxNewsletter">prenom</label>
+                <input type="text" name="prenom" id="prenom" class="inputFirstNameBoxNewsletter form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="labelMailBoxNewsletter">email</label>
+                <input type="text" name="mail" id="mail" class="form-control inputMailBoxNewsletter">
+                <span id="validemail"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ville" class="labelCityBoxNewsletter">ville</label>
+                <input type="text" name="ville" id="ville" class="form-control inputCityBoxNewsletter">
+            </div>
+
+            <div class="form-group">
+                <label for="codePostal" class="labelPostalBoxNewsletter">code postal</label>
+                <input type="text" name="code_postal" id="code_postal" class="form-control inputPostalBoxNewsletter">
+            </div>
+
+  
+            <label  className="labelErrorLocation" id="errorlocation"></label>
+            <button  class="inputSubmitBoxnewsletter" id="button">Je m'inscris !</button> 
+
+            <div class="div-erreur-champs" id="champserreurs"></div>
+        
+
+        <div class="div-erreur-champs" id="champserreurs"></div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %} 
+   {% block javascripts %}
+   <script src="{{asset('js/jQuery.js')}}"></script>
+    <script src="{{asset('js/newsletterArecopier.js')}}"></script>
+  
+    {% endblock %}
+{# mettre le script inclure script src #}

@@ -1,0 +1,99 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}
+<title>{{ category.name }}</title>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/page_category.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+<div class="showcase"  style="width:100%; background-image: url('{{asset('/css/img/category/header/'~category.name~'.jpg')}}');background-position-x:center ; background-size: cover; background-repeat: no-repeat ">
+
+        {% include "navbar.html.twig" %}
+
+        <div class="div-title-category">
+            <div class="title-category">{{ category.name }}</div>
+        </div>
+    </div>
+
+    <div class="green-banner-category">
+        <div class="category-text">
+            {{category.description}}
+        </div>
+    </div>
+
+    <div class="div-categorie-category">
+        <div class="categorie-title-category">
+            Catégorie {{ category.name }}
+        </div>
+    </div>
+
+    <div class="div-subcategories">
+        <div class="container-subcategories {% if subcategories|length <4 %} under_4_cat {% endif %}">
+            {% for subcat in subcategories %}
+
+                <div onclick="location.href='/category/{{ category.id }}/subcategory/show/{{ subcat.id }}'" id="subcat{{ loop.index }}"  class="card-subcategories   {% if  loop.index is divisible by(4) %} card_subcat_marg {% endif %}" >
+                    <div class="subcategories-icones" >
+                        <img class="subcat{{ loop.index }}"  src="{{ asset('images/Icones_Categories/'~category.name~'/Icônes sous-catégories/'~subcat.name~'.png') }}"/>
+                        <img  class="subcat_bleu subcat{{ loop.index }}_bleu"  src="{{ asset('images/Icones_Categories/'~category.name~'/Icones_Bleu_blanc_sous-categories/'~subcat.name~'.png') }}"/>
+
+                    </div>
+                    <div class="subcategories-title">
+                        {{ subcat.name }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="div-consultez-aussi">
+        <div class="container-consultez-aussi">Consultez aussi</div>
+    </div>
+
+    <div class="div-other-cat">
+        <div class="container-other-cat">
+            {% set indice = 0 %}
+            {% for allcat in allcategories %}
+
+                {% if allcat == category %}
+                    {# Pour ne pas afficher la carte de la category actuelle #}
+                    {# on n'incrémente pas l'indice si la category est pas affichée #}
+                {% else %}
+                    {% set indice = indice + 1%}
+                    <div onclick="location.href='/category/{{ allcat.slug }}'" class="card-allcat {% if  indice is divisible by(4) %} card_allcat_marg {{ indice }} {% endif %}" >
+                        <div class="allcat-img">
+                            <img  src="{{asset('/css/img/category/header/'~allcat.name~'.jpg')}}">
+                        </div>
+                        <div class="allcat-title">
+                            {{ allcat.name }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+    {% include "footer.html.twig" %}
+    <script src="{{ asset('js/Show_categories/show_categories.js') }}"></script>
+{% endblock %}

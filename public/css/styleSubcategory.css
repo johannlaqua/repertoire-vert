@@ -1,0 +1,317 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    outline: 0;
+}
+body{
+    font-family: 'Droid Sans', sans-serif;
+}
+a{
+    text-decoration: none;    
+    cursor: pointer;   
+    
+
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+    
+}
+
+
+/******************************FORMULAIRE PRODUIT*************************/
+.fi-top1{
+    padding-left: 3.74%;
+    padding-right: 6.2%;
+}
+.fi-top2{
+padding-right:5.49% ;
+}
+.fi-top3{
+    padding-right:6.20% ;
+}
+ 
+.titreProduit{
+    
+    background-color: #618226;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 10px;     
+    font-size: 3vh;
+    padding: 0.7% 0;
+    margin-bottom: 0px;
+}
+.formulaireContainer{    
+    background-color: #F2F5ED;
+    width:100%;
+    padding-bottom: 10%;
+      
+   
+}
+.formulaireRecherche{
+    color: #000000;
+    display: flex;
+}
+.rechercheProduit{    
+    margin-top:3%;  
+    width: 113%;  
+} 
+.label-recherche{
+    margin-top: 20%;
+   
+    margin-bottom: 8%;
+    font-size: 2.5vh;
+    
+}
+.input-recherche{
+   background-image: url(../image/loupe-1.png);
+   background-position: 2px 2px;  
+   background-repeat: no-repeat;
+      
+
+    margin-right: 50%;
+    padding:4px 0 ;
+    border: 1px solid white;
+    border-radius: 8px;
+    opacity: 1;
+    background-color:white;
+    width: 90%;
+}
+.label-codePostal{
+    margin-top: 20%;
+    
+    margin-bottom: 7%;
+    font-size: 2.5vh;
+}
+.input-codePostal{
+     
+    border-radius: 8px;
+    padding:4px 0 ;
+    opacity: 1;
+    border: 1px solid #618226;
+    background-color:white;
+    width: 90%;
+}
+.label-ville{
+    margin-top: 20%;
+    
+    margin-bottom: 7%;
+    font-size: 2.5vh; 
+}
+.input-ville{
+    
+    padding:4px 0 ;
+    border-radius: 8px;
+    opacity: 1;
+    border: 1px solid #618226;
+    background-color:white;
+    width: 90%;
+}
+.fi-btn{
+    
+    margin-top: 0%;
+}
+.btn-produit-recherche{
+    border: 2px solid #618226;
+    border-radius: 25px;
+    color: #618226;
+    background-color:white;
+    font-size: 2.2vh;
+    padding: 1px 27px;
+}
+
+/****************************TABLEAU*****************************************/
+table{
+    
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+    
+    
+}
+
+  th,td{
+   padding: 12px 15px;
+} 
+
+.table{
+    margin-top: 5%;
+}
+.btn_fiche{
+    color: white;
+    background-color: #E8A41B;
+    border: transparent;
+    border-radius: 6px;
+    opacity: 1;
+    padding: 3% 6%;
+
+}
+
+ 
+.n2{
+    width:28px ;
+    height: 25px;
+}
+.etoile-verte{
+    width: 13px;
+    height: 12px;
+}
+.etoile-jaune{
+    width: 13px;
+    height: 12px;
+}
+.etoile-transparente-jaune{
+    width: 13px;
+    height: 12px;
+}
+.etoile-transparente-verte{
+    width: 13px;
+    height: 12px;
+}
+.avis-vert{
+    width: 60px;
+    height: 14px;
+}
+.avis-jaune{
+    width: 60px;
+    height: 14px;
+}
+
+
+
+/********************************A découvrir*******************************/
+
+.container-decouvrir{
+    display: flex;
+    padding-top: 4.6%;
+    
+}
+#content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.card--container {
+	background: white;    
+	 width: 13.465vw;
+	height: 19.096vw; 
+	box-sizing: content-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+    transition: 0.3s;
+    
+	
+}
+.card--container:hover{
+    box-shadow: 0 16px 36px 0 rgba(0,0,0,0.7);
+    transform: translate(0,-5px);
+}
+.card--body {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.card--content {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 0em 2em;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+.card--meta {
+	background: #FFBE2B;
+    color: white;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px 0px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+     
+	
+}
+.card--tag{
+    font-size: 0.8vw;
+    font-weight: 600;
+}
+/*************************Consultez aussi*****************************/
+
+.titreProduitFoot{
+    
+    background-color: #F2F5ED;
+    color:#618226;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 10px;     
+    font-size: 3vh;
+    padding: 0.7% 0;
+}
+.formulaireContainerFoot{    
+    background-color: white;
+    width:100%;
+    padding-bottom: 10%;       
+}
+.container-consultation img{
+    width: 12vw;
+    height: 12vw;
+}
+.container-consultation{
+    display: flex;    
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 6.33%;
+} 
+ .machine{
+    margin-left:15% ;
+    margin-right:7.4% ;
+    margin-bottom: 6.39%; 
+}
+.fabrication{
+    margin-right: 7.4%;
+    margin-bottom: 6.39%; 
+}
+.tampon{
+    margin-bottom: 6.39%;
+    margin-right: 7.4%; 
+}
+.electronique{
+    margin-left:15% ;
+    margin-right:7.4% ;
+}    
+.mobilier{
+    margin-right: 7.4%;
+    
+}  
+.entretien{
+    margin-right: 7.4%; 
+} 
+ .papeterie{
+   padding-top:6.39% ;
+   padding-left: 43.5%;
+   
+}  
+
+
+
+
+
+ 

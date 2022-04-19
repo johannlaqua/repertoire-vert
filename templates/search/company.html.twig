@@ -1,0 +1,54 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="frm frm-product col-l-offset-2 col-l-8 col-l-pull-2">
+    <p style="color:white;" class="frm_txt_expl_ent">Recherche</p>
+
+  {{ form(companySearchForm) }}
+
+</div>
+
+    <div>
+        <p style="color:white;" class="frm_txt_expl_ent">Resultat</p>
+
+    {% if x==0 %}
+        <div class="col-l-12 col-m-12 col-s-12">
+            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                <p>Vous trouverez votre résultat ici</p>
+            </div>
+
+        </div>
+    {% elseif companies is empty %}
+        <div class="col-l-12 col-m-12 col-s-12">
+            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                <p>Aucun résultat trouvé</p>
+            </div>
+
+        </div>
+    {% else %}
+
+        <div class="card-container col-l-12" style="padding-right:30px; padding-left:30px;"><!-- style="display:flex; flex-direction:row; flex-wrap: wrap;"-->
+            {% for company in companies %}
+                <a href="{{ url('companyShow',{'slug':company.slug}) }}" style="max-width:200px; text-decoration:none">
+                    <div class="product-card card">
+                        <div class="card-header">
+                            <img class="card-image" src="{{ asset('css/img/company/'~ company.image|basename) }}" alt="">
+                            <span class="card-title">Nom:   {{ company.name }}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Description:   {{ company.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        </div>
+
+    {% endif %}
+
+    </div>
+
+
+{% endblock %}

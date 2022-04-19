@@ -1,0 +1,108 @@
+security:
+    enable_authenticator_manager: true
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        # use your user class name here
+        App\Entity\User:
+            # Use native password encoder
+            # This value auto-selects the best possible hashing algorithm
+            # (i.e. Sodium when available).
+            algorithm: auto
+
+    # providers:
+    #     app_user_provider:
+    #         entity:
+    #             class: App\Entity\User
+    #             property: username
+
+    # firewalls:
+    #     dev:
+    #         pattern: ^/(_(profiler|wdt)|css|images|js)/
+    #         security: false
+    #     login:
+    #         pattern: ^/api/login
+    #         stateless: true
+    #         anonymous: true
+    #         context: application
+    #         form_login:
+    #             check_path: /api/login_check
+    #             username_parameter: username
+    #             password_parameter: password
+    #             success_handler: lexik_jwt_authentication.handler.authentication_success
+    #             failure_handler: lexik_jwt_authentication.handler.authentication_failure
+    #             require_previous_session: false
+            # logout:
+            #     path: /api/logout
+            #     target: /
+    #     api:
+    #         pattern: ^/api
+    #         stateless: true
+    #         provider: app_user_provider
+    #         guard:
+    #             authenticators:
+    #                  - lexik_jwt_authentication.jwt_token_authenticator
+    #     main:
+    #         anonymous: true
+    #         lazy: true
+    #         form_login:
+    #             login_path: login
+    #             check_path: login
+    #             username_parameter: username
+    #             password_parameter: password
+    #         json_login:
+    #             check_path: app_login2
+    #             username_path: email
+    #             password_path: password
+    #         guard:
+    #             authenticators:
+    #                 - App\Security\TokenAuthenticator
+    #                 - App\Security\LoginFormAuthenticator
+    #             entry_point: App\Security\LoginFormAuthenticator
+
+    #         logout:
+    #             path: app_logout
+    #             # where to redirect after logout
+    #             # target: app_any_route
+    #         remember_me:
+    #             secret:   '%kernel.secret%'
+    #             lifetime: 604800 # 1 week in seconds
+    #             path:     /
+    #             # by default, the feature is enabled by checking a
+    #             # checkbox in the login form (see below), uncomment the
+    #             # following line to always enable it.
+    #             #always_remember_me: true
+    providers:
+        api_login:
+            entity:
+                class: App\Entity\User
+                property: gaeaUserId
+            
+
+    firewalls:
+        main:
+            provider: api_login
+            guard:
+                authenticators:
+                    - App\Security\IdAuthentificator
+            entry_point: App\Security\IdAuthentificator
+                    
+            logout:
+                path: app_logout
+                target: home
+            #anonymous:    ~
+
+
+        # activate different ways to authenticate
+        # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+        # https://symfony.com/doc/current/security/impersonating_user.html
+        # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+    # require ROLE_ADMIN for /admin*
+       - { path: '^/profile/entreprise', roles: IS_AUTHENTICATED_FULLY }
+      # - { path: '^/dashboard', roles: IS_AUTHENTICATED_FULLY }
+
+#        - { path: ^/api, roles: ROLE_USER }

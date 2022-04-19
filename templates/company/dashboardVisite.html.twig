@@ -1,0 +1,390 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}<title>Statistiques</title>{% endblock %}
+
+{% block body %}
+
+    {# #}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"/>
+    {# ******************************* NavBar ***************************************** #}
+ 
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header-dashbord-entreprise.jpg')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" with { 'role' : "USER" } %}
+
+        <div class="header-content">
+            <h3 class="banner-profil-title">Mon compte</h3>
+            <div class="div-btn-banner">
+                <button onclick="location.href='/profile/entreprise'" class="btn-banner" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a,.c{fill:#fff;}.b{font-size:18px;}.c,.d{stroke:#161615;stroke-miterlimit:10;stroke-width:1.5px;}.d{fill:none;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-463 -397)">
+                            <rect class="a" width="232" height="70" rx="10" transform="translate(463 397)"/>
+                            <text class="b" transform="translate(585.996 439)">
+                                <tspan x="-23.989" y="0">Profil</tspan>
+                            </text>
+                            <g transform="translate(-20234.004 4150)">
+                                <circle class="c" cx="4.743" cy="4.743" r="4.743" transform="matrix(0.299, -0.954, 0.954, 0.299, 20738.293, -3718.946)"/>
+                                <path class="d" d="M225.762,131.932a5.428,5.428,0,0,1,1.132.143c2.4.378,3.967,3.428,3.967,6.69H214.4c0-3.543,1.852-6.834,5.1-6.834Z" transform="translate(20521.611 -3846.652)"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button onclick="location.href='/Dashboard/'" class="btn-banner" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a-dash{fill:#618226;}.b-dash,.d-dash{fill:none;stroke:#fff;stroke-miterlimit:10;}.b-dash{stroke-width:1.5px;}.c-dash,.e-dash{fill:#fff;}.d-dash{stroke-width:0.5px;}.e-dash{font-size:18px;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-740 -397)">
+                            <rect class="a-dash" width="232" height="70" rx="10" transform="translate(740 397)"/>
+                            <g transform="translate(-8 20)"><circle class="b-dash" cx="10.5" cy="10.5" r="10.5" transform="translate(787 401)"/>
+                                <line class="b-dash" y2="2.882" transform="translate(797.5 401)"/>
+                                <line class="b-dash" x2="2.882" transform="translate(787 411.5)"/>
+                                <line class="b-dash" x2="2.882" transform="translate(805.117 411.5)"/>
+                                <line class="b-dash" x2="2.038" y2="2.038" transform="translate(790.141 403.882)"/>
+                                <line class="b-dash" x2="2.038" y2="2.038" transform="translate(803.07 416.812)"/>
+                                <line class="b-dash" y1="2.038" x2="2.038" transform="translate(790.564 417.237)"/>
+                                <line class="b-dash" y1="2.038" x2="2.038" transform="translate(803.295 404.506)"/>
+                                <circle class="c-dash" cx="1.052" cy="1.052" r="1.052" transform="translate(796.449 410.448)"/>
+                                <line class="d-dash" y1="1.422" x2="1.422" transform="translate(797.5 410.078)"/>
+                                <rect class="c-dash" width="3.508" height="1.09" transform="translate(795.568 418.975)"/>
+                            </g>
+                            <text class="e-dash" transform="translate(890 439)">
+                                <tspan x="-49.336" y="0">Dashboard</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </button>
+                <button onclick="location.href='/parametres/entreprise'" class="btn-banner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a-param{fill:#fff;}.b-param{font-size:18px;}.c-param{fill:none;stroke:#161615;stroke-miterlimit:10;stroke-width:1.5px;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-1018 -397)">
+                            <rect class="a-param" width="232" height="70" rx="10" transform="translate(1018 397)"/>
+                            <text class="b-param" transform="translate(1171 439)">
+                                <tspan x="-51.821" y="0">Paramètres</tspan>
+                            </text>
+                            <g transform="translate(453.75 268.502)">
+                                <g transform="translate(602.967 152.498)">
+                                    <path class="c-param" d="M603.745,167.687a.168.168,0,0,0,.157.116l2.049.028a8.931,8.931,0,0,0,1.887,2.191l-.275,2.029a.169.169,0,0,0,.091.173l2.195,1.106a.168.168,0,0,0,.193-.03l1.467-1.428a8.921,8.921,0,0,0,2.884.213l1.241,1.63a.168.168,0,0,0,.187.058l2.334-.77a.169.169,0,0,0,.116-.158l.028-2.049a8.924,8.924,0,0,0,2.191-1.887l2.029.275a.168.168,0,0,0,.173-.091L623.8,166.9a.168.168,0,0,0-.03-.193l-1.428-1.467a8.919,8.919,0,0,0,.213-2.884l1.63-1.241a.168.168,0,0,0,.058-.186l-.77-2.334a.168.168,0,0,0-.157-.116l-2.049-.028a8.917,8.917,0,0,0-1.887-2.191l.275-2.029a.169.169,0,0,0-.091-.173l-2.195-1.106a.168.168,0,0,0-.193.03l-1.467,1.428a8.92,8.92,0,0,0-2.884-.213l-1.241-1.63a.168.168,0,0,0-.187-.058l-2.334.77a.169.169,0,0,0-.116.158l-.028,2.049a8.923,8.923,0,0,0-2.191,1.887l-2.029-.275a.168.168,0,0,0-.173.091l-1.106,2.195a.168.168,0,0,0,.03.193l1.428,1.467a8.929,8.929,0,0,0-.213,2.884l-1.63,1.241a.168.168,0,0,0-.058.186Z" transform="translate(-602.967 -152.498)"/>
+                                </g>
+                                <circle class="c-param" cx="6.326" cy="6.326" r="6.326" transform="translate(607.283 156.814)"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button onclick="location.href='/produits'" class="btn-banner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 232 70">
+                        <defs>
+                            <style>
+                                .a-produits{fill:#fff;}.b-produits{font-size:18px;fill:#161615;}.c-produits{fill:none;stroke:#161615;stroke-miterlimit:10;stroke-width:2.5px;}
+                            </style>
+                        </defs>
+                        <g transform="translate(-1302 -397)">
+                            <rect class="a-produits" width="232" height="70" rx="10" transform="translate(1302 397)"/>
+                            <text class="b-produits" transform="translate(1437 439)">
+                                <tspan x="-63.983" y="0">Produits/Services</tspan>
+                            </text>
+                            <g transform="translate(598.342 313.836)">
+                                <path class="c-produits" d="M761.227,113.287a5.7,5.7,0,1,0-11.364,0" transform="translate(-14.973)"/>
+                                <rect class="c-produits" width="15.825" height="14.877" transform="translate(732.659 113.287)"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+
+                {# <button  onclick="location.href='/profile/entreprise'" class="showcase__btn-entreprise">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-ville">Paramètres</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-ville">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+                #}
+            </div>
+        </div>
+
+    </div>    {# ******************************* FinNavBar ***************************************** #}
+
+    {# ******************************* Green Intro ***************************************** #}
+    <div class="green-intro">
+        <div class="green-intro-text">
+            {# <div class="green-intro-title">Bienvenue dans votre tableau de bord !</div> #}
+            <div class="green-intro-content">
+                Bienvenue dans votre tableau de bord ! <br>
+                Nous mettons à votre disposition cet outil de gestion qui est constitué de plusieurs indicateurs qui montrent la visibilité de vos produits ou services verts sur des périodes données.
+            </div>
+        </div>
+    </div>
+    <div class="div-presentation-dashboard">
+        <div class="container-presentation-dashboard">
+            Les graphiques ci-dessous vous indiquent le nombre de visites sur votre page entreprise,<br>
+            le nombre de personnes ayant mis la page en favoris,<br>
+            vos produits les plus cliqués et vos produits les plus commentés.<br><br>
+            Suivant les résultats que vous obtenez,<br>
+            vous pouvez bénéficier d’une aide afin d’augmenter votre visibilité et d’augmenter vos ventes.
+        </div>
+    </div>
+
+    <div class="div-dash-liens">
+        <div class="div-dash-liens-content">
+            <div data-seq="0" data-url="StatistiquesVisites2" data-type="Visite" {# onclick="location.href='{{ url('StatistiquesVisites2',{id:0}) }}'"  #}
+                    class="lien-dash lien-actif"
+            >
+                <div>Nbr de visites <br>sur ma page entreprise</div>
+
+            </div>
+
+            <div data-seq="0" data-url="StatistiquesFavoris" data-type="Favori" {# onclick="location.href='{{ url('StatistiquesFavoris',{id:0}) }}'" #}
+                 class="lien-dash">
+                <div>Nbr de personnes ayant mis ma page <br>en favoris</div>
+            </div>
+
+            <div data-seq="0" data-url="StatistiquesProduitsClics" data-type="Clique" {# onclick="location.href='{{ url('StatistiquesProduitsClics',{id:0}) }}'" #}
+                 class="lien-dash">
+                <div>Mes produits <br> les plus cliqués</div>
+            </div>
+
+            <div data-seq="0" data-url="StatistiquesProduitsComments"  data-type="Commentaire"{# onclick="location.href='{{ url('StatistiquesProduitsComments',{id:0}) }}'" #}
+                 class="lien-dash">
+                <div>Mes produits <br> les plus commentés</div>
+            </div>
+        </div>
+    </div>
+
+    {#  ICI SE PLACERA LE GRAPHIQUE #}
+
+        <div class="div-emplacement-chart">
+            <div class="emplacement-chart">
+                <div class="container-chart">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+
+
+            <div class="div-selection-decoupage">
+                <div class="container-selection-decoupage">
+                    <div data-seq="0" data-url=""{# onclick="location.href='{{ url('StatistiquesVisites2',{id:0}) }}'" #}
+                         class="lien-decoupage decoupage-actif"
+                    >
+                        <div>
+                            1 semaine
+                        </div>
+                    </div>
+                    <div data-seq="1" data-url=""{# onclick="location.href='{{ url('StatistiquesVisites2',{id:1}) }}'" #}
+                         class="lien-decoupage"
+                    >
+                        <div>
+                            1 mois
+                        </div>
+                    </div>
+                    <div data-seq="3" data-url=""{# onclick="location.href='{{ url('StatistiquesVisites2',{id:3}) }}'" #}
+                         class="lien-decoupage"
+                    >
+                        <div>
+                            3 mois
+                        </div>
+                    </div>
+                    <div data-seq="6" data-url=""{# onclick="location.href='{{ url('StatistiquesVisites2',{id:6}) }}'"#}
+                         class="lien-decoupage"
+                    >
+                        <div>
+                            6 mois
+                        </div>
+                    </div>
+                    <div data-seq="12" {# onclick="location.href='{{ url('StatistiquesVisites2',{id:12}) }}'"  #}
+                         class="lien-decoupage"
+                    >
+                        <div>
+                            1 an
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="en-avant">
+        Vous avez envie de mettre en avant votre produit ou votre service vert ?
+    </div>
+
+    <div class="div-visibilite">
+        {# <div class="visibilite-content"> #}
+            <button onclick="location.href='/tarifs-niveaux'" class="visibilite-content">
+                Comment augmenter votre visibilité ?
+            </button>
+
+        {# </div> #}
+    </div>
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+{#
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <div class="dash-program-head">
+                    <div class="dash-program-logo"></div>
+                    <div class="dash-program-title">Sustainable Living Program</div>
+                </div>
+                <div class="dash-program-description">Transformer <br>votre expérience <br>de vie</div>
+            </div>
+
+            <div class="dash-program-card">
+                <div class="dash-program-head">
+                    <div class="dash-program-logo"></div>
+                    <div class="dash-program-title">Green Event Series</div>
+                </div>
+                <div class="dash-program-description">Des événements<br> qui vous font<br> du bien</div>
+            </div>
+
+            <div class="dash-program-card">
+                <div class="dash-program-head">
+                    <div class="dash-program-logo"></div>
+                    <div class="dash-program-title">Green Coaching</div>
+                </div>
+                <div class="dash-program-description">Nous vous<br> accompagnons<br> au quotidien</div>
+            </div>
+
+        </div>
+    </div>
+#}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0-rc.1/chartjs-plugin-datalabels.min.js" integrity="sha512-+UYTD5L/bU1sgAfWA0ELK5RlQ811q8wZIocqI7+K0Lhh8yVdIoAMEs96wJAIbgFvzynPm36ZCXtkydxu1cs27w==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script type="text/javascript">
+
+        var ctx = document.getElementById('myChart').getContext('2d')
+        //console.log('Hello',ctx)
+
+        dates = {{ visitesDate|  raw }} ;
+        console.log('{{ visitesDate|  raw }}')
+
+        const data = {
+        labels: {{ visitesDate|  raw }},
+        datasets: [{
+                        label: 'Visites ',
+                        scaleOverride: true,
+                        scaleSteps: 10,
+                        backgroundColor: '#818181',
+                        categoryPercentage : 1,
+                        barPercentage : 0.2,
+                        data: {{ visitesNumber| raw }}
+                }]
+        }; // fin const data
+
+        var ChartTitle = {% if n >1 %}
+            '{{ n }} Visites'
+        {% else %}
+        '{{ n }} Visite'
+        {% endif %}
+
+        const config = {  
+                            type: 'bar',
+                            data: data,
+                            plugins: [ChartDataLabels],
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: { 
+                                    legend: {
+                                        display: false,
+                                        position: 'top',
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: ChartTitle,
+                                        color: 'rgb(0,0,0)',
+                                    },
+                                    tooltip: {
+                                        enabled : true,
+                                        callbacks : {
+                                            title: function(ctx) {
+                                                    //console.log(ctx[0].dataIndex);
+                                                    const i = ctx[0].dataIndex;
+                                                    //console.log(TableauDesNoms[i]);
+                                                    return(dates[i]);
+                                                    },
+                                            label: function(ctx) {
+                                                    //console.log(ctx.parsed.y);
+                                                    return('Visites : '+ctx.parsed.y);
+                                                    },
+                                        },
+                                        mode: 'index',
+                                        axis: 'x',
+                                    },
+                                    datalabels: {
+                                            color: 'black',
+                                            anchor : 'end',
+                                            align : 'top',
+                                            font: {
+                                                   weight: 'bold'
+                                                    },
+                                            },
+                                }, // fin plugin
+                                scales: {
+                                        x:  {
+                                                beginAtZero: true,
+                                                grid: {
+                                                    display: false,
+                                                    borderColor: '#000000',
+                                                        },
+                                                color: 'black',
+                                                /* min: 0,
+                                                max: 50,
+                                                ticks: {
+                                                    stepSize: 10,
+                                                        }, */
+                                               
+                                            },
+                                        y:{
+                                                beginAtZero: true,
+                                                grid: {
+                                                    display: false,
+                                                    borderColor: '#000000',
+                                                    drawBorder: true,
+                                                    drawTicks: true,
+                                                     },
+                                                color: 'black',
+                                                ticks: {
+                                                    stepSize: 10,
+                                                    // Include a dollar sign in the ticks
+                                                    /* callback: function(value, index, values) {
+                                                        return '$' + value;
+                                                    } */
+                                                        },
+                                            
+                                            },
+                                },//fin scale
+                            }
+                        };
+        
+        var chart = new Chart(ctx,config);
+    </script>
+    <script src="{{ asset('js/Dashboard_Charts/Visite_Chart.js') }}"></script>
+{% include 'footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

@@ -1,0 +1,434 @@
+@charset "UTF-8";
+body, html, * {
+  margin: 0;
+  padding: 0;
+  font-family: Droid-Sans;
+  line-height: 1.05;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EDEDED;
+  border: #707070 1px;
+  font-size: 1vw;
+}
+
+.banner-forum-title {
+  color: white;
+  font-weight: bold;
+  font-size: 4.6875vw;
+  width: 100%;
+  text-align: center;
+  margin-top: 8.75%;
+}
+
+.green-intro {
+  width: 100%;
+  background-color: #618226;
+  color: #FFFFFF;
+  text-align: left;
+  font-size: 1.46vw;
+}
+
+.green-intro-text {
+  padding-top: 4.43%;
+  padding-left: 9.06%;
+  padding-bottom: 4.9%;
+  padding-right: 10.63%;
+}
+
+.body-forum {
+  width: 100%;
+  background-color: #EDEDED;
+}
+
+.ul-activités {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 15.625%;
+}
+
+.ul-activités label {
+  padding: 0.4%;
+  border-radius: 2.75% 2.75%/25.64% 25.64%;
+  margin-bottom: 1.1%;
+  margin-right: 3.21%;
+  width: 17.97%;
+  text-align: left;
+  background-color: white;
+  cursor: pointer;
+}
+
+.ul-activités input:checked + label {
+  color: white;
+  background-color: #618226;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container-posts {
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+.listes-secteurs-title {
+  color: #618226;
+}
+
+.boutton-poster {
+  font-size: 1.04vw;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6.15%;
+}
+
+#poster {
+  display: none;
+}
+
+.boutton-poster .label-poster {
+  border: solid thin #618226;
+  color: white;
+  background-color: #618226;
+  width: 9.6%;
+  text-align: center;
+  border-radius: 5.43% 5.43%/23.26% 23.26%;
+  cursor: pointer;
+  font-size: 1.04vw;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
+#poster:checked + label {
+  background-color: white;
+  color: #618226;
+}
+
+.popup-poster {
+  position: absolute;
+  z-index: 1;
+  margin-top: 35%;
+  display: none;
+  border: solid thin #707070;
+  background-color: white;
+  width: 75.8%;
+  padding: 5.9% 6.8%;
+  padding-right: 4.1%;
+  border-radius: 38px;
+}
+
+#poster:checked ~ .popup-poster {
+  display: flex;
+}
+
+.photo-left {
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24.3%;
+  border: solid thin #618226;
+}
+
+.right-choix-post {
+  margin-left: 6.6%;
+  width: 54.4%;
+}
+
+.post-data {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.post-data:not(:last-of-type) {
+  margin-bottom: 3.7%;
+}
+
+.post-data input {
+  border-radius: 9px;
+  background-color: white;
+  border: solid thin #618226;
+  width: 76.8%;
+  min-height: 23.8%;
+  outline: none;
+  padding: 1% 3% 3.6%;
+}
+
+#texte-post {
+  padding: 1% 3% 7.6%;
+}
+
+.post-data input::placeholder {
+  color: gray;
+  font-size: 1vw;
+}
+
+.label-categorie-post {
+  margin-right: 9.3%;
+}
+
+.label-titre-post {
+  margin-right: 16.3%;
+}
+
+.label-texte-post {
+  margin-right: 15.1%;
+}
+
+.boutton-valider-poster {
+  display: flex;
+  align-items: flex-end;
+  width: 7.21%;
+  margin-left: 5.4%;
+}
+
+.boutton-valider-poster button {
+  font-size: 83%;
+  color: white;
+  width: 100%;
+  padding: 7% 0%;
+  outline: none;
+  background-color: #618226;
+  border-radius: 9.5% 9.5%/9.5% 9.5%;
+}
+
+.secteur-activité {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 14.32%;
+  margin-right: 5.21%;
+  margin-top: 0.625%;
+  min-width: 17.5%;
+}
+
+.secteur-activité span {
+  margin-top: 8.33%;
+  margin-bottom: 11.31%;
+  width: 67.86%;
+  height: 1.51%;
+  text-align: center;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.secteur-activité label {
+  border: solid thin #618226;
+  color: #618226;
+  background-color: white;
+  width: 54.8%;
+  text-align: center;
+  border-radius: 5.43% 5.43%/23.26% 23.26%;
+  cursor: pointer;
+  font-size: 1.04vw;
+  padding-top: 2.98%;
+  padding-bottom: 2.98%;
+  margin-bottom: 2.98%;
+}
+
+.secteur-activité input:checked + label {
+  color: white;
+  background-color: #618226;
+}
+
+.tableau-posts {
+  margin-right: 9.84%;
+  width: 100%;
+  text-align: left;
+}
+
+.titre-choix-secteur {
+  font-size: 1.4vw;
+  /* 1.46 normalement mais trop grand */
+}
+
+/*  pour compenser le _table.css ligne 17 */
+table tbody td {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  background-color: #FFFFFF;
+  border: medium solid #818181;
+  border-collapse: collapse;
+}
+
+.th-Pseudo, .th-Rep {
+  width: 12.87%;
+  text-align: center;
+}
+
+.th-Sujet {
+  width: 74.25%;
+  text-align: left;
+}
+
+th {
+  font-size: 1.46vw;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  border: medium solid #818181;
+  padding-left: 1.47%;
+  padding-right: 1.47%;
+  padding-top: 1.18%;
+  padding-bottom: 1.18%;
+}
+
+.username-div {
+  font-weight: bold;
+}
+
+td {
+  vertical-align: top;
+  font-size: 1.04vw;
+  border: medium solid #818181;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.td-sujet .data {
+  margin-top: 6.37%;
+  margin-bottom: 0.94%;
+}
+
+.td-pseudo .data, .td-rep .data {
+  margin-top: 34.6%;
+}
+
+.td-sujet {
+  padding-left: 1.87%;
+  padding-right: 2.36%;
+  text-align: left;
+}
+
+.tete-svg {
+  width: 13%;
+}
+
+.corps-svg {
+  width: 17.56%;
+}
+
+.date_post {
+  margin-top: 0.75%;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #618226;
+}
+
+.lien-poster a {
+  color: #618226;
+}
+
+.container-fleche {
+  margin-top: 1.28%;
+  width: 100%;
+  text-align: right;
+}
+
+.fleche-haute {
+  position: relative;
+  left: 2.65%;
+  width: 2.1%;
+}
+
+/* **************************** */
+.choix-secteur {
+  font-size: 1.72vw;
+  font-weight: bold;
+  margin-top: 7.76%;
+  margin-bottom: 2.92%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-searchbar {
+  display: flex;
+  width: 100%;
+  max-height: 3%;
+  margin-bottom: 3.8%;
+}
+
+.searchbar-produits {
+  margin-left: 40.46%;
+  width: 19%;
+  border: none;
+  border-radius: 2.75% 2.75%/25.64% 25.64%;
+  outline: none;
+}
+
+.icon-loupe {
+  display: flex;
+  align-items: center;
+  width: 1.93%;
+  /*  ( mettre 1.7 si pas carré ) */
+  border: none;
+  border-radius: 27.03% 27.03%/25.64% 25.64%;
+  background: black;
+  cursor: pointer;
+  position: relative;
+  right: 1.716%;
+}
+
+.icon-loupe svg {
+  width: 100%;
+  height: 43.46%;
+}
+
+/* **************************** */
+.icon-pseudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2.3%;
+}
+
+/* **************************** */
+.container-container-cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 70%;
+  height: 39.4%;
+  min-height: 50.23%;
+  margin-top: 6.43%;
+  margin-bottom: 11.46%;
+  padding: 3.91% 2.18%;
+}
+
+.card-vide {
+  border: 1px solid black;
+  width: 28.36%;
+  padding-top: 39%;
+}
+
+.card-vide:not(:last-of-type) {
+  margin-right: 4.06%;
+}
+
+/*# sourceMappingURL=listAllPosts.css.map */

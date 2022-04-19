@@ -1,0 +1,385 @@
+@use "sass:math";
+$widthbase:1920px;
+$heightbase:3980px;
+
+@function Pourcentage($number) {
+  @if type-of($number) =='number' and not unitless($number) {
+    @return  math.div($number, $number * 0 + 1)
+  }
+  @return $number;
+}
+
+@function widthpr($size,$widthbase){
+  @return 100% * $size /Pourcentage($widthbase);
+}
+
+@function heightpr($size,$heightbase){
+  @return 100% * $size /Pourcentage($heightbase);
+}
+
+
+
+
+
+  body{
+    top: heightpr(0,$heightbase);
+    left: widthpr(0,$widthbase);
+    width: widthpr(1920,$widthbase);
+    height: heightpr(3376,$heightbase);
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+  }
+
+
+
+  .bloc{
+    margin-left: widthpr(189,$widthbase);
+    margin-right: widthpr(189,$widthbase);
+    width: widthpr(1542,$widthbase);
+    height: heightpr(172,$heightbase);
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+    font-size: 1.042vw; 
+    text-align: center;
+  }
+
+  .bloc-content{
+    padding-top:  0.6510416666666666vw;
+    text-align: center;
+    color: #1b1e21;
+    line-height: 1.2em;
+  }
+
+  .bloc-title{
+    color: #618226;
+    font-size: 1.4vw;
+    font-weight: bold;
+  }
+
+  .mrg{
+    padding-top: 0.62vw;
+  }
+  #nav-barre{
+    width: 100%;
+    height: heightpr(82,$heightbase);
+    //height: 2.513vw; 
+    background-color: #f2f5ed;
+    opacity: 0.997;
+    border-radius: 10px 10px 10px 10px;
+
+  }
+
+  #nav-title{
+    margin-left: widthpr(189,$widthbase);
+    width: widthpr(232,$widthbase);
+    font-family: DroidSans,Bold, sans-serif;;
+    font-size: 1.45vw;
+    
+
+  }
+ 
+  #nav-fav{
+    margin-left: widthpr(350,$widthbase);
+    width:  widthpr(271,$widthbase);
+    margin-top: 20px;
+    font-size:  1.45vw;
+    text-decoration: underline;
+
+  }
+
+
+
+#triangle-code{
+    display : inline-block;
+    height : 0;
+    width : 0;
+    border-top : 7px solid transparent;
+    border-bottom : 7px solid transparent;
+    border-left : 15px solid #ffbe2B;
+}
+
+
+.item , .alignE{
+    display: inline;
+    //padding-top:  0.9765625vw;
+  }
+      
+
+#Logo{
+    position: absolute;
+    margin-left: widthpr(158,$widthbase);
+    width:widthpr(216,$widthbase);
+    height: 14.370vw; 
+    //border: solid;
+
+} 
+
+#infos{
+    position: absolute;
+    margin-left: widthpr(420,$widthbase);
+    font-size: 1.042vw ; 
+}
+   
+#txtt{
+    //position: absolute;
+    margin-left: widthpr(713,$widthbase);
+    font-weight: bold;
+    font-size: 1.6927083333333333vw;
+    top: 0px;
+}
+
+#desc{
+    font-size: 1.042vw;
+    margin-left: widthpr(747,$widthbase);
+    width:  widthpr(845,$widthbase);
+    height: 72px;
+    font-weight: normal;
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+#vis{
+    margin-left: widthpr(710,$widthbase);
+    margin-top: widthpr(70,$widthbase);
+    font-size: 1.458vw;
+}
+
+#res{
+    margin-left: widthpr(713,$widthbase);
+    margin-top: widthpr(30,$widthbase);
+    font-weight: normal;
+    font-size:  1.042vw; 
+}
+
+#vis-desc{
+    margin-left: widthpr(747,$widthbase);
+    margin-top: widthpr(11,$widthbase);
+    width:  widthpr(845,$widthbase);
+    height: 72px;
+    font-weight: normal;
+    font-size:  1.042vw;
+}
+
+.alin{
+    display: inline-block;
+}
+
+#map{
+    margin-left: widthpr(189,$widthbase);
+    width:widthpr(494,$widthbase);
+    height:18.864vw;
+    border: grey solid;
+    
+}
+ /*
+#tb{
+    position: absolute;
+    border-radius: 10px;
+    margin-left: widthpr(25,$widthbase);
+    width: widthpr(1018,$widthbase);
+    height: 361px;
+    background-color: #f2f5ed;;
+}
+   
+.col11,.col12{
+    margin-left: 0px;
+    width: 509px;
+    color: white;
+    text-align: center;
+    font-size: 1.8229166666666667vw;
+    
+}
+
+.r1{
+    width: 100%;
+    top: 0px;
+    height: 79px;
+    border-radius: 10px;
+    background-color: #618226;
+}
+#tb thead{
+    border-radius: 20px;
+}
+
+
+   <div id="map" class="alin"></div>
+         <table  id="tb" class="alin"> 
+         <thead>
+            <tr class="r1">
+                <th class="col11" scope="col">Secteur d'activités</th>
+                <th class="col12" scope="col">Sous-secteurs</th>
+            </tr>
+         </thead>
+        </table> 
+ 
+*/ 
+
+
+ 
+#cert{
+    margin-top: 0px;
+    margin-left: widthpr(25,$widthbase);
+}
+ 
+/*
+#cert span:nth-child(1n),#cert span:nth-child(2n), #cert span:nth-child(3n){
+    font-weight: bold;
+}
+*/ 
+
+.ville{    
+    //padding-top: 7px;
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+    font-size: 1.042vw; 
+    font-weight: bold;
+    color: black; 
+    // width: widthpr(494,$widthbase);
+}
+
+
+#hautesav{
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+    font-size: 1.042vw; 
+    font-weight: bold;
+    color: black; 
+    margin-left: widthpr(248,$widthbase);
+}
+
+#geneve{
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+    font-size: 1.042vw; 
+    font-weight: bold;
+    color: black; 
+    margin-left: widthpr(15,$widthbase);
+}
+
+#lausanne{
+    font-family: DroidSans-Bold, Droid Sans, sans-serif;
+    font-size: 1.042vw; 
+    font-weight: bold;
+    color: black; 
+    margin-left: widthpr(35,$widthbase);
+}
+
+
+.lign,.lign2{
+    display: inline-block;
+}
+
+
+.poz{
+    position: absolute;
+    margin-left: widthpr(40,$widthbase);
+    //padding-top: widthpr(10,$widthbase);
+    width: widthpr(1018,$widthbase);
+    font-size: 1.042vw; 
+} 
+
+.deb{ 
+
+    margin-left: widthpr(400,$widthbase);
+}
+
+.deb2{
+     margin-left: widthpr(500,$widthbase);
+}
+
+
+.fin{
+
+    margin-left: widthpr(400,$widthbase);
+}  
+
+#rond{
+    width:  2.188vw;
+    height: heightpr(36,$heightbase );
+    border-radius: 7px;
+    background-color: #618226;
+    color: white; 
+    text-align: center;
+} 
+/*
+<div id="nav-barre" >
+                <div class="item"  id="nav-title">Fiche entreprise <div id="triangle-code"></div>Comme une tomate</div>
+                <div class="item"  id="nav-fav">Ajouter aux favoris</div>
+                <div class="item" > </div>
+</div></br></br></br>
+
+
+*/
+
+
+
+
+
+ 
+
+.grey{
+    margin-left: widthpr(189,$widthbase);
+    width: widthpr(1542,$widthbase);
+    height: 653px;
+    background-color: #f2f5ed;
+  }
+  
+  .bloc1{
+    position: absolute;
+    margin-top: 75px;
+    margin-left: widthpr(100,1542px);
+    width: widthpr(363,$widthbase);
+   // height: 26.506vw;
+    height: 512px;
+    background-color: #FFFFFF;
+  }
+  
+    .sous-bloc1 ,.sous-bloc2 , .sous-bloc3{
+    margin-left: 0px;
+    position: absolute;
+    margin-top: 442px;
+    width: 100%;
+    height: 70px;
+  
+    background-color: #ffbe2b;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.042vw; 
+    line-height: 70px;
+  
+  }
+  
+  .bloc2{
+    position: absolute;
+    margin-top: 75px;
+    margin-left: widthpr(475,1542px);
+    width: widthpr(363,$widthbase);
+    height: 512px;
+    background-color: #FFFFFF;
+  }
+  
+  
+  .bloc3{
+    position: absolute;
+    margin-top: 75px;
+    margin-left: widthpr(850,1542px);
+    width: widthpr(363,$widthbase);
+    height: 512px;
+    background-color: #FFFFFF;
+  }
+
+
+
+
+  .btnmarg-l{
+    margin-left: widthpr(1380,$widthbase);
+  }
+  
+  .btnmarg-r{
+    margin-left: widthpr(200,$widthbase);
+  }
+  
+  .noborder , .noborder tr , .noborder td {
+    border: none;
+  }
+  
+  
+  
+  

@@ -1,0 +1,90 @@
+<section class="form-container">
+    <p class="form-header">Données particulier</p>
+    {{ form_start(form,{ 'attr' : { 'class': 'form-company' } }) }}
+        <div class="form-sub-left">
+            <div class="form-company-widget-container">
+                {{ form_row(form.username,{'label': 'Pseudo *',
+                'label_attr': {'class' : 'form-company-label form-label-username' },
+                'attr' : { 'class': 'form-company-widget form-widget-username' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.plainPassword.first,{'label': 'Mot de passe *',
+                'label_attr': {'class' : 'form-company-label form-label-mdpF' },
+                'attr' : { 'class': 'form-company-widget form-widget-mdpF' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.plainPassword.second,{'label': 'Confirmer le mot de passe *',
+                'label_attr': {'class' : 'form-company-label form-label-mdpS' },
+                'attr' : { 'class': 'form-company-widget form-widget-mdpS' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.email.first,{'label': 'Adresse mail *',
+                'label_attr': {'class' : 'form-company-label form-label-mailF' },
+                'attr' : { 'class': 'form-company-widget form-widget-mailF' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.email.second,{'label': 'Confirmer l\'adresse mail *',
+                'label_attr': {'class' : 'form-company-label form-label-mailS' },
+                'attr' : { 'class': 'form-company-widget form-widget-mailS' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.firstname,{'label': 'Prénom *',
+                'label_attr': {'class' : 'form-company-label form-label-name' },
+                'attr' : { 'class': 'form-company-widget form-widget-name' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.lastname,{'label': 'Nom *',
+                    'label_attr': {'class' : 'form-company-label form-label-name' },
+                    'attr' : { 'class': 'form-company-widget form-widget-name' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.street,{'label': 'Adresse',
+                    'label_attr': {'class' : 'form-company-label form-label-street' },
+                    'attr' : { 'class': 'form-company-widget form-widget-street' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.streetnumber,{'label': 'N° Rue',
+                    'label_attr': {'class' : 'form-company-label form-label-postcode' },
+                    'attr' : { 'class': 'form-company-widget form-widget-postcode' } }) }}
+            </div>
+
+
+
+        </div>
+        <div class="form-sub-right">
+
+
+
+            <div class="form-company-widget-container">
+                {{ form_row(form.city,{'label': 'Ville',
+                    'label_attr': {'class' : 'form-company-label form-label-ville' },
+                    'attr' : { 'class': 'form-company-widget form-widget-ville' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.postcode,{'label': 'Code postal',
+                    'label_attr': {'class' : 'form-company-label form-label-postcode' },
+                    'attr' : { 'class': 'form-company-widget form-widget-postcode' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.region,{'label': 'Région',
+                    'label_attr': {'class' : 'form-company-label form-label-region' },
+                    'attr' : { 'class': 'form-company-widget form-widget-region' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.country,{'label': 'Pays',
+                    'label_attr': {'class' : 'form-company-label form-label-country' },
+                    'attr' : { 'class': 'form-company-widget form-widget-country' } }) }}
+            </div>
+            <div class="form-company-widget-container">
+                {{ form_row(form.phone,{'label': 'Téléphone',
+                    'label_attr': {'class' : 'form-company-label form-label-phone' },
+                    'attr' : { 'class': 'form-company-widget form-widget-phone' } }) }}
+            </div>
+            {{ form_row(form._token) }}
+            <br>
+
+            <button class="form-company-btn" type="submit">Valider</button>
+
+            {{ form_end(form,{'render_rest': false}) }}
+        </div>
+</section>

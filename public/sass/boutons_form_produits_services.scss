@@ -1,0 +1,21 @@
+.nav_boutons{
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5vh;
+
+  button{
+    padding: 5px 10px;
+    background-color: #618226;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #618226;
+
+    &:hover, &.selected{
+      background-color: white;
+      color: #618226;
+    }
+  }
+}

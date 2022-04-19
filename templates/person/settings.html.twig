@@ -1,0 +1,28 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mon profil entreprise</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='/profile/particulier'" class="showcase__btn-ville">Profil</button>
+            <button onclick="location.href='/parametres/particulier'" class="showcase__btn-entreprise">Paramètres</button>
+            <button onclick="location.href='/productsFavParticulier'" class="showcase__btn-ville" style="font-size: 16px">Produits/services favoris</button>
+            <button onclick="location.href='/MesEvenementsFavoris'" class="showcase__btn-ville" style="font-size: 16px">Evènements favoris</button>
+
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+{#  <br><br>
+    <div>
+        <a class="btn1" href="{{ url('personDisableItself',{'id':company.id}) }}">Désactiver le compte</a>
+
+    </div>#}
+
+{% endblock %}

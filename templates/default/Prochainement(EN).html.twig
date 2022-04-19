@@ -1,0 +1,169 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    {# <title>{% block title %}Welcome!{% endblock %}</title> #}
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+    <!--<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/troopersalertify/toastr/css/toastr.css') }}" type="text/css" />
+
+    <script src="{{ asset('bundles/troopersalertify/toastr/js/toastr.js') }}"></script>
+    <title>Welcome</title>
+</head>
+
+
+{% block body %}
+
+    <style type="text/css">
+        @font-face {
+            font-family: 'arial';
+            src:    url({{asset('fonts/arial.otf')}}) format('opentype'),
+            url({{asset('fonts/arial.woff')}}) format('woff'),
+            url({{asset('fonts/arial.otf')}}) format('truetype');
+        }
+        .page-banner {
+            position: relative;
+            width: 100%;
+            height: 713.5px;
+        }
+        .page-banner .banner-background {
+            top: 0;
+            left: 0;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            z-index: 0;
+        }
+        .page-banner .banner-content {
+            padding: 30px 0 30px 0;
+            text-align: center;
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            /*
+            z-index: 100;
+            z-index: 100;*/
+            z-index: 0;
+        }
+        .page-banner .banner-content h2 {
+            margin-bottom: 15px;
+            margin-top: 16.9px;
+        }
+        .page-banner .banner-content h3 {
+            margin-top: 510px;
+            color: white;
+            font-weight: bold;
+            font-size: 2.3em;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            max-width: 50%;
+            font-family: Droid Sans, sans-serif ;
+
+        }
+
+
+        .a{
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: Droid Sans, sans-serif ;
+            color: white;
+            padding-top: 2%;
+        }
+        .b{
+            font-size: 8.75rem;
+            font-weight: bold;
+            font-family: Droid Sans, sans-serif ;
+            color: white;
+        }
+        .c{
+            font-size: 1.25rem;
+            color: white;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Droid Sans, sans-serif ;
+        }
+        .d{
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #F0B322;
+            position: relative;
+            text-align: center;
+            font-family: Droid Sans, sans-serif ;
+        }
+        .e{
+            font-size: 2.5rem;
+            font-weight: bold;
+            position: relative;
+            text-align: center;
+            font-family: Droid Sans, sans-serif ;
+            color: black;
+        }
+        .f{
+            font-size: 1.425rem;
+            color: black;
+            font-family: Droid Sans, sans-serif ;
+            text-align: center;
+            color: black;
+        }
+        .g {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            color: white;
+            font-size: 1.25rem;
+            z-index: 1;
+        }
+        .h {
+            position: absolute;
+            top: 5%;
+            right: 8%;
+            color: white;
+            font-size: 1.25rem;
+            z-index: 1;
+        }
+        .page-banner {
+            height: 100vh;
+        }
+        .bold {
+            font-weight: bold;
+            font-family: Droid Sans, sans-serif;
+        }
+        .background-op {
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 40%;
+            padding: 1.5%;
+            margin: auto;
+            margin-top: 15%;
+        }
+
+    </style>
+
+    <div class="page-banner col-l-12 col-m-12 col-s-12">
+
+        <img class="banner-background" src="{{ asset('/css/img/Prochainement/header.jpg') }}" alt="">
+        <p><a class="g" href="/Prochainement" >FR  </a><a class="h" href="/ComingSoon" > EN </a></p>
+        <div class="top-left">        <a ><img src="{{ asset('css/img/Prochainement/logo_repertoire_vert_ok.png') }}" alt="logo-gaea21"></a>
+        </div>
+
+            <div class="banner-content">
+                <h2 class="a ">Welcome to gaea21</h2>
+                <h2 class="b ">Green index</h2>
+                <div class="background-op">
+                    <p class="d ">Coming soon <p>
+                    <p class="e ">Launch of the Green Index website</p>
+                    <p class="f ">For all inquiries : <span class="bold">contact@repertoirevert.org</span></p>
+                </div>
+            </div>
+    </div>
+            </div>
+    </div>
+
+{% endblock %}

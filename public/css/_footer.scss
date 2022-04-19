@@ -1,0 +1,90 @@
+$width_screen: 1920px;
+
+.footer{
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+
+  .footer-image {
+    width: 100%;
+  }
+
+  .footer-contact {
+    position: absolute;
+    padding-left: pxToPourcent(190,$width_screen);
+    padding-top: pxToPourcent(80,$width_screen);
+    padding-bottom: pxToPourcent(162,$width_screen);
+    font-size: pxToVw(16,$width_screen);
+    justify-content: flex-start;
+  }
+  .footer-contact-title {
+    color: white;
+    padding-bottom: pxToPourcent(82,$width_screen);
+    font-weight: bold;
+    font-size: pxToVw(24,$width_screen);
+    
+  }
+
+  .footer-partners {
+    position: absolute;
+    padding-left: pxToPourcent(773,$width_screen);
+    padding-top: pxToPourcent(80,$width_screen);
+    padding-bottom: pxToPourcent(162,$width_screen);
+    font-size: pxToVw(16,$width_screen);
+    justify-content: center;
+  }
+  .footer-partners-title {
+    color: white;
+    padding-bottom: pxToPourcent(82,$width_screen);
+    font-weight: bold;
+    font-size: pxToVw(24,$width_screen);
+  }
+
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  li{
+    list-style: none;
+
+  }
+  span{
+    display: block;
+  }
+  .footer-mention{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: pxToPourcent(1356,$width_screen);
+    padding-top: pxToPourcent(80,$width_screen);
+    padding-bottom: pxToPourcent(162,$width_screen);
+    font-size: pxToVw(16,$width_screen);
+  }
+
+  .footer-social {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: pxToPourcent(283,$width_screen);
+    padding-bottom: pxToPourcent(44.4,$width_screen);
+    padding-left: pxToPourcent(756.39,$width_screen);
+  }
+
+  //.footer-facebook {
+    //margin-left: pxToPourcent(756.39,$width_screen);
+    //margin-right: pxToPourcent(1107.01,$width_screen);
+ // }
+  .footer-linkedin {
+    margin-left: pxToPourcent(879.1,$width_screen);
+    //margin-right: pxToPourcent(984.3,$width_screen);
+  }
+  .footer-twitter {
+    margin-left: pxToPourcent(1001.81,$width_screen);
+    margin-right: pxToPourcent(861.59,$width_screen);
+  }
+}

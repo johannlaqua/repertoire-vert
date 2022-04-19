@@ -1,0 +1,13 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Edit SucessStory{% endblock %}
+
+{% block body %}
+    <h1>Edit SucessStory</h1>
+
+    {{ include('sucess_story/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sucess_story_index') }}">back to list</a>
+
+    {{ include('sucess_story/_delete_form.html.twig') }}
+{% endblock %}

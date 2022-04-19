@@ -1,0 +1,18 @@
+<div class="product-logo col-l-4">
+    <img class="logo-img col-l-4" src="{{ asset('css/img/product/'~ marchandise.image|basename) }}"
+         alt="logo-{{ marchandise.name }}">
+</div>
+<div class="product-info col-l-offset-1 col-l-7">
+<span class="info-label">Niveau de référencement : </span> <span class="info"> N.1 </span><br>
+    <span class="info-label">Origine du produit : </span> <span class="info"> {{ marchandise.origin }} </span><br>
+    <span class="info-label">Certification : </span> <span class="info"> {{ marchandise.certification }} </span><br>
+    <span class="info-label l-green">Recommandation gaea21 : </span> <span
+            class="info">{% if marchandise.gaearecommanded == true %} Oui{% else %} Non{% endif %}</span><br>
+    <!--  <span class="info-label">Sous-catégorie : </span> <span class="info"> {# subcategory.name #} </span><br> -->
+    <span class="info-label ">Prix : </span> <span class="info"> {{ marchandise.price }} </span> <span class="info"> {{ marchandise.currency }}{% if marchandise.price > 1 and marchandise.currency != "CHF" %}s {% endif %} </span><br>
+    <span class="info-label">Conditionnement : </span> <span class="info"> {{ marchandise.packaging }}</span><br>
+    <span class="info-label">Description du produit : </span> <span class="info"> {{ marchandise.description }} </span><br>
+</div>
+<div>
+    <!--<a href="{# url('productShow',{'slug':product.slug}) #}"></a>-->
+</div>

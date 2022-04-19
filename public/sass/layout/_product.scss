@@ -1,0 +1,35 @@
+.product{
+  padding: 40px 0px 50px 0px;
+  margin-bottom:100px;
+
+  .product-header{
+    background-color: #DADADA;
+    padding:35px 100px 35px 100px ;
+    margin-bottom:100px;
+    font-size: 1.9em;
+    font-weight: bold;
+    .header-name{
+      opacity: 0.3;
+    }
+  }
+  .product-logo{
+    height: 300px;
+    display: flex;
+    //margin-left: 10px;
+    .logo-img{
+      width: 300px;
+      height: 100%;
+      display: block;
+      margin: auto;
+    }
+  }
+  .product-info{
+    .info-label{
+      font-weight: bold;
+      display: inline-block;
+    }
+    .info{
+      display: inline-block;
+    }
+  }
+}

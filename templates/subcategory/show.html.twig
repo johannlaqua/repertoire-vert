@@ -1,0 +1,260 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/page_subcategories.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="showcase"  style="width:100%; background-image: url('{{asset('/css/img/category/header/subcategories/'~category.name~'/'~subcategory.name~'.jpg')}}');background-position-x:center ; background-size: cover; background-repeat: no-repeat ">
+
+        {% include "navbar.html.twig" %}
+        {% set index = 0 %}
+
+
+        <div class="div-title-category">
+            <div class="title-category" id = "subcat-name">{{ subcategory.name }}</div>
+        </div>
+    </div>
+
+    <div class="green-banner-category">
+        <div class="category-text">
+            {{ category.description }}
+        </div>
+    </div>
+
+
+    <div class="div-produit-title">
+    </div>
+
+    <div class="div-recherche-produit">
+        <div class="container-recherche-produit">
+            <div class="recherche-produit">
+                <div class="data-recherche-produit">
+                    <div class="data-recherche-title">Je cherche</div>
+                    <div class="data-recherche-entrer">
+                        <div class="container-recherche-input">
+                            <div class="icon-recherche">
+                                <img src="{{ asset('css/img/loupe.png') }}"/>
+                            </div>
+                            <input type="text" id="search-data-name"/>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="data-recherche-produit">
+                    <div class="data-recherche-title">Code postal</div>
+                    <div class="data-recherche-entrer">
+                        <div class="container-recherche-input">
+                            <input type="text" id="search-data-zipcode"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-recherche-produit">
+                    <div class="data-recherche-title">Pays</div>
+                    <div class="data-recherche-entrer">
+                        <div class="container-recherche-input">
+                            <input type="text" id="search-data-city"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="div-recherche-valider">
+                <button id="search-btn">Valider</button>
+            </div>
+            
+                    {# <div class="partie-droite-avis">
+                        <div class="avis-titles" style="width: 120%">
+                            <div class="div-avis-consor" > #}
+                            {# div avis consor n'a pas de taille il faut lui en donner une type 60% de la taille restante #}
+                                {# <p style="position:flex; margin-left:20px;"> Avis consommateur
+                                <span class="icon-consor"  style="position:flex; float:right;">
+
+                                  <img src="{{ asset('images/Subcategory/etoile-verte.png')}}">
+
+                                </span>
+                                </p> 
+                            </div>
+                            <div class="div-avis-consor">
+                            <p style="position:flex; margin-left:20px;">
+                                Avis entreprise
+                                <span class="icon-consor" style="position:flex; float:right;">
+
+                                   <img src="{{ asset('images/Subcategory/etoile-jaune.png')}}">
+                                </span>
+                                
+                                 </p>
+                                </div>
+                            </div>
+                        </div>#}
+        </div>
+    </div>
+
+
+    <div class="div-title-entreprise">
+        <div class="container-title-entreprise">
+            Entreprises
+        </div>
+    </div>
+
+    <div class="div-icones-entreprise">
+        <div class="container-icones-entreprise">
+            <div class="container-category">
+                <div class="icon-category">
+                    <img src="{{ asset('/images/Icones_Categories/'~category.name~'/'~category.name~'_noir.png') }}">
+                </div>
+                <div class="category-name">{{ category.name }}</div>
+            </div>
+            <div class="pip">|</div>
+            <div class="container-subcategory">
+                <div class="icon-category">
+                    <img  src="{{ asset('images/Icones_Categories/'~category.name~'/Icônes sous-catégories/'~subcategory.name~'.png') }}">
+                </div>
+                <div class="category-name">{{ subcategory.name }}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tri">
+        <div class="tri-content">
+            <p>Trier par :</p>
+            <input type="radio" id="proximite" name="tri" class="check-proximite">
+            <label for="proximite">Proximité</label>
+            <input type="radio" id="alphabet" name="tri" class="check-alphabet">
+            <label for="alphabet">Ordre alphabétique</label>
+        </div>
+    </div>
+
+    <div class="companies-list">
+        {% for company in companies %}
+            <div class="div-fiche-entreprise resultat-recherche" id="{{company.id}}" data-niveau="{{ company.niveau }}" data-name="{{ company.name }}" data-lat="{{ company.latitude }}" data-lng="{{ company.longtitude }}">
+
+                <div class="data-colonne-entreprise">
+                    <div class="data-colonne-title bold">Nom entreprise</div>
+                    <div class="data-colonne-text" whereFindName="{{company.name}}">{{ company.name }}</div>
+                </div>
+
+                <div class="data-colonne-entreprise">
+                    <div class="data-colonne-title bold">Ville</div>
+                    <div class="data-colonne-text niveau" whereFindLoc="{{company.postcode}}" whereFindCount="{{company.country}}">{{ company.city }}</div>
+                </div>
+
+                <div class="data-colonne-entreprise">
+                    <div class="data-colonne-title bold">Date d'inscription au Répertoive Vert</div>
+                    <div class="data-colonne-text" whereFindID="{{company.id}}">{{ company.inscriptiondate |date('d/m/Y') }}</div>
+                </div>
+
+                <div class="container-niveau">
+                    <div class="title-niveau bold">Niveau</div>
+                        {% if company.niveau == 'N.0'%}
+                            <div class="niveau n0">{{ company.niveau }}</div>
+                        {% elseif company.niveau == 'N.1' %}
+                            <div class="niveau n1">{{ company.niveau }}</div>
+                        {% else %}
+                            <div class="niveau n2">{{ company.niveau }}</div>
+                        {% endif %}
+                </div>
+
+                <div class="div-acheter-entreprise">
+                    <div class="cf-fiche-entreprise"  onclick="location.href='/company/show/{{company.id}}/{{subcategory.id}}/{{category.id}}'">Voir la fiche entreprise</div>
+                    <div class="acheter-entreprise" id="login{{ index }}" onclick="location.href='/produits/{{category.id}}/{{subcategory.id}}/{{company.id}}'">Voir les produits</div>
+                </div>
+                        {# <div class="avis-result">
+                            <div class="avis-result-conso">
+                                <div class="result-stars-conso">
+                                    {% for i in 0..3 %}
+                                        <div class="icon-result-conso">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star1{fill:#618226;stroke:#618226;stroke-miterlimit:10;}</style></defs><path class="avis-star1" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                        </div>
+                                    {% endfor %}
+
+                                    <div class="icon-result-conso">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star1{fill:#618226;stroke:#618226;stroke-miterlimit:10;}</style></defs><path class="avis-star1" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"/></svg>
+                                    </div>
+                                </div>
+                                <div class="resulat-comments-conso">35 avis</div>
+                            </div>
+                            <div class="avis-result-entreprise">
+                                <div class="result-stars-entreprise">
+                                    {% for i in 0..3 %}
+                                        <div class="icon-result-conso">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star2{fill:#ffbe2b;stroke:#ffbe2b;stroke-miterlimit:10;}</style></defs><path class="avis-star2" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"></path></svg>                                </div>
+                                    {% endfor %}
+
+                                    <div class="icon-result-conso">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.844" height="16.019" viewBox="0 0 16.844 16.019"><defs><style>.avis-star2{fill:#ffbe2b;stroke:#ffbe2b;stroke-miterlimit:10;}</style></defs><path class="avis-star2" d="M134.365,65.828l2.271,4.6,5.077.738-3.674,3.581.867,5.056-4.541-2.387L129.824,79.8l.867-5.056-3.674-3.581,5.077-.738Z" transform="translate(-125.943 -64.698)"></path></svg>
+                                    </div>
+                                </div>
+                                <div class="resulat-comments-entreprise">23 avis</div>
+                            </div>
+                        </div>#}
+
+                {# </div> #}
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="navigation">
+        {{ knp_pagination_render(companies) }}
+    </div>
+
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="div-consultez-aussi">
+        <div class="container-consultez-aussi">Consultez aussi</div>
+    </div>
+
+    <div class="div-other-subcat">
+        <div class="container-other-subcat">
+
+            {% for subcat in allsubcategories %}
+                <div onclick="location.href='/category/{{ category.id }}/subcategory/show/{{ subcat.id }}'" id="subcat{{ loop.index }}"  class="card-subcategories   {% if  loop.index is divisible by(4) %} card_subcat_marg {% endif %}" >
+                {# <div class="big-contain"> #}
+                    {# <div class="subcategories-icones" > #}
+                        <img class="subcat{{ loop.index }}" src="{{ asset('css/img/category/header/subcategories/'~category.name~'/'~subcat.name~'.jpg') }}" />
+                        <div class="subcategories-title">{{ subcat.name }}</div>
+                        {# <img  class="subcat_bleu subcat{{ loop.index }}_bleu"  src="{{ asset('images/Icones_Categories/'~category.name~'/Icones_Bleu_blanc_sous-categories/'~subcat.name~'.png') }}"/> #}
+                    </div>
+                {# </div> #}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include "footer.html.twig" %}
+    <script src="{{ asset('js/Show_categories/show_subcategories.js') }}"></script>
+    <script type="application/javascript" src="https://server/cookies.js"></script>
+    <script src="{{ asset('js/calculateDistance.js') }}"></script>
+    <script src="{{ asset('js/tri_liste_entreprise.js') }}"></script>
+
+    <script>
+        var jsvar = '<?=$var?>';
+        console.log(jsvar);
+    </script>
+{% endblock %}
+

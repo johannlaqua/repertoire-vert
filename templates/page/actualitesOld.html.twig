@@ -1,0 +1,263 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}Actualités{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/css/actualite/actualite.css') }}"/>
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+
+
+{% block body %}
+
+
+
+
+
+<div class="title-banner-container" style="background-image: url({{asset('/images/actualites.png')}})">
+    {% include "navbar.html.twig" %}
+    <h3 class="banner-title">Actualités</h3>
+    <p class="banner-description"><span class="banner-yellow">Le Répertoire Vert</span> vous permet de découvrir les événements et exemples de Développement Durables</p>
+    <p class="banner-description banner-description-small">En tant que membres du <span class="banner-yellow">Répertoire Vert</span>, vous avez la possibilités de faire figurer votre actualité sur cette page</p>
+</div>
+{# <div class="subtitle-container">
+    <h5 class="subtitle-title">Late minutis ortum porrigitur dextro mediam adnexa</h5>
+    <p class="subtitle-description">Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.<p>
+</div> #}
+
+    <br><br>
+<div class="event-container">
+    <div class="evenement-container">
+        <p class="evenement-title">Chercher un évènement</p>
+        <div class="evenement-form-container">
+            {{ form_start(searchEventForm) }}
+            <div class="evenement-form-nature-container">
+                <div class="evenement-form-label-container">
+                    {{form_label(searchEventForm.nom, "Nature de l'événement")}}
+                    {{form_widget(searchEventForm.nom, { 'attr': {'class': 'evenement-form-widget'} })}}
+                </div>
+                <div class="evenement-form-label-container">
+                    {{form_label(searchEventForm.lieu, "Lieu de l'événement")}}
+                    {{form_widget(searchEventForm.lieu, { 'attr': {'class': 'evenement-form-widget'} })}}
+                </div>
+            </div>
+            <div class="evenement-form-date">
+                <p class="evenement-form-date-titre">Date de l'évenement</p>
+                <div class="evenement-form-date-container">
+                    <label class="evenement-form-label">{{form_label(searchEventForm.mois, "Mois")}}</label>
+                    {{form_widget(searchEventForm.mois, { 'attr': {'class': 'evenement-form-widget-date'} })}}
+                    <label class="evenement-form-label">{{form_label(searchEventForm.annee, "Année")}}</label>
+                    {{form_widget(searchEventForm.annee, { 'attr': {'class': 'evenement-form-widget-date'} })}}
+                </div>
+            </div>
+            {{form_end(searchEventForm, { 'attr': {'class': 'foo'} })}}
+                {% for event in events %}
+            <a href="{{ url('event_show',{'id':event.id}) }}">
+                    <p class="evenement-found">{{event.name}} le {{ event.startingDate ? event.startingDate|date('Y-m-d') : '' }} </p>
+            </a>
+                {% else %}
+                    <p class="evenement-found">Aucun évènement trouvé</p>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="news-container">
+        <p class="news-title">Les news du répertoire</p>
+        <div class="news-item-container">
+            {% for new in news|reverse|slice(0,8) %}
+                <p class="news-item">{{new.Nom}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="part_two-container">
+    <div class="agenda-container">
+        <p class="agenda-title">Agenda</p>
+        {% if SixUpcomingevents is empty %}
+            <div>
+                <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                    <p>Aucun évenement planifié</p>
+                </div>
+            </div>
+        {% else %}
+        <div class="agenda-cards-container">
+            {% for event in SixUpcomingevents|slice(0,6)%}
+                <a class="agenda-card-title" href="{{ url('event_show',{'id':event.id}) }}">
+                    <div class="agenda-card-container">
+                        <div class="agenda-card-gauche-container">
+                            <img style="width: 100%;" class="card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                            <div class="agenda-card-gauche-item">
+                                <p class="agenda-card-titre">{{ event.name  }}</p>
+                                <p class="agenda-card-description">{{ event.description  }} le {{ event.startingdate|date('d M Y') }}</p>
+                            </div>
+                        </div>
+                        <div class="agenda-right">
+                            <p class="agenda-month">{{ event.startingdate|date('M') }}</p>
+                            <p class="agenda-day">{{ event.startingdate|date('d') }}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="sucess-container">
+        <p class="sucess-title title">Sucess story</p>
+        {% set sucess = sucessStory|last %}
+        <div class="sucess-base-container">
+            <img class="sucess-img" src="{{ asset('css/img/sucess/' ~  sucess.photo|basename) }}" alt="">
+            <p class="sucess-description">{{sucess.description}}</p>
+            <a class="sucess-link" href="{{sucess.lien}}">En savoir plus</a>
+        </div>
+    </div>
+</div>
+
+<div class="projecteur-container">
+    <p class="projecteur-title title">Coup de projecteur</p>
+    {% set projecteur = coupDeProjecteur|last %}
+    <div class="projecteur-base-container">
+        <div class="projecteur-item-un">
+            <p class="projecteur-nom">{{projecteur.nom}}</p>
+            <p class="projecteur-description">{{projecteur.description}}</p>
+        </div>
+        <div class="projecteur-item-deux">
+            <img src="{{ asset('css/img/coup_de_projecteur/' ~  projecteur.photo|basename) }}" alt="">
+            <p>{{projecteur.video}}</p>
+        </div>
+    </div>
+</div>
+<div class="company-container">
+    <p class="company-title title">Les derniers inscrits<p>
+    <div class="company-container-un">
+        <div class="company-container-deux">
+            <div class="carousel">
+                <div class="carousel__item carousel__item--visible">
+                    {% for company in companies|reverse|slice(0,3) %}
+                        <div class="company-card-container">
+                            <p class="company-nom">{{company.name}}</p>
+                            <img style="width: 100%;height: 100%" class="company-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+
+                            <div class="company-link-container">
+                                <a href="{{company.urlwebsite}}" class="company-url">{{company.urlwebsite}}</a>
+                                <a class="company-fiche" href="{{ url('companyShow',{'slug':company.slug}) }}">Voir la fiche produit</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="carousel__item">
+                    {% for company in companies|reverse|slice(4,3) %}
+                        <div class="company-card-container">
+                            <p class="company-nom">{{company.name}}</p>
+                            <img class="company-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+                            <p class="company-description">{{company.description}}</p>
+                            <div class="company-link-container">
+                                <a href="{{company.urlwebsite}}" class="company-url">{{company.urlwebsite}}</a>
+                                <a class="company-fiche" href="{{ url('companyShow',{'slug':company.slug}) }}">Voir la fiche produit</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="carousel__item">
+                    {% for company in companies|reverse|slice(8,3) %}
+                        <div class="company-card-container">
+                            <p class="company-nom">{{company.name}}</p>
+                            <img class="company-image" src="{{ asset('css/img/company/'~ company.image|basename) }}">
+                            <p class="company-description">{{company.description}}</p>
+                            <div class="company-link-container">
+                                <a href="{{company.urlwebsite}}" class="company-url">{{company.urlwebsite}}</a>
+                                <a class="company-fiche" href="{{ url('companyShow',{'slug':company.slug}) }}">Voir la fiche produit</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="carousel__actions">
+                    <button id="carousel__button--prev" aria-label="Previous slide"></button>
+                    <button id="carousel__button--next" aria-label="Next slide"></button>
+                </div>
+            </div>
+        </div>
+        <p class="company-sublink">Vous aussi vous souhaitez faire partie du Répertoire Vert ? </p>
+        <p class="company-sublink">Inscrivez-vous gratuitement via <a class="company-sub-link" href="#">le formulaire</a> de référencement.</p>
+    </div>
+</div>
+
+<div class="missing-container">
+    <p class="missing-title title">Vous avez raté...</p>
+    {% if SixPassedEvents is empty %}
+        <div>
+            <div style="margin: 20px 20px 20px 20px; text-align:center;">
+                <p>Aucun évenement favoris raté</p>
+            </div>
+        </div>
+    {% else %}
+        <div class="missing-cards-container carousel--deux">
+            <div class="carousel__item--deux carousel__item--visible--deux">
+                {% for event in SixPassedEvents|slice(0,3)%}
+                    <div class="missing-cards-container_deux">
+                        <img style="width: 100%;height: 200px" class="missing-card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                        <div class="missing-sub-container">
+                            <p class="missing-sub-titre">{{event.name}}</p>
+                            <p class="missing-sub-description">{{event.description}}</p>
+                            <p class="missing-sub-place">A {{event.place}}</p>
+                            <p class="missing-sub-date">C'était le <span class="bold">{{ event.startingdate|date('d M Y') }}</span></p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="carousel__item--deux">
+                {% for event in SixPassedEvents|slice(4,3)%}
+                    <div class="missing-cards-container_deux">
+                        <img class="missing-card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                        <div class="missing-sub-container">
+                            <p class="missing-sub-titre">{{event.name}}</p>
+                            <p class="missing-sub-description">{{event.description}}</p>
+                            <p class="missing-sub-place">A {{event.place}}</p>
+                            <p class="missing-sub-date">C'était le <span class="bold">{{ event.startingdate|date('d M Y') }}</span></p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="carousel__item--deux">
+                {% for event in SixPassedEvents|slice(7,3)%}
+                    <div class="missing-cards-container_deux">
+                        <img class="missing-card-image" src="{{ asset('css/img/event/'~ event.image|basename) }}">
+                        <div class="missing-sub-container">
+                            <p class="missing-sub-titre">{{event.name}}</p>
+                            <p class="missing-sub-description">{{event.description}}</p>
+                            <p class="missing-sub-place">A {{event.place}}</p>
+                            <p class="missing-sub-date">C'était le <span class="bold">{{ event.startingdate|date('d M Y') }}</span></p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="carousel__actions">
+                <button id="carousel__button--prev--deux" aria-label="Previous slide"></button>
+                <button id="carousel__button--next--deux" aria-label="Next slide"></button>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="last-container">
+    <div class="last-item">
+        <div class="last-blanc"></div>
+        <p class="last-description">C'est quoi le green coaching</p>
+    </div>
+    <div class="last-item">
+        <div class="last-blanc"></div>
+        <p class="last-description">A quoi sert le répertoire vert ?</p>
+    </div>
+    <div class="last-item">
+        <div class="last-blanc"></div>
+        <p class="last-description">C'est quoi la consommation ?</p>
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('js/slider.js') }}"></script>
+    <script src="{{ asset('js/slider-deux.js') }}"></script>
+    {{ encore_entry_script_tags('app') }} 
+{% endblock %}
+{% endblock %}

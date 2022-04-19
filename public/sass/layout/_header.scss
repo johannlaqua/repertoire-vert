@@ -1,0 +1,113 @@
+.showcase{
+  width:100%;
+  height: 100vh;
+  background-position:center;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.header-content {
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+.colorwhite{
+  color: white;
+}
+  .banner-profil-title{
+    font-size: 4.68vw;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 4.8%;
+  }
+  .div-btn-banner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4.64%;
+
+    .btn-banner{
+      width: 12.08%;
+      background:none;
+      display: flex;
+      align-items: center;
+      border: none;
+      border-radius: 0.52vw;
+      // padding: 0.5% 0%;
+    }
+  }
+
+  #activ-btn-banner{
+    color: white;
+    background-color: #618226;
+  }
+  .btn-banner:not(:last-of-type)
+  {
+    margin-right: 2.34375%;
+  }
+  .btn-banner-icon{
+    width: 8.62%;
+    margin: 0% 18.5% 0% 16.8%;
+  }
+  .btn-banner-icon svg{
+    width:100%;
+  }
+}
+
+@media screen and (max-width: 1024px){
+
+  .banner-profil-description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-height: 601px){
+  .showcase{
+    height: auto !important;
+
+  }
+  .header-content{
+    height: 49vh;
+
+    .banner-profil-title {
+      font-size: 7vw;
+    }
+
+    .div-btn-banner .btn-banner {
+      width: 18.08%;
+    }
+
+  }
+}
+@media screen and (max-width: 480px){
+  .showcase{
+    height: auto !important;
+
+  }
+
+  .header-content{
+    height: 30vh;
+
+    h3.banner-profil-title{
+      font-size: 7vw;
+    }
+
+    .div-btn-banner{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4.64%;
+
+      .btn-banner {
+        width: 21.08%;
+      }
+
+    }
+  }
+
+
+}

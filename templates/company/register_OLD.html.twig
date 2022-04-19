@@ -1,0 +1,280 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/inscription.css') }}"/>
+
+    <div class="banner-inscription"  style="width:100%;background-image: url({{asset('css/img/banner_inscription.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <div class="div-banner-inscription-title">
+            <div class="banner-inscription-title">Inscription</div>
+        </div>
+    </div>
+
+    <div class="green-intro">
+        <div class="green-intro-text">
+            Votre inscription au Répertoire Vert vous permet d’avoir accès à de nombreux services que nous<br>
+            vous proposons. Elle sera fort utile pour obtenir des heures de conseils verts ou référencer votre <br>
+            entreprise sur notre site.
+        </div>
+    </div>
+
+
+    <div class="div-inscription-title">
+        <div class="inscription-title">Inscription</div>
+    </div>
+
+
+    <section class="form-container">
+    <p class="form-header">Données entreprise</p>
+
+    <div class="form-company">
+    
+        <div class="form-sub-left">
+            <div id="form-error"></div>
+            <span id="response"></span>
+            <div class="form-company-widget-container" >
+                <label for="pseudo" class="form-company-label form-label-username">Pseudo *</label>
+                <input id="pseudo" class="form-company-widget form-widget-username"></input>
+            </div>
+            <div class="form-company-widget-container" id="pseudo1">
+                <label for="mdp" class="form-company-label form-label-mdpF">Mot de passe</label>
+                <input id="mdp" name="mdp" class="form-company-widget form-widget-mdpF"></input>
+                <div id="validpassword"></div>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="mdpconfirm" class="form-company-label form-label-mdpS">Confirmer le mot de passe</label>
+                <input id="mdpconfirm" class="form-company-widget form-widget-mdpS"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="mail" class="form-company-label form-label-mailF">Adresse mail</label>
+                <input id="mail" class="form-company-widget form-widget-mailF"></input>
+                <div id="validemail"></div>
+            </div>
+
+            <div class="form-company-widget-container">
+                <label for="mailconfirm" class="form-company-label form-label-mailS">Confirmer l'adresse mail</label>
+                <input id="mailconfirm" class="form-company-widget form-widget-mailS"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="name" class="form-company-label form-label-name">Nom de l'entreprise</label>
+                <input id="name" class="form-company-widget form-widget-name"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="socialreason" class="form-company-label form-label-socialreason">Raison sociale</label>
+                <input id="socialreason" class="form-company-widget form-widget-socialreason"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="adresse" class="form-company-label form-label-street">Adresse</label>
+                <input id="adresse" class="form-company-widget form-widget-street"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="ville" class="form-company-label form-label-ville">Ville</label>
+                <input id="ville" class="form-company-widget form-widget-ville"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="postcode" class="form-company-label form-label-postcode">code postal</label>
+                <input id="postcode" class="form-company-widget form-widget-postcode" type="number"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="canton" class="form-company-label form-label-region">Canton</label>
+                <input id="canton" class="form-company-widget form-widget-region"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="pays" class="form-company-label form-label-pays">Pays</label>
+                <input id="pays" class="form-company-widget form-widget-pays"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="tel" class="form-company-label form-label-téléphone">Téléphone</label>
+                <input id="tel" class="form-company-widget form-widget-téléphone"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="website" class="form-company-label form-label-website">Site Web</label>
+                <input id="website" class="form-company-widget form-widget-website"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="linkedin" class="form-company-label form-label-linkedin">Lien Linkedin</label>
+                <input id="linkedin" class="form-company-widget form-widget-linkedin"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="facebook" class="form-company-label form-label-facebook">Lien Facebook</label>
+                <input id="facebook" class="form-company-widget form-widget-facebook" type="url"></input>
+            </div>
+            <div class="form-company-widget-container">
+                <label for="twitter" class="form-company-label form-label-twitter">Lien Twitter</label>
+                <input id="twitter" class="form-company-widget form-widget-twitter"></input>
+            </div>
+        </div>
+            <div class="form-sub-right">
+                {# <div class="form-company-widget-container">
+                    <label for="date" class="form-company-label form-label-date">Début de l'activité</label>
+                    <div class="form-date-container">
+                        <input id="date" class="form-company-widget form-widget-date" type="date"></input>
+                    </div>
+                </div> #}
+                                <div class="champ-data">
+                    <label class="label-data" for="test">Début de l'activité</label>
+                    <div class="div-input-date-activite">
+                        <div class="select-date">
+                            <select id="jour">
+                                {% for i in 1..31 %}
+                                    {% if i < 10 %}
+                                        <option value="0{{ i }}">0{{ i }}</option>
+                                    {% else %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        {% set months = ['Jan','Fév','Mar','Avr','Mai','Juin','Jui',
+                                         'Aout','Sept','Oct','Nov','Déc']
+
+                        %}
+                        {% set number_month = 0 %}
+                        <div class="select-date">
+                            <select id="mois">
+                                {% for month in months %}
+                                    {% set number_month = number_month + 1 %}
+                                   
+                                    {% if number_month < 10 %}
+                                        <option value="0{{ number_month }}">{{ month }}</option>
+                                    {% else %}
+                                        <option value="{{ number_month }}">{{ month }}</option>
+                                    {% endif %}
+                                    
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="select-date" >
+                            <select id="année">
+                                {% for i in 1800..2021  %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="certifications" class="form-company-label form-label-certif">Certification(s)*</label>
+                    <input id="certifications" class="form-company-widget form-widget-certif"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="activité" class="form-company-label form-label-category">Secteur(s) d'activité(s)</label>
+                     <div class="champ-data">
+                    <label class="label-data">Mon/mes secteur(s) d'activité(s)*</label>
+                    <div class="select-secteur" multiple>
+                        <select id="activité">
+                        <option value="Administration">Administration</option>
+                        <option value="Alimentation-Boisson">Alimentation-Boisson</option>
+                        <option value="Animaux">Animaux</option>
+                        <option value="Art-Design">Art-Design</option>
+                        <option value="Soins-médicaux">Soins-médicaux</option>
+                        <option value="Administration">Administration</option>
+                        <option value="Bureautique">Bureautique</option>
+                        <option value="Tourisme et Transport">Tourisme & Transport</option>
+                        <option value="Administration">Administration</option>
+                        <option value="Consultant">Consultant</option>
+                        <option value="Communauté">Communauté</option>
+                        <option value="Formation">Formation</option>
+                        <option value="Emploi vert">Emploi vert </option>
+                        <option value="Environnement">Environnement</option>
+                        <option value="Administration">Administration</option>
+                        <option value="Gestion des déchets">Gestion des déchets</option>
+                        <option value="Green Building">Green Building</option>
+                        <option value="Green finance">Green finance</option>
+                        <option value="Green tech - Clean Tech">Green tech - Clean Tech</option>
+                        <option value="Jardinage et plantes">Jardinage et plantes</option>
+                        <option value="Label">Label</option>
+                        <option value="Loisirs et jeux">Loisirs et jeux</option>
+                        <option value="Maison">Maison</option>
+                        <option value="Média et communication">Média et communication</option>
+                        <option value="Mode et textile">Mode et textile</option>
+                        <option value="ONG et associations">ONG et associations</option>
+                        <option value="Produit ménagers">Produit ménagers</option>
+                        <option value="Santé et bien-être">Santé et bien être</option>
+
+
+
+                        
+
+                        </select>
+                        <div id="selection">
+                            <p>Administration</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="champ-data">
+                    <label class="label-data">Zone d'influence géographique *</label>
+                    <div class="select-zone">
+                        <select id="influenceZone">
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="evaluation" class="form-company-label form-label-evaluation">Je souhaite être évalué par Gaea21 : (voir le tableau ci-dessous)</label>
+                    <input id="evaluation" class="form-company-widget form-widget-evaluation" type="checkbox"><label for="evaluation">Oui</label></input>
+                    <input id="evaluation1" class="form-company-widget form-widget-evaluation" type="checkbox"><label for="evaluation">Non</label></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="description" class="form-company-label form-label-description">Description de votre entreprise</label>
+                    <input id="description" class="form-company-widget form-widget-description"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for="logo" class="form-company-label form-label-description">Télerchargez votre logo (jpeg/png)</label>
+                    <input id="logo" class="form-company-widget form-widget-description" type="file"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <label for"vision" class="form-company-label form-label-vision">Votre vision du Développement Durable :
+                                                        Comment résumeriez-vous votre philosophie
+                                                        d’entreprise au sujet du Développement Durable ?</label>
+                    <input id="vision" class="form-company-widget form-widget-vision"></input>
+                </div>
+                <div class="form-company-widget-container">
+                    <div id="g-recaptcha"></div>
+                    <div id="g-recaptcha-error"></div> 
+                </div>
+                <button class="form-company-btn"  id="btnn"><span id ="load" class="" role="status" aria-hidden="true"></span>Valider</button>
+
+            </div>
+        </div>
+    
+        </section>
+        <script src="{{ asset('js/ui/inscription.js') }}"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+
+
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/ui/inscription.js') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+<script src="{{ asset('js/redirect.js') }}"></script>
+{% endblock %}

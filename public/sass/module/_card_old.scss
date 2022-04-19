@@ -1,0 +1,97 @@
+/*.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-width:200px;
+  width: 30%;
+  margin-top: 20px;
+
+  overflow: hidden;
+  height: 300px;
+  .card-header{
+
+    width: 100%;
+    height: 66%;
+    .card-image{
+
+      width: 100%;
+      height: 80%;
+    }
+    .card-title{
+      height: 80%;
+      width: 100%;
+      background-color: white;
+      color:$green;
+    }
+  }
+  .card-content{
+    height: 33%;
+    text-overflow: ellipsis;
+    font-size: 0.8em;
+  }
+}*/
+
+$width_screen: 1920px;
+
+.card_container{
+  $width_card_container: 1543;
+  display: grid;
+  //justify-content: center;
+  padding-left: pxToPourcent(190px,$width_screen);
+  padding-right: pxToPourcent(190px,$width_screen);
+  grid-template-columns: repeat(auto-fit, pxToPourcent(485px,$width_card_container));
+  //grid-gap: pxToPourcent(32px,$width_card_container); 
+  margin-top: pxToPourcent(120px,$width_screen);
+
+
+  
+}
+.card_image{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.card_image img{
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+.article_card{
+  margin: pxToPourcent(75px,$width_screen);  
+  background: white;
+  border-radius: pxToPourcent(5px,$width_screen);
+  transition: 0.3s;
+}
+.article_card:hover{
+  box-shadow: 0 4px 20px 0 rgba(34,68,123,0.2);
+  cursor: pointer;
+}
+.card_content{
+  padding: pxToPourcent(32px,$width_screen);
+  padding-bottom: pxToPourcent(120,$width_screen);
+  margin-top: pxToVw(55,$width_screen);;
+  
+}
+.card_content .card_category{
+  text-align: center;
+  font-size: pxToVw(35,$width_screen);
+  letter-spacing: 0.1em;
+  //font-weight: 500;
+  color: black;
+  display: block;
+  text-decoration: none;
+}
+.title-main-container{
+  padding-left: pxToPourcent(60px,$width_screen);
+}
+.title-main{
+  font-size:  3.22108345534407vw;
+  padding-bottom: pxToPourcent(20px,$width_screen);
+  
+}
+.sous-title-main{
+font-size: 1.4641288433382138vw;
+font-weight: lighter;  
+padding-bottom: pxToPourcent(20px,$width_screen);
+}
+.main__btn{
+  padding-left: pxToPourcent(60px,$width_screen);
+}

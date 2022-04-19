@@ -1,0 +1,346 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/inscription.css') }}"/>
+
+    <div class="banner-inscription"  style="width:100%;background-image: url({{asset('images/header-inscription-commune.jpg')}}); height: 100vh;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+
+        {% include "navbar.html.twig" %}
+
+        <div class="div-banner-inscription-title">
+            <div class="banner-inscription-title">Inscription</div>
+        </div>
+    </div>
+
+    <div class="green-intro">
+        <div class="green-intro-text">
+            Cette page est dédiée à l’inscription de votre commune qui vous permettra par la suite de bénéficier des services que nous vous proposerons.
+            N’oubliez pas de référencer votre vision de l’économie circulaire/verte, de la production responsable, du développement durable et pour finir de la consommation responsable.
+            Ces informations nous permettront de mieux cibler vos besoins.
+        </div>
+    </div>
+
+
+    <div class="div-inscription-title">
+        <div class="inscription-title">Inscription</div>
+    </div>
+
+    {# ######## FORMULAIRES D'INSCRIPTION #####################}
+    <div class="div-form-inscription">
+
+        <div class="container-form-inscription">
+            <div class="div-erreur-mdp">
+                Le mot de passe ne correspond pas !
+            </div>
+            {# ######## Colonne de gauche #####################}
+            <div class="div-form-left">
+
+                <span id="response"></span>
+
+                <div class="champ-data" >
+                    <label for="pseudo" class="label-data">Pseudo *</label>
+                    <input id="pseudo" />
+                </div>
+                <div class="champ-data" id="pseudo1">
+                    <label for="mdp" class="label-data">Mot de passe *</label>
+                    <input type="password" id="mdp" name="mdp" />
+                    <div id="validpassword"></div>
+                </div>
+                <div class="champ-data">
+                    <label for="mdpconfirm" class="label-data">Confirmer le mot de passe *</label>
+                    <input type="password" id="mdpconfirm" />
+                </div>
+                <div class="champ-data">
+                    <label for="mail" class="label-data">Adresse mail *</label>
+                    <input id="mail" type="text"/>
+                    <div id="validemail"></div>
+                </div>
+
+                <div class="champ-data">
+                    <label for="mailconfirm" class="label-data">Confirmer l'adresse mail *</label>
+                    <input id="mailconfirm" />
+                </div>
+                <div class="champ-data">
+                    <label for="name" class="label-data">Nom de l'entreprise *</label>
+                    <input id="name" />
+                </div>
+                <div class="champ-data">
+                    <label for="socialreason" class="label-data">Raison Sociale *</label>
+                    <input id="socialreason" />
+                </div>
+                <div class="champ-data">
+                    <label for="adresse" class="label-data">Adresse *</label>
+                    <input id="adresse" />
+                </div>
+                <div class="champ-data">
+                    <label for="ville" class="label-data">Ville *</label>
+                    <input id="ville" />
+                </div>
+                <div class="champ-data">
+                    <label for="postcode" class="label-data">Code Postal *</label>
+                    <input id="postcode" />
+                </div>
+                <div class="champ-data">
+                    <label for="canton" class="label-data">Canton / Département *</label>
+                    <input id="canton" />
+                </div>
+                <div class="champ-data">
+                    <label for="pays" class="label-data">Pays *</label>
+                    <input id="pays" />
+                </div>
+                <div class="champ-data">
+                    <label for="tel" class="label-data">Téléphone</label>
+                    <input id="tel" />
+                </div>
+                <div class="champ-data">
+                    <label for="site" class="label-data">Site Web</label>
+                    <input id="site"  type="text" value="http://"/>
+                </div>
+                <div class="champ-data">
+                    <label for="linkedin" class="label-data">Lien Linkedin</label>
+                    <input id="linkedin"  type="text" value="http://"/>
+                </div>
+                <div class="champ-data">
+                    <label for="facebook" class="label-data">Lien Facebook</label>
+                    <input id="facebook"  type="text" value="http://"/>
+                </div>
+                <div class="champ-data">
+                    <label for="twitter" class="label-data">Lien Twitter</label>
+                    <input id="twitter"  type="text" value="http://"/>
+                </div>
+
+            </div>
+
+
+
+
+            {# ######## Colonne de droite #####################}
+            <div class="div-form-right">
+
+                <p><b>Personne de contact </b></p>
+
+                <div class="champ-data champ-data2" >
+                    <label for="nom" class="label-data">Nom *</label>
+                    <input id="nom" />
+                </div>
+
+                <div class="champ-data champ-data2" >
+                    <label for="prenom" class="label-data">Prénom *</label>
+                    <input id="prenom" />
+                </div>
+
+                <div class="champ-data champ-data2">
+                    <label class="label-data">Début de l'activité *</label>
+                    <div class="div-input-date-activite">
+                        <div class="select-date">
+                            <select id="jour">
+                                {% for i in 1..31 %}
+                                    {% if i < 10 %}
+                                        <option value="0{{ i }}">0{{ i }}</option>
+                                    {% else %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        {% set months = ['Jan','Fév','Mar','Avr','Mai','Juin','Jui',
+                            'Aout','Sept','Oct','Nov','Déc']
+
+                        %}
+                        {% set number_month = 0 %}
+                        <div class="select-date">
+                            <select id="mois">
+                                {% for month in months %}
+                                    {% set number_month = number_month + 1 %}
+
+                                    {% if number_month < 10 %}
+                                        <option value="0{{ number_month }}">{{ month }}</option>
+                                    {% else %}
+                                        <option value="{{ number_month }}">{{ month }}</option>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="select-date" >
+                            <select id="année">
+                                {% for i in currentYear..1800  %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="champ-data champ-data2">
+                    <label for="certifications" class="label-data">Certification(s)</label>
+                    <input id="certifications" />
+                </div>
+
+                <div class="champ-data champ-data2">
+                    <label for="secteurs" class="label-data">Mon/mes secteurs d'activité(s)*</label>
+                    <button class="categories-button" onclick="openCategories()">Catégories</button>
+                </div>
+                <script>
+                    function openCategories() {
+                        document.getElementById("categories").style.display = "block";
+                    }
+                    function closeCategories() {
+                        document.getElementById("categories").style.display = "none";
+                    }
+                </script>
+                <div id="categories" class="categories">
+                    <div class="categories-list">
+                        {% for category in categories %}
+                            <div class="categories-element">
+                                <input type="checkbox" id="{{ category.name }}" name="{{ category.name }}">
+                                <label for="{{ category.name }}">{{ category.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="categories-popup-button">
+                        <button class="categories-button" onclick="closeCategories()">Valider</button>
+                    </div>
+                </div>
+
+
+                <div class="champ-data champ-data2">
+                    <label class="label-data">Zone d'influence géographique *</label>
+                    <div class="select-zone">
+                        <select id="influenceZone">
+                            <option value="">--Merci de sélectionner une option--</option>
+                            <option value="5km ou moins">5km ou moins</option>
+                            <option value="10km">10km</option>
+                            <option value="20km">20km</option>
+                            <option value="50km">50km</option>
+                            <option value="100km">100km</option>
+                            <option value="plus de 100km">Plus de 100km</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="champ-data">
+                    <div class="title-evaluation">
+                        Je souhaite être évalué par gaea21 : *<br>
+                        <a href="{{ url('tarifs-niveaux') }}" target="_blank">En savoir plus ></a>
+                    </div>
+                    <div class="radio-checkbox">
+
+                        <input id="evaluationYes" type="radio" name="evaluation">
+                        <label for="evaluationYes" class="label-ellipse">Oui</label>
+
+                        <input id="evaluationNo" type="radio" name="evaluation">
+                        <label for="evaluationNo" class="label-ellipse">Non</label>
+
+                    </div>
+                </div>
+
+                <div class="container-textarea-data">
+                    <div class="champ-data textarea-data">
+                        <label for="description" class="label-data">Description de votre entreprise</label>
+                        <textarea id="description" type="textarea"></textarea>
+                    </div>
+                    <div class="champ-data textarea-data">
+                        <label for="vision" class="label-data">
+                            Comment résumeriez-vous votre philosophie
+                            d’entreprise au sujet du Développement Durable ?
+                        </label>
+                        <textarea id="vision" type="textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="container-upload-logo">
+                    <div class="champ-data">
+                        <label for="logo" id="upload-logo"> Uploadez votre logo (jpeg/png)</label>
+                        <div class="upload-logo">
+                            <label for="logo" class="parcourir-logo">Parcourir</label>
+                            <div class="emplacement-upload">
+                                Aucun fichier
+                            </div>
+                            <input id="logo" type="file"/>
+                            <div class="supprimer-logo">Supprimer l'image</div>
+                            <div style="color: red; margin-top: 10px;" class="div-erreur-image"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="radio-checkbox">
+                    <input type="checkbox" id="newsletter">
+                    <label for="newsletter">Je souhaite m'inscrire la newsletter</label>
+                </div>
+
+                <div class="legende-data-asterix">* ce champ est obligatoire</div>
+
+                <div class="div-erreur-champs" id="champserreurs">
+                </div>
+                <div class="container-erreur-champs hidden">
+                    Merci de renseigner tous les champs obligatoires
+                </div>
+
+                <div class="champ-data">
+                    {# <div id="g-recaptcha"></div> #}
+                    <div id="g-recaptcha" {# style="-webkit-transform:scale(0.62); -webkit-transform-origin:0 0;" #}></div>
+                    <div id="g-recaptcha-error"></div>
+                </div>
+                <div class="champ-data div-btn-valider">
+                    <button class="btn-valider"  id="bouton">Valider</button>
+                </div>
+                <div class="champ-data div-msg-valid">
+                    <img class="hidden" src="{{ asset('images/ajax-loader.gif') }}" alt="loader">
+                    {# <div class="container-msg-valid">
+                        <div class="msg-valid-text">Votre compte a bien été créé !<br>
+                            Vous allez recevoir un e-mail de confirmation.<br>
+                            Si l’e-mail n’apparaît pas dans la boîte de<br>
+                            réception, pensez à vérifier votre boîte Spam.<br>
+                            Selon les boîtes de messagerie, il peut arriver<br>
+                            qu’il y soit directement redirigé.
+                        </div>
+                    </div>#}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    {#########  PROGRAMMES GAEA 21 ###########}
+    <div class="div-programs">
+        <div class="container-programs">
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_SLP.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GC.jpg') }}">
+            </div>
+
+            <div class="dash-program-card">
+                <img  src="{{ asset('css/img/image_GES.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+
+    {% include "footer.html.twig" %}
+    {# ######## JS #####################}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/imageVerification.js') }}"></script>
+    <script src="{{ asset('js/inscription.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+    <script src="{{ asset('js/redirect.js') }}"></script>
+{% endblock %}

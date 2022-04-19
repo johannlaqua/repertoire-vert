@@ -1,0 +1,43 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Invention index{% endblock %}
+
+{% block body %}
+    <h1>Invention index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Lien</th>
+                <th>Photo</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invention in inventions %}
+            <tr>
+                <td>{{ invention.id }}</td>
+                <td>{{ invention.nom }}</td>
+                <td>{{ invention.description }}</td>
+                <td>{{ invention.lien }}</td>
+                <td>{{ invention.photo }}</td>
+                <td>{{ invention.date ? invention.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('invention_show', {'id': invention.id}) }}">show</a>
+                    <a href="{{ path('invention_edit', {'id': invention.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('invention_new') }}">Create new</a>
+{% endblock %}

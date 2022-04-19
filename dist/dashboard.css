@@ -1,0 +1,227 @@
+body {
+  background-color: #EDEDED;
+}
+
+.banner-profil-title {
+  font-size: 4.68vw;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 9.64%;
+}
+
+.div-btn-banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14.6875%;
+}
+
+.btn-banner {
+  width: 12.08%;
+  background: none;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn-banner:not(:last-of-type) {
+  margin-right: 2.34375%;
+}
+
+.btn-banner-icon {
+  width: 8.62%;
+  margin: 0% 18.5% 0% 16.8%;
+}
+
+.btn-banner-icon svg {
+  width: 100%;
+}
+
+.icon-profil {
+  fill: none;
+}
+
+.banner-profil-description {
+  font-size: 1.46vw;
+  color: white;
+  font-weight: bold;
+  width: 48.5%;
+  text-align: center;
+  margin-bottom: 4.11%;
+}
+
+.green-intro {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #618226;
+  color: white;
+  font-weight: bold;
+  font-size: 1.51vw;
+  padding: 5.16% 0%;
+}
+
+.green-intro-text {
+  width: 80.3125%;
+}
+
+.div-dash-liens {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6.25%;
+  margin-top: 9.74%;
+}
+
+.div-dash-liens-content {
+  width: 55.36%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lien-dash {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.04vw;
+  border-radius: 0.52vw;
+  background-color: white;
+  color: black;
+  width: 21.82%;
+  padding: 3.1% 1%;
+}
+
+.lien-actif, .decoupage-actif {
+  background-color: black !important;
+  color: white !important;
+}
+
+.div-presentation-dashboard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.8125%;
+}
+
+.container-presentation-dashboard {
+  width: 81.4%;
+  font-weight: bold;
+  font-size: 1.46vw;
+}
+
+.div-selection-decoupage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 6.2%;
+}
+
+.container-selection-decoupage {
+  width: 56%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lien-decoupage {
+  cursor: pointer;
+  font-size: 1.46vw;
+  background-color: white;
+  color: black;
+  width: 17.77%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 1vw;
+  padding: 0.5% 0%;
+}
+
+.lien-decoupage a {
+  width: 100%;
+}
+
+.en-avant {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4.11%;
+}
+
+.div-visibilite {
+  margin-top: 3.3333333333%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.visibilite-content {
+  font-size: 1.46vw;
+  width: 26%;
+  background-color: #618226;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.78% 0%;
+}
+
+.lien-decoupage:not(.decoupage-actif):hover, .lien-dash:not(.lien-actif):hover {
+  color: white;
+  background-color: black;
+}
+
+.div-programs {
+  margin-top: 8%;
+  margin-bottom: 5.73%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-programs {
+  padding: 4% 0%;
+  background-color: white;
+  width: 67%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dash-program-card {
+  width: 28.36%;
+}
+
+.dash-program-card img {
+  width: 100%;
+}
+
+.dash-program-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 86.5%;
+}
+
+.dash-program-description {
+  padding: 3%;
+  font-size: 1.98vw;
+}
+
+.emplacement-chart {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-chart {
+  width: 50%;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

@@ -1,0 +1,38 @@
+<img class="company-logo col-l-3" src="{{ asset('css/img/company/'~ company.image|basename) }}"
+     alt="logo-{{ company.name }}">
+<div class="company-description col-l-9">
+    <div class="description-header">Description de l'entrepriseeee</div>
+    <p class="description-content">{{ company.description }}</p>
+</div>
+<div class="company-contactinfo col-l-3">
+    <span class="contactinfo-title">Coordonnées</span>
+    <div class="contactinfo-adresse">
+        <span>{{ company.street }} {{ company.streetnumber }}</span>
+        <span>{{ company.postcode }} {{ company.city }}</span>
+        <span>{{ company.country }}</span>
+    </div>
+    <br>
+    <div class="contactinfo">
+        <span>Tél : {{ company.phone }}</span>
+       {#  <span>{{ company.email }}</span>#}
+        <span>{{ company.urlwebsite }}</span>
+    </div>
+</div>
+<div class="company-vision col-l-9">
+    <div class="vision-header">Vision du Développement Durable</div>
+    <div class="vision-content">
+        <p>Comment résumeriez-vous votre philosophie d'entreprise au sujet du développement durable ?</p>
+        <p class="vision">{{ company.vision }}</p>
+    </div>
+
+</div>
+<div class="company-details col-l-offset-3 col-l-9">
+    <span class="col-l-4">Raison sociale :</span>
+    <span class="col-l-4">Début de l'activité :</span>
+    <span class="col-l-4">Certification(s) : {{ company.certification }}</span>
+    <span class="col-l-4">{{ company.socialreason }}</span>
+    <span class="col-l-4">{{ company.getstartingDate()|date('d-m-Y') }}</span>
+    <span class="col-l-4">Niveau: {{ company.package }}</span>
+
+
+</div>

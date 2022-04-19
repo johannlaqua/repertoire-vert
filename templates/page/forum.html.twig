@@ -1,0 +1,34 @@
+{% extends 'base_homepage.html.twig' %}
+{% block title %}Forum{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/css/actualite/actualite.css') }}"/>
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+
+
+
+{% block body %}
+    <div class="title-banner-container" style="background-image: url({{asset('/images/forum.png')}})">
+        {% include "navbar.html.twig" %}
+        <br><br><br>
+        <h3 class="banner-title">Forum</h3>
+        <br><br><br>
+    </div>
+    <div class="greencouncil-descrition-gray col-l-12" style="height:150px; text-align: center">
+        <br/>
+        <p>
+            Prochainement nous vous proposerons de rentrer toutes questions et d'en débattre avec la communauté des consommateurs du répertoire vert. Nos modérateurs seront là pour vous répondre sur toutes les questions sur nous.
+        </p>
+
+        <p>
+            Nous restons sur notre développement prévu pour l'instant et nous ajouterons au fur à mesure des onglets ou activités liés au site.
+        </p>
+        <br/>
+    </div>
+
+
+
+
+
+{% endblock %}

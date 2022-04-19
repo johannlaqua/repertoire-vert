@@ -1,0 +1,62 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mon profil entreprise</h3>
+        <br><br><br><br><br>
+        <div class="showcase__btn">
+            <button  onclick="location.href='/profile/entreprise'" class="showcase__btn-entreprise">Profil</button>
+            <button onclick="location.href='/parametres/particulier'" class="showcase__btn-ville">Paramètres</button>
+            <button onclick="location.href='/productsFavParticulier'" class="showcase__btn-ville" style="font-size: 16px">Produits/services favoris</button>
+            <button onclick="location.href='/MesEvenementsFavoris'" class="showcase__btn-ville" style="font-size: 16px">Evènements favoris</button>
+
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+
+    <div class="row">
+        <a class="btn" href="{{ url('serviceAdd') }}">Ajouter un service</a>
+        <a class="btn1"  href="{{ url('productsFav') }}">Mes produits/services favoris</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Certification</th>
+            <th>Evaluation gaea21</th>
+            <th>Provenance</th>
+            <th>Tarification</th>
+            <th>Tarifs</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+
+                <tr>
+
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.name }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.certification }}</a></td>
+                <td>{{ service.gaearecommanded }}</td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.origin }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.serviceduration }}</a></td>
+                <td><a href="{{ url('productShow',{'slug':service.slug}) }}" style="text-decoration:none;color:black;">{{ service.price }} {{ service.currency }}{% if service.price > 1 and service.currency != "CHF" %}s {% endif %}</a></td>
+                <td class="prodServEddition">
+                    <a class="btnModif" href="{{ url('servicesEdit',{id:service.id}) }}">Modifier</a>
+                    <a class="btnSupp" onclick="return confirm('Etes vous sûr(e) de vouloir supprimer ce service ? Si  vous cliquez sur OK le service sera supprimé définitivement');" href="{{ url('servicesDelete',{id:service.id}) }}">Supprimer</a>
+                </td>
+
+
+              </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

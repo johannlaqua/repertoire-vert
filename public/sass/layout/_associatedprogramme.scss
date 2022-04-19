@@ -1,0 +1,43 @@
+$width_screen: 1920px;
+
+.associatedprogramme {
+  margin-top: pxToPourcent(98px,$width_screen);
+  max-width: 100%;
+  padding-right: pxToPourcent(190,$width_screen);
+  padding-left: pxToPourcent(190,$width_screen);
+  padding-bottom: pxToPourcent(148px,$width_screen);
+
+  .associatedprogramme-title {
+    color: black;
+    width: 100%;
+    font-weight: bold;
+    font-size: pxToVw(44px,$width_screen);
+
+  }
+  
+  .programme {
+    $width_programme_content: 1546px;
+    margin-top: pxToPourcent(98px,$width_screen);
+    
+      img {
+        width: pxToPourcent(347px,$width_programme_content);
+        margin: pxToPourcent(15px,$width_programme_content);
+      }
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-height: 620px) {
+
+  .associatedprogramme{
+    .associatedprogramme-title{
+        font-size: 3.5vw;
+    }
+  }
+
+}
+
+@media screen and (max-width: 480px){
+  .associatedprogramme .programme img {
+    width: 30%;
+  }
+}

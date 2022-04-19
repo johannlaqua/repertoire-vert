@@ -1,0 +1,49 @@
+
+{# {% extends 'base_homepage.html.twig' %} #}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="title-banner-container" style="background-image: url({{asset('/images/login.jpg')}})">
+    {# {% include "navbar.html.twig" %} #}
+    <br><br><br><br>
+    {# <h4 class="banner-title">Login</h4> #}
+    <div style="width: 50%; text-align: center;margin: 0 auto;">
+
+    {# <form method="post"> #}
+        {# {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %} #}
+
+{# 
+        <label for="inputEmail">Email</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" required autofocus> #}
+        <label for="inputPassword">Mot de passe</label>
+        <input type="text" name="password" id="inputPassword" class="form-control" required>
+
+
+        {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+        #}
+
+        <button class="form-company-btn" id="btn" onclick="myFunction()"><span id ="load" class="" role="status" aria-hidden="true"></span>
+            S'identifier
+        </button>
+    {# </form> #}
+    </div></div>
+    <script src="{{ asset('js/ui/test.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+$width_screen: 1920px;
+
+.greenbanner {
+    background-color: #618226;
+    width: 100%;
+
+    .greenbanner-title {
+        font-size: pxToVw(44px,$width_screen);
+        color:white;
+        padding-left: pxToPourcent(341,$width_screen);
+        padding-right: pxToPourcent(189,$width_screen);
+        padding-top: pxToPourcent(66,$width_screen);
+    }
+    .greenbanner-content {
+        font-size: pxToVw(20px,$width_screen);
+        color:white;
+        padding-left: pxToPourcent(341,$width_screen);
+        padding-right: pxToPourcent(189,$width_screen);
+        padding-bottom: pxToPourcent(52,$width_screen);
+    }
+}

@@ -1,0 +1,54 @@
+
+
+
+{% extends 'base_homepage.html.twig' %}
+
+
+
+
+
+{% block body %}
+
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/shop.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 style="font-family: 'Droid';
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding-top: 10%;
+    font-size: 9vh;">Shop</h3>
+        </br></br></br></br></br></br>
+    </div>
+
+    {# ******************************* FinNavBar ***************************************** #}
+
+{% for products in products %}
+
+<div>
+    {{ products.product.name }}
+    <a href="  {{ path('Remove_From_Cart',{'id':products.id}) }}">
+       Remove From Cart
+    </a>
+
+</div>
+<div>
+
+</div>
+{% endfor %}
+
+    TOTAL: {% for total in total %}
+    {{ total.total_sum }}
+{% endfor %}
+
+<a href="{{ path('Order') }}"><button class="btn tm-btn-primary" > Commander</button></a>
+
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<br>
+
+        <a href="{{ path('UserOrders') }}">Consulter mes commandes</a>
+    {% endif %}
+{% endblock %}

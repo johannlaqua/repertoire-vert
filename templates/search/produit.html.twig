@@ -1,0 +1,14 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+@
+{% for product in products %}
+    {{product.name}} 
+    {{product.company.id}}
+    {% endfor %}
+~
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block title %}Edit Company{% endblock %}
+
+{% block body %}
+    {# ******************************* NavBar ***************************************** #}
+
+
+    <div class="showcase"  style="width:100%;background-image: url({{asset('/images/header_entreprise.png')}}); height: 100%;background-position:center ; background-size: cover ; background-repeat: no-repeat ">
+        {% include "navbar.html.twig" %}
+        <h3 class="banner-title">Mon profil entreprise</h3>
+        <br><br><br><br><br>
+         <div class="showcase__btn">
+            <button  onclick="location.href='{{ url('company1_edit',{id:app.user.id}) }}'" class="showcase__btn-entreprise">Profil</button>
+            <button onclick="location.href='{{ url('VisitesParMois',{months:1}) }}'" class="showcase__btn-ville">Dashboard</button>
+            <button onclick="location.href='/parametres/entreprise'" class="showcase__btn-ville">Evènements</button>
+            <button onclick="location.href='/produits'" class="showcase__btn-ville">Produits</button>
+            <button onclick="location.href='/services'" class="showcase__btn-ville">Services</button>
+     
+        </div>
+    </div>
+    {# ******************************* FinNavBar ***************************************** #}
+
+    {{ include('company1/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+   {#  <a href="{{ path('company1_index') }}">back to list</a>
+
+    {{ include('company1/_delete_form.html.twig') }}#}
+{% endblock %}

@@ -1,0 +1,96 @@
+.div-derniers-inscrits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 22.4% 0% 7.1% 0%;
+}
+
+.container-derniers-inscrits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.derniers-inscrits-title {
+  width: 100%;
+  color: white;
+  font-size: 4.6875vw;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.div-btn-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.container-btn-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26%;
+}
+
+.btn-choice {
+  width: 46.4%;
+  cursor: pointer;
+}
+
+.btn-choice svg {
+  width: 100%;
+}
+
+.btn-choice:not(:last-of-type) {
+  margin-right: 6%;
+}
+
+.div-bvn-rv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.125%;
+}
+
+.container-bvn-rv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.46vw;
+  font-weight: bold;
+  color: white;
+}
+
+.container-bvn-rv span {
+  color: #fdc700;
+  margin: 0% 0.5%;
+}
+
+.div-green-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.46vw;
+  font-weight: bold;
+  color: white;
+  background-color: #618226;
+}
+
+.container-green-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6.15% 0%;
+}
+
+/*# sourceMappingURL=derniers_inscrits.css.map */

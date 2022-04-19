@@ -1,0 +1,56 @@
+{% extends 'base_homepage.html.twig' %}
+
+{% block body %}
+
+
+    {{ form_start(form,{'attr': {'class': 'frm-content'}}) }}
+
+
+        <div class="">
+                {{ form_row(form.nom,{'label': 'nom ', 'attr': {'class': 'labelNameBoxNewsletter' }}) }}
+                {# <input className="inputNameBoxNewsletter" type="text" name="Nom" id="nom"></input> #}
+                
+        </div>
+
+        <div class="">
+                {{ form_row(form.prenom,{'label': 'prenom ', 'attr': {'class': 'labelFirstNameBoxNewsletter' }}) }}
+                {# <input className="inputFirstNameBoxNewsletter" type="text" name="prenom" id="prenom"></input> #}
+                
+        </div>
+
+        <div class="">
+                {{ form_row(form.mail,{'label': 'mail ', 'attr': {'class': 'labelMailBoxNewsletter' }}) }}
+                 {# <input className="inputMailBoxNewsletter" type="text" name="mail" id="mail"></input> #}
+                
+        </div>
+
+        <div class="">
+                {{ form_row(form.ville,{'label': 'ville ', 'attr': {'class': 'labelCityBoxNewsletter' }}) }}
+                 {# <input className="inputCityBoxNewsletter" type="text" name="ville" id="ville"></input> #}
+                
+        </div>
+
+
+         <div class="">
+                {{ form_row(form.code_postal,{'label': 'code_postal ', 'attr': {'class': 'labelPostalBoxNewsletter' }}) }}
+                 {# <input className="inputPostalBoxNewsletter" type="text" name="code_postal" id="code_postal"></input> #}
+                
+        </div>
+
+         <div class="">
+                {{ form_row(form.enregistrer,{'label': 'enregistrer', 'attr': {'class': 'labelErrorLocation' }}) }}
+                 {# <button className="inputSubmitBoxnewsletter" style={{cursor: "pointer"}} id="btnn">Je m'inscris !</button>
+                 #}
+        </div>
+
+        {{ form_end(form) }}
+    {#regarder via symfony gestion des erreur d'entré dans les imput type mail nbr de caractère etc  #}
+
+{% endblock %}
+{% block javascripts %}
+
+<script>
+
+
+</script>
+{% endblock %}

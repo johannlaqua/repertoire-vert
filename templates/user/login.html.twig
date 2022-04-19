@@ -1,0 +1,41 @@
+{% extends 'base_homepage.html.twig' %}
+
+
+
+{% block body %}
+    <div class="green-banner">
+        <h3>Se connecter</h3>
+    </div>
+<div class="frm frm-login col-l-offset-4 col-l-4">
+    <div class="frm-header">
+        Login
+    </div>
+    <form class="frm-login" role="form" method="POST" action="{{ path('security_login_check') }}">
+        {% if error %}
+            {% if error.messageKey|trans(error.messageData) == "Veuillez verifier votre addresse mail" %}
+            <script>alert("Veuillez verifier votre addresse mail")</script>
+            {% else %}
+            {{ error.messageKey|trans(error.messageData) }}
+            {% endif %}
+        {% endif %}
+        <br>
+        <div>
+            <label for="email">Adresse email</label>
+            <input id="email" class="frm-login" type="text" name="_email" value="{{ last_username }}">
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input id="password" class="frm-login" type="password" name="_password">
+        </div>
+        <br>
+        <button class="frm-validation-btn" type="submit">Connexion</button>
+        <!--<button class="frm-validation-btn" type="submit" href="{# path('userPreResetPassword') #}">Mot de passe oublié</button>-->
+        <br>
+        <div style="text-align:center;">
+            <a href="{{ path('userPreResetPassword') }}">Mot de passe oublié ?</a>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
